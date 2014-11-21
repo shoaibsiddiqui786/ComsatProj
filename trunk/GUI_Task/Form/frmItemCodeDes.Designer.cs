@@ -31,6 +31,8 @@ namespace GUI_Task
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lbl_I_ItemName = new System.Windows.Forms.Label();
+            this.lbl_I_ItemCode = new System.Windows.Forms.Label();
             this.btnDuplicateItems = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
@@ -74,8 +76,7 @@ namespace GUI_Task
             this.btnUnselectAll = new System.Windows.Forms.Button();
             this.btnSelectAll = new System.Windows.Forms.Button();
             this.btnResetForm = new System.Windows.Forms.Button();
-            this.lbl_I_ItemName = new System.Windows.Forms.Label();
-            this.lbl_I_ItemCode = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -102,6 +103,7 @@ namespace GUI_Task
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.lbl_I_ItemName);
             this.tabPage1.Controls.Add(this.lbl_I_ItemCode);
             this.tabPage1.Controls.Add(this.btnDuplicateItems);
@@ -137,6 +139,34 @@ namespace GUI_Task
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Item Information";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // lbl_I_ItemName
+            // 
+            this.lbl_I_ItemName.AllowDrop = true;
+            this.lbl_I_ItemName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.lbl_I_ItemName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbl_I_ItemName.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_I_ItemName.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lbl_I_ItemName.Location = new System.Drawing.Point(115, 60);
+            this.lbl_I_ItemName.Name = "lbl_I_ItemName";
+            this.lbl_I_ItemName.Size = new System.Drawing.Size(280, 21);
+            this.lbl_I_ItemName.TabIndex = 307;
+            this.lbl_I_ItemName.Text = "Item Name";
+            this.lbl_I_ItemName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lbl_I_ItemCode
+            // 
+            this.lbl_I_ItemCode.AllowDrop = true;
+            this.lbl_I_ItemCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.lbl_I_ItemCode.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbl_I_ItemCode.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_I_ItemCode.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lbl_I_ItemCode.Location = new System.Drawing.Point(115, 35);
+            this.lbl_I_ItemCode.Name = "lbl_I_ItemCode";
+            this.lbl_I_ItemCode.Size = new System.Drawing.Size(167, 21);
+            this.lbl_I_ItemCode.TabIndex = 306;
+            this.lbl_I_ItemCode.Text = "Item Code";
+            this.lbl_I_ItemCode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnDuplicateItems
             // 
@@ -612,33 +642,14 @@ namespace GUI_Task
             this.btnResetForm.Text = "Reset Form";
             this.btnResetForm.UseVisualStyleBackColor = true;
             // 
-            // lbl_I_ItemName
+            // button1
             // 
-            this.lbl_I_ItemName.AllowDrop = true;
-            this.lbl_I_ItemName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.lbl_I_ItemName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbl_I_ItemName.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_I_ItemName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbl_I_ItemName.Location = new System.Drawing.Point(115, 60);
-            this.lbl_I_ItemName.Name = "lbl_I_ItemName";
-            this.lbl_I_ItemName.Size = new System.Drawing.Size(280, 21);
-            this.lbl_I_ItemName.TabIndex = 307;
-            this.lbl_I_ItemName.Text = "Item Name";
-            this.lbl_I_ItemName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lbl_I_ItemCode
-            // 
-            this.lbl_I_ItemCode.AllowDrop = true;
-            this.lbl_I_ItemCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.lbl_I_ItemCode.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbl_I_ItemCode.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_I_ItemCode.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbl_I_ItemCode.Location = new System.Drawing.Point(115, 35);
-            this.lbl_I_ItemCode.Name = "lbl_I_ItemCode";
-            this.lbl_I_ItemCode.Size = new System.Drawing.Size(167, 21);
-            this.lbl_I_ItemCode.TabIndex = 306;
-            this.lbl_I_ItemCode.Text = "Item Code";
-            this.lbl_I_ItemCode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button1.Location = new System.Drawing.Point(336, 162);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(78, 30);
+            this.button1.TabIndex = 308;
+            this.button1.Text = "Usama";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // frmItemCodeDes
             // 
@@ -719,5 +730,6 @@ namespace GUI_Task
         private System.Windows.Forms.Button btnResetForm;
         private System.Windows.Forms.Label lbl_I_ItemName;
         private System.Windows.Forms.Label lbl_I_ItemCode;
+        private System.Windows.Forms.Button button1;
     }
 }
