@@ -1,0 +1,15 @@
+Need help with the following combo boxes:
+Accounts Reports - >  tracking
+stock Reports ->dispatch Report
+productionProcess->contProdProc->2nd Status
+
+Production Report-> Contractor Wise Production Process Completed
+
+SVN URL:
+https://shoaibkumbo.zapto.org/svn/ComsatProj
+
+Meeting Agenda:
+1- requirement gathering (Phase 1)
+2- requirement gathering (Phase 2)
+3- GUI Designing 
+4- Combo Filling and Help
