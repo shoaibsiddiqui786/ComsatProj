@@ -31,6 +31,7 @@ namespace GUI_Task
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.lbl_I_ItemName = new System.Windows.Forms.Label();
             this.lbl_I_ItemCode = new System.Windows.Forms.Label();
             this.btnDuplicateItems = new System.Windows.Forms.Button();
@@ -76,7 +77,7 @@ namespace GUI_Task
             this.btnUnselectAll = new System.Windows.Forms.Button();
             this.btnSelectAll = new System.Windows.Forms.Button();
             this.btnResetForm = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -103,6 +104,7 @@ namespace GUI_Task
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.lbl_I_ItemName);
             this.tabPage1.Controls.Add(this.lbl_I_ItemCode);
@@ -139,6 +141,15 @@ namespace GUI_Task
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Item Information";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(336, 162);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(78, 30);
+            this.button1.TabIndex = 308;
+            this.button1.Text = "Usama";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // lbl_I_ItemName
             // 
@@ -642,14 +653,14 @@ namespace GUI_Task
             this.btnResetForm.Text = "Reset Form";
             this.btnResetForm.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // button2
             // 
-            this.button1.Location = new System.Drawing.Point(336, 162);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(78, 30);
-            this.button1.TabIndex = 308;
-            this.button1.Text = "Usama";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button2.Location = new System.Drawing.Point(336, 198);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(78, 30);
+            this.button2.TabIndex = 309;
+            this.button2.Text = "Sir Shoaib";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // frmItemCodeDes
             // 
@@ -731,5 +742,6 @@ namespace GUI_Task
         private System.Windows.Forms.Label lbl_I_ItemName;
         private System.Windows.Forms.Label lbl_I_ItemCode;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
