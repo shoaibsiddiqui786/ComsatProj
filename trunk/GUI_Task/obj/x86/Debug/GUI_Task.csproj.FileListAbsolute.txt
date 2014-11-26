@@ -739,3 +739,16 @@ F:\Git\ComsatProj\trunk\GUI_Task\obj\x86\Debug\GUI_Task.PrintVw6.frmPrintVw6.res
 F:\Git\ComsatProj\trunk\GUI_Task\obj\x86\Debug\GUI_Task.frmItemsHelpAuto.resources
 F:\Git\ComsatProj\trunk\GUI_Task\obj\x86\Debug\GUI_Task.csproj.GenerateResource.Cache
 >>>>>>> origin/master
+D:\Git\ComsatProj\trunk\GUI_Task\bin\Debug\GUI_Task.exe
+D:\Git\ComsatProj\trunk\GUI_Task\bin\Debug\GUI_Task.pdb
+D:\Git\ComsatProj\trunk\GUI_Task\bin\Debug\DevAge.Core.dll
+D:\Git\ComsatProj\trunk\GUI_Task\bin\Debug\DevAge.Windows.Forms.dll
+D:\Git\ComsatProj\trunk\GUI_Task\bin\Debug\SourceGrid.dll
+D:\Git\ComsatProj\trunk\GUI_Task\bin\Debug\SourceGrid.Extensions.dll
+D:\Git\ComsatProj\trunk\GUI_Task\bin\Debug\DevAge.Core.xml
+D:\Git\ComsatProj\trunk\GUI_Task\bin\Debug\DevAge.Windows.Forms.xml
+D:\Git\ComsatProj\trunk\GUI_Task\bin\Debug\SourceGrid.pdb
+D:\Git\ComsatProj\trunk\GUI_Task\bin\Debug\SourceGrid.xml
+D:\Git\ComsatProj\trunk\GUI_Task\bin\Debug\SourceGrid.Extensions.pdb
+D:\Git\ComsatProj\trunk\GUI_Task\bin\Debug\SourceGrid.Extensions.xml
+D:\Git\ComsatProj\trunk\GUI_Task\obj\x86\Debug\GUI_Task.pdb

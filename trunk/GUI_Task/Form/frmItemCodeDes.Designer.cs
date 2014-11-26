@@ -31,6 +31,7 @@ namespace GUI_Task
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lbl_I_ItemName = new System.Windows.Forms.Label();
             this.lbl_I_ItemCode = new System.Windows.Forms.Label();
@@ -41,8 +42,8 @@ namespace GUI_Task
             this.txtItemID = new System.Windows.Forms.TextBox();
             this.dtpCreatedDate = new System.Windows.Forms.DateTimePicker();
             this.txtGLCode = new System.Windows.Forms.TextBox();
-            this.txtGLCode2 = new System.Windows.Forms.TextBox();
-            this.txtUrduItemCode = new System.Windows.Forms.TextBox();
+            this.txtAccountName = new System.Windows.Forms.TextBox();
+            this.txtUrduItemUnit = new System.Windows.Forms.TextBox();
             this.txtUrduItemName = new System.Windows.Forms.TextBox();
             this.txtMinLevel = new System.Windows.Forms.TextBox();
             this.txtMaxLevel = new System.Windows.Forms.TextBox();
@@ -58,18 +59,8 @@ namespace GUI_Task
             this.lblStockLevel = new System.Windows.Forms.Label();
             this.lblCreatedDate = new System.Windows.Forms.Label();
             this.lblUrduItemName = new System.Windows.Forms.Label();
-            this.lblUrduItemCode = new System.Windows.Forms.Label();
+            this.lblUrduItemUnit = new System.Windows.Forms.Label();
             this.lblGroup = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label12 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label13 = new System.Windows.Forms.Label();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.label14 = new System.Windows.Forms.Label();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.label15 = new System.Windows.Forms.Label();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.label16 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnAddNew = new System.Windows.Forms.Button();
@@ -77,24 +68,23 @@ namespace GUI_Task
             this.btnUnselectAll = new System.Windows.Forms.Button();
             this.btnSelectAll = new System.Windows.Forms.Button();
             this.btnResetForm = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.sSMaster = new System.Windows.Forms.StatusStrip();
+            this.tSlblUser = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tStextUser = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tSlblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tStextStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tSlblTotal = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tStextTotal = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tSlblAlert = new System.Windows.Forms.ToolStripStatusLabel();
+            this.textAlert = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.tabPage5.SuspendLayout();
-            this.tabPage6.SuspendLayout();
+            this.sSMaster.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -115,8 +105,8 @@ namespace GUI_Task
             this.tabPage1.Controls.Add(this.txtItemID);
             this.tabPage1.Controls.Add(this.dtpCreatedDate);
             this.tabPage1.Controls.Add(this.txtGLCode);
-            this.tabPage1.Controls.Add(this.txtGLCode2);
-            this.tabPage1.Controls.Add(this.txtUrduItemCode);
+            this.tabPage1.Controls.Add(this.txtAccountName);
+            this.tabPage1.Controls.Add(this.txtUrduItemUnit);
             this.tabPage1.Controls.Add(this.txtUrduItemName);
             this.tabPage1.Controls.Add(this.txtMinLevel);
             this.tabPage1.Controls.Add(this.txtMaxLevel);
@@ -132,7 +122,7 @@ namespace GUI_Task
             this.tabPage1.Controls.Add(this.lblStockLevel);
             this.tabPage1.Controls.Add(this.lblCreatedDate);
             this.tabPage1.Controls.Add(this.lblUrduItemName);
-            this.tabPage1.Controls.Add(this.lblUrduItemCode);
+            this.tabPage1.Controls.Add(this.lblUrduItemUnit);
             this.tabPage1.Controls.Add(this.lblGroup);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -141,6 +131,15 @@ namespace GUI_Task
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Item Information";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(336, 198);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(78, 30);
+            this.button2.TabIndex = 309;
+            this.button2.Text = "Sir Shoaib";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -181,7 +180,7 @@ namespace GUI_Task
             // 
             // btnDuplicateItems
             // 
-            this.btnDuplicateItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDuplicateItems.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDuplicateItems.Location = new System.Drawing.Point(305, 85);
             this.btnDuplicateItems.Name = "btnDuplicateItems";
             this.btnDuplicateItems.Size = new System.Drawing.Size(143, 22);
@@ -191,7 +190,7 @@ namespace GUI_Task
             // 
             // btnReset
             // 
-            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReset.Location = new System.Drawing.Point(401, 30);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(90, 22);
@@ -201,17 +200,18 @@ namespace GUI_Task
             // 
             // btnHelp
             // 
-            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHelp.Location = new System.Drawing.Point(301, 6);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(94, 22);
             this.btnHelp.TabIndex = 302;
             this.btnHelp.Text = "F1=Help";
             this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // btnNewCode
             // 
-            this.btnNewCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewCode.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewCode.Location = new System.Drawing.Point(401, 6);
             this.btnNewCode.Name = "btnNewCode";
             this.btnNewCode.Size = new System.Drawing.Size(90, 22);
@@ -242,20 +242,22 @@ namespace GUI_Task
             this.txtGLCode.Name = "txtGLCode";
             this.txtGLCode.Size = new System.Drawing.Size(113, 20);
             this.txtGLCode.TabIndex = 296;
+            this.txtGLCode.DoubleClick += new System.EventHandler(this.txtGLCode_DoubleClick);
+            this.txtGLCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtGLCode_KeyDown);
             // 
-            // txtGLCode2
+            // txtAccountName
             // 
-            this.txtGLCode2.Location = new System.Drawing.Point(234, 275);
-            this.txtGLCode2.Name = "txtGLCode2";
-            this.txtGLCode2.Size = new System.Drawing.Size(270, 20);
-            this.txtGLCode2.TabIndex = 295;
+            this.txtAccountName.Location = new System.Drawing.Point(234, 275);
+            this.txtAccountName.Name = "txtAccountName";
+            this.txtAccountName.Size = new System.Drawing.Size(270, 20);
+            this.txtAccountName.TabIndex = 295;
             // 
-            // txtUrduItemCode
+            // txtUrduItemUnit
             // 
-            this.txtUrduItemCode.Location = new System.Drawing.Point(115, 248);
-            this.txtUrduItemCode.Name = "txtUrduItemCode";
-            this.txtUrduItemCode.Size = new System.Drawing.Size(180, 20);
-            this.txtUrduItemCode.TabIndex = 294;
+            this.txtUrduItemUnit.Location = new System.Drawing.Point(115, 248);
+            this.txtUrduItemUnit.Name = "txtUrduItemUnit";
+            this.txtUrduItemUnit.Size = new System.Drawing.Size(180, 20);
+            this.txtUrduItemUnit.TabIndex = 294;
             // 
             // txtUrduItemName
             // 
@@ -429,19 +431,19 @@ namespace GUI_Task
             this.lblUrduItemName.Text = "Urdu Item Name";
             this.lblUrduItemName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // lblUrduItemCode
+            // lblUrduItemUnit
             // 
-            this.lblUrduItemCode.AllowDrop = true;
-            this.lblUrduItemCode.BackColor = System.Drawing.SystemColors.Control;
-            this.lblUrduItemCode.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblUrduItemCode.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUrduItemCode.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblUrduItemCode.Location = new System.Drawing.Point(6, 251);
-            this.lblUrduItemCode.Name = "lblUrduItemCode";
-            this.lblUrduItemCode.Size = new System.Drawing.Size(103, 17);
-            this.lblUrduItemCode.TabIndex = 66;
-            this.lblUrduItemCode.Text = "Urdu Item Code";
-            this.lblUrduItemCode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblUrduItemUnit.AllowDrop = true;
+            this.lblUrduItemUnit.BackColor = System.Drawing.SystemColors.Control;
+            this.lblUrduItemUnit.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblUrduItemUnit.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUrduItemUnit.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblUrduItemUnit.Location = new System.Drawing.Point(6, 251);
+            this.lblUrduItemUnit.Name = "lblUrduItemUnit";
+            this.lblUrduItemUnit.Size = new System.Drawing.Size(103, 17);
+            this.lblUrduItemUnit.TabIndex = 66;
+            this.lblUrduItemUnit.Text = "Urdu Item Unit";
+            this.lblUrduItemUnit.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblGroup
             // 
@@ -457,134 +459,9 @@ namespace GUI_Task
             this.lblGroup.Text = "Group";
             this.lblGroup.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabPage2.Controls.Add(this.label12);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(510, 311);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Rate/Discount Info";
-            // 
-            // label12
-            // 
-            this.label12.AllowDrop = true;
-            this.label12.BackColor = System.Drawing.Color.Olive;
-            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label12.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label12.Location = new System.Drawing.Point(6, 14);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(103, 17);
-            this.label12.TabIndex = 66;
-            this.label12.Text = "Item Name";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabPage3.Controls.Add(this.label13);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(510, 311);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Recipe Info";
-            // 
-            // label13
-            // 
-            this.label13.AllowDrop = true;
-            this.label13.BackColor = System.Drawing.Color.Olive;
-            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label13.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label13.Location = new System.Drawing.Point(3, 12);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(103, 17);
-            this.label13.TabIndex = 67;
-            this.label13.Text = "Item Name";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabPage4.Controls.Add(this.label14);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(510, 311);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Charges";
-            // 
-            // label14
-            // 
-            this.label14.AllowDrop = true;
-            this.label14.BackColor = System.Drawing.Color.Olive;
-            this.label14.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label14.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label14.Location = new System.Drawing.Point(6, 15);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(103, 17);
-            this.label14.TabIndex = 67;
-            this.label14.Text = "Item Name";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabPage5.Controls.Add(this.label15);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(510, 311);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Upper/Sole Wieght";
-            // 
-            // label15
-            // 
-            this.label15.AllowDrop = true;
-            this.label15.BackColor = System.Drawing.Color.Olive;
-            this.label15.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label15.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label15.Location = new System.Drawing.Point(6, 14);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(103, 17);
-            this.label15.TabIndex = 67;
-            this.label15.Text = "Item Name";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabPage6.Controls.Add(this.label16);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(510, 311);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Prod.Proc.Charges";
-            // 
-            // label16
-            // 
-            this.label16.AllowDrop = true;
-            this.label16.BackColor = System.Drawing.Color.Olive;
-            this.label16.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label16.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label16.Location = new System.Drawing.Point(3, 3);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(103, 23);
-            this.label16.TabIndex = 67;
-            this.label16.Text = "Item Name";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // btnDelete
             // 
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.Location = new System.Drawing.Point(454, 355);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(67, 22);
@@ -594,10 +471,10 @@ namespace GUI_Task
             // 
             // btnExit
             // 
-            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(430, 383);
+            this.btnExit.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(454, 383);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(90, 22);
+            this.btnExit.Size = new System.Drawing.Size(66, 22);
             this.btnExit.TabIndex = 307;
             this.btnExit.Text = "Esc=Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -605,7 +482,7 @@ namespace GUI_Task
             // 
             // btnAddNew
             // 
-            this.btnAddNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddNew.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddNew.Location = new System.Drawing.Point(379, 355);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(69, 22);
@@ -615,18 +492,19 @@ namespace GUI_Task
             // 
             // btnSave
             // 
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(304, 355);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(69, 22);
             this.btnSave.TabIndex = 309;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnUnselectAll
             // 
-            this.btnUnselectAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUnselectAll.Location = new System.Drawing.Point(218, 355);
+            this.btnUnselectAll.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUnselectAll.Location = new System.Drawing.Point(205, 355);
             this.btnUnselectAll.Name = "btnUnselectAll";
             this.btnUnselectAll.Size = new System.Drawing.Size(93, 22);
             this.btnUnselectAll.TabIndex = 310;
@@ -635,8 +513,8 @@ namespace GUI_Task
             // 
             // btnSelectAll
             // 
-            this.btnSelectAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelectAll.Location = new System.Drawing.Point(131, 355);
+            this.btnSelectAll.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectAll.Location = new System.Drawing.Point(121, 355);
             this.btnSelectAll.Name = "btnSelectAll";
             this.btnSelectAll.Size = new System.Drawing.Size(81, 22);
             this.btnSelectAll.TabIndex = 311;
@@ -645,28 +523,103 @@ namespace GUI_Task
             // 
             // btnResetForm
             // 
-            this.btnResetForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetForm.Location = new System.Drawing.Point(12, 355);
+            this.btnResetForm.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetForm.Location = new System.Drawing.Point(2, 355);
             this.btnResetForm.Name = "btnResetForm";
             this.btnResetForm.Size = new System.Drawing.Size(113, 22);
             this.btnResetForm.TabIndex = 312;
             this.btnResetForm.Text = "Reset Form";
             this.btnResetForm.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // sSMaster
             // 
-            this.button2.Location = new System.Drawing.Point(336, 198);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(78, 30);
-            this.button2.TabIndex = 309;
-            this.button2.Text = "Sir Shoaib";
-            this.button2.UseVisualStyleBackColor = true;
+            this.sSMaster.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tSlblUser,
+            this.tStextUser,
+            this.tSlblStatus,
+            this.tStextStatus,
+            this.tSlblTotal,
+            this.tStextTotal,
+            this.tSlblAlert,
+            this.textAlert});
+            this.sSMaster.Location = new System.Drawing.Point(0, 409);
+            this.sSMaster.Name = "sSMaster";
+            this.sSMaster.Size = new System.Drawing.Size(546, 22);
+            this.sSMaster.TabIndex = 611;
+            this.sSMaster.Text = "statusStrip1";
+            // 
+            // tSlblUser
+            // 
+            this.tSlblUser.Name = "tSlblUser";
+            this.tSlblUser.Size = new System.Drawing.Size(33, 17);
+            this.tSlblUser.Text = "User:";
+            // 
+            // tStextUser
+            // 
+            this.tStextUser.AutoSize = false;
+            this.tStextUser.Name = "tStextUser";
+            this.tStextUser.Size = new System.Drawing.Size(70, 17);
+            this.tStextUser.Text = "User...";
+            this.tStextUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tSlblStatus
+            // 
+            this.tSlblStatus.Name = "tSlblStatus";
+            this.tSlblStatus.Size = new System.Drawing.Size(42, 17);
+            this.tSlblStatus.Text = "Status:";
+            this.tSlblStatus.ToolTipText = "Status of this form: Read = Ready to Accept ID, New = ID is new, Modify = Updatin" +
+                "g/Modifying an existing ID\' s data";
+            // 
+            // tStextStatus
+            // 
+            this.tStextStatus.AutoSize = false;
+            this.tStextStatus.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tStextStatus.ForeColor = System.Drawing.Color.Teal;
+            this.tStextStatus.Name = "tStextStatus";
+            this.tStextStatus.Size = new System.Drawing.Size(75, 17);
+            this.tStextStatus.Text = "Ready";
+            this.tStextStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tSlblTotal
+            // 
+            this.tSlblTotal.Name = "tSlblTotal";
+            this.tSlblTotal.Size = new System.Drawing.Size(40, 17);
+            this.tSlblTotal.Text = "Total :";
+            this.tSlblTotal.ToolTipText = "Total Number of Records already saved";
+            // 
+            // tStextTotal
+            // 
+            this.tStextTotal.AutoSize = false;
+            this.tStextTotal.ForeColor = System.Drawing.Color.Teal;
+            this.tStextTotal.Name = "tStextTotal";
+            this.tStextTotal.Size = new System.Drawing.Size(50, 17);
+            this.tStextTotal.Text = "0";
+            this.tStextTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tSlblAlert
+            // 
+            this.tSlblAlert.AutoSize = false;
+            this.tSlblAlert.Name = "tSlblAlert";
+            this.tSlblAlert.Size = new System.Drawing.Size(40, 17);
+            this.tSlblAlert.Text = "Alert :";
+            this.tSlblAlert.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textAlert
+            // 
+            this.textAlert.AutoSize = false;
+            this.textAlert.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textAlert.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(94)))), ((int)(((byte)(129)))));
+            this.textAlert.Name = "textAlert";
+            this.textAlert.Size = new System.Drawing.Size(500, 17);
+            this.textAlert.Text = "Ready";
+            this.textAlert.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frmItemCodeDes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(546, 422);
+            this.ClientSize = new System.Drawing.Size(546, 431);
+            this.Controls.Add(this.sSMaster);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnAddNew);
@@ -683,12 +636,10 @@ namespace GUI_Task
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage5.ResumeLayout(false);
-            this.tabPage6.ResumeLayout(false);
+            this.sSMaster.ResumeLayout(false);
+            this.sSMaster.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -696,11 +647,6 @@ namespace GUI_Task
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.Label lblGLCode;
         private System.Windows.Forms.Label lblItemCode1;
         private System.Windows.Forms.Label lblItemName1;
@@ -710,13 +656,13 @@ namespace GUI_Task
         private System.Windows.Forms.Label lblStockLevel;
         private System.Windows.Forms.Label lblCreatedDate;
         private System.Windows.Forms.Label lblUrduItemName;
-        private System.Windows.Forms.Label lblUrduItemCode;
+        private System.Windows.Forms.Label lblUrduItemUnit;
         private System.Windows.Forms.Label lblGroup;
         private System.Windows.Forms.ComboBox cboUnit;
         private System.Windows.Forms.ComboBox cboItemGroup;
         private System.Windows.Forms.TextBox txtGLCode;
-        private System.Windows.Forms.TextBox txtGLCode2;
-        private System.Windows.Forms.TextBox txtUrduItemCode;
+        private System.Windows.Forms.TextBox txtAccountName;
+        private System.Windows.Forms.TextBox txtUrduItemUnit;
         private System.Windows.Forms.TextBox txtUrduItemName;
         private System.Windows.Forms.TextBox txtMinLevel;
         private System.Windows.Forms.TextBox txtMaxLevel;
@@ -727,11 +673,6 @@ namespace GUI_Task
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btnNewCode;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnAddNew;
@@ -743,5 +684,14 @@ namespace GUI_Task
         private System.Windows.Forms.Label lbl_I_ItemCode;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.StatusStrip sSMaster;
+        private System.Windows.Forms.ToolStripStatusLabel tSlblUser;
+        private System.Windows.Forms.ToolStripStatusLabel tStextUser;
+        private System.Windows.Forms.ToolStripStatusLabel tSlblStatus;
+        private System.Windows.Forms.ToolStripStatusLabel tStextStatus;
+        private System.Windows.Forms.ToolStripStatusLabel tSlblTotal;
+        private System.Windows.Forms.ToolStripStatusLabel tStextTotal;
+        private System.Windows.Forms.ToolStripStatusLabel tSlblAlert;
+        private System.Windows.Forms.ToolStripStatusLabel textAlert;
     }
 }

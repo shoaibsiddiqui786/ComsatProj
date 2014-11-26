@@ -7,12 +7,60 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using GUI_Task.Class;
+using GUI_Task.StringFun01;
 
 namespace GUI_Task
 {
     public partial class frmItemCodeDes : Form
     {
+        //******* Grid Variable Setting -- Begin ******
+        string fHDR = string.Empty;                       // Column Header
+        string fColWidth = string.Empty;                  // Column Width (Input)
+        string fColMinWidth = string.Empty;               // Column Minimum Width
+        string fColMaxInputLen = string.Empty;            // Column Visible Length/Width 
+        string fColFormat = string.Empty;                 // Column Format  
+        string fColReadOnly = string.Empty;               // Column ReadOnly 1 = ReadOnly, 0 = Read-Write  
+        string fFieldList = string.Empty;
+
+        string fColType = string.Empty;
+        string fFieldName = string.Empty;
+        //******* Grid Variable Setting -- End ******
+
+        string[] a_Color = new string[0];
+        int[] a_ColorInt = new int[0];
+
+        string[] a_Size = new string[0];
+        int[] a_SizeInt = new int[0];
+        List<string> fManySQL = null;                      // List string for storing Multiple Queri
+        string fRptTitle = string.Empty;
+        //bool fFormClosing = false;
+
+        bool ftTIsBalloon = true;
+        bool fEditMod = false;
+        int fEditRow = 0;
+        //bool fFrmLoading = true;                    // Form is Loading Controls (to accomodate Load event so that first time loading requirement is done)
+        int fTErr = 0;                              // Total Errors while Saving or other operation.
+        string ErrrMsg = string.Empty;              // To display error message if any.
+        string fLastID = string.Empty;              // Last Voucher/Doc ID (Saved new or modified)
+        //
+        //int fDocTypeID = 1;                         // Voucher/Doc Type ID
+        int fDocFiscal = 1;                         // Accounting / Fiscal Period    
+        //int fTNOA = 0;                              // Total Number of Attachments.    
+        int fTNOT = 0;                              // Total Number of Grid Transactions.
+        decimal fDocAmt = 0;                        // Document Amount Debit or Credit for DocMaster Field.
+        string fDocWhere = string.Empty;            // Where string to build where clause for Voucher level
+        int fLastRow = 0;                           // Last row number of the grid.
+        Int64 fDocID = 1;
+        bool fGridControl = false;                  // To overcome Grid's tabing
+
+        bool fSingleEntryAllowed = true;            // for the time being later set to false.
+        bool fDocAlreadyExists = false;             // Check if Doc/voucher already exists (Edit Mode = True, New Mode = false)
+        bool fIDConfirmed = false;                  // Account ID is valid and existance in Table is confirmed.
+        bool fCellEditMode = false;                 // Cell Edit Mode
+
+        bool blnFormLoad = true;
         int fcboDefaultValue = 0;
+
         public frmItemCodeDes()
         {
             InitializeComponent();
@@ -79,30 +127,32 @@ namespace GUI_Task
             string tSQL = string.Empty;
 
             // Fields 0,1,2,3 are Begin  
+            tSQL =  "SELECT i.ItemId, i.ItemCode, i.Name, u.UnitName, i.MinLevel, i.MaxLevel, i.StockLevel, i.CreatedDate, i.UrduItemName, i.UrduItemUnit ";
+            tSQL += "from Item i INNER JOIN IMS_UOM u ON i.UOMId = u.UOMID ";
 
-            tSQL = "SELECT gi.GateInwordId, gi.Date, cd.cgdDesc AS ItemGroupName,";
-            tSQL += " g.GRNId, g.Date AS GRNDate,g.Note,gi.GateTime, gt.cgdDesc AS GateName  ";
-            tSQL += "FROM GateInword gi INNER JOIN CatDtl cd ON gi.ItemGroupID=cd.cgdCode AND cd.cgCode=6 ";
-            tSQL += "LEFT OUTER JOIN GRN g ON gi.GateInwordId=g.GateInwordId ";
-            tSQL += "INNER JOIN CatDtl gt ON gi.GateID = gt.cgdCode AND gt.cgCode = 20 ";
             try
             {
                 ds = clsDbManager.GetData_Set(tSQL, "Heads");
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     dRow = ds.Tables[0].Rows[0];
-                    txtNote.Text = (ds.Tables[0].Rows[0]["Note"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Note"].ToString());
-                    dtpGateInword.Text = (ds.Tables[0].Rows[0]["Date"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Date"].ToString());
-                    cboItemGroup.Text = (ds.Tables[0].Rows[0]["ItemGroupName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ItemGroupName"].ToString());
-                    lblTime.Text = (ds.Tables[0].Rows[0]["GateTime"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateTime"].ToString());
-                    cboGate.Text = (ds.Tables[0].Rows[0]["GateName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateName"].ToString());
+                    txtItemID.Text = (ds.Tables[0].Rows[0]["ItemId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ItemId"].ToString());
+                    lbl_I_ItemCode.Text = (ds.Tables[0].Rows[0]["ItemCode"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ItemCode"].ToString());
+                    lbl_I_ItemName.Text = (ds.Tables[0].Rows[0]["Name"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Name"].ToString());
+                    cboUnit.Text = (ds.Tables[0].Rows[0]["UnitName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["UnitName"].ToString());
+                    txtMinLevel.Text = (ds.Tables[0].Rows[0]["MinLevel"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["MinLevel"].ToString());
+                    txtMaxLevel.Text = (ds.Tables[0].Rows[0]["MaxLevel"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["MaxLevel"].ToString());
+                    txtStockLevel.Text = (ds.Tables[0].Rows[0]["StockLevel"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["StockLevel"].ToString());
+                    dtpCreatedDate.Text = (ds.Tables[0].Rows[0]["CreatedDate"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["CreatedDate"].ToString());
+                    txtUrduItemName.Text = (ds.Tables[0].Rows[0]["UrduItemName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["UrduItemName"].ToString());
+                    txtUrduItemUnit.Text = (ds.Tables[0].Rows[0]["UrduItemUnit"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["UrduItemUnit"].ToString());
 
                     if (ds.Tables[0].Rows.Count > 0)
                     {
                         ds.Clear();
                     }
                     //LoadGridData();
-                    SumVoc();
+                    //SumVoc();
                 }
             }
             catch
@@ -116,15 +166,14 @@ namespace GUI_Task
         private void LookUp_Voc()
         {
             frmLookUp sForm = new frmLookUp(
-                    "gi.GateInwordId",
-                    "gi.Date, cd.cgdDesc AS ItemGroupName, "
-                    + "g.GRNId,g.Date AS GRNDate,g.Note,gi.GateTime, gt.cgdDesc AS GateName",
-                    " GateInword gi INNER JOIN CatDtl cd ON gi.ItemGroupID=cd.cgdCode AND cd.cgCode=6 LEFT OUTER JOIN GRN g ON gi.GateInwordId=g.GateInwordId INNER JOIN CatDtl gt ON gi.GateID = gt.cgdCode AND gt.cgCode = 20 ",
+                    "i.ItemId", 
+                    "i.ItemCode, i.Name, u.UnitName, i.MinLevel, i.MaxLevel, i.StockLevel,i.CreatedDate, i.UrduItemName, i.UrduItemUnit",
+                    "Item i INNER JOIN IMS_UOM u ON i.UOMId = u.UOMID ",
                     this.Text.ToString(),
                     1,
-                    "GateInword#,Date,Item Group Name,Grn Id,Grn Date,Note, Gate Time ",
-                    "10,8,12,12,12,15,8",
-                    " T, T, T, T, T, T, T",
+                    "Item ID, Item Code, Item Name, Unit Name, Min. Level, Max. Level, Stock Level, Created Date, Urdu Item Name, Urdu Item Unit",
+                    "8,8,12,12,8,8,8,8,12,12",
+                    " T, T, T, T, T, T, T, T, T, T",
                     true,
                     "",
                     "",
@@ -165,6 +214,290 @@ namespace GUI_Task
             {
                 LookUp_Voc();
             }
+        }
+
+        private void txtGLCode_DoubleClick(object sender, EventArgs e)
+        {
+            LookUp_Voc1();
+        }
+
+        private void txtGLCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                LookUp_Voc1();
+            }
+        }
+
+        #region LookUp_Voc1
+
+        private void LookUp_Voc1()
+        {
+            frmLookUp sForm = new frmLookUp(
+                    "Code",
+                    "Name",
+                    "Heads",
+                    this.Text.ToString(),
+                    1,
+                    "Code, Account Description",
+                    "20,40",
+                    " T, T",
+                    true,
+                    "",
+                    "",
+                    "TextBox"
+                    );
+
+            txtGLCode.Text = string.Empty;
+            sForm.lupassControl = new frmLookUp.LUPassControl(PassDataVocID1);
+            sForm.ShowDialog();
+
+            if (txtGLCode.Text != null)
+            {
+                if (txtGLCode.Text != null)
+                {
+                    if (txtGLCode.Text.ToString() == "" || txtGLCode.Text.ToString() == string.Empty)
+                    {
+                        return;
+                    }
+                    if (txtGLCode.Text.ToString().Trim().Length > 0)
+                    {
+                        PopulateRecords1();
+                    }
+
+                }
+
+            }
+        }
+        #endregion
+        private void PassDataVocID1(object sender)
+        {
+            txtGLCode.Text = ((TextBox)sender).Text;
+        }
+
+        private void PopulateRecords1()
+        {
+            DataSet ds = new DataSet();
+            DataRow dRow;
+            string tSQL = string.Empty;
+
+            // Fields 0,1,2,3 are Begin  
+            tSQL = "SELECT Code, Name ";
+            tSQL += "from Heads ";
+
+            try
+            {
+                ds = clsDbManager.GetData_Set(tSQL, "Heads");
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    dRow = ds.Tables[0].Rows[0];
+                    txtGLCode.Text = (ds.Tables[0].Rows[0]["Code"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Code"].ToString());
+                    txtAccountName.Text = (ds.Tables[0].Rows[0]["Name"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Name"].ToString());
+
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        ds.Clear();
+                    }
+                    //LoadGridData();
+                    //SumVoc();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Unable to Get Account Code...", this.Text.ToString());
+            }
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            LookUp_Voc();
+        }
+
+        private bool FormValidation()
+        {
+            bool lRtnValue = true;
+            DateTime lNow = DateTime.Now;
+            decimal lDebit = 0;
+            decimal lCredit = 0;
+            fDocAmt = 0;
+            try
+            {
+                return lRtnValue;
+            }
+            catch (Exception ex)
+            {
+                fTErr++;
+                ErrrMsg = StrF01.BuildErrMsg(ErrrMsg, "Exception: FormValidation -> " + ex.Message.ToString());
+                return false;
+            }
+        }
+
+        private void ClearThisForm()
+        {
+            ResetFields();
+        }
+
+        private void ResetFields()
+        {
+            // Reset Form Level Variables/Fields
+            fEditMod = false;
+            fTNOT = 0;
+            fDocAmt = 0;
+            fDocWhere = string.Empty;
+            fLastRow = 0;
+        }
+
+        private bool SaveData()
+        {
+            bool rtnValue = true;
+            fTErr = 0;
+            if (fManySQL != null)
+            {
+                if (fManySQL.Count() > 0)
+                {
+                    fManySQL.Clear();
+                }
+            }
+            string lSQL = string.Empty;
+            DateTime lNow = DateTime.Now;
+            try
+            {
+                ErrrMsg = "";
+                if (!FormValidation())
+                {
+                    textAlert.Text = "Form Validation Error: Not Saved." + "  " + lNow.ToString();
+                    MessageBox.Show(ErrrMsg, "Save: " + this.Text.ToString());
+                    return false;
+                }
+
+                fManySQL = new List<string>();
+
+                // Prepare Master Doc Query List
+                
+                if (!PrepareDocMaster())
+                {
+                    textAlert.Text = "DocMaster: Modifying Doc/Voucher not available for updation.'  ...." + "  " + lNow.ToString();
+                    //tabMDtl.SelectedTab = tabError;
+                    return false;
+                }
+                //
+                    DateTime now = DateTime.Now;
+                    textAlert.Text = "selected Box Empty... " + now.ToString("T");
+                    // pending return false;
+                
+                // Execute Query
+                if (fManySQL.Count > 0)
+                {
+                    if (!clsDbManager.ExeMany(fManySQL))
+                    {
+                        MessageBox.Show("Not Saved see log...", this.Text.ToString());
+                        return false;
+                    }
+                    else
+                    {
+                        fLastID = txtItemID.Text.ToString();
+                        ClearThisForm();
+                        return true;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Data Preparation list empty, Not Saved...", this.Text.ToString());
+                    return false;
+                } // End Execute Query
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception Processing Save: " + ex.Message, "Save Data: " + this.Text.ToString());
+                return false;
+            }
+
+        } // End Save
+
+        private bool PrepareDocMaster()
+        {
+            bool rtnValue = true;
+            string lSQL = string.Empty;
+
+            try
+            {
+                if (txtItemID.Text.ToString().Trim(' ', '-') == "")
+                {
+                    fDocAlreadyExists = false;
+                    fDocID = clsDbManager.GetNextValDocID("Item", "ItemId", fDocWhere, "");
+
+                    lSQL = "insert into Item (";
+                    lSQL += "  ItemId ";                // ItemID                 
+                    lSQL += ", ItemGroupId ";           // ItemGoupId             
+                    lSQL += ", ItemCode ";              // ItemCode
+                    lSQL += ", ItemName ";              // ItemName             
+                    lSQL += ", UOMId ";                 // UOMId             
+                    lSQL += ", MinLevel ";              // MinLevel             
+                    lSQL += ", MaxLevel ";              // MaxLevel             
+                    lSQL += ", StockLevel ";            // StockLevel             
+                    lSQL += ", UrduItemName ";          // UrduItemName             
+                    lSQL += ", UrduItemUnit ";          // UrduItemUnit              
+                    lSQL += ", CreatedDate ";           // CreatedDate             
+                    lSQL += ", GLCode ";                // GLCode
+                    lSQL += " ) values (";
+                    //                                                       
+                    lSQL += "'" + fDocID.ToString() + "'";                         
+                    lSQL += ",'" + txtItemID.Text.ToString() + "";                 
+                    lSQL += ", " + cboItemGroup.SelectedValue.ToString() + "";     
+                    lSQL += ", " + lbl_I_ItemCode.Text.ToString();                 
+                    lSQL += ",'" + lbl_I_ItemName.Text.ToString() + "'";           
+                    lSQL += ", " + cboUnit.SelectedValue.ToString() + "";          
+                    lSQL += ", " + txtMinLevel.Text.ToString();                    
+                    lSQL += ", " + txtMaxLevel.Text.ToString();                    
+                    lSQL += ", " + txtStockLevel.Text.ToString();                  
+                    lSQL += ", " + txtUrduItemName.Text.ToString();                
+                    lSQL += ", " + txtUrduItemUnit.Text.ToString();
+                    lSQL += ", " + StrF01.D2Str(dtpCreatedDate) + "";
+                    lSQL += ", " + txtGLCode.Text.ToString() + "";
+                    lSQL += ")";                                                   
+                }                                                                  
+                else
+                {
+                    fDocWhere = " ItemId = '" + txtItemID.Text.ToString() + "'";
+                    if (clsDbManager.IDAlreadyExistWw("Item", "ItemId", fDocWhere))
+                    {
+                        fDocAlreadyExists = true;
+                        fManySQL.Add(lSQL);
+                    }
+
+                    lSQL = "update Item set";
+                    lSQL += "  ItemId = '" + txtItemID.Text.ToString() + "'";                // ItemID        
+                    lSQL += ", ItemGroupID = " + cboItemGroup.SelectedValue.ToString() + "";  // ItemGroupId   
+                    lSQL += ", UOMId = " + cboUnit.SelectedValue.ToString() + "";             // UOMId         
+                    lSQL += ", MinLevel = " + txtMinLevel.Text.ToString() + "";            // MinLevel      
+                    lSQL += ", MaxLevel = " + txtMaxLevel.Text.ToString() + "";             // MaxLevel      
+                    lSQL += ", StockLevel = " + txtStockLevel.Text.ToString() + "";            // StockLevel    
+                    lSQL += ", UrduItemName = '" + txtUrduItemName.Text.ToString() + "'";          // UrduItemName  
+                    lSQL += ", UrduItemUnit = '" + txtUrduItemUnit.Text.ToString() + "'";        // UrduItemUnit  
+                    lSQL += ", CreatedDate = '" + StrF01.D2Str(dtpCreatedDate.Value) + "'";      // CreatedDate   
+                    lSQL += ", GLCode = '" + txtGLCode.Text.ToString() + "'";                   // GLCode
+                    lSQL += " where ";                
+                    lSQL += fDocWhere;                
+                                                      
+                }
+                fManySQL.Add(lSQL);
+
+
+                return rtnValue;
+            }
+            catch (Exception ex)
+            {
+                rtnValue = false;
+                MessageBox.Show("Save Master Doc: " + ex.Message, this.Text.ToString());
+                return false;
+            }
+        }
+
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            SaveData();
+            MessageBox.Show("Data Saved Successfullly");
         }
 
     }
