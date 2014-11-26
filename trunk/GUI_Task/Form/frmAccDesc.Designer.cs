@@ -40,6 +40,16 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.sSMaster = new System.Windows.Forms.StatusStrip();
+            this.tSlblUser = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tStextUser = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tSlblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tStextStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tSlblTotal = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tStextTotal = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tSlblAlert = new System.Windows.Forms.ToolStripStatusLabel();
+            this.textAlert = new System.Windows.Forms.ToolStripStatusLabel();
+            this.sSMaster.SuspendLayout();
             this.SuspendLayout();
             // 
             // mskAccCode
@@ -183,11 +193,95 @@
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // sSMaster
+            // 
+            this.sSMaster.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tSlblUser,
+            this.tStextUser,
+            this.tSlblStatus,
+            this.tStextStatus,
+            this.tSlblTotal,
+            this.tStextTotal,
+            this.tSlblAlert,
+            this.textAlert});
+            this.sSMaster.Location = new System.Drawing.Point(0, 237);
+            this.sSMaster.Name = "sSMaster";
+            this.sSMaster.Size = new System.Drawing.Size(449, 22);
+            this.sSMaster.TabIndex = 958;
+            this.sSMaster.Text = "statusStrip1";
+            // 
+            // tSlblUser
+            // 
+            this.tSlblUser.Name = "tSlblUser";
+            this.tSlblUser.Size = new System.Drawing.Size(33, 17);
+            this.tSlblUser.Text = "User:";
+            // 
+            // tStextUser
+            // 
+            this.tStextUser.AutoSize = false;
+            this.tStextUser.Name = "tStextUser";
+            this.tStextUser.Size = new System.Drawing.Size(70, 17);
+            this.tStextUser.Text = "User...";
+            this.tStextUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tSlblStatus
+            // 
+            this.tSlblStatus.Name = "tSlblStatus";
+            this.tSlblStatus.Size = new System.Drawing.Size(42, 17);
+            this.tSlblStatus.Text = "Status:";
+            this.tSlblStatus.ToolTipText = "Status of this form: Read = Ready to Accept ID, New = ID is new, Modify = Updatin" +
+                "g/Modifying an existing ID\' s data";
+            // 
+            // tStextStatus
+            // 
+            this.tStextStatus.AutoSize = false;
+            this.tStextStatus.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tStextStatus.ForeColor = System.Drawing.Color.Teal;
+            this.tStextStatus.Name = "tStextStatus";
+            this.tStextStatus.Size = new System.Drawing.Size(75, 17);
+            this.tStextStatus.Text = "Ready";
+            this.tStextStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tSlblTotal
+            // 
+            this.tSlblTotal.Name = "tSlblTotal";
+            this.tSlblTotal.Size = new System.Drawing.Size(40, 17);
+            this.tSlblTotal.Text = "Total :";
+            this.tSlblTotal.ToolTipText = "Total Number of Records already saved";
+            // 
+            // tStextTotal
+            // 
+            this.tStextTotal.AutoSize = false;
+            this.tStextTotal.ForeColor = System.Drawing.Color.Teal;
+            this.tStextTotal.Name = "tStextTotal";
+            this.tStextTotal.Size = new System.Drawing.Size(50, 17);
+            this.tStextTotal.Text = "0";
+            this.tStextTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tSlblAlert
+            // 
+            this.tSlblAlert.AutoSize = false;
+            this.tSlblAlert.Name = "tSlblAlert";
+            this.tSlblAlert.Size = new System.Drawing.Size(40, 17);
+            this.tSlblAlert.Text = "Alert :";
+            this.tSlblAlert.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textAlert
+            // 
+            this.textAlert.AutoSize = false;
+            this.textAlert.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textAlert.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(94)))), ((int)(((byte)(129)))));
+            this.textAlert.Name = "textAlert";
+            this.textAlert.Size = new System.Drawing.Size(500, 17);
+            this.textAlert.Text = "Ready";
+            this.textAlert.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // frmAccDesc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 239);
+            this.ClientSize = new System.Drawing.Size(449, 259);
+            this.Controls.Add(this.sSMaster);
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnHelp);
@@ -203,6 +297,8 @@
             this.Name = "frmAccDesc";
             this.Text = "Account Description";
             this.Load += new System.EventHandler(this.frmAccDesc_Load);
+            this.sSMaster.ResumeLayout(false);
+            this.sSMaster.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,5 +318,14 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.StatusStrip sSMaster;
+        private System.Windows.Forms.ToolStripStatusLabel tSlblUser;
+        private System.Windows.Forms.ToolStripStatusLabel tStextUser;
+        private System.Windows.Forms.ToolStripStatusLabel tSlblStatus;
+        private System.Windows.Forms.ToolStripStatusLabel tStextStatus;
+        private System.Windows.Forms.ToolStripStatusLabel tSlblTotal;
+        private System.Windows.Forms.ToolStripStatusLabel tStextTotal;
+        private System.Windows.Forms.ToolStripStatusLabel tSlblAlert;
+        private System.Windows.Forms.ToolStripStatusLabel textAlert;
     }
 }
