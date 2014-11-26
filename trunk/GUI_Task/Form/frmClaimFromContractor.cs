@@ -223,10 +223,7 @@ namespace GUI_Task
             }
         }
 
-        private void txtFinishReceNo_DoubleClick(object sender, EventArgs e)
-        {
-            LookUp_Voc();
-        }
+      
 
         private void frmClaimFromContractor_Load(object sender, EventArgs e)
         {
@@ -236,15 +233,7 @@ namespace GUI_Task
 
         private void LoadInitialControls()
         {
-            // 1 = dGV Grid Control
-            // 2 = Column Total (Total number of Columns for cross verification with other parameters like width, format)
-            // 3 = Column Header
-            // 4 = Column Width to be displayed on Grid
-            // 5 = Column MaxInputLen   // 0 = unlimited, 
-            // 6 = Column Format        // T = Text, N = Numeric, H = Hiden
-            // 7 = Column ReadOnly      // 1 = ReadOnly, 0 = Not ReadOnly
-            // 8 = Grid Color Scheme    // Default = 1
-            // RO 
+           
             grd.Rows.Clear();
             grd.Columns.Clear();
 
@@ -347,11 +336,12 @@ namespace GUI_Task
             string lSQL = "";
             lSQL += " SELECT CC.ClaimID AS Code, mch.cgdDesc AS MachineNo, ";
             lSQL += " con.cgdDesc AS Contractor, ";
-            lSQL += " sh.cgdDesc AS Shift,ct.cgdDesc AS ChargesType, CC.MachineID, CC.ContractorID, CC.ShiftID, CC.ChargesTypeID";
+            lSQL += " sh.cgdDesc AS Shift,ct.cgdDesc AS ChargesType,CC.ClaimAmountOffice,CC.CompensationAmount,CC.ClaimAmount,";
+            lSQL += "  CC.Reason, CC.OrderedBY, ";
+            lSQL += "  CC.MachineID, CC.ContractorID, CC.ShiftID, CC.ChargesTypeID ";
             lSQL += " from ClaimContDet CC ";
             lSQL += " JOIN CatDtl mch ON CC.MachineID=mch.cgdCode AND mch.cgCode=11 ";
             lSQL += " INNER JOIN CatDtl con ON CC.ContractorID=con.cgdCode AND con.cgCode=12 ";
-            //lSQL += " INNER JOIN IMS_UOM u ON i.UOMID=u.UOMID ";
             lSQL += " INNER JOIN CatDtl sh ON CC.ShiftID = sh.cgdCode AND sh.cgCode=1 ";
             lSQL += " INNER JOIN CatDtl ct ON CC.ChargesTypeID = ct.cgdCode AND ct.cgCode=4 ";
             lSQL += " where CC.ClaimID ='" + txtClaim.Text.ToString() + "'; ";
@@ -382,11 +372,7 @@ namespace GUI_Task
             lFieldList += ",Contractor";              //  1-    ItemCode";     
             lFieldList += ",Shift";              //  2-    ItemName";
             lFieldList += ",ChargesType";                   //  8-    Vender Name
-            //lFieldList += ",SizeName";              //  3-    SizeName";       
-            //lFieldList += ",ColorName";             //  4-    ColorName";      
-            //lFieldList += ",UnitName";              //  5-    UOMName";
-            //lFieldList += ",GodownName";            //  6- GodownName
-            //lFieldList += ",Stock";                 //  7- Stock
+         
             lFieldList += ",ClaimAmountOffice";                   //  8- Qty
             lFieldList += ",CompensationAmount";                   //  8- Qty
             lFieldList += ",ClaimAmount";                   //  8- Qty
@@ -410,11 +396,7 @@ namespace GUI_Task
             lHDR += ",ClaimAmount";             //  5-    UOMName";
             lHDR += ",Reason";          //  6- GodownName
             lHDR += ",OrderedBy";            //  7- Stock
-            //lHDR += ",GRNQty";               //  8- Qty
-            //lHDR += ",RTNQty";               //  8- Qty
-            //lHDR += ",New Stock";               //  8- Qty
-            //lHDR += ",Rate";               //  8- Qty
-            //lHDR += ",Amount";               //  8- Qty
+           
             lHDR += ",MachineID";            //  9    SizeID";     
             lHDR += ",ContractorID";           //  10    ColorID";     
             lHDR += ",ShiftID";             //  11    UOMID"; 
@@ -430,11 +412,7 @@ namespace GUI_Task
             lColWidth += ", 15";                 //  5-    UOMName";
             lColWidth += ", 20";                 //  6- GodownName
             lColWidth += ", 20";                 //  7- Stock
-            //lColWidth += ", 20";                 //  8- Qty
-            //lColWidth += ", 20";                 //  8- Qty
-            //lColWidth += ", 5";                 //  8- New Stock
-            //lColWidth += ", 5";                 //  8- Rate
-            //lColWidth += ", 5";                 //  8- Amount
+           
             lColWidth += ", 15";                 //  9    SizeID";     
             lColWidth += ", 15";                 //  10    ColorID";     
             lColWidth += ", 15";                 //  11    UOMID"; 
@@ -454,11 +432,7 @@ namespace GUI_Task
             lColMaxInputLen += ", 0";                //  8- Qty
             lColMaxInputLen += ", 0";                //  2-    NewStock";
             lColMaxInputLen += ", 0";                //  2-    Rate";
-            //lColMaxInputLen += ", 0";                //  2-    Amount";
-            //lColMaxInputLen += ", 0";                //  9    SizeID";     
-            //lColMaxInputLen += ", 0";                //  10    ColorID";     
-            //lColMaxInputLen += ", 0";                //  11    UOMID"; 
-            //lColMaxInputLen += ", 0";                //  12- GodownID
+           
 
             // Column Min Width
             lColMinWidth = "   0";                      //  0-    ItemID";           
@@ -474,11 +448,7 @@ namespace GUI_Task
             lColMinWidth += ", 0";                      //  8- Qty
             lColMinWidth += ", 0";                      //  2-    New Stock";
             lColMinWidth += ", 0";                      //  2-    Rate";
-            //lColMinWidth += ", 0";                      //  2-    Amount";
-            //lColMinWidth += ", 0";                      //  9    SizeID";       
-            //lColMinWidth += ", 0";                      //  10    ColorID";        
-            //lColMinWidth += ", 0";                      //  11    UOMID"; 
-            //lColMinWidth += ", 0";                      //  12- GodownID
+           
 
             // Column Format
             lColFormat = "   T";                       //  0-    ItemID";            
@@ -490,11 +460,7 @@ namespace GUI_Task
             lColFormat += ", T";                       //  5-    UOMName";    
             lColFormat += ", T";                       //  6- GodownName
             lColFormat += ", T";                       //  7- Stock
-            //lColFormat += ", T";                       //  8- Qty
-            //lColFormat += ", T";                       //  8- Qty
-            //lColFormat += ", T";                       //  2-    New Stock";
-            //lColFormat += ", T";                       //  2-    Rate";
-            //lColFormat += ", T";                       //  2-    Amount";
+           
 
             lColFormat += ", H";                       //  9    SizeID";       
             lColFormat += ", H";                       //  10    ColorID";        
@@ -511,11 +477,7 @@ namespace GUI_Task
             lColReadOnly += ",0";                      //  5-    UOMName";
             lColReadOnly += ",0";                      //  6- GodownName
             lColReadOnly += ",0";                      //  7- Stock
-            //lColReadOnly += ",0";                      //  8- Qty
-            //lColReadOnly += ",0";                      //  8- Qty
-            //lColReadOnly += ",0";                      //  2-    New Stock";
-            //lColReadOnly += ",0";                      //  2-    Rate";
-            //lColReadOnly += ",0";                      //  2-    Amount";
+          
             lColReadOnly += ",1";                      //  9    SizeID";     
             lColReadOnly += ",1";                      //  10    ColorID";     
             lColReadOnly += ",1";                      //  11    UOMID"; 
@@ -531,11 +493,7 @@ namespace GUI_Task
             tColType += ",N0";             //  5-    UOMName";
             tColType += ",SKP";             //  6- GodownName
             tColType += ", SKP";             //  7- Stock
-            //tColType += ", N0";             //  8- Qty
-            //tColType += ", N0";             //  8- Qty
-            //tColType += ",N0";             //  2-    NewStock";
-            //tColType += ",N0";             //  2-    Rate";
-            //tColType += ",N0";             //  2-    Amount";
+           
             tColType += ", N0";             //  9    SizeID";     
             tColType += ", N0";             //  10    ColorID";     
             tColType += ", N0";             //  11    UOMID"; 
@@ -550,11 +508,7 @@ namespace GUI_Task
             tFieldName += ",ClaimAmount";         //  5-    UOMName";     
             tFieldName += ",Reason";          //  6- GodownName
             tFieldName += ",OrderedBY";        //  7- Stock
-            //tFieldName += ",GRNQty";               //  8- Qty
-            //tFieldName += ",RTNQty";               //  8- Qty
-            //tFieldName += ",NewStock";          //  2-    New Stock";
-            //tFieldName += ",Rate";          //  2-    Rate";
-            //tFieldName += ",Amount";          //  2-    Amount";
+           
             tFieldName += ",MachineID";            //  9    SizeID";     
             tFieldName += ",ContractorID";           //  10    ColorID";      
             tFieldName += ",ShiftID";             //  11    UOMID"; 
@@ -726,17 +680,14 @@ namespace GUI_Task
                     fDocID = clsDbManager.GetNextValDocID("ClaimCont", "ClaimID", fDocWhere, "");
 
                     lSQL = "insert into ClaimCont (";
-                    lSQL += "  ClaimID ";                              //  0-    ItemID";   
+                    lSQL += "  ClaimID ";                                
                     lSQL += ", Date ";
                     lSQL += "  OrgId ";   
                     lSQL += ",Note ";
                     lSQL += ", Status ";
                     lSQL += ", UserId ";
                     lSQL += ", BranchId ";
-                    //lSQL += ",EmployeeID ";
-                    //lSQL += ",DeptID ";
-                    //lSQL += ",RecPerName ";
-                    //lSQL += ",Discount ";
+                   
                     lSQL += " ) values (";
                     //                                                       
                     lSQL += "'" + fDocID.ToString() + "'";
@@ -757,7 +708,7 @@ namespace GUI_Task
                     {
 
                         fDocAlreadyExists = true;
-                        lSQL = "delete from ClaimContDetail ";
+                        lSQL = "delete from ClaimContDet ";
                         lSQL += " where " + fDocWhere;
 
                         fManySQL.Add(lSQL);
@@ -768,15 +719,11 @@ namespace GUI_Task
                     lSQL += "  Date = '" + StrF01.D2Str(dtpClaim.Value) + "'";
                     
                     lSQL += ", Note = '" + txtNote.Text.ToString() + "'";
-                    //lSQL += ", OrgID = " + cboItemGroup.SelectedValue.ToString() + "";
-                    //lSQL += ", Category = '" + cboCategory.SelectedValue.ToString() + "'";
+                   
                     lSQL += ", UserID = 1";
                     lSQL += ",Status = 0";
                     lSQL += ", BranchID = 1";
-                    //lSQL += ", EmployeeID = " + cboEmpCode.SelectedValue.ToString() + "";
-                    //lSQL += ", DeptID = 1";
-                    //lSQL += ", ChargesTmplID = '" + txtChargesTempNo.Text.ToString() + "'";
-                    //lSQL += ", ChargesTmplDes = '" + txtChargesDes.Text.ToString() + "'";
+                   
                     lSQL += " where ";
                     lSQL += fDocWhere;
 
@@ -890,8 +837,8 @@ namespace GUI_Task
               cboContractor.Text.ToString(),
               cboShift.Text.ToString(),
               cboCharges.Text.ToString(),
-              txtClaimOffice.Text.ToString(),
-              txtComAmount.Text.ToString(),
+              txtClaimAmountOffice.Text.ToString(),
+              txtCompensationAmount.Text.ToString(),
               txtClaimAmount.Text.ToString(),
               txtReason.Text.ToString(),
               txtOrder.Text.ToString(),
@@ -914,6 +861,12 @@ namespace GUI_Task
         private void btnSave_Click(object sender, EventArgs e)
         {
             SaveData();
+            MessageBox.Show("Data Saved Successfullly");
+        }
+
+        private void txtClaim_DoubleClick(object sender, EventArgs e)
+        {
+            LookUp_Voc();
         }
     }
 }
