@@ -813,8 +813,7 @@ namespace GUI_Task.PrintDataSets.DataSet2TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = GUI_Task.clsGVar.ConString1;
-            //this._connection.ConnectionString = global::GUI_Task.Properties.Settings.Default.GUI_TaskConnectionString;
+            this._connection.ConnectionString = global::GUI_Task.Properties.Settings.Default.GUI_TaskConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

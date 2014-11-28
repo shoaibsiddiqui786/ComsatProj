@@ -176,7 +176,7 @@
             // 
             this.txtItmCodeColor.BackColor = System.Drawing.SystemColors.MenuText;
             this.txtItmCodeColor.ForeColor = System.Drawing.SystemColors.Window;
-            this.txtItmCodeColor.Location = new System.Drawing.Point(192, 43);
+            this.txtItmCodeColor.Location = new System.Drawing.Point(290, 42);
             this.txtItmCodeColor.Name = "txtItmCodeColor";
             this.txtItmCodeColor.Size = new System.Drawing.Size(161, 21);
             this.txtItmCodeColor.TabIndex = 10;
@@ -184,7 +184,7 @@
             // btnHelp
             // 
             this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Location = new System.Drawing.Point(362, 42);
+            this.btnHelp.Location = new System.Drawing.Point(457, 40);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(146, 27);
             this.btnHelp.TabIndex = 11;
@@ -540,14 +540,14 @@
             this.lblItemName.Size = new System.Drawing.Size(274, 15);
             this.lblItemName.TabIndex = 152;
             this.lblItemName.Text = "                                                                                 " +
-    "        ";
+                "        ";
             this.lblItemName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // txtItemCode
             // 
             this.txtItemCode.Location = new System.Drawing.Point(126, 43);
             this.txtItemCode.Name = "txtItemCode";
-            this.txtItemCode.Size = new System.Drawing.Size(60, 21);
+            this.txtItemCode.Size = new System.Drawing.Size(144, 21);
             this.txtItemCode.TabIndex = 153;
             this.txtItemCode.DoubleClick += new System.EventHandler(this.txtItemCode_DoubleClick);
             this.txtItemCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtItemCode_KeyDown);
@@ -559,12 +559,12 @@
             this.lblName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblName.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblName.Location = new System.Drawing.Point(127, 75);
+            this.lblName.Location = new System.Drawing.Point(128, 75);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(351, 17);
             this.lblName.TabIndex = 154;
             this.lblName.Text = "                                                                                 " +
-    "                                 ";
+                "                                 ";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // frmItemTrans

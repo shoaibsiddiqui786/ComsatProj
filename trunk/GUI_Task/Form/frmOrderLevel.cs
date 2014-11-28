@@ -31,5 +31,10 @@ namespace GUI_Task
             if (e.KeyCode == Keys.Escape)
                 this.Close();
         }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

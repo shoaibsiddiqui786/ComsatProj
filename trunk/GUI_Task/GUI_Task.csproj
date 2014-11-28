@@ -1070,6 +1070,18 @@
       <DependentUpon>CrInv_Smry.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="PrintReport\CrIssueDate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrIssueDate.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PrintReport\CrIssueDateDept.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrIssueDateDept.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PrintReport\CrItemCharges.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2105,6 +2117,14 @@
     <EmbeddedResource Include="PrintReport\CrInv_Smry.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrInv_Smry.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintReport\CrIssueDate.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrIssueDate.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintReport\CrIssueDateDept.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrIssueDateDept.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintReport\CrItemCharges.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
