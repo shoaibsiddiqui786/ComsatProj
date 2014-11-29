@@ -189,8 +189,6 @@ namespace GUI_Task
                     //this.mskStatus.Text;
 
 
-                //dsLedgerNew pDs = new dsLedgerNew();
-
                 DataSet pDs = new DataSet();
                 CrOrdDelStatus rpt1 = new CrOrdDelStatus();
 
