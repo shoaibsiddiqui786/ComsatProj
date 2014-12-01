@@ -48,5 +48,10 @@ namespace GUI_Task
             if (e.KeyCode == Keys.Escape)
                 this.Close();
         }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
