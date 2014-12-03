@@ -178,5 +178,15 @@ namespace GUI_Task
         }
         #endregion
 
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

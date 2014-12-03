@@ -196,23 +196,23 @@ namespace GUI_Task
                 //dsLedgerNew pDs = new dsLedgerNew();
 
                 DataSet pDs = new DataSet();
-               // CrPeriodAcc rpt1 = new CrPeriodAcc();
+                CrPeriodAcc rpt1 = new CrPeriodAcc();
 
-               // frmPrintVw6 rptPeriodAcc = new frmPrintVw6(
-                   //fRptTitle,
-                   //StrF01.D2Str(this.dtpFromDate.Value),
-                   //StrF01.D2Str(this.dtpToDate.Value),
-                   //"OpAc_Bal",
-                   //plstField,
-                   //plstType,
-                   //plstValue,
-                   //pDs,
-                   ////rpt1,
-                   //"SP"
-                   //);
+                frmPrintVw6 rptPeriodAcc = new frmPrintVw6(
+                   fRptTitle,
+                   StrF01.D2Str(this.dtpFromDate.Value),
+                   StrF01.D2Str(this.dtpToDate.Value),
+                   "OpAc_Bal",
+                   plstField,
+                   plstType,
+                   plstValue,
+                   pDs,
+                   rpt1,
+                   "SP"
+                   );
 
                 //rptLedger2.ShowDialog();
-                //rptPeriodAcc.Show();
+                rptPeriodAcc.Show();
             }
             else if (optRptMallKhata.Checked == true)
             {
@@ -225,23 +225,23 @@ namespace GUI_Task
                 //dsLedgerNew pDs = new dsLedgerNew();
 
                 DataSet pDs = new DataSet();
-                //CrMallKhata rpt1 = new CrMallKhata();
+                CrMallKhata rpt1 = new CrMallKhata();
 
-                //frmPrintVw6 rptMallKhata = new frmPrintVw6(
-                //   fRptTitle,
-                //   StrF01.D2Str(this.dtpFromDate.Value),
-                //   StrF01.D2Str(this.dtpToDate.Value),
-                //   "sp_MallKhata",
-                //   plstField,
-                //   plstType,
-                //   plstValue,
-                //   pDs,
-                //   //rpt1,
-                //   "SP"
-                //   );
+                frmPrintVw6 rptMallKhata = new frmPrintVw6(
+                   fRptTitle,
+                   StrF01.D2Str(this.dtpFromDate.Value),
+                   StrF01.D2Str(this.dtpToDate.Value),
+                   "sp_MallKhata",
+                   plstField,
+                   plstType,
+                   plstValue,
+                   pDs,
+                   rpt1,
+                   "SP"
+                   );
 
                 //rptLedger2.ShowDialog();
-                //rptMallKhata.Show();
+                rptMallKhata.Show();
             }
         }
     }

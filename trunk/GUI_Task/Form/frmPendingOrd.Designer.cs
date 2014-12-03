@@ -102,6 +102,7 @@
             this.btnOK.TabIndex = 42;
             this.btnOK.Text = "O.K";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // radioButton4
             // 

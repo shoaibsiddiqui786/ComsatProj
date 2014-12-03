@@ -34,13 +34,11 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.optCashStat = new System.Windows.Forms.RadioButton();
-            this.optCashRok = new System.Windows.Forms.RadioButton();
             this.optBankStat = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblName = new System.Windows.Forms.Label();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
-            this.optCashRokGL = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.mskGLCode = new System.Windows.Forms.MaskedTextBox();
@@ -128,24 +126,13 @@
             this.optCashStat.AutoSize = true;
             this.optCashStat.Checked = true;
             this.optCashStat.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optCashStat.Location = new System.Drawing.Point(593, 10);
+            this.optCashStat.Location = new System.Drawing.Point(593, 19);
             this.optCashStat.Name = "optCashStat";
             this.optCashStat.Size = new System.Drawing.Size(100, 17);
             this.optCashStat.TabIndex = 27;
             this.optCashStat.TabStop = true;
             this.optCashStat.Text = "Cash Statement";
             this.optCashStat.UseVisualStyleBackColor = true;
-            // 
-            // optCashRok
-            // 
-            this.optCashRok.AutoSize = true;
-            this.optCashRok.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optCashRok.Location = new System.Drawing.Point(593, 29);
-            this.optCashRok.Name = "optCashRok";
-            this.optCashRok.Size = new System.Drawing.Size(79, 17);
-            this.optCashRok.TabIndex = 28;
-            this.optCashRok.Text = "Cash Roker";
-            this.optCashRok.UseVisualStyleBackColor = true;
             // 
             // optBankStat
             // 
@@ -163,7 +150,6 @@
             this.groupBox1.Controls.Add(this.lblName);
             this.groupBox1.Controls.Add(this.dtpFromDate);
             this.groupBox1.Controls.Add(this.dtpToDate);
-            this.groupBox1.Controls.Add(this.optCashRokGL);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.mskGLCode);
@@ -174,7 +160,6 @@
             this.groupBox1.Controls.Add(this.btnExit);
             this.groupBox1.Controls.Add(this.btnPrint);
             this.groupBox1.Controls.Add(this.optBankStat);
-            this.groupBox1.Controls.Add(this.optCashRok);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(2, 2);
             this.groupBox1.Name = "groupBox1";
@@ -207,17 +192,6 @@
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(90, 20);
             this.dtpToDate.TabIndex = 67;
-            // 
-            // optCashRokGL
-            // 
-            this.optCashRokGL.AutoSize = true;
-            this.optCashRokGL.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optCashRokGL.Location = new System.Drawing.Point(593, 70);
-            this.optCashRokGL.Name = "optCashRokGL";
-            this.optCashRokGL.Size = new System.Drawing.Size(102, 17);
-            this.optCashRokGL.TabIndex = 37;
-            this.optCashRokGL.Text = "Cash Roker [GL]";
-            this.optCashRokGL.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -446,7 +420,6 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.RadioButton optCashStat;
-        private System.Windows.Forms.RadioButton optCashRok;
         private System.Windows.Forms.RadioButton optBankStat;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
@@ -457,7 +430,6 @@
         private System.Windows.Forms.MaskedTextBox mskGLCode;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView grdCashStatAll;
-        private System.Windows.Forms.RadioButton optCashRokGL;
         private System.Windows.Forms.DateTimePicker dtpFromDate;
         private System.Windows.Forms.DateTimePicker dtpToDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ddd;

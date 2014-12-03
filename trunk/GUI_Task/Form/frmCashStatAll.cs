@@ -248,34 +248,6 @@ namespace GUI_Task
                 //rptLedger2.ShowDialog();
                 rptCashBank.Show();
             }
-            else if (optCashRokGL.Checked == true)
-            {
-                string fRptTitle = this.Text;
-                string plstField = "@CashCode,@FromDate,@ToDate,@GLCode";
-                string plstType = "18,18,18,18"; // {"8, 8, 8, 8, 8, 8"};
-                string plstValue = " " + "," + StrF01.D2Str(this.dtpFromDate.Value) + "," +
-                    StrF01.D2Str(this.dtpToDate.Value) + "," + " ";
-                //dsLedgerNew pDs = new dsLedgerNew();
-
-                DataSet pDs = new DataSet();
-               // CrCashStatRokerGL rpt1 = new CrCashStatRokerGL();
-
-                //frmPrintVw6 rptCashStatRokerGL = new frmPrintVw6(
-                //   fRptTitle,
-                //   StrF01.D2Str(this.dtpFromDate.Value),
-                //   StrF01.D2Str(this.dtpToDate.Value),
-                //   "sp_CashStatRokerGL",
-                //   plstField,
-                //   plstType,
-                //   plstValue,
-                //   pDs,
-                //   rpt1,
-                //   "SP"
-                //   );
-
-                ////rptLedger2.ShowDialog();
-                //rptCashStatRokerGL.Show();
-            }
         }
     }
 }
