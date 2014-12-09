@@ -30,7 +30,7 @@
         {
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
@@ -65,12 +65,12 @@
             this.label1.Text = "User Name:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // txtUserName
+            // txtUsername
             // 
-            this.txtUserName.Location = new System.Drawing.Point(332, 17);
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(181, 20);
-            this.txtUserName.TabIndex = 1;
+            this.txtUsername.Location = new System.Drawing.Point(332, 17);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(181, 20);
+            this.txtUsername.TabIndex = 1;
             // 
             // txtPassword
             // 
@@ -89,6 +89,7 @@
             this.btnOK.TabIndex = 3;
             this.btnOK.Text = "O.K";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnExit
             // 
@@ -99,6 +100,7 @@
             this.btnExit.TabIndex = 4;
             this.btnExit.Text = "Cancel";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // groupBox1
             // 
@@ -119,7 +121,7 @@
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.txtUserName);
+            this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.KeyPreview = true;
@@ -136,7 +138,7 @@
 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnExit;
