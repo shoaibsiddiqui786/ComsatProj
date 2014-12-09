@@ -882,5 +882,25 @@ namespace GUI_Task
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActiveMdiChild.Close();
+        }
+
+        private void closeAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<Form> openForms = new List<Form>();
+
+            foreach (Form f in Application.OpenForms)
+                openForms.Add(f);
+
+            foreach (Form f in openForms)
+            {
+                if (f.IsMdiChild)
+                    f.Close();
+            }
+
+        }
     }
 }
