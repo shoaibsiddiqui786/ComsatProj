@@ -773,10 +773,6 @@ namespace GUI_Task
 
         private void cashRecieptVoucherToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //frmCashReceVoc frm = new frmCashReceVoc();
-            //frm.MdiParent = this;
-            //frm.Show();
-
             frmCRVoc frm = new frmCRVoc();
             frm.MdiParent = this;
             frm.Show();
@@ -784,7 +780,7 @@ namespace GUI_Task
 
         private void cashPaymentVoucherToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCashPayVoc frm = new frmCashPayVoc();
+            frmCPVoc frm = new frmCPVoc();
             frm.MdiParent = this;
             frm.Show();
         }
@@ -798,14 +794,18 @@ namespace GUI_Task
 
         private void bankRecieptVoucherToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmBankReceVoc frm = new frmBankReceVoc();
+            frmBRVoc frm = new frmBRVoc();
             frm.MdiParent = this;
             frm.Show();
         }
 
         private void bankPaymentVoucherToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmBankPayVoc frm = new frmBankPayVoc();
+            //frmBankPayVoc frm = new frmBankPayVoc();
+            //frm.MdiParent = this;
+            //frm.Show();
+
+            frmBPVoc frm = new frmBPVoc();
             frm.MdiParent = this;
             frm.Show();
         }
