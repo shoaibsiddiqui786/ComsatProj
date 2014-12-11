@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace AutoProject.PrintDataSets {
+namespace GUI_Task.PrintDataSets {
     
     
     /// <summary>

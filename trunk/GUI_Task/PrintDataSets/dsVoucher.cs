@@ -1,4 +1,4 @@
-﻿namespace AutoProject.PrintDataSets
+﻿namespace GUI_Task.PrintDataSets
 {
     
     

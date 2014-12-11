@@ -773,7 +773,11 @@ namespace GUI_Task
 
         private void cashRecieptVoucherToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCashReceVoc frm = new frmCashReceVoc();
+            //frmCashReceVoc frm = new frmCashReceVoc();
+            //frm.MdiParent = this;
+            //frm.Show();
+
+            frmCRVoc frm = new frmCRVoc();
             frm.MdiParent = this;
             frm.Show();
         }
