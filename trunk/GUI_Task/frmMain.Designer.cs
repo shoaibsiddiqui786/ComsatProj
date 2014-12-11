@@ -75,12 +75,10 @@
             this.financeTransactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cashRecieptVoucherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cashPaymentVoucherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.journalVoucherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.bankRecieptVoucherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bankPaymentVoucherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
-            this.discountVoucherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chequeRecieveVoucherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chequePaymentVoucherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnBankRecieveVoucherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -516,12 +514,10 @@
             this.financeTransactionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cashRecieptVoucherToolStripMenuItem,
             this.cashPaymentVoucherToolStripMenuItem,
-            this.journalVoucherToolStripMenuItem,
             this.toolStripSeparator12,
             this.bankRecieptVoucherToolStripMenuItem,
             this.bankPaymentVoucherToolStripMenuItem,
             this.toolStripSeparator13,
-            this.discountVoucherToolStripMenuItem,
             this.chequeRecieveVoucherToolStripMenuItem,
             this.chequePaymentVoucherToolStripMenuItem,
             this.returnBankRecieveVoucherToolStripMenuItem,
@@ -553,13 +549,6 @@
             this.cashPaymentVoucherToolStripMenuItem.Text = "Cash Payment Voucher";
             this.cashPaymentVoucherToolStripMenuItem.Click += new System.EventHandler(this.cashPaymentVoucherToolStripMenuItem_Click);
             // 
-            // journalVoucherToolStripMenuItem
-            // 
-            this.journalVoucherToolStripMenuItem.Name = "journalVoucherToolStripMenuItem";
-            this.journalVoucherToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
-            this.journalVoucherToolStripMenuItem.Text = "Journal Voucher";
-            this.journalVoucherToolStripMenuItem.Click += new System.EventHandler(this.journalVoucherToolStripMenuItem_Click);
-            // 
             // toolStripSeparator12
             // 
             this.toolStripSeparator12.Name = "toolStripSeparator12";
@@ -583,13 +572,6 @@
             // 
             this.toolStripSeparator13.Name = "toolStripSeparator13";
             this.toolStripSeparator13.Size = new System.Drawing.Size(267, 6);
-            // 
-            // discountVoucherToolStripMenuItem
-            // 
-            this.discountVoucherToolStripMenuItem.Name = "discountVoucherToolStripMenuItem";
-            this.discountVoucherToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
-            this.discountVoucherToolStripMenuItem.Text = "Discount Voucher";
-            this.discountVoucherToolStripMenuItem.Click += new System.EventHandler(this.discountVoucherToolStripMenuItem_Click);
             // 
             // chequeRecieveVoucherToolStripMenuItem
             // 
@@ -1511,12 +1493,10 @@
         private System.Windows.Forms.ToolStripMenuItem salesReturnEntryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cashRecieptVoucherToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cashPaymentVoucherToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem journalVoucherToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
         private System.Windows.Forms.ToolStripMenuItem bankRecieptVoucherToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bankPaymentVoucherToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
-        private System.Windows.Forms.ToolStripMenuItem discountVoucherToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem chequeRecieveVoucherToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem chequePaymentVoucherToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem returnBankRecieveVoucherToolStripMenuItem;

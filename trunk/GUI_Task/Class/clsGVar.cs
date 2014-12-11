@@ -27,7 +27,7 @@ namespace GUI_Task
         //public const string ServerName1 = "Win2K8SVR";    //  @"TEAMWIN7S"    
         //public const string gServerId1 = "TOSHIBA2008EP";
         public const string ConString1 = "Data Source= " + ServerName1 + ";Initial Catalog=" + DbName1 + ";User ID=" + UserName1 + "; Password=" + Pwd1;
-        public const string CoTitle1 = "Comsat University College Project";
+        public const string CoTitle1 = "COMSATS Institute of Information Technology, Lahore";
 
         // 2nd Connection
         public const string Pwd2 = "smc786";
