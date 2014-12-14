@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccLedger));
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -935,7 +936,7 @@
             this.lblName.Size = new System.Drawing.Size(283, 15);
             this.lblName.TabIndex = 69;
             this.lblName.Text = "                                                                                 " +
-    "           ";
+                "           ";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblOpeningBalance
@@ -1054,6 +1055,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblAccCode);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "frmAccLedger";
             this.Text = "Account Ledger";

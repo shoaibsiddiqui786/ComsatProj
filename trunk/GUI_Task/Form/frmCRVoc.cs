@@ -203,6 +203,8 @@ namespace GUI_Task
         {
             btn_Exit.Image = GUI_Task.Properties.Resources.FormExit;
             btn_Save.Image = GUI_Task.Properties.Resources.saveHS;
+            //this.Icon = GUI_Task.Properties.Resources.Images.comsatsLogo;
+
             //btn_ParentClear.Image = Properties.Resources.BaBa_clear;
            // btn_Clear.Image = GUI_Task.Properties.Resources.BaBa_clear;
             //btn_Delete.Image = GUI_Task.Properties.Resources.ico_delete;
