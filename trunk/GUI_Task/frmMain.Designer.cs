@@ -121,10 +121,8 @@
             this.group_Wise_Accounts = new System.Windows.Forms.ToolStripMenuItem();
             this.period_Wise_Accounts = new System.Windows.Forms.ToolStripMenuItem();
             this.customer_Wise_Aging = new System.Windows.Forms.ToolStripMenuItem();
-            this.bill_Wise_Receivables = new System.Windows.Forms.ToolStripMenuItem();
             this.expense_Comparison = new System.Windows.Forms.ToolStripMenuItem();
             this.customer_List = new System.Windows.Forms.ToolStripMenuItem();
-            this.customer_Discount_List = new System.Windows.Forms.ToolStripMenuItem();
             this.supplier_List = new System.Windows.Forms.ToolStripMenuItem();
             this.chart_Of_Accounts = new System.Windows.Forms.ToolStripMenuItem();
             this.trail_Balance = new System.Windows.Forms.ToolStripMenuItem();
@@ -811,10 +809,8 @@
             this.group_Wise_Accounts,
             this.period_Wise_Accounts,
             this.customer_Wise_Aging,
-            this.bill_Wise_Receivables,
             this.expense_Comparison,
             this.customer_List,
-            this.customer_Discount_List,
             this.supplier_List,
             this.chart_Of_Accounts,
             this.trail_Balance,
@@ -894,13 +890,6 @@
             this.customer_Wise_Aging.Text = "Customer Wise Aging";
             this.customer_Wise_Aging.Click += new System.EventHandler(this.customer_Wise_Aging_Click);
             // 
-            // bill_Wise_Receivables
-            // 
-            this.bill_Wise_Receivables.Name = "bill_Wise_Receivables";
-            this.bill_Wise_Receivables.Size = new System.Drawing.Size(250, 22);
-            this.bill_Wise_Receivables.Text = "Bill Wise Receivables";
-            this.bill_Wise_Receivables.Click += new System.EventHandler(this.toolStripMenuItem12_Click);
-            // 
             // expense_Comparison
             // 
             this.expense_Comparison.Name = "expense_Comparison";
@@ -914,13 +903,6 @@
             this.customer_List.Size = new System.Drawing.Size(250, 22);
             this.customer_List.Text = "Customer List";
             this.customer_List.Click += new System.EventHandler(this.toolStripMenuItem14_Click);
-            // 
-            // customer_Discount_List
-            // 
-            this.customer_Discount_List.Name = "customer_Discount_List";
-            this.customer_Discount_List.Size = new System.Drawing.Size(250, 22);
-            this.customer_Discount_List.Text = "Customer Discount List";
-            this.customer_Discount_List.Click += new System.EventHandler(this.toolStripMenuItem15_Click);
             // 
             // supplier_List
             // 
@@ -1396,10 +1378,8 @@
         private System.Windows.Forms.ToolStripMenuItem group_Wise_Accounts;
         private System.Windows.Forms.ToolStripMenuItem period_Wise_Accounts;
         private System.Windows.Forms.ToolStripMenuItem customer_Wise_Aging;
-        private System.Windows.Forms.ToolStripMenuItem bill_Wise_Receivables;
         private System.Windows.Forms.ToolStripMenuItem expense_Comparison;
         private System.Windows.Forms.ToolStripMenuItem customer_List;
-        private System.Windows.Forms.ToolStripMenuItem customer_Discount_List;
         private System.Windows.Forms.ToolStripMenuItem supplier_List;
         private System.Windows.Forms.ToolStripMenuItem chart_Of_Accounts;
         private System.Windows.Forms.ToolStripMenuItem trail_Balance;

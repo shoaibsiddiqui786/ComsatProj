@@ -111,7 +111,7 @@ namespace GUI_Task
 
         private void toolStripMenuItem18_Click(object sender, EventArgs e)
         {
-            frmTrailBal frm = new frmTrailBal();
+            frmTrialBal frm = new frmTrialBal();
             frm.MdiParent = this;
             frm.Show();
         }
