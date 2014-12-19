@@ -801,10 +801,6 @@ namespace GUI_Task
 
         private void bankPaymentVoucherToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //frmBankPayVoc frm = new frmBankPayVoc();
-            //frm.MdiParent = this;
-            //frm.Show();
-
             frmBPVoc frm = new frmBPVoc();
             frm.MdiParent = this;
             frm.Show();

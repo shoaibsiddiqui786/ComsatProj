@@ -126,7 +126,6 @@
             this.supplier_List = new System.Windows.Forms.ToolStripMenuItem();
             this.chart_Of_Accounts = new System.Windows.Forms.ToolStripMenuItem();
             this.trail_Balance = new System.Windows.Forms.ToolStripMenuItem();
-            this.bill_Wise_Aging_Report = new System.Windows.Forms.ToolStripMenuItem();
             this.pending_Orders = new System.Windows.Forms.ToolStripMenuItem();
             this.pending_Contracts = new System.Windows.Forms.ToolStripMenuItem();
             this.tracking = new System.Windows.Forms.ToolStripMenuItem();
@@ -814,7 +813,6 @@
             this.supplier_List,
             this.chart_Of_Accounts,
             this.trail_Balance,
-            this.bill_Wise_Aging_Report,
             this.pending_Orders,
             this.pending_Contracts,
             this.tracking,
@@ -924,14 +922,6 @@
             this.trail_Balance.Size = new System.Drawing.Size(250, 22);
             this.trail_Balance.Text = "Trail Balance";
             this.trail_Balance.Click += new System.EventHandler(this.toolStripMenuItem18_Click);
-            // 
-            // bill_Wise_Aging_Report
-            // 
-            this.bill_Wise_Aging_Report.Name = "bill_Wise_Aging_Report";
-            this.bill_Wise_Aging_Report.ShortcutKeyDisplayString = "Ctrl+B";
-            this.bill_Wise_Aging_Report.Size = new System.Drawing.Size(250, 22);
-            this.bill_Wise_Aging_Report.Text = "Bill Wise Aging Report";
-            this.bill_Wise_Aging_Report.Click += new System.EventHandler(this.toolStripMenuItem19_Click);
             // 
             // pending_Orders
             // 
@@ -1383,7 +1373,6 @@
         private System.Windows.Forms.ToolStripMenuItem supplier_List;
         private System.Windows.Forms.ToolStripMenuItem chart_Of_Accounts;
         private System.Windows.Forms.ToolStripMenuItem trail_Balance;
-        private System.Windows.Forms.ToolStripMenuItem bill_Wise_Aging_Report;
         private System.Windows.Forms.ToolStripMenuItem pending_Orders;
         private System.Windows.Forms.ToolStripMenuItem pending_Contracts;
         private System.Windows.Forms.ToolStripMenuItem tracking;
