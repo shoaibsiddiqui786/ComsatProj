@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using GUI_Task.Class;
+using GUI_Task.StringFun01;
+using GUI_Task.PrintReport;
+using GUI_Task.PrintVw6;
 
 namespace GUI_Task
 {
@@ -55,7 +58,39 @@ namespace GUI_Task
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            if (optOrdDetail.Checked == true)
+            {
+                string fRptTitle = this.Text;
+                string plstField = "@ItemMainGroupID, @ItemGroupID, @FromDate, @ToDate";
+                string plstType = "8,8,18,18"; // {"8, 8, 8, 8, 8, 8"};
+                string plstValue = 1 + "," + 1 + "," + StrF01.D2Str(this.dtpFromDate.Value) + "," +
+                    StrF01.D2Str(this.dtpToDate.Value);
 
+                //dsLedgerNew pDs = new dsLedgerNew();
+
+                DataSet pDs = new DataSet();
+                CrRunOrder rpt1 = new CrRunOrder();
+
+                frmPrintVw6 rptLedger2 = new frmPrintVw6(
+                   fRptTitle,
+                   StrF01.D2Str(this.dtpFromDate.Value),
+                   StrF01.D2Str(this.dtpToDate.Value),
+                   "sp_OrderRun",
+                   plstField,
+                   plstType,
+                   plstValue,
+                   pDs,
+                   rpt1,
+                   "SP"
+                   );
+
+                //rptLedger2.ShowDialog();
+                rptLedger2.Show();
+            }
+
+            else if (optOrdSummary.Checked == true)
+            {
+            }
         }
     }
 }

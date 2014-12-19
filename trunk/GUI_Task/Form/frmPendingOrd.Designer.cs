@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpToDate = new System.Windows.Forms.DateTimePicker();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.optOrdSummary = new System.Windows.Forms.RadioButton();
+            this.optOrdDetail = new System.Windows.Forms.RadioButton();
             this.cboItemGrp = new System.Windows.Forms.ComboBox();
             this.cboMainGrp = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,12 +46,12 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dateTimePicker2);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.dtpFromDate);
+            this.groupBox1.Controls.Add(this.dtpToDate);
             this.groupBox1.Controls.Add(this.btnExit);
             this.groupBox1.Controls.Add(this.btnOK);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.optOrdSummary);
+            this.groupBox1.Controls.Add(this.optOrdDetail);
             this.groupBox1.Controls.Add(this.cboItemGrp);
             this.groupBox1.Controls.Add(this.cboMainGrp);
             this.groupBox1.Controls.Add(this.label3);
@@ -64,19 +64,19 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // dateTimePicker2
+            // dtpFromDate
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(96, 106);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(90, 20);
-            this.dateTimePicker2.TabIndex = 67;
+            this.dtpFromDate.Location = new System.Drawing.Point(96, 111);
+            this.dtpFromDate.Name = "dtpFromDate";
+            this.dtpFromDate.Size = new System.Drawing.Size(90, 20);
+            this.dtpFromDate.TabIndex = 67;
             // 
-            // dateTimePicker1
+            // dtpToDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(96, 80);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(90, 20);
-            this.dateTimePicker1.TabIndex = 66;
+            this.dtpToDate.Location = new System.Drawing.Point(96, 85);
+            this.dtpToDate.Name = "dtpToDate";
+            this.dtpToDate.Size = new System.Drawing.Size(90, 20);
+            this.dtpToDate.TabIndex = 66;
             // 
             // btnExit
             // 
@@ -100,45 +100,45 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // radioButton2
+            // optOrdSummary
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(78, 176);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(139, 17);
-            this.radioButton2.TabIndex = 39;
-            this.radioButton2.Text = "Pending Order Summary";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.optOrdSummary.AutoSize = true;
+            this.optOrdSummary.Location = new System.Drawing.Point(78, 176);
+            this.optOrdSummary.Name = "optOrdSummary";
+            this.optOrdSummary.Size = new System.Drawing.Size(139, 17);
+            this.optOrdSummary.TabIndex = 39;
+            this.optOrdSummary.Text = "Pending Order Summary";
+            this.optOrdSummary.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // optOrdDetail
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(78, 153);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(123, 17);
-            this.radioButton1.TabIndex = 38;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Pending Order Detail";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.optOrdDetail.AutoSize = true;
+            this.optOrdDetail.Checked = true;
+            this.optOrdDetail.Location = new System.Drawing.Point(78, 153);
+            this.optOrdDetail.Name = "optOrdDetail";
+            this.optOrdDetail.Size = new System.Drawing.Size(123, 17);
+            this.optOrdDetail.TabIndex = 38;
+            this.optOrdDetail.TabStop = true;
+            this.optOrdDetail.Text = "Pending Order Detail";
+            this.optOrdDetail.UseVisualStyleBackColor = true;
             // 
             // cboItemGrp
             // 
-            this.cboItemGrp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboItemGrp.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboItemGrp.FormattingEnabled = true;
             this.cboItemGrp.Location = new System.Drawing.Point(96, 56);
             this.cboItemGrp.Name = "cboItemGrp";
-            this.cboItemGrp.Size = new System.Drawing.Size(308, 21);
+            this.cboItemGrp.Size = new System.Drawing.Size(308, 23);
             this.cboItemGrp.TabIndex = 11;
             this.cboItemGrp.Text = "<<ALL>>";
             // 
             // cboMainGrp
             // 
-            this.cboMainGrp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboMainGrp.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMainGrp.FormattingEnabled = true;
             this.cboMainGrp.Location = new System.Drawing.Point(95, 30);
             this.cboMainGrp.Name = "cboMainGrp";
-            this.cboMainGrp.Size = new System.Drawing.Size(308, 21);
+            this.cboMainGrp.Size = new System.Drawing.Size(308, 23);
             this.cboMainGrp.TabIndex = 10;
             this.cboMainGrp.Text = "<<ALL>>";
             // 
@@ -150,7 +150,7 @@
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(16, 105);
+            this.label3.Location = new System.Drawing.Point(16, 111);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 17);
             this.label3.TabIndex = 9;
@@ -165,7 +165,7 @@
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(16, 80);
+            this.label2.Location = new System.Drawing.Point(16, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 17);
             this.label2.TabIndex = 8;
@@ -230,9 +230,9 @@
         private System.Windows.Forms.ComboBox cboMainGrp;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.RadioButton optOrdSummary;
+        private System.Windows.Forms.RadioButton optOrdDetail;
+        private System.Windows.Forms.DateTimePicker dtpFromDate;
+        private System.Windows.Forms.DateTimePicker dtpToDate;
     }
 }

@@ -127,12 +127,6 @@
             this.chart_Of_Accounts = new System.Windows.Forms.ToolStripMenuItem();
             this.trail_Balance = new System.Windows.Forms.ToolStripMenuItem();
             this.pending_Orders = new System.Windows.Forms.ToolStripMenuItem();
-            this.pending_Contracts = new System.Windows.Forms.ToolStripMenuItem();
-            this.tracking = new System.Windows.Forms.ToolStripMenuItem();
-            this.shoe_Roker = new System.Windows.Forms.ToolStripMenuItem();
-            this.journalVoucherRokerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rokerGroupWiseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.xRayReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.stock_Reports = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem25 = new System.Windows.Forms.ToolStripMenuItem();
@@ -813,13 +807,7 @@
             this.supplier_List,
             this.chart_Of_Accounts,
             this.trail_Balance,
-            this.pending_Orders,
-            this.pending_Contracts,
-            this.tracking,
-            this.shoe_Roker,
-            this.journalVoucherRokerToolStripMenuItem,
-            this.rokerGroupWiseToolStripMenuItem,
-            this.xRayReportToolStripMenuItem});
+            this.pending_Orders});
             this.account_Reports.Name = "account_Reports";
             this.account_Reports.Size = new System.Drawing.Size(176, 22);
             this.account_Reports.Text = "Account Reports";
@@ -929,48 +917,6 @@
             this.pending_Orders.Size = new System.Drawing.Size(250, 22);
             this.pending_Orders.Text = "Pending Orders";
             this.pending_Orders.Click += new System.EventHandler(this.toolStripMenuItem20_Click);
-            // 
-            // pending_Contracts
-            // 
-            this.pending_Contracts.Name = "pending_Contracts";
-            this.pending_Contracts.Size = new System.Drawing.Size(250, 22);
-            this.pending_Contracts.Text = "Pending Contracts";
-            this.pending_Contracts.Click += new System.EventHandler(this.toolStripMenuItem21_Click);
-            // 
-            // tracking
-            // 
-            this.tracking.Name = "tracking";
-            this.tracking.Size = new System.Drawing.Size(250, 22);
-            this.tracking.Text = "Tracking";
-            this.tracking.Click += new System.EventHandler(this.toolStripMenuItem22_Click);
-            // 
-            // shoe_Roker
-            // 
-            this.shoe_Roker.Name = "shoe_Roker";
-            this.shoe_Roker.Size = new System.Drawing.Size(250, 22);
-            this.shoe_Roker.Text = "Shoe Roker";
-            this.shoe_Roker.Click += new System.EventHandler(this.toolStripMenuItem23_Click);
-            // 
-            // journalVoucherRokerToolStripMenuItem
-            // 
-            this.journalVoucherRokerToolStripMenuItem.Name = "journalVoucherRokerToolStripMenuItem";
-            this.journalVoucherRokerToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
-            this.journalVoucherRokerToolStripMenuItem.Text = "Journal Voucher Roker";
-            this.journalVoucherRokerToolStripMenuItem.Click += new System.EventHandler(this.journalVoucherRokerToolStripMenuItem_Click);
-            // 
-            // rokerGroupWiseToolStripMenuItem
-            // 
-            this.rokerGroupWiseToolStripMenuItem.Name = "rokerGroupWiseToolStripMenuItem";
-            this.rokerGroupWiseToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
-            this.rokerGroupWiseToolStripMenuItem.Text = "Roker Group Wise";
-            this.rokerGroupWiseToolStripMenuItem.Click += new System.EventHandler(this.rokerGroupWiseToolStripMenuItem_Click);
-            // 
-            // xRayReportToolStripMenuItem
-            // 
-            this.xRayReportToolStripMenuItem.Name = "xRayReportToolStripMenuItem";
-            this.xRayReportToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
-            this.xRayReportToolStripMenuItem.Text = "X-Ray Report";
-            this.xRayReportToolStripMenuItem.Click += new System.EventHandler(this.xRayReportToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -1374,9 +1320,6 @@
         private System.Windows.Forms.ToolStripMenuItem chart_Of_Accounts;
         private System.Windows.Forms.ToolStripMenuItem trail_Balance;
         private System.Windows.Forms.ToolStripMenuItem pending_Orders;
-        private System.Windows.Forms.ToolStripMenuItem pending_Contracts;
-        private System.Windows.Forms.ToolStripMenuItem tracking;
-        private System.Windows.Forms.ToolStripMenuItem shoe_Roker;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem stock_Reports;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem25;
@@ -1405,9 +1348,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem48;
         private System.Windows.Forms.ToolStripMenuItem securityToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem runningTransactionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem journalVoucherRokerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rokerGroupWiseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem xRayReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem productionProgressToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem orderWiseStatusToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contractorProductionProgressToolStripMenuItem;
