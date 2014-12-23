@@ -184,10 +184,10 @@ namespace GUI_Task
         private void btnOK_Click(object sender, EventArgs e)
         {
             string fRptTitle = this.Text;
-            string plstField = "@Para_Code, @F_Month, @F_Year, @S_Month, @S_Year, @T_Month, @T_Year, @Para_No";
+            string plstField = "@Para_Code, @F_Mon, @F_Year, @S_Mon, @S_Year, @T_Mon, @T_Year, @Para_No";
             string plstType = "18,8,8,8,8,8,8,8"; // {"8, 8, 8, 8, 8, 8"};
-            string plstValue = this.mskAccCode.Text + "," + 08 + "," + 2007 + "," + 05 + "," + 
-                "," + 2000 + "," + 03 + "," + 07 + "," + 09;
+            string plstValue = this.mskAccCode.Text + "," + 08 + "," + 2007 + "," + 05 +
+                "," + 2000 + "," + 03 + "," + 2007 + "," + 09;
                 //StrF01.D2Str(this.dtpFromDate.Value) + "," +
                 //DateTime.Today.ToString("yyyy-MM-dd");
 
@@ -198,9 +198,8 @@ namespace GUI_Task
 
             frmPrintVw6 rptLedger2 = new frmPrintVw6(
                fRptTitle,
-               "08 " + "2007" + "05" + "2000",
-               "03" + "07" +
-                "09",
+               "08" + "2007" + "05" + "2000",
+               "03" + "2007" + "09",
                //StrF01.D2Str(this.dtpFromDate.Value),
                //DateTime.Today.ToString("yyyy-MM-dd"),
                "ExCmpRep",

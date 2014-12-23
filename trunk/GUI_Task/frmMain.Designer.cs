@@ -102,7 +102,6 @@
             this.account_Receivable = new System.Windows.Forms.ToolStripMenuItem();
             this.account_Payable = new System.Windows.Forms.ToolStripMenuItem();
             this.receivable_Payable = new System.Windows.Forms.ToolStripMenuItem();
-            this.group_Wise_Accounts = new System.Windows.Forms.ToolStripMenuItem();
             this.period_Wise_Accounts = new System.Windows.Forms.ToolStripMenuItem();
             this.customer_Wise_Aging = new System.Windows.Forms.ToolStripMenuItem();
             this.expense_Comparison = new System.Windows.Forms.ToolStripMenuItem();
@@ -671,7 +670,6 @@
             this.account_Receivable,
             this.account_Payable,
             this.receivable_Payable,
-            this.group_Wise_Accounts,
             this.period_Wise_Accounts,
             this.customer_Wise_Aging,
             this.expense_Comparison,
@@ -726,13 +724,6 @@
             this.receivable_Payable.Size = new System.Drawing.Size(250, 22);
             this.receivable_Payable.Text = "Receivables/Payables";
             this.receivable_Payable.Click += new System.EventHandler(this.receivable_Payable_Click);
-            // 
-            // group_Wise_Accounts
-            // 
-            this.group_Wise_Accounts.Name = "group_Wise_Accounts";
-            this.group_Wise_Accounts.Size = new System.Drawing.Size(250, 22);
-            this.group_Wise_Accounts.Text = "Group Wise Accounts";
-            this.group_Wise_Accounts.Click += new System.EventHandler(this.toolStripMenuItem9_Click);
             // 
             // period_Wise_Accounts
             // 
@@ -1183,7 +1174,6 @@
         private System.Windows.Forms.ToolStripMenuItem account_Receivable;
         private System.Windows.Forms.ToolStripMenuItem account_Payable;
         private System.Windows.Forms.ToolStripMenuItem receivable_Payable;
-        private System.Windows.Forms.ToolStripMenuItem group_Wise_Accounts;
         private System.Windows.Forms.ToolStripMenuItem period_Wise_Accounts;
         private System.Windows.Forms.ToolStripMenuItem customer_Wise_Aging;
         private System.Windows.Forms.ToolStripMenuItem expense_Comparison;
