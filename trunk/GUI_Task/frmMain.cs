@@ -785,13 +785,6 @@ namespace GUI_Task
             frm.Show();
         }
 
-        private void journalVoucherToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmJournalVoc frm = new frmJournalVoc();
-            frm.MdiParent = this;
-            frm.Show();
-        }
-
         private void bankRecieptVoucherToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmBRVoc frm = new frmBRVoc();
@@ -901,6 +894,13 @@ namespace GUI_Task
                     f.Close();
             }
 
+        }
+
+        private void journalVoucherChangeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmJournalVoc frm = new frmJournalVoc();
+            frm.MdiParent = this;
+            frm.Show();
         }
     }
 }

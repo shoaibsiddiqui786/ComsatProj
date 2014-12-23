@@ -89,9 +89,6 @@ namespace GUI_Task
             LookUp_GL();
         }
 
-
-
-
         private void LookUp_GL()
         {
             //SELECT Code, Name FROM Heads WHERE TYPE = 'A'
@@ -426,9 +423,5 @@ namespace GUI_Task
 
 
     } // End Save
-          
-
-
-
     }
 

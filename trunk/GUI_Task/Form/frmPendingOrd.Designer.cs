@@ -66,14 +66,14 @@
             // 
             // dtpFromDate
             // 
-            this.dtpFromDate.Location = new System.Drawing.Point(96, 111);
+            this.dtpFromDate.Location = new System.Drawing.Point(97, 82);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(90, 20);
             this.dtpFromDate.TabIndex = 67;
             // 
             // dtpToDate
             // 
-            this.dtpToDate.Location = new System.Drawing.Point(96, 85);
+            this.dtpToDate.Location = new System.Drawing.Point(97, 108);
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(90, 20);
             this.dtpToDate.TabIndex = 66;
@@ -150,7 +150,7 @@
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(16, 111);
+            this.label3.Location = new System.Drawing.Point(17, 82);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 17);
             this.label3.TabIndex = 9;
@@ -165,7 +165,7 @@
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(16, 85);
+            this.label2.Location = new System.Drawing.Point(17, 108);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 17);
             this.label2.TabIndex = 8;

@@ -49,8 +49,8 @@ namespace GUI_Task
 
             frmPrintVw6 rptLedger2 = new frmPrintVw6(
                fRptTitle,
-               StrF01.D2Str(this.dtpFromDate.Value),
-               StrF01.D2Str(this.dtpToDate.Value),
+               this.dtpFromDate.Value.ToString("dd-MM-yyyy"),
+               this.dtpToDate.Value.ToString("dd-MM-yyyy"),
                "Trial",
                plstField,
                plstType,

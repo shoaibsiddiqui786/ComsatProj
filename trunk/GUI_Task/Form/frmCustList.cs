@@ -37,9 +37,9 @@ namespace GUI_Task
         private void btnStart_Click(object sender, EventArgs e)
         {
             string fRptTitle = this.Text;
-            string plstField = "Code, Name, Add1, City, Phone, Mobile";
-            string plstType = null; // {"8, 8, 8, 8, 8, 8"};
-            string plstValue = null; 
+            string plstField = "@OrgID";
+            string plstType = "8"; // {"8, 8, 8, 8, 8, 8"};
+            string plstValue = "" + 1 + ""; 
                 //this.mskAccCode.Text + "," + StrF01.D2Str(this.dtpFromDate.Value) + "," +
               //  StrF01.D2Str(this.dtpToDate.Value);
 
@@ -54,13 +54,13 @@ namespace GUI_Task
                "",
                //StrF01.D2Str(this.dtpFromDate.Value),
                //StrF01.D2Str(this.dtpToDate.Value),
-               "CustList",
+               "sp_CustList",
                plstField,
                plstType,
                plstValue,
                pDs,
                rpt1,
-               "Table"
+               "SP"
                );
 
             //rptLedger2.ShowDialog();

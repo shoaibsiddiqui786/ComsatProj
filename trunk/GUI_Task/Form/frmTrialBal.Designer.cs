@@ -84,6 +84,7 @@
             this.optSortByName.TabIndex = 36;
             this.optSortByName.Text = "Sort By Name";
             this.optSortByName.UseVisualStyleBackColor = true;
+            this.optSortByName.Visible = false;
             // 
             // optSortByCode
             // 
@@ -97,6 +98,7 @@
             this.optSortByCode.TabStop = true;
             this.optSortByCode.Text = "Sort By Code";
             this.optSortByCode.UseVisualStyleBackColor = true;
+            this.optSortByCode.Visible = false;
             // 
             // radioButton2
             // 

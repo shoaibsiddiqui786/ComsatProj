@@ -63,7 +63,8 @@ namespace GUI_Task
                 string fRptTitle = this.Text;
                 string plstField = "@ItemMainGroupID, @ItemGroupID, @FromDate, @ToDate";
                 string plstType = "8,8,18,18"; // {"8, 8, 8, 8, 8, 8"};
-                string plstValue = 1 + "," + 1 + "," + StrF01.D2Str(this.dtpFromDate.Value) + "," +
+                string plstValue = cboMainGrp.SelectedValue.ToString()
+                    + "," + cboItemGrp.SelectedValue.ToString() + "," + StrF01.D2Str(this.dtpFromDate.Value) + "," +
                     StrF01.D2Str(this.dtpToDate.Value);
 
                 //dsLedgerNew pDs = new dsLedgerNew();

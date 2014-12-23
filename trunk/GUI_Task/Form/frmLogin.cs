@@ -89,6 +89,11 @@ namespace GUI_Task
             {
                 MessageBox.Show("Invalid UserName or Password\n Access Denied !!!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
                // MessageBox.Show("Access Denied!!");
+                if (GUI_Task.frmMain.ActiveForm.ActiveControl.IsDisposed == true)
+                {
+                    // Check Internet how to do this
+                   // GUI_Task.frmMain.ControlCollection.Equals(true)
+                }
                 this.Close();
             }
         }
