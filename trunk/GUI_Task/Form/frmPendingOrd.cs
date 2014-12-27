@@ -42,7 +42,7 @@ namespace GUI_Task
             clsFillCombo.FillCombo(cboMainGrp, clsGVar.ConString1, "CatDtl" + "," + "cgdCode" + "," + "False", lSQL);
             fcboDefaultValue = Convert.ToInt16(cboMainGrp.SelectedValue);
 
-            //Transport Combo Fill
+            //Item Group Combo Fill
             lSQL = "select cgdCode, cgdDesc from catdtl where cgcode="+Convert.ToString((int)Category.enmItemGroup);
             lSQL += " order by cgdDesc";
 

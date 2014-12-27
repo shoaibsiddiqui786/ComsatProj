@@ -11,6 +11,7 @@ using System.Configuration;
 
 namespace GUI_Task
 {
+    
     public partial class frmLogin : Form
     {
         public frmLogin()
@@ -68,13 +69,42 @@ namespace GUI_Task
                 SqlConnection con = new SqlConnection(ConfigurationSettings.AppSettings["ConnectionString"]);
                 con.ConnectionString = "Data Source= (Local); Initial Catalog=GUI_Task; User ID=sa; Password=smc786";
                 con.Open();
+             
 
                  if (this.txtUsername.Text == dr["UserName"].ToString() & this.txtPassword.Text == dr["Password"].ToString())
                  {
-                     //MessageBox.Show("*** Login Successful ***");
-                     frmMain frm = new frmMain();
-                     frm.Show();
-                     this.Hide();
+                     //frmMain formSecond = new frmMain();
+                     //if (!CheckForm(formSecond))
+                     //{
+                     //    formSecond.Hide();
+                     //}
+                     {
+                         //MessageBox.Show("*** Login Successful ***");
+                         bool IsOpen = false;
+                         foreach (Form f in Application.OpenForms)
+                         {
+                             if (f.Name == "frmMain")
+                             {
+                                 IsOpen = true;
+                                 f.Focus();
+                                 MessageBox.Show("This User Is Already Logged In");
+                                 this.Hide();
+                                 break;
+                             }
+                         }
+
+                         if (IsOpen == false)
+                         {
+                             frmMain frm = new frmMain();
+                             frm.Show();
+                             this.Hide();
+
+                         }
+
+                         //frmMain frm = new frmMain();
+                         //frm.Show();
+                         //this.Hide();
+                     }
                  }
  
                  else
@@ -84,21 +114,59 @@ namespace GUI_Task
                    
                  }              
             }
+                
+           
+            //else if((open = (frmMain)IsFormAlreadyOpen(typeof(frmMain))) == null)
+            //    {
+            //        open = new frmMain();
+            //        open.Hide();
+            //    }
 
             else
             {
                 MessageBox.Show("Invalid UserName or Password\n Access Denied !!!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
                // MessageBox.Show("Access Denied!!");
-                if (GUI_Task.frmMain.ActiveForm.ActiveControl.IsDisposed == true)
-                {
-                    // Check Internet how to do this
-                   // GUI_Task.frmMain.ControlCollection.Equals(true)
-                }
+                //if (GUI_Task.frmMain.ActiveForm.ActiveControl.IsDisposed == true)
+                //{
+                //    // Check Internet how to do this
+                //   // GUI_Task.frmMain.ControlCollection.Equals(true)
+                //}
                 this.Close();
             }
         }
+
+        //public static Form IsFormAlreadyOpen(frmMain FormType)
+        //{
+        //    foreach (Form OpenForm in Application.OpenForms)
+        //    {
+        //        if (OpenForm.Name == FormType)
+        //            return OpenForm;
+        //    }
+
+        //    return null;
+        //}
+
+        //private bool CheckForm(Form form)
+        //{
+        //    form = Application.OpenForms[form.Text];
+        //    if (form != null)
+        //        return true;
+        //    else
+        //        return false;
+        //}
+        
+        //private bool CheckForm(frmMain form)
+        //{
+        //    foreach (Form f in Application.OpenForms)
+        //        if (form == f)
+        //            return true;
+
+        //    return false;
+        //}
+
+        }
         
         
         }
-    }
+    
 

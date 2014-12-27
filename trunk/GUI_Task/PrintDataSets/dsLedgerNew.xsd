@@ -75,6 +75,34 @@ FROM            VendList</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Ord_HistTableAdapter" GeneratorDataComponentClassName="Ord_HistTableAdapter" Name="Ord_Hist" UserDataComponentName="Ord_HistTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="lenovo-pc.GUI_Task.dbo" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Ord_Hist.Qty, Ord_Hist.Discount, Ord_Det.Amount, Item.ItemId, Item.ItemGroupId, Item.ItemCode, Item.Name, MainGroup.MGroupId, MainGroup.GroupName
+FROM            Ord_Hist CROSS JOIN
+                         Ord_Det CROSS JOIN
+                         Item CROSS JOIN
+                         MainGroup</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Qty" DataSetColumn="Qty" />
+              <Mapping SourceColumn="Discount" DataSetColumn="Discount" />
+              <Mapping SourceColumn="Amount" DataSetColumn="Amount" />
+              <Mapping SourceColumn="ItemId" DataSetColumn="ItemId" />
+              <Mapping SourceColumn="ItemGroupId" DataSetColumn="ItemGroupId" />
+              <Mapping SourceColumn="ItemCode" DataSetColumn="ItemCode" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="MGroupId" DataSetColumn="MGroupId" />
+              <Mapping SourceColumn="GroupName" DataSetColumn="GroupName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -83,7 +111,7 @@ FROM            VendList</CommandText>
   <xs:element name="dsLedgerNew6" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsLedgerNew6" msprop:Generator_UserDSName="dsLedgerNew6">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="dsLedgerNew" msprop:Generator_TableClassName="dsLedgerNewDataTable" msprop:Generator_TableVarName="tabledsLedgerNew" msprop:Generator_RowChangedName="dsLedgerNewRowChanged" msprop:Generator_TablePropName="dsLedgerNew" msprop:Generator_RowDeletingName="dsLedgerNewRowDeleting" msprop:Generator_RowChangingName="dsLedgerNewRowChanging" msprop:Generator_RowEvHandlerName="dsLedgerNewRowChangeEventHandler" msprop:Generator_RowDeletedName="dsLedgerNewRowDeleted" msprop:Generator_RowClassName="dsLedgerNewRow" msprop:Generator_UserTableName="dsLedgerNew" msprop:Generator_RowEvArgName="dsLedgerNewRowChangeEvent">
+        <xs:element name="dsLedgerNew" msprop:Generator_TableClassName="dsLedgerNewDataTable" msprop:Generator_TableVarName="tabledsLedgerNew" msprop:Generator_TablePropName="dsLedgerNew" msprop:Generator_RowDeletingName="dsLedgerNewRowDeleting" msprop:Generator_RowChangingName="dsLedgerNewRowChanging" msprop:Generator_RowEvHandlerName="dsLedgerNewRowChangeEventHandler" msprop:Generator_RowDeletedName="dsLedgerNewRowDeleted" msprop:Generator_UserTableName="dsLedgerNew" msprop:Generator_RowChangedName="dsLedgerNewRowChanged" msprop:Generator_RowEvArgName="dsLedgerNewRowChangeEvent" msprop:Generator_RowClassName="dsLedgerNewRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="doc_vt_id" msprop:Generator_ColumnVarNameInTable="columndoc_vt_id" msprop:Generator_ColumnPropNameInRow="doc_vt_id" msprop:Generator_ColumnPropNameInTable="doc_vt_idColumn" msprop:Generator_UserColumnName="doc_vt_id" type="xs:int" />
@@ -165,7 +193,7 @@ FROM            VendList</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CustList" msprop:Generator_TableClassName="CustListDataTable" msprop:Generator_TableVarName="tableCustList" msprop:Generator_RowChangedName="CustListRowChanged" msprop:Generator_TablePropName="CustList" msprop:Generator_RowDeletingName="CustListRowDeleting" msprop:Generator_RowChangingName="CustListRowChanging" msprop:Generator_RowEvHandlerName="CustListRowChangeEventHandler" msprop:Generator_RowDeletedName="CustListRowDeleted" msprop:Generator_RowClassName="CustListRow" msprop:Generator_UserTableName="CustList" msprop:Generator_RowEvArgName="CustListRowChangeEvent">
+        <xs:element name="CustList" msprop:Generator_TableClassName="CustListDataTable" msprop:Generator_TableVarName="tableCustList" msprop:Generator_TablePropName="CustList" msprop:Generator_RowDeletingName="CustListRowDeleting" msprop:Generator_RowChangingName="CustListRowChanging" msprop:Generator_RowEvHandlerName="CustListRowChangeEventHandler" msprop:Generator_RowDeletedName="CustListRowDeleted" msprop:Generator_UserTableName="CustList" msprop:Generator_RowChangedName="CustListRowChanged" msprop:Generator_RowEvArgName="CustListRowChangeEvent" msprop:Generator_RowClassName="CustListRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Code" msprop:Generator_ColumnVarNameInTable="columnCode" msprop:Generator_ColumnPropNameInRow="Code" msprop:Generator_ColumnPropNameInTable="CodeColumn" msprop:Generator_UserColumnName="Code" minOccurs="0">
@@ -220,7 +248,7 @@ FROM            VendList</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="VendList" msprop:Generator_TableClassName="VendListDataTable" msprop:Generator_TableVarName="tableVendList" msprop:Generator_TablePropName="VendList" msprop:Generator_RowDeletingName="VendListRowDeleting" msprop:Generator_RowChangingName="VendListRowChanging" msprop:Generator_RowEvHandlerName="VendListRowChangeEventHandler" msprop:Generator_RowDeletedName="VendListRowDeleted" msprop:Generator_UserTableName="VendList" msprop:Generator_RowChangedName="VendListRowChanged" msprop:Generator_RowEvArgName="VendListRowChangeEvent" msprop:Generator_RowClassName="VendListRow">
+        <xs:element name="VendList" msprop:Generator_TableClassName="VendListDataTable" msprop:Generator_TableVarName="tableVendList" msprop:Generator_RowChangedName="VendListRowChanged" msprop:Generator_TablePropName="VendList" msprop:Generator_RowDeletingName="VendListRowDeleting" msprop:Generator_RowChangingName="VendListRowChanging" msprop:Generator_RowEvHandlerName="VendListRowChangeEventHandler" msprop:Generator_RowDeletedName="VendListRowDeleted" msprop:Generator_RowClassName="VendListRow" msprop:Generator_UserTableName="VendList" msprop:Generator_RowEvArgName="VendListRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Code" msprop:Generator_ColumnVarNameInTable="columnCode" msprop:Generator_ColumnPropNameInRow="Code" msprop:Generator_ColumnPropNameInTable="CodeColumn" msprop:Generator_UserColumnName="Code" minOccurs="0">
@@ -248,6 +276,39 @@ FROM            VendList</CommandText>
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Ord_Hist" msprop:Generator_TableClassName="Ord_HistDataTable" msprop:Generator_TableVarName="tableOrd_Hist" msprop:Generator_TablePropName="Ord_Hist" msprop:Generator_RowDeletingName="Ord_HistRowDeleting" msprop:Generator_RowChangingName="Ord_HistRowChanging" msprop:Generator_RowEvHandlerName="Ord_HistRowChangeEventHandler" msprop:Generator_RowDeletedName="Ord_HistRowDeleted" msprop:Generator_UserTableName="Ord_Hist" msprop:Generator_RowChangedName="Ord_HistRowChanged" msprop:Generator_RowEvArgName="Ord_HistRowChangeEvent" msprop:Generator_RowClassName="Ord_HistRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Qty" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnPropNameInTable="QtyColumn" msprop:Generator_UserColumnName="Qty" type="xs:double" minOccurs="0" />
+              <xs:element name="Discount" msprop:Generator_ColumnVarNameInTable="columnDiscount" msprop:Generator_ColumnPropNameInRow="Discount" msprop:Generator_ColumnPropNameInTable="DiscountColumn" msprop:Generator_UserColumnName="Discount" type="xs:double" minOccurs="0" />
+              <xs:element name="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_UserColumnName="Amount" type="xs:double" minOccurs="0" />
+              <xs:element name="ItemId" msprop:Generator_ColumnVarNameInTable="columnItemId" msprop:Generator_ColumnPropNameInRow="ItemId" msprop:Generator_ColumnPropNameInTable="ItemIdColumn" msprop:Generator_UserColumnName="ItemId" type="xs:int" />
+              <xs:element name="ItemGroupId" msprop:Generator_ColumnVarNameInTable="columnItemGroupId" msprop:Generator_ColumnPropNameInRow="ItemGroupId" msprop:Generator_ColumnPropNameInTable="ItemGroupIdColumn" msprop:Generator_UserColumnName="ItemGroupId" type="xs:int" />
+              <xs:element name="ItemCode" msprop:Generator_ColumnVarNameInTable="columnItemCode" msprop:Generator_ColumnPropNameInRow="ItemCode" msprop:Generator_ColumnPropNameInTable="ItemCodeColumn" msprop:Generator_UserColumnName="ItemCode">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MGroupId" msprop:Generator_ColumnVarNameInTable="columnMGroupId" msprop:Generator_ColumnPropNameInRow="MGroupId" msprop:Generator_ColumnPropNameInTable="MGroupIdColumn" msprop:Generator_UserColumnName="MGroupId" type="xs:int" />
+              <xs:element name="GroupName" msprop:Generator_ColumnVarNameInTable="columnGroupName" msprop:Generator_ColumnPropNameInRow="GroupName" msprop:Generator_ColumnPropNameInTable="GroupNameColumn" msprop:Generator_UserColumnName="GroupName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
