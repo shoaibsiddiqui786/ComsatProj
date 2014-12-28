@@ -279,6 +279,7 @@
             // 
             this.groupBox4.Controls.Add(this.optSingleItem);
             this.groupBox4.Controls.Add(this.optMultiItem);
+            this.groupBox4.Enabled = false;
             this.groupBox4.Location = new System.Drawing.Point(678, 5);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(235, 65);
@@ -596,6 +597,7 @@
             // 
             this.optPurchasePrint.AutoSize = true;
             this.optPurchasePrint.Checked = true;
+            this.optPurchasePrint.Enabled = false;
             this.optPurchasePrint.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optPurchasePrint.Location = new System.Drawing.Point(216, 403);
             this.optPurchasePrint.Name = "optPurchasePrint";
@@ -608,6 +610,7 @@
             // optOfficePrint
             // 
             this.optOfficePrint.AutoSize = true;
+            this.optOfficePrint.Enabled = false;
             this.optOfficePrint.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optOfficePrint.Location = new System.Drawing.Point(368, 402);
             this.optOfficePrint.Name = "optOfficePrint";
@@ -711,6 +714,7 @@
             // optApprovedVerified
             // 
             this.optApprovedVerified.AutoSize = true;
+            this.optApprovedVerified.Enabled = false;
             this.optApprovedVerified.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optApprovedVerified.Location = new System.Drawing.Point(794, 149);
             this.optApprovedVerified.Name = "optApprovedVerified";
@@ -723,6 +727,7 @@
             // 
             this.optInProcess.AutoSize = true;
             this.optInProcess.Checked = true;
+            this.optInProcess.Enabled = false;
             this.optInProcess.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optInProcess.Location = new System.Drawing.Point(697, 149);
             this.optInProcess.Name = "optInProcess";
@@ -756,6 +761,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Enabled = false;
             this.tabControl1.Location = new System.Drawing.Point(4, 176);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;

@@ -53,16 +53,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblDemandNote = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.optSingleItem = new System.Windows.Forms.RadioButton();
-            this.optMultiItem = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.optGRNHistory = new System.Windows.Forms.RadioButton();
             this.optSimple = new System.Windows.Forms.RadioButton();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
-            this.optApprovedVerified = new System.Windows.Forms.RadioButton();
-            this.optInProcess = new System.Windows.Forms.RadioButton();
             this.txtNoteBottom = new System.Windows.Forms.TextBox();
             this.lblNote = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -109,14 +104,19 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.optInProcess = new System.Windows.Forms.RadioButton();
+            this.optApprovedVerified = new System.Windows.Forms.RadioButton();
+            this.optMultiItem = new System.Windows.Forms.RadioButton();
+            this.optSingleItem = new System.Windows.Forms.RadioButton();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
-            this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.gBox.SuspendLayout();
             this.sSMaster.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtNoteMain
@@ -358,45 +358,11 @@
             this.lblDemandNote.Text = "Demand Note#  ";
             this.lblDemandNote.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.optSingleItem);
-            this.groupBox4.Controls.Add(this.optMultiItem);
-            this.groupBox4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(647, 37);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(235, 65);
-            this.groupBox4.TabIndex = 132;
-            this.groupBox4.TabStop = false;
-            // 
-            // optSingleItem
-            // 
-            this.optSingleItem.AutoSize = true;
-            this.optSingleItem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optSingleItem.Location = new System.Drawing.Point(6, 36);
-            this.optSingleItem.Name = "optSingleItem";
-            this.optSingleItem.Size = new System.Drawing.Size(198, 19);
-            this.optSingleItem.TabIndex = 61;
-            this.optSingleItem.Text = "Single Item Group {Size/Colour}";
-            this.optSingleItem.UseVisualStyleBackColor = true;
-            // 
-            // optMultiItem
-            // 
-            this.optMultiItem.AutoSize = true;
-            this.optMultiItem.Checked = true;
-            this.optMultiItem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optMultiItem.Location = new System.Drawing.Point(6, 10);
-            this.optMultiItem.Name = "optMultiItem";
-            this.optMultiItem.Size = new System.Drawing.Size(188, 19);
-            this.optMultiItem.TabIndex = 60;
-            this.optMultiItem.TabStop = true;
-            this.optMultiItem.Text = "Multi Item Group {Size/Colour}";
-            this.optMultiItem.UseVisualStyleBackColor = true;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.optGRNHistory);
             this.groupBox1.Controls.Add(this.optSimple);
+            this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(18, 451);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(205, 43);
@@ -447,30 +413,6 @@
             this.btnPrint.TabIndex = 10;
             this.btnPrint.Text = "Printing";
             this.btnPrint.UseVisualStyleBackColor = true;
-            // 
-            // optApprovedVerified
-            // 
-            this.optApprovedVerified.AutoSize = true;
-            this.optApprovedVerified.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optApprovedVerified.Location = new System.Drawing.Point(629, 466);
-            this.optApprovedVerified.Name = "optApprovedVerified";
-            this.optApprovedVerified.Size = new System.Drawing.Size(125, 19);
-            this.optApprovedVerified.TabIndex = 61;
-            this.optApprovedVerified.Text = "Approved/Verified";
-            this.optApprovedVerified.UseVisualStyleBackColor = true;
-            // 
-            // optInProcess
-            // 
-            this.optInProcess.AutoSize = true;
-            this.optInProcess.Checked = true;
-            this.optInProcess.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optInProcess.Location = new System.Drawing.Point(526, 466);
-            this.optInProcess.Name = "optInProcess";
-            this.optInProcess.Size = new System.Drawing.Size(86, 19);
-            this.optInProcess.TabIndex = 60;
-            this.optInProcess.TabStop = true;
-            this.optInProcess.Text = "In Process";
-            this.optInProcess.UseVisualStyleBackColor = true;
             // 
             // txtNoteBottom
             // 
@@ -958,6 +900,68 @@
             this.dataGridViewTextBoxColumn8.HeaderText = "Stock Available";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             // 
+            // optInProcess
+            // 
+            this.optInProcess.AutoSize = true;
+            this.optInProcess.Checked = true;
+            this.optInProcess.Enabled = false;
+            this.optInProcess.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.optInProcess.Location = new System.Drawing.Point(526, 466);
+            this.optInProcess.Name = "optInProcess";
+            this.optInProcess.Size = new System.Drawing.Size(86, 19);
+            this.optInProcess.TabIndex = 60;
+            this.optInProcess.TabStop = true;
+            this.optInProcess.Text = "In Process";
+            this.optInProcess.UseVisualStyleBackColor = true;
+            // 
+            // optApprovedVerified
+            // 
+            this.optApprovedVerified.AutoSize = true;
+            this.optApprovedVerified.Enabled = false;
+            this.optApprovedVerified.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.optApprovedVerified.Location = new System.Drawing.Point(629, 466);
+            this.optApprovedVerified.Name = "optApprovedVerified";
+            this.optApprovedVerified.Size = new System.Drawing.Size(125, 19);
+            this.optApprovedVerified.TabIndex = 61;
+            this.optApprovedVerified.Text = "Approved/Verified";
+            this.optApprovedVerified.UseVisualStyleBackColor = true;
+            // 
+            // optMultiItem
+            // 
+            this.optMultiItem.AutoSize = true;
+            this.optMultiItem.Checked = true;
+            this.optMultiItem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.optMultiItem.Location = new System.Drawing.Point(6, 10);
+            this.optMultiItem.Name = "optMultiItem";
+            this.optMultiItem.Size = new System.Drawing.Size(188, 19);
+            this.optMultiItem.TabIndex = 60;
+            this.optMultiItem.TabStop = true;
+            this.optMultiItem.Text = "Multi Item Group {Size/Colour}";
+            this.optMultiItem.UseVisualStyleBackColor = true;
+            // 
+            // optSingleItem
+            // 
+            this.optSingleItem.AutoSize = true;
+            this.optSingleItem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.optSingleItem.Location = new System.Drawing.Point(6, 36);
+            this.optSingleItem.Name = "optSingleItem";
+            this.optSingleItem.Size = new System.Drawing.Size(198, 19);
+            this.optSingleItem.TabIndex = 61;
+            this.optSingleItem.Text = "Single Item Group {Size/Colour}";
+            this.optSingleItem.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.optSingleItem);
+            this.groupBox4.Controls.Add(this.optMultiItem);
+            this.groupBox4.Enabled = false;
+            this.groupBox4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(647, 37);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(235, 65);
+            this.groupBox4.TabIndex = 132;
+            this.groupBox4.TabStop = false;
+            // 
             // frmDemandNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -998,8 +1002,6 @@
             this.Load += new System.EventHandler(this.frmDemandNote_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmDemandNote_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -1009,6 +1011,8 @@
             this.gBox.PerformLayout();
             this.sSMaster.ResumeLayout(false);
             this.sSMaster.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1032,16 +1036,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblDemandNote;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.RadioButton optSingleItem;
-        private System.Windows.Forms.RadioButton optMultiItem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton optGRNHistory;
         private System.Windows.Forms.RadioButton optSimple;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnPrint;
-        private System.Windows.Forms.RadioButton optApprovedVerified;
-        private System.Windows.Forms.RadioButton optInProcess;
         private System.Windows.Forms.TextBox txtNoteBottom;
         private System.Windows.Forms.Label lblNote;
         private System.Windows.Forms.Label lblTotal;
@@ -1097,6 +1096,11 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn UnitName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.RadioButton optInProcess;
+        private System.Windows.Forms.RadioButton optApprovedVerified;
+        private System.Windows.Forms.RadioButton optMultiItem;
+        private System.Windows.Forms.RadioButton optSingleItem;
+        private System.Windows.Forms.GroupBox groupBox4;
 
     }
 }

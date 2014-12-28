@@ -36,10 +36,15 @@
             this.dtpGateInword = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.grd = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SizeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ColorColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.UnitColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Godown = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -92,11 +97,6 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -208,6 +208,30 @@
             this.grd.Size = new System.Drawing.Size(883, 290);
             this.grd.TabIndex = 168;
             // 
+            // Column1
+            // 
+            this.Column1.Frozen = true;
+            this.Column1.HeaderText = "Code";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.Frozen = true;
+            this.Column2.HeaderText = "Item Code";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.Frozen = true;
+            this.Column3.HeaderText = "Name";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.Frozen = true;
+            this.Column4.HeaderText = "Description ";
+            this.Column4.Name = "Column4";
+            // 
             // SizeColumn
             // 
             this.SizeColumn.Frozen = true;
@@ -236,6 +260,11 @@
             this.Godown.Name = "Godown";
             this.Godown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Godown.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Qty";
+            this.Column8.Name = "Column8";
             // 
             // label3
             // 
@@ -348,6 +377,7 @@
             // 
             this.optnProcess.AutoSize = true;
             this.optnProcess.Checked = true;
+            this.optnProcess.Enabled = false;
             this.optnProcess.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optnProcess.Location = new System.Drawing.Point(364, 412);
             this.optnProcess.Name = "optnProcess";
@@ -360,6 +390,7 @@
             // optApprovedVerified
             // 
             this.optApprovedVerified.AutoSize = true;
+            this.optApprovedVerified.Enabled = false;
             this.optApprovedVerified.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optApprovedVerified.Location = new System.Drawing.Point(454, 412);
             this.optApprovedVerified.Name = "optApprovedVerified";
@@ -801,35 +832,6 @@
             // 
             this.dataGridViewTextBoxColumn5.HeaderText = "Qty";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // Column1
-            // 
-            this.Column1.Frozen = true;
-            this.Column1.HeaderText = "Code";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.Frozen = true;
-            this.Column2.HeaderText = "Item Code";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.Frozen = true;
-            this.Column3.HeaderText = "Name";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.Frozen = true;
-            this.Column4.HeaderText = "Description ";
-            this.Column4.Name = "Column4";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Qty";
-            this.Column8.Name = "Column8";
             // 
             // frmGateInward
             // 

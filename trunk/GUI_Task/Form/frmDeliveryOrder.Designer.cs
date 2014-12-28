@@ -31,7 +31,6 @@
             this.btnPrintDet = new System.Windows.Forms.Button();
             this.btnPrintGrp = new System.Windows.Forms.Button();
             this.btnUrduPrint = new System.Windows.Forms.Button();
-            this.btnExitSave = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnItemHelp = new System.Windows.Forms.Button();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
@@ -172,6 +171,7 @@
             this.btnPrintGrp.TabIndex = 584;
             this.btnPrintGrp.Text = "Printing Group";
             this.btnPrintGrp.UseVisualStyleBackColor = true;
+            this.btnPrintGrp.Visible = false;
             // 
             // btnUrduPrint
             // 
@@ -182,16 +182,7 @@
             this.btnUrduPrint.TabIndex = 583;
             this.btnUrduPrint.Text = "Urdu Printing";
             this.btnUrduPrint.UseVisualStyleBackColor = true;
-            // 
-            // btnExitSave
-            // 
-            this.btnExitSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExitSave.Location = new System.Drawing.Point(113, 530);
-            this.btnExitSave.Name = "btnExitSave";
-            this.btnExitSave.Size = new System.Drawing.Size(102, 25);
-            this.btnExitSave.TabIndex = 582;
-            this.btnExitSave.Text = "Exit+Save";
-            this.btnExitSave.UseVisualStyleBackColor = true;
+            this.btnUrduPrint.Visible = false;
             // 
             // btnExit
             // 
@@ -424,11 +415,12 @@
             this.groupBox4.Size = new System.Drawing.Size(235, 65);
             this.groupBox4.TabIndex = 570;
             this.groupBox4.TabStop = false;
+            this.groupBox4.Visible = false;
             // 
             // btnPictures
             // 
             this.btnPictures.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPictures.Location = new System.Drawing.Point(472, 11);
+            this.btnPictures.Location = new System.Drawing.Point(674, 204);
             this.btnPictures.Name = "btnPictures";
             this.btnPictures.Size = new System.Drawing.Size(102, 25);
             this.btnPictures.TabIndex = 569;
@@ -442,7 +434,7 @@
             this.btnNewIssues.Name = "btnNewIssues";
             this.btnNewIssues.Size = new System.Drawing.Size(102, 25);
             this.btnNewIssues.TabIndex = 568;
-            this.btnNewIssues.Text = "New Issues";
+            this.btnNewIssues.Text = "Add New";
             this.btnNewIssues.UseVisualStyleBackColor = true;
             // 
             // btnordDt
@@ -454,11 +446,12 @@
             this.btnordDt.TabIndex = 567;
             this.btnordDt.Text = "Order date";
             this.btnordDt.UseVisualStyleBackColor = true;
+            this.btnordDt.Visible = false;
             // 
             // btnOrdHelp
             // 
             this.btnOrdHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrdHelp.Location = new System.Drawing.Point(674, 204);
+            this.btnOrdHelp.Location = new System.Drawing.Point(472, 11);
             this.btnOrdHelp.Name = "btnOrdHelp";
             this.btnOrdHelp.Size = new System.Drawing.Size(102, 25);
             this.btnOrdHelp.TabIndex = 566;
@@ -474,6 +467,7 @@
             this.btnView.TabIndex = 565;
             this.btnView.Text = "Order View";
             this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Visible = false;
             // 
             // label20
             // 
@@ -940,8 +934,6 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Location = new System.Drawing.Point(329, 566);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(56, 17);
@@ -959,6 +951,7 @@
             this.radioButton2.TabIndex = 577;
             this.radioButton2.Text = "Urdu Detail Print (Bags)";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.Visible = false;
             // 
             // radioButton1
             // 
@@ -970,6 +963,7 @@
             this.radioButton1.TabIndex = 578;
             this.radioButton1.Text = "Urdu Group Print";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.Visible = false;
             // 
             // radioButton5
             // 
@@ -981,6 +975,7 @@
             this.radioButton5.TabIndex = 587;
             this.radioButton5.Text = "Urdu Detail Print";
             this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.Visible = false;
             // 
             // radioButton6
             // 
@@ -1424,7 +1419,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(422, 490);
+            this.btnSave.Location = new System.Drawing.Point(111, 530);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(102, 25);
             this.btnSave.TabIndex = 14;
@@ -1448,7 +1443,6 @@
             this.Controls.Add(this.btnPrintDet);
             this.Controls.Add(this.btnPrintGrp);
             this.Controls.Add(this.btnUrduPrint);
-            this.Controls.Add(this.btnExitSave);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnItemHelp);
             this.Controls.Add(this.checkBox1);
@@ -1527,7 +1521,6 @@
         private System.Windows.Forms.Button btnPrintDet;
         private System.Windows.Forms.Button btnPrintGrp;
         private System.Windows.Forms.Button btnUrduPrint;
-        private System.Windows.Forms.Button btnExitSave;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnItemHelp;
         private System.Windows.Forms.CheckBox checkBox2;

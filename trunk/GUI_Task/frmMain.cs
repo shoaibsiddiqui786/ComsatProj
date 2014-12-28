@@ -11,6 +11,8 @@ namespace GUI_Task
 {
     public partial class frmMain : Form
     {
+        private int childFormNumber = 0;
+
         public frmMain()
         {
             InitializeComponent();
@@ -161,7 +163,10 @@ namespace GUI_Task
 
         private void toolStripMenuItem26_Click(object sender, EventArgs e)
         {
-            frmRptPendingOrd1 frm = new frmRptPendingOrd1();
+            //frmRptPendingOrd1 frm = new frmRptPendingOrd1();
+            //frm.MdiParent = this;
+            //frm.Show();
+            frmPendingOrd frm = new frmPendingOrd();
             frm.MdiParent = this;
             frm.Show();
         }
@@ -901,6 +906,14 @@ namespace GUI_Task
             frmJournalVoc frm = new frmJournalVoc();
             frm.MdiParent = this;
             frm.Show();
+        }
+
+        private void runningTransactionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Form childForm = new Form();
+            //childForm.MdiParent = this;
+            //childForm.Text = frmMain.ActiveForm.Name + childFormNumber++;
+            //childForm.Show();
         }
     }
 }

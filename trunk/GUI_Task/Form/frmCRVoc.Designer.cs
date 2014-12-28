@@ -52,7 +52,6 @@
             this.lblTotalCr = new System.Windows.Forms.Label();
             this.lblRemarks = new System.Windows.Forms.Label();
             this.txtRemarks = new System.Windows.Forms.TextBox();
-            this.btn_FocusGrid = new System.Windows.Forms.Button();
             this.tTMDtl = new System.Windows.Forms.ToolTip(this.components);
             this.pnlVocTran = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
@@ -106,9 +105,9 @@
             // 
             // grdVoucher
             // 
-            this.grdVoucher.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdVoucher.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.grdVoucher.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdVoucher.Location = new System.Drawing.Point(10, 97);
             this.grdVoucher.Name = "grdVoucher";
@@ -160,7 +159,6 @@
             // btn_Month
             // 
             this.btn_Month.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            //this.btn_Month.Image = global::GUI_Task.Properties.Resources.BaBa_Calendar;
             this.btn_Month.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Month.Location = new System.Drawing.Point(586, 40);
             this.btn_Month.Name = "btn_Month";
@@ -196,9 +194,9 @@
             // 
             // mCalendarMain
             // 
-            this.mCalendarMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mCalendarMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.mCalendarMain.Location = new System.Drawing.Point(5, 16);
             this.mCalendarMain.Margin = new System.Windows.Forms.Padding(0);
             this.mCalendarMain.Name = "mCalendarMain";
@@ -237,7 +235,6 @@
             // btn_Delete
             // 
             this.btn_Delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            //this.btn_Delete.Image = global::GUI_Task.Properties.Resources.ico_delete;
             this.btn_Delete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Delete.Location = new System.Drawing.Point(673, 408);
             this.btn_Delete.Name = "btn_Delete";
@@ -251,7 +248,6 @@
             // btn_Clear
             // 
             this.btn_Clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            //this.btn_Clear.Image = global::GUI_Task.Properties.Resources.BaBa_clear;
             this.btn_Clear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Clear.Location = new System.Drawing.Point(587, 408);
             this.btn_Clear.Name = "btn_Clear";
@@ -265,7 +261,6 @@
             // btn_Save
             // 
             this.btn_Save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            //this.btn_Save.Image = global::NizamiTrd.Properties.Resources.saveHS;
             this.btn_Save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Save.Location = new System.Drawing.Point(493, 408);
             this.btn_Save.Name = "btn_Save";
@@ -366,21 +361,8 @@
             this.txtRemarks.TabIndex = 5;
             this.txtRemarks.TextChanged += new System.EventHandler(this.txtRemarks_TextChanged);
             // 
-            // btn_FocusGrid
-            // 
-            this.btn_FocusGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_FocusGrid.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_FocusGrid.Location = new System.Drawing.Point(14, 408);
-            this.btn_FocusGrid.Name = "btn_FocusGrid";
-            this.btn_FocusGrid.Size = new System.Drawing.Size(14, 10);
-            this.btn_FocusGrid.TabIndex = 136;
-            this.btn_FocusGrid.Text = "&g";
-            this.btn_FocusGrid.UseVisualStyleBackColor = true;
-            this.btn_FocusGrid.Click += new System.EventHandler(this.btn_FocusGrid_Click);
-            // 
             // pnlVocTran
             // 
-            //this.pnlVocTran.BackgroundImage = global::GUI_Task.Properties.Resources.d;
             this.pnlVocTran.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlVocTran.Controls.Add(this.label12);
             this.pnlVocTran.Controls.Add(this.lblAcID);
@@ -583,7 +565,7 @@
             this.tSlblStatus.Size = new System.Drawing.Size(42, 17);
             this.tSlblStatus.Text = "Status:";
             this.tSlblStatus.ToolTipText = "Status of this form: Read = Ready to Accept ID, New = ID is new, Modify = Updatin" +
-    "g/Modifying an existing ID\' s data";
+                "g/Modifying an existing ID\' s data";
             // 
             // tStextStatus
             // 
@@ -715,7 +697,6 @@
             this.Controls.Add(this.mMsk_AccountID);
             this.Controls.Add(this.pnlCalander);
             this.Controls.Add(this.pnlVocTran);
-            this.Controls.Add(this.btn_FocusGrid);
             this.Controls.Add(this.lblRemarks);
             this.Controls.Add(this.txtRemarks);
             this.Controls.Add(this.lblTotalCr);
@@ -779,7 +760,6 @@
         private System.Windows.Forms.Label lblTotalCr;
         private System.Windows.Forms.Label lblRemarks;
         private System.Windows.Forms.TextBox txtRemarks;
-        private System.Windows.Forms.Button btn_FocusGrid;
         private System.Windows.Forms.ToolTip tTMDtl;
         private System.Windows.Forms.Panel pnlVocTran;
         private System.Windows.Forms.Label label6;
