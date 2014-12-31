@@ -14,24 +14,25 @@ namespace GUI_Task
 
     enum GColGRNRet
     {
-        ItemID = 0,
+         
+        ItemId = 0,
         ItemCode = 1,
         ItemName = 2,
-        VenderName = 3,
-        SizeName = 4,
-        ColorName = 5,
-        UnitName = 6,
-        GodownName = 7,
-        Stock = 8,
-        GRNQty = 9,
-        RTNQty = 10,
-        NewStock = 11,
-        Rate = 12,
-        Amount = 13,
-        SizeID = 14,
-        ColorID = 15,
-        UOMID = 16,
-        GodownID = 17
+        //VenderName = 3,
+        SizeName = 3,
+        ColorName = 4,
+       // UnitName = 6,
+        GodownName = 5,
+        Stock = 6,
+        Qty = 7,
+        ReturnQty = 8,
+        //NewStock = 9,
+        Rate = 9,
+        Amount = 10,
+        SizeId = 11,
+        ColorId = 12,
+        //UOMId = 16,
+        GodownId = 13
     }
     
     
@@ -91,15 +92,7 @@ namespace GUI_Task
 
         private void LoadInitialControls()
         {
-            // 1 = dGV Grid Control
-            // 2 = Column Total (Total number of Columns for cross verification with other parameters like width, format)
-            // 3 = Column Header
-            // 4 = Column Width to be displayed on Grid
-            // 5 = Column MaxInputLen   // 0 = unlimited, 
-            // 6 = Column Format        // T = Text, N = Numeric, H = Hiden
-            // 7 = Column ReadOnly      // 1 = ReadOnly, 0 = Not ReadOnly
-            // 8 = Grid Color Scheme    // Default = 1
-            // RO 
+           
             grd.Rows.Clear();
             grd.Columns.Clear();
 
@@ -110,7 +103,7 @@ namespace GUI_Task
 
             clsDbManager.SetGridHeaderCmb(
                 grd,
-                18,
+                14,
                 fHDR,
                 fColWidth,
                 fColMaxInputLen,
@@ -130,7 +123,7 @@ namespace GUI_Task
         private void AtFormLoad()
         {
             string lSQL = string.Empty;
-            //SettingGridVariable();
+            SettingGridVariable();
             LoadInitialControls();
             this.KeyPreview = true;
 
@@ -161,18 +154,7 @@ namespace GUI_Task
             ColorColumn.DisplayMember = ds.Tables[0].Columns[1].ToString();
             ds.Clear();
 
-            //UOM Combo Fill
-            lSQL = "select UOMID, UnitName from IMS_UOM order by UnitName";
-
-            clsFillCombo.FillCombo(cbo_I_UOM, clsGVar.ConString1, "IMS_UOM" + "," + "UnitName" + "," + "False", lSQL);
-            fcboDefaultValue = Convert.ToInt16(cbo_I_UOM.SelectedValue);
-
-            ds = clsDbManager.GetData_Set(lSQL, "IMS_UOM");
-            UnitColumn.DataSource = ds.Tables[0];
-            UnitColumn.ValueMember = ds.Tables[0].Columns[0].ToString();
-            UnitColumn.DisplayMember = ds.Tables[0].Columns[1].ToString();
-            ds.Clear();
-
+          
 
 
            
@@ -224,12 +206,12 @@ namespace GUI_Task
         private void LookUp_Voc()
         {
             frmLookUp sForm = new frmLookUp(
-                    "g.GRNId",
-                    "g.TypeId, g.LCId, cd.cgdDesc AS ItemGroupName, gd.Qty ",
-                    " GRN g INNER JOIN CatDtl cd on g.ItemGroupID = cd.cgdCode AND cd.cgCode = 6 INNER JOIN GRNDetail gd on gd.GRNId = g.GRNId ",
+                    "gr.GRNRetId",
+                    "gr.Date, gr.GRNId, cd.cgdDesc AS ItemGroupName, gr.Note ",
+                    "GRNRet gr INNER JOIN CatDtl cd on gr.ItemGroupID = cd.cgdCode AND cd.cgCode = 6 INNER JOIN GRNRetDetail gdr on gdr.GRNRetId = gr.GRNRetId ",
                     this.Text.ToString(),
                     1,
-                    " GRN ID, GateInward No, Date, Item Group, Gate",
+                    " GRNRet ID, Date,GRN ID, Item Group, Note",
                     "8,12,8,12,8",
                     " T, T, T, T, T",
                     true,
@@ -276,15 +258,27 @@ namespace GUI_Task
 
             // Fields 0,1,2,3 are Begin  
 
-            tSQL = "select g.Date, g.GateInward, g.GRNId, cd.cgdDesc AS ItemGroupName, gd.Qty";
-            tSQL += " from GRN f INNER JOIN CatDtl cd on g.ItemGroupID = cd.cgdCode AND cd.cgCode = 6 ";
-            tSQL += " INNER JOIN GRNDetail gd on gd.GRNId = g.GRNId";
+            tSQL = " select gr.GRNRetId,gr.Date, gr.GRNId,t.cgdDesc AS TypeName,gr.Note, ";
+            tSQL+= " cd.cgdDesc AS ItemGroupName, gdr.Qty ";
+           tSQL +=  " from GRNRet gr INNER JOIN CatDtl cd on gr.ItemGroupID = cd.cgdCode AND cd.cgCode = 6 ";
+            tSQL += " INNER JOIN GRNRetDetail gdr on gdr.GRNRetId = gr.GRNRetId INNER JOIN CatDtl t ON gr.TypeId=t.cgdCode AND t.cgCode = 8 ";
+            
             try
             {
-                ds = clsDbManager.GetData_Set(tSQL, "Heads");
+                ds = clsDbManager.GetData_Set(tSQL, "GRNRet");
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     dRow = ds.Tables[0].Rows[0];
+                    dtpGRN.Text = (ds.Tables[0].Rows[0]["Date"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Date"].ToString());
+                    //lblGateInward.Text = (ds.Tables[0].Rows[0]["GateInwordId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateInwordId"].ToString());
+                    //dtpGI.Text = (ds.Tables[0].Rows[0]["GateInwordDate"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateInwordDate"].ToString());
+                    cboType.Text = (ds.Tables[0].Rows[0]["TypeName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["TypeName"].ToString());
+                    //cboLC.Text = (ds.Tables[0].Rows[0]["LCId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["LCId"].ToString());
+                   // cboEmpCode.Text = (ds.Tables[0].Rows[0]["GateInwordId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateInwordId"].ToString());
+                    cboItemGroup.Text = (ds.Tables[0].Rows[0]["ItemGroupName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ItemGroupName"].ToString());
+                    //cboGate.Text = (ds.Tables[0].Rows[0]["GateID"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateID"].ToString());
+                    txtNote.Text = (ds.Tables[0].Rows[0]["Note"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Note"].ToString());
+                    lblGRN.Text = (ds.Tables[0].Rows[0]["GRNId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GRNId"].ToString());
                     if (ds.Tables[0].Rows.Count > 0)
                     {
                         ds.Clear();
@@ -305,14 +299,13 @@ namespace GUI_Task
             string lSQL = "";
 
             lSQL = " SELECT i.ItemId AS Code, i.ItemCode, i.Name AS ItemName, sz.cgdDesc AS SizeName, clr.cgdDesc AS ColorName, ";
-            lSQL += " u.UnitName, grt.cgdDesc AS GodownName, 0 AS Stock, grt.GRNQty,grt.RTNQty, dd.SizeId, dd.ColorId, u.UOMID, dd.GodownId ";
-            lSQL += " FROM GRNDetail grt ";
-            lSQL += " INNER JOIN Item i on i.ItemId = grt.ItemId ";
-            lSQL += " INNER JOIN CatDtl sz on grt.SizeId = sz.cgdCode AND sz.cgCode = 5 ";
-            lSQL += " INNER JOIN CatDtl clr on grt.ColorId = clr.cgdCode AND clr.cgCode = 3 ";
-            lSQL += " INNER JOIN IMS_UOM u on u.UOMID = u.UOMID ";
-            lSQL += " INNER JOIN CatDtl gdw on grt.GodownId = gdw.cgdCode AND gdw.cgCode = 2 ";
-            lSQL += " where grt.GRNId ='" + txtGR.Text.ToString() + "'; ";
+            lSQL += " gdw.cgdDesc AS GodownName, 0 AS Stock, gdr.Qty,gdr.ReturnQty, gdr.Rate, ((ISNULL(gdr.Qty,0))*(ISNULL(gdr.Rate,0))) AS Amount, gdr.SizeId, gdr.ColorId, gdr.GodownId ";
+            lSQL += " FROM GRNRetDetail gdr ";
+            lSQL += " INNER JOIN Item i on i.ItemId = gdr.ItemId ";
+            lSQL += " INNER JOIN CatDtl sz on gdr.SizeId = sz.cgdCode AND sz.cgCode = 5 ";
+            lSQL += " INNER JOIN CatDtl clr on gdr.ColorId = clr.cgdCode AND clr.cgCode = 3 ";
+            lSQL += " INNER JOIN CatDtl gdw on gdr.GodownId = gdw.cgdCode AND gdw.cgCode = 2 ";
+            lSQL += " where gdr.GRNRetId ='" + txtGR.Text.ToString() + "'; ";
 
             clsDbManager.FillDataGrid(
                 grd,
@@ -339,181 +332,181 @@ namespace GUI_Task
             lFieldList = "Code";                    //  0-    ItemID";       
             lFieldList += ",ItemCode";              //  1-    ItemCode";     
             lFieldList += ",ItemName";              //  2-    ItemName";
-            lFieldList += ",Desription";                   //  8-    Vender Name
+            //lFieldList += ",Desription";                   //  8-    Vender Name
             lFieldList += ",SizeName";              //  3-    SizeName";       
             lFieldList += ",ColorName";             //  4-    ColorName";      
-            lFieldList += ",UnitName";              //  5-    UOMName";
+            //lFieldList += ",UnitName";              //  5-    UOMName";
             lFieldList += ",GodownName";            //  6- GodownName
             lFieldList += ",Stock";                 //  7- Stock
-            lFieldList += ",GRnQty";                   //  8- Qty
-            lFieldList += ",RTNQty";                   //  8- Qty
-            lFieldList += ",New Stock";                   //  8- Qty
+            lFieldList += ",Qty";                   //  8- Qty
+            lFieldList += ",RetrunQty";                   //  8- Qty
+          //  lFieldList += ",New Stock";                   //  8- Qty
             lFieldList += ",Rate";                   //  8- Qty
             lFieldList += ",Amount";                   //  8- Qty
-
             lFieldList += ",SizeID";                //  9    SizeID";     
             lFieldList += ",ColorID";               //  10    ColorID";     
-            lFieldList += ",UOMID";                 //  11    UOMID"; 
+            //lFieldList += ",UOMID";                 //  11    UOMID"; 
             lFieldList += ",GodownId";              //  12- GodownID
 
 
             lHDR += "Item ID";            //  0-    ItemID";       
             lHDR += ",Item Code";         //  1-    ItemCode";     
             lHDR += ",Item Name";         //  2-    ItemName";
-            lHDR += ",Description";         //  2-    ItemName";
+            //lHDR += ",Description";         //  2-    ItemName";
             lHDR += ",Size";       //  3-    SizeName";      
             lHDR += ",Color";              //  4-    ColorName";     
-            lHDR += ",UOM Name";             //  5-    UOMName";
+            //lHDR += ",UOM Name";             //  5-    UOMName";
             lHDR += ",Godown";          //  6- GodownName
             lHDR += ",Stock";            //  7- Stock
-            lHDR += ",GRNQty";               //  8- Qty
-            lHDR += ",RTNQty";               //  8- Qty
-            lHDR += ",New Stock";               //  8- Qty
+            lHDR += ",Qty";               //  8- Qty
+            lHDR += ",RetrunQty";               //  8- Qty
+            //lHDR += ",New Stock";               //  8- Qty
             lHDR += ",Rate";               //  8- Qty
             lHDR += ",Amount";               //  8- Qty
             lHDR += ",SizeID";            //  9    SizeID";     
             lHDR += ",ColorID";           //  10    ColorID";     
-            lHDR += ",UOMID";             //  11    UOMID"; 
+            //lHDR += ",UOMID";             //  11    UOMID"; 
             lHDR += ",GodownId";          //  12- GodownID
 
             // Col Visible Width
             lColWidth = "   5";                 //  0-    ItemID";       
             lColWidth += ",12";                 //  1-    ItemCode";     
             lColWidth += ",20";                 //  2-    ItemName";
-            lColWidth += ",20";                 //  2-    VenderName";
+            //lColWidth += ",20";                 //  2-    VenderName";
             lColWidth += ",10";                 //  3-    SizeName";      
             lColWidth += ", 7";                 //  4-    ColorName";     
-            lColWidth += ", 7";                 //  5-    UOMName";
+            //lColWidth += ", 7";                 //  5-    UOMName";
             lColWidth += ", 7";                 //  6- GodownName
             lColWidth += ", 7";                 //  7- Stock
             lColWidth += ", 20";                 //  8- Qty
             lColWidth += ", 20";                 //  8- Qty
-            lColWidth += ", 5";                 //  8- New Stock
+            //lColWidth += ", 5";                 //  8- New Stock
             lColWidth += ", 5";                 //  8- Rate
             lColWidth += ", 5";                 //  8- Amount
             lColWidth += ", 5";                 //  9    SizeID";     
             lColWidth += ", 5";                 //  10    ColorID";     
-            lColWidth += ", 5";                 //  11    UOMID"; 
+            //lColWidth += ", 5";                 //  11    UOMID"; 
             lColWidth += ", 5";                 //  12- GodownID
 
             // Column Input Length/Width
             lColMaxInputLen = "  0";                 //  0-    ItemID";       
             lColMaxInputLen += ", 0";                //  1-    ItemCode";     
             lColMaxInputLen += ", 0";                //  2-    ItemName";
-            lColMaxInputLen += ", 0";                //  2-    VenderName";
+           // lColMaxInputLen += ", 0";                //  2-    VenderName";
             lColMaxInputLen += ", 0";                //  3-    SizeName";      
             lColMaxInputLen += ", 0";                //  4-    ColorName";     
-            lColMaxInputLen += ", 0";                //  5-    UOMName";
+            //lColMaxInputLen += ", 0";                //  5-    UOMName";
             lColMaxInputLen += ", 0";                //  6- GodownName
             lColMaxInputLen += ", 0";                //  7- Stock
             lColMaxInputLen += ", 0";                //  8- Qty
             lColMaxInputLen += ", 0";                //  8- Qty
-            lColMaxInputLen += ", 0";                //  2-    NewStock";
+            //lColMaxInputLen += ", 0";                //  2-    NewStock";
             lColMaxInputLen += ", 0";                //  2-    Rate";
             lColMaxInputLen += ", 0";                //  2-    Amount";
             lColMaxInputLen += ", 0";                //  9    SizeID";     
             lColMaxInputLen += ", 0";                //  10    ColorID";     
-            lColMaxInputLen += ", 0";                //  11    UOMID"; 
+            //lColMaxInputLen += ", 0";                //  11    UOMID"; 
             lColMaxInputLen += ", 0";                //  12- GodownID
 
             // Column Min Width
             lColMinWidth = "   0";                      //  0-    ItemID";           
             lColMinWidth += ", 0";                      //  1-    ItemCode";         
             lColMinWidth += ", 0";                      //  2-    ItemName";
-            lColMinWidth += ", 0";                      //  2-    VenderName";
+            //lColMinWidth += ", 0";                      //  2-    VenderName";
             lColMinWidth += ", 0";                      //  3-    SizeName";      
             lColMinWidth += ", 0";                      //  4-    ColorName";         
-            lColMinWidth += ", 0";                      //  5-    UOMName";    
+            //lColMinWidth += ", 0";                      //  5-    UOMName";    
             lColMinWidth += ", 0";                      //  6- GodownName
             lColMinWidth += ", 0";                      //  7- Stock
             lColMinWidth += ", 0";                      //  8- Qty
             lColMinWidth += ", 0";                      //  8- Qty
-            lColMinWidth += ", 0";                      //  2-    New Stock";
+            //lColMinWidth += ", 0";                      //  2-    New Stock";
             lColMinWidth += ", 0";                      //  2-    Rate";
             lColMinWidth += ", 0";                      //  2-    Amount";
             lColMinWidth += ", 0";                      //  9    SizeID";       
             lColMinWidth += ", 0";                      //  10    ColorID";        
-            lColMinWidth += ", 0";                      //  11    UOMID"; 
+            //lColMinWidth += ", 0";                      //  11    UOMID"; 
             lColMinWidth += ", 0";                      //  12- GodownID
 
             // Column Format
             lColFormat = "   T";                       //  0-    ItemID";            
             lColFormat += ", T";                       //  1-    ItemCode";         
             lColFormat += ", T";                       //  2-    ItemName";
-            lColFormat += ", T";                       //  2-    VenderName";
+            //lColFormat += ", T";                       //  2-    VenderName";
             lColFormat += ", T";                       //  3-    SizeName";      
             lColFormat += ", T";                       //  4-    ColorName";         
-            lColFormat += ", T";                       //  5-    UOMName";    
+            //lColFormat += ", T";                       //  5-    UOMName";    
             lColFormat += ", T";                       //  6- GodownName
             lColFormat += ", T";                       //  7- Stock
             lColFormat += ", T";                       //  8- Qty
             lColFormat += ", T";                       //  8- Qty
-            lColFormat += ", T";                       //  2-    New Stock";
+            //lColFormat += ", T";                       //  2-    New Stock";
             lColFormat += ", T";                       //  2-    Rate";
             lColFormat += ", T";                       //  2-    Amount";
 
             lColFormat += ", H";                       //  9    SizeID";       
             lColFormat += ", H";                       //  10    ColorID";        
-            lColFormat += ", H";                       //  11    UOMID"; 
+            //lColFormat += ", H";                       //  11    UOMID"; 
             lColFormat += ", H";                       //  12- GodownID
 
             // Column ReadOnly 1= readonly, 0 = read-write
             lColReadOnly = "  0";                      //  0-    ItemID";       
             lColReadOnly += ",1";                      //  1-    ItemCode";     
             lColReadOnly += ",1";                      //  2-    ItemName";
-            lColReadOnly += ",0";                      //  2-    VenderName";
+            //lColReadOnly += ",0";                      //  2-    VenderName";
             lColReadOnly += ",0";                      //  3-    SizeName";      
             lColReadOnly += ",0";                      //  4-    ColorName";     
-            lColReadOnly += ",0";                      //  5-    UOMName";
+            //lColReadOnly += ",0";                      //  5-    UOMName";
             lColReadOnly += ",0";                      //  6- GodownName
             lColReadOnly += ",0";                      //  7- Stock
             lColReadOnly += ",0";                      //  8- Qty
             lColReadOnly += ",0";                      //  8- Qty
-            lColReadOnly += ",0";                      //  2-    New Stock";
+            //lColReadOnly += ",0";                      //  2-    New Stock";
             lColReadOnly += ",0";                      //  2-    Rate";
             lColReadOnly += ",0";                      //  2-    Amount";
             lColReadOnly += ",1";                      //  9    SizeID";     
             lColReadOnly += ",1";                      //  10    ColorID";     
-            lColReadOnly += ",1";                      //  11    UOMID"; 
+            //lColReadOnly += ",1";                      //  11    UOMID"; 
             lColReadOnly += ",1";                      //  12- GodownID
 
             // For Saving Time
             tColType += "  N0";             //  0-    ItemID";       
             tColType += ",SKP";             //  1-    ItemCode";     
             tColType += ",SKP";             //  2-    ItemName";
-            tColType += ",SKP";             //  2-    ItemName";
+            //tColType += ",SKP";             //  2-    ItemName";
             tColType += ",SKP";              //  3-    SizeName";      
             tColType += ",SKP";             //  4-    ColorName";     
-            tColType += ",SKP";             //  5-    UOMName";
+            //tColType += ",SKP";             //  5-    UOMName";
             tColType += ",SKP";             //  6- GodownName
             tColType += ", N0";             //  7- Stock
             tColType += ", N0";             //  8- Qty
             tColType += ", N0";             //  8- Qty
-            tColType += ",N0";             //  2-    NewStock";
+            //tColType += ",N0";             //  2-    NewStock";
             tColType += ",N0";             //  2-    Rate";
             tColType += ",N0";             //  2-    Amount";
             tColType += ", N0";             //  9    SizeID";     
             tColType += ", N0";             //  10    ColorID";     
-            tColType += ", N0";             //  11    UOMID"; 
+            //tColType += ", N0";             //  11    UOMID"; 
             tColType += ", N0";             //  12- GodownID
 
             tFieldName += "Code";               //  0-    ItemID";        
             tFieldName += ",ItemCode";          //  1-    ItemCode";        
             tFieldName += ",ItemName";          //  2-    ItemName";
-            tFieldName += ",VDescription";          //  2-    ItemName";
+            //tFieldName += ",VDescription";          //  2-    ItemName";
             tFieldName += ",SizeName";       //  3-    SizeName";      
             tFieldName += ",ColorName";          //  4-    ColorName";          
-            tFieldName += ",UnitName";         //  5-    UOMName";     
+            //tFieldName += ",UnitName";         //  5-    UOMName";     
             tFieldName += ",GodownName";          //  6- GodownName
             tFieldName += ",Stock";        //  7- Stock
-            tFieldName += ",GRNQty";               //  8- Qty
-            tFieldName += ",RTNQty";               //  8- Qty
-            tFieldName += ",NewStock";          //  2-    New Stock";
+        
+            tFieldName += ",Qty";               //  8- Qty
+            tFieldName += ",RetrunQty";               //  8- Qty
+            //tFieldName += ",NewStock";          //  2-    New Stock";
             tFieldName += ",Rate";          //  2-    Rate";
             tFieldName += ",Amount";          //  2-    Amount";
             tFieldName += ",SizeID";            //  9    SizeID";     
             tFieldName += ",ColorID";           //  10    ColorID";      
-            tFieldName += ",UOMID";             //  11    UOMID"; 
+            //tFieldName += ",UOMID";             //  11    UOMID"; 
             tFieldName += ",GodownID";          //  12- GodownID
 
             fHDR = lHDR;
@@ -679,16 +672,16 @@ namespace GUI_Task
                 if (txtGR.Text.ToString().Trim(' ', '-') == "")
                 {
                     fDocAlreadyExists = false;
-                    fDocID = clsDbManager.GetNextValDocID("GRNRet", "GRNREtId", fDocWhere, "");
+                    fDocID = clsDbManager.GetNextValDocID("GRNRet", "GRNRetId", fDocWhere, "");
 
                     lSQL = "insert into GRNRet (";
                     lSQL += "  GRNRetId ";                              //  0-    ItemID";   
                     lSQL += ", Date ";
-                    lSQL += "  GRNId ";   //  1-    ItemCod  
+                    lSQL += " , GRNId ";   //  1-    ItemCod  
                     lSQL += ", GRNDate ";
-                    lSQL += "  VendorId ";
-                    lSQL += "  PurchaserId ";
-                    lSQL += "  TypeId ";
+                    lSQL += " , VendorId ";
+                    lSQL += " , PurchaserId ";
+                    lSQL += " , TypeId ";
                     //lSQL += "  LCId ";
                     lSQL += ", ItemGroupID ";                                        //  2-    ItemNam 
                    // lSQL += ", GateID ";                                      // 3- Descripti
@@ -741,9 +734,9 @@ namespace GUI_Task
 
                     lSQL = "update GRNRet set";
                     lSQL += "  Date = '" + StrF01.D2Str(dtpGRNRet.Value) + "'";
-                    lSQL += "  GRNDate = '" + StrF01.D2Str(dtpGRN.Value) + "'";
-                    //lSQL += ", Vendorid = " + mskVenderCode.SelectedValue.ToString() + "";
-                    //lSQL += ", Purchaserid = " + mskPurchaseCode.SelectedValue.ToString() + "";
+                    lSQL += " , GRNDate = '" + StrF01.D2Str(dtpGRN.Value) + "'";
+                    lSQL += ", Vendorid = '" + mskVenderCode.Text.ToString() + "'";
+                    lSQL += ", Purchaserid = '" + mskPurchaseCode.Text.ToString() + "'";
                     lSQL += ", Typeid = " + cboType.SelectedValue.ToString() + "";
                     //lSQL += ", LCid = " + cboLC.SelectedValue.ToString() + "";
                     lSQL += ", ItemGroupID = " + cboItemGroup.SelectedValue.ToString() + "";
@@ -803,15 +796,16 @@ namespace GUI_Task
                     }
 
                     lSQL = "INSERT INTO GRNRetDetail (GRNRetId";
-                    lSQL += ",ItemId,SizeId,ColorID,GodownId,GRNQty,RTNQty,Rate,Amount)";
+                    lSQL += ",ItemId,SizeId,ColorId,GodownId,Qty,RetrunQty,Rate,Amount)";
                     lSQL += " VALUES (";
                     lSQL += "'" + txtGR.Text.ToString() + "'";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.ItemID].Value.ToString() + "";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.SizeID].Value.ToString() + "";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.ColorID].Value.ToString() + "";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.GodownID].Value.ToString() + "";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.GRNQty].Value.ToString() + "";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.RTNQty].Value.ToString() + "";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.ItemId].Value.ToString() + "";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.SizeId].Value.ToString() + "";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.ColorId].Value.ToString() + "";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.GodownId].Value.ToString() + "";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.Qty].Value.ToString() + "";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.ReturnQty].Value.ToString() + "";
+                    //lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.NewStock].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.Rate].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.Amount].Value.ToString() + "";
                     lSQL += ")";
@@ -860,12 +854,13 @@ namespace GUI_Task
         {
             //SELECT Code, Name FROM Heads WHERE TYPE = 'A'
             frmLookUp sForm = new frmLookUp(
-                    "Code",
-                    "Name",
-                    "Vendor",
+                    "h.Code",
+                    "v.Name",
+                    "Vendor v inner join Heads h on v.Code=Right(h.Code,7) ",
+
                     this.Text.ToString(),
                     1,
-                    "Code,Name",
+                    " Code, Name",
                     "16,40",
                     " T, T",
                     true,
@@ -915,8 +910,8 @@ namespace GUI_Task
             mskVenderCode.Mask = "";
             mskVenderCode.Text = ((TextBox)sender).Text;
             mskVenderCode.Mask = clsGVar.maskGLCode;
-            //mskCustomerCode.Text = ((MaskedTextBox)sender).Text;
-            //mskCustomerCode.Mask = clsGVar.maskGLCode;
+            //mskPurchaseCode.Text = ((MaskedTextBox)sender).Text;
+            //mskPurchaseCode.Mask = clsGVar.maskGLCode;
 
         }
 
@@ -930,19 +925,18 @@ namespace GUI_Task
             // Fields 0,1,2,3 are Begin  
 
             tSQL = "SELECT Name ";
-            tSQL += " from Vendor ";
+            tSQL += " from Heads ";
             tSQL += " where Code ='" + mskVenderCode.Text.ToString() + "';";
 
             try
             {
-                ds = clsDbManager.GetData_Set(tSQL, "Vendor");
+                ds = clsDbManager.GetData_Set(tSQL, "Heads");
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     //fAlreadyExists = true;
                     dRow = ds.Tables[0].Rows[0];
                     // Starting title as 0
                     lblNameUp.Text = (ds.Tables[0].Rows[0]["Name"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Name"].ToString());
-                    
                     if (ds.Tables[0].Rows.Count > 0)
                     {
                         ds.Clear();
@@ -984,10 +978,10 @@ namespace GUI_Task
             frmLookUp sForm = new frmLookUp(
                     "Code",
                     "Name",
-                    "Customer",
+                    "Heads",
                     this.Text.ToString(),
                     1,
-                    " Code, Name",
+                    "Account Code, Account Name",
                     "16,40",
                     " T, T",
                     true,
@@ -1017,18 +1011,10 @@ namespace GUI_Task
                         //SumVoc();
                     }
 
-                    //txtOrderNo.Text = txtPassDataVocID.Text.ToString();
-                    //grdVoucher[pCol, pRow].Value = tmtext.Text.ToString();
-                    //System.Windows.Forms.SendKeys.Send("{TAB}");
+
                 }
 
-                //if (msk_AccountID.Text.ToString() == "" || msk_AccountID.Text.ToString() == string.Empty)
-                //{
-                //    return;
-                //}
-                //msk_AccountID.Text = sForm.lupassControl.ToString();
-                ////grdVoucher[pCol, pRow].Value = msk_AccountID.Text.ToString();
-                //System.Windows.Forms.SendKeys.Send("{TAB}");
+
             }
         }
 
@@ -1037,8 +1023,6 @@ namespace GUI_Task
             mskPurchaseCode.Mask = "";
             mskPurchaseCode.Text = ((TextBox)sender).Text;
             mskPurchaseCode.Mask = clsGVar.maskGLCode;
-            //mskCustomerCode.Text = ((MaskedTextBox)sender).Text;
-            //mskCustomerCode.Mask = clsGVar.maskGLCode;
 
         }
 
@@ -1052,12 +1036,12 @@ namespace GUI_Task
             // Fields 0,1,2,3 are Begin  
 
             tSQL = "SELECT Name ";
-            tSQL += " from Customer ";
+            tSQL += " from Heads ";
             tSQL += " where Code ='" + mskPurchaseCode.Text.ToString() + "';";
 
             try
             {
-                ds = clsDbManager.GetData_Set(tSQL, "Customer");
+                ds = clsDbManager.GetData_Set(tSQL, "Heads");
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     //fAlreadyExists = true;
@@ -1087,24 +1071,27 @@ namespace GUI_Task
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            double l_Amount = 0;
+            //string FormatTwoDecimal = "N";
+            l_Amount = Convert.ToDouble(txtGRN.Text.ToString()) * Convert.ToDouble(txtRate.Text.ToString());
             grd.Rows.Add(txt_I_ItemID.Text.ToString(),
                lbl_I_ItemCode.Text.ToString(),
                lbl_I_ItemName.Text.ToString(),
-               txtDescription.Text.ToString(),
+              // txtDescription.Text.ToString(),
                cbo_I_Size.Text.ToString(),
                cbo_I_Color.Text.ToString(),
-               cbo_I_UOM.Text.ToString(),
+               //cbo_I_UOM.Text.ToString(),
                cboGodown.Text.ToString(),
                txtStock.Text.ToString(),
                txtGRN.Text.ToString(),
                txtRTN.Text.ToString(),
-               txtNewStock.Text.ToString(),
+            //   txtNewStock.Text.ToString(),
                txtRate.Text.ToString(),
-               txtAmount.Text.ToString(),
+            l_Amount.ToString(),
                 cbo_I_Size.SelectedValue.ToString(),
                cbo_I_Color.SelectedValue.ToString(),
-               cbo_I_UOM.SelectedValue.ToString());
-            cboGodown.SelectedValue.ToString();
+               //cbo_I_UOM.SelectedValue.ToString());
+            cboGodown.SelectedValue.ToString());
 
            // SumVoc();
         }
@@ -1123,6 +1110,38 @@ namespace GUI_Task
         {
             LookUp_Voc();
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            SaveData();
+            MessageBox.Show("Data Saved Successfullly");
+        }
+
+        private void SumVoc()
+        {
+            bool bcheck;
+            decimal fQty = 0;
+            decimal fAmount = 0;
+            decimal rtnVal = 0;
+            decimal outValue = 0;
+
+            for (int i = 0; i < grd.RowCount; i++)
+            {
+                if (grd.Rows[i].Cells[(int)GColFD.Qty].Value != null)
+                {
+                    bcheck = decimal.TryParse(grd.Rows[i].Cells[(int)GColGIn.Qty].Value.ToString(), out outValue);
+                    if (bcheck)
+                    {
+                        rtnVal += outValue;
+                        fAmount = fAmount + outValue;
+                    }
+                }
+            }
+
+         //   lblTotal.Text = String.Format("{0:0,0.00}", fAmount);
+        }
+
+
 
             
 
