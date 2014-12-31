@@ -262,8 +262,8 @@
             this.goodsRecieveNoteReturnToolStripMenuItem,
             this.issueReturnItemsToolStripMenuItem});
             this.securityToolStripMenuItem.Name = "securityToolStripMenuItem";
-            this.securityToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
-            this.securityToolStripMenuItem.Text = "Factory Trans";
+            this.securityToolStripMenuItem.Size = new System.Drawing.Size(128, 20);
+            this.securityToolStripMenuItem.Text = "Factory Transactions";
             // 
             // demandNoteToolStripMenuItem
             // 
