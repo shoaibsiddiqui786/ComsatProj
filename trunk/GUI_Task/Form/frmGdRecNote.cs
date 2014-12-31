@@ -13,25 +13,25 @@ namespace GUI_Task
 {
     enum GColGRN
     {
-        ItemId = 0,
+        ItemID = 0,
         ItemCode = 1,
         ItemName = 2,
-        //VenderName = 3,
-        SizeName = 3,
-        ColorName = 4,
-        //UnitName = 6,
-        GodownName = 5,
-        Stock = 6,
-        Qty = 7,
-        NewStock = 8,
-        Rate = 9,
-        Amount = 10,
-        SizeId =11,
-        ColorId = 12,
-        //UOMID = 15,
-        GodownId = 13
+        VenderName = 3,
+        SizeName = 4,
+        ColorName = 5,
+        UnitName = 6,
+        GodownName = 7,
+        Stock = 8,
+        Qty = 9,
+        NewStock = 10,
+        Rate = 11,
+        Amount = 12,
+        SizeID =13,
+        ColorID = 14,
+        UOMID = 15,
+        GodownID = 16
     }
-    public partial class frmGRN : Form
+    public partial class frmGdRecNote : Form
     {
         //******* Grid Variable Setting -- Begin ******
         string fHDR = string.Empty;                       // Column Header
@@ -75,7 +75,7 @@ namespace GUI_Task
 
         bool blnFormLoad = true;
         int fcboDefaultValue = 0;
-        public frmGRN()
+        public frmGdRecNote()
         {
             InitializeComponent();
         }
@@ -106,7 +106,7 @@ namespace GUI_Task
 
             clsDbManager.SetGridHeaderCmb(
                 grd,
-                14,
+                17,
                 fHDR,
                 fColWidth,
                 fColMaxInputLen,
@@ -157,17 +157,17 @@ namespace GUI_Task
             ColorColumn.DisplayMember = ds.Tables[0].Columns[1].ToString();
             ds.Clear();
 
-            ////UOM Combo Fill
-            //lSQL = "select UOMID, UnitName from IMS_UOM order by UnitName";
+            //UOM Combo Fill
+            lSQL = "select UOMID, UnitName from IMS_UOM order by UnitName";
 
-            //clsFillCombo.FillCombo(cbo_I_UOM, clsGVar.ConString1, "IMS_UOM" + "," + "UnitName" + "," + "False", lSQL);
-            //fcboDefaultValue = Convert.ToInt16(cbo_I_UOM.SelectedValue);
+            clsFillCombo.FillCombo(cbo_I_UOM, clsGVar.ConString1, "IMS_UOM" + "," + "UnitName" + "," + "False", lSQL);
+            fcboDefaultValue = Convert.ToInt16(cbo_I_UOM.SelectedValue);
 
-            //ds = clsDbManager.GetData_Set(lSQL, "IMS_UOM");
-            //UnitColumn.DataSource = ds.Tables[0];
-            //UnitColumn.ValueMember = ds.Tables[0].Columns[0].ToString();
-            //UnitColumn.DisplayMember = ds.Tables[0].Columns[1].ToString();
-            //ds.Clear();
+            ds = clsDbManager.GetData_Set(lSQL, "IMS_UOM");
+            UnitColumn.DataSource = ds.Tables[0];
+            UnitColumn.ValueMember = ds.Tables[0].Columns[0].ToString();
+            UnitColumn.DisplayMember = ds.Tables[0].Columns[1].ToString();
+            ds.Clear();
 
 
            
@@ -200,16 +200,14 @@ namespace GUI_Task
             clsFillCombo.FillCombo(cboItemGroup, clsGVar.ConString1, "CatDtl" + "," + "cgdCode" + "," + "False", lSQL);
             fcboDefaultValue = Convert.ToInt16(cboItemGroup.SelectedValue);
 
-            //Color Combo Fill
+            //Godown cOMBO
             lSQL = "select cgdCode, cgdDesc from catdtl where cgcode=" + Convert.ToString((int)Category.enmGodown);
             lSQL += " order by cgdDesc";
 
-            clsFillCombo.FillCombo(cboGodowns, clsGVar.ConString1, "CatDtl" + "," + "cgdCode" + "," + "False", lSQL);
-            fcboDefaultValue = Convert.ToInt16(cboGodowns.SelectedValue);
-            clsFillCombo.FillCombo(cboGodownn, clsGVar.ConString1, "CatDtl" + "," + "cgdCode" + "," + "False", lSQL);
-            fcboDefaultValue = Convert.ToInt16(cboGodownn.SelectedValue);
+            clsFillCombo.FillCombo(cboGodown, clsGVar.ConString1, "CatDtl" + "," + "cgdCode" + "," + "False", lSQL);
+            fcboDefaultValue = Convert.ToInt16(cboGodown.SelectedValue);
 
-            ds = clsDbManager.GetData_Set(lSQL, "CatDtl");
+            ds = clsDbManager.GetData_Set(lSQL, "IMS_UOM");
             GodownColumn.DataSource = ds.Tables[0];
             GodownColumn.ValueMember = ds.Tables[0].Columns[0].ToString();
             GodownColumn.DisplayMember = ds.Tables[0].Columns[1].ToString();
@@ -275,30 +273,15 @@ namespace GUI_Task
 
             // Fields 0,1,2,3 are Begin  
             
-            
-tSQL = " select g.GRNId,g.Date, g.GateInwordId,t.cgdDesc AS TypeName,l.cgdDesc AS LCName,gt.cgdDesc AS GateName,g.Note, ";
-tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
-           tSQL +=  " from GRN g INNER JOIN CatDtl cd on g.ItemGroupID = cd.cgdCode AND cd.cgCode = 6 ";
-            tSQL += " INNER JOIN GRNDetail gd on gd.GRNId = g.GRNId INNER JOIN CatDtl t ON g.TypeId=t.cgdCode AND t.cgCode = 8 ";
-            tSQL += " INNER JOIN CatDtl l ON g.LCId=l.cgdCode AND l.cgCode = 9 INNER JOIN CatDtl gt ON g.GateID=gt.cgdCode AND gt.cgCode = 20 ";
-            
+            tSQL = "select g.Date, g.GateInward, g.GRNId, cd.cgdDesc AS ItemGroupName, gd.Qty";
+            tSQL += " from GRN f INNER JOIN CatDtl cd on g.ItemGroupID = cd.cgdCode AND cd.cgCode = 6 ";
+            tSQL += " INNER JOIN GRNDetail gd on gd.GRNId = g.GRNId";
             try
             {
-                ds = clsDbManager.GetData_Set(tSQL, "GRN");
+                ds = clsDbManager.GetData_Set(tSQL, "Heads");
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     dRow = ds.Tables[0].Rows[0];
-                    dtpGRN.Text = (ds.Tables[0].Rows[0]["Date"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Date"].ToString());
-                    lblGateInward.Text = (ds.Tables[0].Rows[0]["GateInwordId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateInwordId"].ToString());
-                     //dtpGI.Text = (ds.Tables[0].Rows[0]["GateInwordDate"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateInwordDate"].ToString());
-                    cboType.Text = (ds.Tables[0].Rows[0]["TypeName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["TypeName"].ToString());
-                    cboLC.Text = (ds.Tables[0].Rows[0]["LCName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["LCName"].ToString());
-                    cboGodowns.Text = (ds.Tables[0].Rows[0]["GateInwordId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateInwordId"].ToString());
-                    cboItemGroup.Text = (ds.Tables[0].Rows[0]["ItemGroupName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ItemGroupName"].ToString());
-                    cboGate.Text = (ds.Tables[0].Rows[0]["GateName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateName"].ToString());
-                    txtNote.Text = (ds.Tables[0].Rows[0]["Note"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Note"].ToString());
-                   
-
                     if (ds.Tables[0].Rows.Count > 0)
                     {
                         ds.Clear();
@@ -317,16 +300,15 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
         private void LoadGridData()
         {
             string lSQL = "";
-
-            lSQL = " SELECT i.ItemId AS Code, i.ItemCode, ";
- lSQL +=" i.Name AS ItemName, sz.cgdDesc AS SizeName, clr.cgdDesc AS ColorName,  ";
- lSQL += " gdw.cgdDesc AS GodownName, 0 AS Stock, gd.Qty, gd.Rate, ((ISNULL(gd.Qty,0))*(ISNULL(gd.Rate,0))) AS Amount,  ";
- lSQL += " gd.Qty AS [New Stock], gd.SizeId, gd.ColorId, gd.GodownId  ";
- lSQL += " FROM GRNDetail gd  ";
- lSQL += " INNER JOIN Item i on i.ItemId = gd.ItemId INNER JOIN CatDtl sz on gd.SizeId = sz.cgdCode AND sz.cgCode = 5  ";
- lSQL += " INNER JOIN CatDtl clr on gd.ColorId = clr.cgdCode AND clr.cgCode = 3   ";
- lSQL += " INNER JOIN CatDtl gdw on gd.GodownId = gdw.cgdCode AND gdw.cgCode = 2 "; 
-          
+           
+          lSQL =  " SELECT i.ItemId AS Code, i.ItemCode, i.Name AS ItemName, sz.cgdDesc AS SizeName, clr.cgdDesc AS ColorName, ";
+          lSQL += " u.UnitName, gd.cgdDesc AS GodownName, 0 AS Stock, gd.Qty, dd.SizeId, dd.ColorId, u.UOMID, dd.GodownId ";
+          lSQL += " FROM GRNDetail gd ";
+          lSQL += " INNER JOIN Item i on i.ItemId = gd.ItemId ";
+          lSQL += " INNER JOIN CatDtl sz on gd.SizeId = sz.cgdCode AND sz.cgCode = 5 ";
+          lSQL += " INNER JOIN CatDtl clr on gd.ColorId = clr.cgdCode AND clr.cgCode = 3 ";
+          lSQL += " INNER JOIN IMS_UOM u on u.UOMID = u.UOMID ";
+          lSQL += " INNER JOIN CatDtl gdw on gd.GodownId = gdw.cgdCode AND gdw.cgCode = 2 ";
           lSQL += " where gd.GRNId ='" + txtGRN.Text.ToString() + "'; ";
 
             clsDbManager.FillDataGrid(
@@ -354,49 +336,49 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
             lFieldList = "Code";                    //  0-    ItemID";       
             lFieldList += ",ItemCode";              //  1-    ItemCode";     
             lFieldList += ",ItemName";              //  2-    ItemName";
-            //lFieldList += ",VenderName";                   //  8-    Vender Name
+            lFieldList += ",VenderName";                   //  8-    Vender Name
             lFieldList += ",SizeName";              //  3-    SizeName";       
             lFieldList += ",ColorName";             //  4-    ColorName";      
-           // lFieldList += ",UnitName";              //  5-    UOMName";
+            lFieldList += ",UnitName";              //  5-    UOMName";
             lFieldList += ",GodownName";            //  6- GodownName
             lFieldList += ",Stock";                 //  7- Stock
             lFieldList += ",Qty";                   //  8- Qty
+            lFieldList += ",New Stock";                   //  8- Qty
             lFieldList += ",Rate";                   //  8- Qty
             lFieldList += ",Amount";                   //  8- Qty
-            lFieldList += ",New Stock";                   //  8- Qty
+          
             lFieldList += ",SizeID";                //  9    SizeID";     
             lFieldList += ",ColorID";               //  10    ColorID";     
-            //lFieldList += ",UOMID";                 //  11    UOMID"; 
+            lFieldList += ",UOMID";                 //  11    UOMID"; 
             lFieldList += ",GodownId";              //  12- GodownID
 
 
             lHDR += "Item ID";            //  0-    ItemID";       
             lHDR += ",Item Code";         //  1-    ItemCode";     
             lHDR += ",Item Name";         //  2-    ItemName";
-            //lHDR += ",Vender Name";         //  2-    ItemName";
+            lHDR += ",Vender Name";         //  2-    ItemName";
             lHDR += ",Size";       //  3-    SizeName";      
             lHDR += ",Color";              //  4-    ColorName";     
-            //lHDR += ",UOM Name";             //  5-    UOMName";
+            lHDR += ",UOM Name";             //  5-    UOMName";
             lHDR += ",Godown";          //  6- GodownName
             lHDR += ",Stock";            //  7- Stock
             lHDR += ",Qty";               //  8- Qty
-           
+            lHDR += ",New Stock";               //  8- Qty
             lHDR += ",Rate";               //  8- Qty
             lHDR += ",Amount";               //  8- Qty
-            lHDR += ",New Stock";               //  8- Qty
             lHDR += ",SizeID";            //  9    SizeID";     
             lHDR += ",ColorID";           //  10    ColorID";     
-            //lHDR += ",UOMID";             //  11    UOMID"; 
+            lHDR += ",UOMID";             //  11    UOMID"; 
             lHDR += ",GodownId";          //  12- GodownID
 
             // Col Visible Width
             lColWidth = "   5";                 //  0-    ItemID";       
             lColWidth += ",12";                 //  1-    ItemCode";     
             lColWidth += ",20";                 //  2-    ItemName";
-            //lColWidth += ",20";                 //  2-    VenderName";
+            lColWidth += ",20";                 //  2-    VenderName";
             lColWidth += ",10";                 //  3-    SizeName";      
             lColWidth += ", 7";                 //  4-    ColorName";     
-            //lColWidth += ", 7";                 //  5-    UOMName";
+            lColWidth += ", 7";                 //  5-    UOMName";
             lColWidth += ", 7";                 //  6- GodownName
             lColWidth += ", 7";                 //  7- Stock
             lColWidth += ", 5";                 //  8- Qty
@@ -405,17 +387,17 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
             lColWidth += ", 5";                 //  8- Amount
             lColWidth += ", 5";                 //  9    SizeID";     
             lColWidth += ", 5";                 //  10    ColorID";     
-            //lColWidth += ", 5";                 //  11    UOMID"; 
+            lColWidth += ", 5";                 //  11    UOMID"; 
             lColWidth += ", 5";                 //  12- GodownID
 
             // Column Input Length/Width
             lColMaxInputLen = "  0";                 //  0-    ItemID";       
             lColMaxInputLen += ", 0";                //  1-    ItemCode";     
             lColMaxInputLen += ", 0";                //  2-    ItemName";
-            //lColMaxInputLen += ", 0";                //  2-    VenderName";
+            lColMaxInputLen += ", 0";                //  2-    VenderName";
             lColMaxInputLen += ", 0";                //  3-    SizeName";      
             lColMaxInputLen += ", 0";                //  4-    ColorName";     
-           // lColMaxInputLen += ", 0";                //  5-    UOMName";
+            lColMaxInputLen += ", 0";                //  5-    UOMName";
             lColMaxInputLen += ", 0";                //  6- GodownName
             lColMaxInputLen += ", 0";                //  7- Stock
             lColMaxInputLen += ", 0";                //  8- Qty
@@ -424,17 +406,17 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
             lColMaxInputLen += ", 0";                //  2-    Amount";
             lColMaxInputLen += ", 0";                //  9    SizeID";     
             lColMaxInputLen += ", 0";                //  10    ColorID";     
-           // lColMaxInputLen += ", 0";                //  11    UOMID"; 
+            lColMaxInputLen += ", 0";                //  11    UOMID"; 
             lColMaxInputLen += ", 0";                //  12- GodownID
 
             // Column Min Width
             lColMinWidth = "   0";                      //  0-    ItemID";           
             lColMinWidth += ", 0";                      //  1-    ItemCode";         
             lColMinWidth += ", 0";                      //  2-    ItemName";
-            //lColMinWidth += ", 0";                      //  2-    VenderName";
+            lColMinWidth += ", 0";                      //  2-    VenderName";
             lColMinWidth += ", 0";                      //  3-    SizeName";      
             lColMinWidth += ", 0";                      //  4-    ColorName";         
-            //lColMinWidth += ", 0";                      //  5-    UOMName";    
+            lColMinWidth += ", 0";                      //  5-    UOMName";    
             lColMinWidth += ", 0";                      //  6- GodownName
             lColMinWidth += ", 0";                      //  7- Stock
             lColMinWidth += ", 0";                      //  8- Qty
@@ -443,17 +425,17 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
             lColMinWidth += ", 0";                      //  2-    Amount";
             lColMinWidth += ", 0";                      //  9    SizeID";       
             lColMinWidth += ", 0";                      //  10    ColorID";        
-            //lColMinWidth += ", 0";                      //  11    UOMID"; 
+            lColMinWidth += ", 0";                      //  11    UOMID"; 
             lColMinWidth += ", 0";                      //  12- GodownID
 
             // Column Format
             lColFormat = "   T";                       //  0-    ItemID";            
             lColFormat += ", T";                       //  1-    ItemCode";         
             lColFormat += ", T";                       //  2-    ItemName";
-            //lColFormat += ", T";                       //  2-    VenderName";
+            lColFormat += ", T";                       //  2-    VenderName";
             lColFormat += ", T";                       //  3-    SizeName";      
             lColFormat += ", T";                       //  4-    ColorName";         
-            //lColFormat += ", T";                       //  5-    UOMName";    
+            lColFormat += ", T";                       //  5-    UOMName";    
             lColFormat += ", T";                       //  6- GodownName
             lColFormat += ", T";                       //  7- Stock
             lColFormat += ", T";                       //  8- Qty
@@ -463,17 +445,17 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
  
             lColFormat += ", H";                       //  9    SizeID";       
             lColFormat += ", H";                       //  10    ColorID";        
-           // lColFormat += ", H";                       //  11    UOMID"; 
+            lColFormat += ", H";                       //  11    UOMID"; 
             lColFormat += ", H";                       //  12- GodownID
 
             // Column ReadOnly 1= readonly, 0 = read-write
             lColReadOnly = "  0";                      //  0-    ItemID";       
             lColReadOnly += ",1";                      //  1-    ItemCode";     
             lColReadOnly += ",1";                      //  2-    ItemName";
-            //lColReadOnly += ",0";                      //  2-    VenderName";
+            lColReadOnly += ",0";                      //  2-    VenderName";
             lColReadOnly += ",0";                      //  3-    SizeName";      
             lColReadOnly += ",0";                      //  4-    ColorName";     
-            //lColReadOnly += ",0";                      //  5-    UOMName";
+            lColReadOnly += ",0";                      //  5-    UOMName";
             lColReadOnly += ",0";                      //  6- GodownName
             lColReadOnly += ",0";                      //  7- Stock
             lColReadOnly += ",0";                      //  8- Qty
@@ -482,17 +464,17 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
             lColReadOnly += ",0";                      //  2-    Amount";
             lColReadOnly += ",1";                      //  9    SizeID";     
             lColReadOnly += ",1";                      //  10    ColorID";     
-            //lColReadOnly += ",1";                      //  11    UOMID"; 
+            lColReadOnly += ",1";                      //  11    UOMID"; 
             lColReadOnly += ",1";                      //  12- GodownID
 
             // For Saving Time
             tColType += "  N0";             //  0-    ItemID";       
             tColType += ",SKP";             //  1-    ItemCode";     
             tColType += ",SKP";             //  2-    ItemName";
-            //tColType += ",SKP";             //  2-    ItemName";
+            tColType += ",SKP";             //  2-    ItemName";
             tColType += ",SKP";              //  3-    SizeName";      
             tColType += ",SKP";             //  4-    ColorName";     
-            //tColType += ",SKP";             //  5-    UOMName";
+            tColType += ",SKP";             //  5-    UOMName";
             tColType += ",SKP";             //  6- GodownName
             tColType += ", N0";             //  7- Stock
             tColType += ", N0";             //  8- Qty
@@ -501,26 +483,25 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
             tColType += ",N0";             //  2-    Amount";
             tColType += ", N0";             //  9    SizeID";     
             tColType += ", N0";             //  10    ColorID";     
-            //tColType += ", N0";             //  11    UOMID"; 
+            tColType += ", N0";             //  11    UOMID"; 
             tColType += ", N0";             //  12- GodownID
 
             tFieldName += "Code";               //  0-    ItemID";        
             tFieldName += ",ItemCode";          //  1-    ItemCode";        
             tFieldName += ",ItemName";          //  2-    ItemName";
-            //tFieldName += ",VenderName";          //  2-    ItemName";
+            tFieldName += ",VenderName";          //  2-    ItemName";
             tFieldName += ",SizeName";       //  3-    SizeName";      
             tFieldName += ",ColorName";          //  4-    ColorName";          
-            //tFieldName += ",UnitName";         //  5-    UOMName";     
+            tFieldName += ",UnitName";         //  5-    UOMName";     
             tFieldName += ",GodownName";          //  6- GodownName
             tFieldName += ",Stock";        //  7- Stock
             tFieldName += ",Qty";               //  8- Qty
-           
+            tFieldName += ",NewStock";          //  2-    New Stock";
             tFieldName += ",Rate";          //  2-    Rate";
             tFieldName += ",Amount";          //  2-    Amount";
-            tFieldName += ",NewStock";          //  2-    New Stock";
             tFieldName += ",SizeID";            //  9    SizeID";     
             tFieldName += ",ColorID";           //  10    ColorID";      
-            //tFieldName += ",UOMID";             //  11    UOMID"; 
+            tFieldName += ",UOMID";             //  11    UOMID"; 
             tFieldName += ",GodownID";          //  12- GodownID
 
             fHDR = lHDR;
@@ -534,186 +515,6 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
             fColType = tColType;
             fFieldName = tFieldName;
 
-        }
-
-        private bool PrepareDocMaster()
-        {
-            bool rtnValue = true;
-            string lSQL = string.Empty;
-
-            try
-            {
-                if (txtGRN.Text.ToString().Trim(' ', '-') == "")
-                {
-                    fDocAlreadyExists = false;
-                    fDocID = clsDbManager.GetNextValDocID("GRN", "GRNId", fDocWhere, "");
-
-                    lSQL = "insert into GRN (";
-                    lSQL += "  GRNId ";                              //  0-    ItemID";   
-                    lSQL += ", Date ";
-                    lSQL += "  ,GateInwordId ";   //  1-    ItemCod  
-                    lSQL += ", GateInwordDate ";
-                    lSQL += " , VendorId ";
-                    lSQL += " , PurchaserId ";
-                    lSQL += "  ,TypeId ";
-                    lSQL += "  ,LCId ";
-                    lSQL += ", ItemGroupID ";                                        //  2-    ItemNam 
-                    lSQL += ", GateID ";                                      // 3- Descripti
-                    //  4-    SizeNam  
-                    lSQL += ",Note ";
-                    lSQL += ", OrgId ";
-                    lSQL += ", UserId ";
-                    lSQL += ", Status ";
-                    lSQL += ", BranchId ";
-                    //lSQL += ",EmployeeID ";
-                    //lSQL += ",DeptID ";
-                    lSQL += ",RecPerName ";
-                    lSQL += ",Discount ";
-                    lSQL += " ) values (";
-                    //                                                       
-                    lSQL += "'" + fDocID.ToString() + "'";
-                    lSQL += ",'" + txtGRN.Text.ToString() + "";
-                    lSQL += ", " + StrF01.D2Str(dtpGRN) + "";
-                    lSQL += ", 1";
-                    lSQL += ", " + StrF01.D2Str(dtpGI) + "";
-                    lSQL += ", ";
-                    lSQL += ", ";
-                    lSQL += ", 1";
-                    lSQL += ", 1";
-                    //lSQL += ", 1";
-                    //lSQL += ", 1";
-                    lSQL += ", " + cboItemGroup.SelectedValue.ToString() + "";
-                    lSQL += ", " + cboGate.SelectedValue.ToString() + "";
-                    lSQL += ", 1";
-                    lSQL += ",'" + txtNote + "'";
-                    lSQL += ", " + cboGodowns.SelectedValue.ToString() + "";
-                    lSQL += ", 1";
-                    lSQL += ", " + txtRecPerName.Text.ToString() + "";
-                    lSQL += ", " + txtDiscount.Text.ToString() + "";
-                    lSQL += ")";
-                }
-                else
-                {
-                    fDocWhere = " GRNId = '" + txtGRN.Text.ToString() + "'";
-                    if (clsDbManager.IDAlreadyExistWw("GRN", "GRNId", fDocWhere))
-                    {
-
-                        fDocAlreadyExists = true;
-                        lSQL = "delete from GRNDetail ";
-                        lSQL += " where " + fDocWhere;
-
-                        fManySQL.Add(lSQL);
-                        //
-                    }
-
-                    lSQL = "update GRN set";
-                    lSQL += "  Date = '" + StrF01.D2Str(dtpGRN.Value) + "'";
-                    lSQL += " , GateInwordDate = '" + StrF01.D2Str(dtpGI.Value) + "'";
-                    //lSQL += ", Vendorid = " + mskVenderCode.SelectedValue.ToString() + "";
-                    //lSQL += ", Purchaserid = " + mskPurchaseCode.SelectedValue.ToString() + "";
-                    lSQL += ", Typeid = " + cboType.SelectedValue.ToString() + "";
-                    lSQL += ", LCid = " + cboLC.SelectedValue.ToString() + "";
-                    lSQL += ", ItemGroupID = " + cboItemGroup.SelectedValue.ToString() + "";
-                    lSQL += ", GateID = " + cboGate.SelectedValue.ToString() + "";
-                    lSQL += ", Note = '" + txtNote.Text.ToString() + "'";
-                    lSQL += ", OrgID = " + cboItemGroup.SelectedValue.ToString() + "";
-                    //lSQL += ", Category = '" + cboCategory.SelectedValue.ToString() + "'";
-                    lSQL += ", UserID = 1";
-                    lSQL += ",Status = 0";
-                    lSQL += ", BranchID = 1";
-                    //lSQL += ", EmployeeID = " + cboEmpCode.SelectedValue.ToString() + "";
-                    //lSQL += ", DeptID = 1";
-                    //lSQL += ", ChargesTmplID = '" + txtChargesTempNo.Text.ToString() + "'";
-                    //lSQL += ", ChargesTmplDes = '" + txtChargesDes.Text.ToString() + "'";
-                    lSQL += " where ";
-                    lSQL += fDocWhere;
-
-                }
-                fManySQL.Add(lSQL);
-
-
-                return rtnValue;
-            }
-            catch (Exception ex)
-            {
-                rtnValue = false;
-                MessageBox.Show("Save Master Doc: " + ex.Message, this.Text.ToString());
-                return false;
-            }
-        }
-
-        private bool PrepareDocDetail()
-        {
-            bool rtnValue = true;
-            string lSQL = "";
-            try
-            {
-                for (int dGVRow = 0; dGVRow < grd.Rows.Count; dGVRow++)
-                {
-                    if (grd.Rows[dGVRow].Cells[(int)GCol.ItemID].Value == null)
-                    {
-                        if (dGVRow == fLastRow)
-                        {
-                            continue;
-                        }
-                    }
-                    else
-                    {
-                        if ((grd.Rows[dGVRow].Cells[(int)GCol.ItemID].Value.ToString()).Trim(' ', '-') == "")
-                        {
-                            //lBlank = true;
-                            if (dGVRow == fLastRow)
-                            {
-                                continue;
-                            }
-                        }
-                    }
-
-                    lSQL = "INSERT INTO GRNDetail (GRNId";
-                    lSQL += ",ItemId,SizeId,ColorId,GodownId,Qty,Rate)";
-                    lSQL += " VALUES (";
-                    lSQL += "'" + txtGRN.Text.ToString() + "'";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.ItemId].Value.ToString() + "";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.SizeId].Value.ToString() + "";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.ColorId].Value.ToString() + "";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.GodownId].Value.ToString() + "";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.Qty].Value.ToString() + "";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.Rate].Value.ToString() + "";
-                    //lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.Amount].Value.ToString() + "";
-                    //lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.NewStock].Value.ToString() + "";
-                    lSQL += ")";
-                    fManySQL.Add(lSQL);
-                } // End For loopo
-                return rtnValue;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Save Detail Doc: " + ex.Message, this.Text.ToString());
-                return false;
-            }
-
-        }
-
-        private bool FormValidation()
-        {
-            bool lRtnValue = true;
-            DateTime lNow = DateTime.Now;
-            decimal lDebit = 0;
-            decimal lCredit = 0;
-            fDocAmt = 0;
-            try
-            {
-                //SumVoc();
-
-                return lRtnValue;
-
-            }
-            catch (Exception ex)
-            {
-                fTErr++;
-                ErrrMsg = StrF01.BuildErrMsg(ErrrMsg, "Exception: FormValidation -> " + ex.Message.ToString());
-                return false;
-            }
         }
 
 
@@ -856,7 +657,184 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
             fLastRow = 0;
         }
 
-       
+        private bool PrepareDocMaster()
+        {
+            bool rtnValue = true;
+            string lSQL = string.Empty;
+
+            try
+            {
+                if (txtGRN.Text.ToString().Trim(' ', '-') == "")
+                {
+                    fDocAlreadyExists = false;
+                    fDocID = clsDbManager.GetNextValDocID("GRN", "GRNId", fDocWhere, "");
+
+                    lSQL = "insert into GRN (";
+                    lSQL += "  GRNId ";                              //  0-    ItemID";   
+                    lSQL += ", Date ";
+                    lSQL += "  GateInwordId ";   //  1-    ItemCod  
+                    lSQL += ", GateInwordDate ";
+                    lSQL += "  VendorId ";
+                    lSQL += "  PurchaserId ";
+                    lSQL += "  TypeId ";
+                    lSQL += "  LCId ";
+                    lSQL += ", ItemGroupID ";                                        //  2-    ItemNam 
+                    lSQL += ", GateID ";                                      // 3- Descripti
+                                                            //  4-    SizeNam  
+                    lSQL += ",Note ";
+                    lSQL += ", OrgId ";
+                    lSQL += ", UserId ";
+                    lSQL += ", Status ";
+                    lSQL += ", BranchId ";
+                    //lSQL += ",EmployeeID ";
+                    //lSQL += ",DeptID ";
+                    lSQL += ",RecPerName ";
+                    lSQL += ",Discount ";
+                    lSQL += " ) values (";
+                    //                                                       
+                    lSQL += "'" + fDocID.ToString() + "'";                  
+                    lSQL += ",'" + txtGRN.Text.ToString() + "";   
+                    lSQL += ", " + StrF01.D2Str(dtpGRN) + "";
+                    lSQL += ", 1";
+                    lSQL += ", " + StrF01.D2Str(dtpGI) + "";
+                    lSQL += ", 1";
+                    lSQL += ", 1";
+                    lSQL += ", 1";
+                    lSQL += ", 1";
+                    //lSQL += ", 1";
+                    //lSQL += ", 1";
+                    lSQL += ", " + cboItemGroup.SelectedValue.ToString() + "";
+                    lSQL += ", " + cboGate.SelectedValue.ToString() + "";
+                    lSQL += ", 1";
+                    lSQL += ",'" + txtNote + "'";
+                    lSQL += ", " + cboGodown.SelectedValue.ToString() + "";
+                    lSQL += ", 1";
+                    lSQL += ", " + txtRecPerName.Text.ToString() + "";
+                    lSQL += ", " + txtDiscount.Text.ToString() + "";                                        
+                    lSQL += ")";                                            
+                }                                                              
+                else
+                {
+                    fDocWhere = " GRNId = '" + txtGRN.Text.ToString() + "'";
+                    if (clsDbManager.IDAlreadyExistWw("GRN", "GRNId", fDocWhere))
+                    {
+
+                        fDocAlreadyExists = true;
+                        lSQL = "delete from GRNDetail ";
+                        lSQL += " where " + fDocWhere;
+
+                        fManySQL.Add(lSQL);
+                        //
+                    }
+
+                    lSQL = "update GRN set";
+                    lSQL += "  Date = '" + StrF01.D2Str(dtpGRN.Value) + "'";
+                    lSQL += "  GateInwordDate = '" + StrF01.D2Str(dtpGI.Value) + "'";
+                    //lSQL += ", Vendorid = " + mskVenderCode.SelectedValue.ToString() + "";
+                    //lSQL += ", Purchaserid = " + mskPurchaseCode.SelectedValue.ToString() + "";
+                    lSQL += ", Typeid = " + cboType.SelectedValue.ToString() + "";
+                    lSQL += ", LCid = " + cboLC.SelectedValue.ToString() + "";
+                    lSQL += ", ItemGroupID = " + cboItemGroup.SelectedValue.ToString() + "";
+                    lSQL += ", GateID = " + cboGate.SelectedValue.ToString() + "";
+                    lSQL += ", Note = '" + txtNote.Text.ToString() + "'";
+                    lSQL += ", OrgID = " + cboItemGroup.SelectedValue.ToString() + "";
+                    //lSQL += ", Category = '" + cboCategory.SelectedValue.ToString() + "'";
+                    lSQL += ", UserID = 1";
+                    lSQL += ",Status = 0";
+                    lSQL += ", BranchID = 1";
+                    //lSQL += ", EmployeeID = " + cboEmpCode.SelectedValue.ToString() + "";
+                    //lSQL += ", DeptID = 1";
+                    //lSQL += ", ChargesTmplID = '" + txtChargesTempNo.Text.ToString() + "'";
+                    //lSQL += ", ChargesTmplDes = '" + txtChargesDes.Text.ToString() + "'";
+                    lSQL += " where ";
+                    lSQL += fDocWhere;
+
+                }
+                fManySQL.Add(lSQL);
+
+
+                return rtnValue;
+            }
+            catch (Exception ex)
+            {
+                rtnValue = false;
+                MessageBox.Show("Save Master Doc: " + ex.Message, this.Text.ToString());
+                return false;
+            }
+        }
+
+        private bool PrepareDocDetail()
+        {
+            bool rtnValue = true;
+            string lSQL = "";
+            try
+            {
+                for (int dGVRow = 0; dGVRow < grd.Rows.Count; dGVRow++)
+                {
+                    if (grd.Rows[dGVRow].Cells[(int)GCol.ItemID].Value == null)
+                    {
+                        if (dGVRow == fLastRow)
+                        {
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        if ((grd.Rows[dGVRow].Cells[(int)GCol.ItemID].Value.ToString()).Trim(' ', '-') == "")
+                        {
+                            //lBlank = true;
+                            if (dGVRow == fLastRow)
+                            {
+                                continue;
+                            }
+                        }
+                    }
+
+                    lSQL = "INSERT INTO GRNDetail (GRNId";
+                    lSQL += ",ItemId,SizeId,ColorID,GodownId,Qty,Rate,Amount)";
+                    lSQL += " VALUES (";
+                    lSQL += "'" + txtGRN.Text.ToString() + "'";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.ItemID].Value.ToString() + "";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.SizeID].Value.ToString() + "";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.ColorID].Value.ToString() + "";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.GodownID].Value.ToString() + "";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.Qty].Value.ToString() + "";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.Rate].Value.ToString() + "";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.Amount].Value.ToString() + "";
+                    lSQL += ")";
+                    fManySQL.Add(lSQL);
+                } // End For loopo
+                return rtnValue;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Save Detail Doc: " + ex.Message, this.Text.ToString());
+                return false;
+            }
+
+        }
+
+        private bool FormValidation()
+        {
+            bool lRtnValue = true;
+            DateTime lNow = DateTime.Now;
+            decimal lDebit = 0;
+            decimal lCredit = 0;
+            fDocAmt = 0;
+            try
+            {
+                //SumVoc();
+
+                return lRtnValue;
+
+            }
+            catch (Exception ex)
+            {
+                fTErr++;
+                ErrrMsg = StrF01.BuildErrMsg(ErrrMsg, "Exception: FormValidation -> " + ex.Message.ToString());
+                return false;
+            }
+        }
 
         private void button6_Click(object sender, EventArgs e)
         {
@@ -873,18 +851,17 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
         {
             //SELECT Code, Name FROM Heads WHERE TYPE = 'A'
             frmLookUp sForm = new frmLookUp(
-                    "h.Code",
-                    "v.Name",
-                    "Vendor v inner join Heads h on v.Code=Right(h.Code,7)  ",
-                   
+                    "Code",
+                    "Name",
+                    "Heads",
                     this.Text.ToString(),
                     1,
-                    " Code, Name",
+                    "Account Code, Account Name",
                     "16,40",
                     " T, T",
                     true,
                     "",
-                    "",
+                    " Type='A'",
                     "TextBox"
                     );
 
@@ -929,8 +906,8 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
             mskVenderCode.Mask = "";
             mskVenderCode.Text = ((TextBox)sender).Text;
             mskVenderCode.Mask = clsGVar.maskGLCode;
-            //mskPurchaseCode.Text = ((MaskedTextBox)sender).Text;
-            //mskPurchaseCode.Mask = clsGVar.maskGLCode;
+            //mskCustomerCode.Text = ((MaskedTextBox)sender).Text;
+            //mskCustomerCode.Mask = clsGVar.maskGLCode;
 
         }
 
@@ -944,19 +921,19 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
             // Fields 0,1,2,3 are Begin  
 
             tSQL = "SELECT Name ";
-            tSQL += " from Heads ";
+            tSQL += " from Vendor ";
             tSQL += " where Code ='" + mskVenderCode.Text.ToString() + "';";
 
             try
             {
-                ds = clsDbManager.GetData_Set(tSQL, "Heads");
+                ds = clsDbManager.GetData_Set(tSQL, "Vendor");
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     //fAlreadyExists = true;
                     dRow = ds.Tables[0].Rows[0];
                     // Starting title as 0
-                    //lblName.Text = (ds.Tables[0].Rows[0]["Name"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Name"].ToString());
-                    lblName.Text = (ds.Tables[0].Rows[0]["Name"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Name"].ToString());
+                    lblNameDataUp.Text = (ds.Tables[0].Rows[0]["Name"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Name"].ToString());
+                    
                     if (ds.Tables[0].Rows.Count > 0)
                     {
                         ds.Clear();
@@ -991,10 +968,10 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
             frmLookUp sForm = new frmLookUp(
                     "Code",
                     "Name",
-                    "Heads",
+                    "Customer",
                     this.Text.ToString(),
                     1,
-                    "Account Code, Account Name",
+                    "Customer Code, Customer Name",
                     "16,40",
                     " T, T",
                     true,
@@ -1024,10 +1001,18 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
                         //SumVoc();
                     }
 
-                   
+                    //txtOrderNo.Text = txtPassDataVocID.Text.ToString();
+                    //grdVoucher[pCol, pRow].Value = tmtext.Text.ToString();
+                    //System.Windows.Forms.SendKeys.Send("{TAB}");
                 }
 
-                
+                //if (msk_AccountID.Text.ToString() == "" || msk_AccountID.Text.ToString() == string.Empty)
+                //{
+                //    return;
+                //}
+                //msk_AccountID.Text = sForm.lupassControl.ToString();
+                ////grdVoucher[pCol, pRow].Value = msk_AccountID.Text.ToString();
+                //System.Windows.Forms.SendKeys.Send("{TAB}");
             }
         }
 
@@ -1036,7 +1021,9 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
             mskPurchaseCode.Mask = "";
             mskPurchaseCode.Text = ((TextBox)sender).Text;
             mskPurchaseCode.Mask = clsGVar.maskGLCode;
-      
+            //mskCustomerCode.Text = ((MaskedTextBox)sender).Text;
+            //mskCustomerCode.Mask = clsGVar.maskGLCode;
+
         }
 
         //Populate Recordset 
@@ -1049,18 +1036,18 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
             // Fields 0,1,2,3 are Begin  
 
             tSQL = "SELECT Name ";
-            tSQL += " from Heads ";
+            tSQL += " from Custumer ";
             tSQL += " where Code ='" + mskPurchaseCode.Text.ToString() + "';";
 
             try
             {
-                ds = clsDbManager.GetData_Set(tSQL, "Heads");
+                ds = clsDbManager.GetData_Set(tSQL, "Customer");
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     //fAlreadyExists = true;
                     dRow = ds.Tables[0].Rows[0];
                     // Starting title as 0
-                    lblNameBottom.Text = (ds.Tables[0].Rows[0]["Name"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Name"].ToString());
+                    lblName.Text = (ds.Tables[0].Rows[0]["Name"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Name"].ToString());
                     if (ds.Tables[0].Rows.Count > 0)
                     {
                         ds.Clear();
@@ -1088,33 +1075,41 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
                 this.Close();
         }
 
-       
+        private void mskVenderCode_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void grd_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            double l_Amount = 0;
-            //string FormatTwoDecimal = "N";
-            l_Amount = Convert.ToDouble(txtQty.Text.ToString()) * Convert.ToDouble(txtRate.Text.ToString());
 
             grd.Rows.Add(txt_I_ItemID.Text.ToString(),
                 lbl_I_ItemCode.Text.ToString(),
                 lbl_I_ItemName.Text.ToString(),
-                //lblVendor.Text.ToString(),
+                mskVendorName.Text.ToString(),
                 cbo_I_Size.Text.ToString(),
                 cbo_I_Color.Text.ToString(),
-                //cbo_I_UOM.Text.ToString(),
-                  //cboGodownn.Text.ToString(),
+                cbo_I_UOM.Text.ToString(),
                 txtStock.Text.ToString(),
-                txtQty.Text.ToString(),
-
-                txtRate.Text.ToString(),
-                l_Amount.ToString(),
                 txtNewStock.Text.ToString(),
-
+                txtRate.Text.ToString(),
+                txtAmount.Text.ToString(),
+                cboGodown.Text.ToString(),
+                txtQty.Text.ToString(),
                 cbo_I_Size.SelectedValue.ToString(),
-                cbo_I_Color.SelectedValue.ToString());
-                //cbo_I_UOM.SelectedValue.ToString());
-                //cboGodownn.SelectedValue.ToString();
+                cbo_I_Color.SelectedValue.ToString(),
+                cbo_I_UOM.SelectedValue.ToString());
+                cboGodown.SelectedValue.ToString();
 
             SumVoc();
         }
@@ -1157,11 +1152,6 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
             {
                 LookUp_Voc();
             }
-        }
-
-        private void mskVendeCode_DoubleClick(object sender, EventArgs e)
-        {
-            LookUp_GL();
         }
 
        
