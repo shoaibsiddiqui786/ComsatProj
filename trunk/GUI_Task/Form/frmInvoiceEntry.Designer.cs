@@ -33,6 +33,18 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.grd = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SizeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ColorColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.UnitColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label22 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
@@ -111,14 +123,13 @@
             this.cbo_I_UOM = new System.Windows.Forms.ComboBox();
             this.cbo_I_Color = new System.Windows.Forms.ComboBox();
             this.cbo_I_Size = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.lbl_I_ItemName = new System.Windows.Forms.Label();
             this.lbl_I_ItemCode = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.txt_I_ItemID = new System.Windows.Forms.TextBox();
-            this.SizeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ColorColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.UnitColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.sSMaster = new System.Windows.Forms.StatusStrip();
             this.tSlblUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.tStextUser = new System.Windows.Forms.ToolStripStatusLabel();
@@ -139,17 +150,6 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.tb.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -167,6 +167,7 @@
             this.btnPrint.TabIndex = 647;
             this.btnPrint.Text = "Simple Printing ";
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Visible = false;
             // 
             // btnGrpPrint
             // 
@@ -177,6 +178,7 @@
             this.btnGrpPrint.TabIndex = 646;
             this.btnGrpPrint.Text = "Group Printing ";
             this.btnGrpPrint.UseVisualStyleBackColor = true;
+            this.btnGrpPrint.Visible = false;
             // 
             // btnSave
             // 
@@ -226,6 +228,108 @@
             this.grd.ReadOnly = true;
             this.grd.Size = new System.Drawing.Size(833, 244);
             this.grd.TabIndex = 638;
+            // 
+            // Column1
+            // 
+            this.Column1.Frozen = true;
+            this.Column1.HeaderText = "Code";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 57;
+            // 
+            // Column2
+            // 
+            this.Column2.Frozen = true;
+            this.Column2.HeaderText = "Item Code";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 80;
+            // 
+            // Column3
+            // 
+            this.Column3.Frozen = true;
+            this.Column3.HeaderText = "Name";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 60;
+            // 
+            // SizeColumn
+            // 
+            this.SizeColumn.Frozen = true;
+            this.SizeColumn.HeaderText = "Size";
+            this.SizeColumn.Name = "SizeColumn";
+            this.SizeColumn.ReadOnly = true;
+            this.SizeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SizeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.SizeColumn.Width = 52;
+            // 
+            // ColorColumn
+            // 
+            this.ColorColumn.Frozen = true;
+            this.ColorColumn.HeaderText = "Colour ";
+            this.ColorColumn.Name = "ColorColumn";
+            this.ColorColumn.ReadOnly = true;
+            this.ColorColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColorColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColorColumn.Width = 65;
+            // 
+            // UnitColumn
+            // 
+            this.UnitColumn.Frozen = true;
+            this.UnitColumn.HeaderText = "Unit";
+            this.UnitColumn.Name = "UnitColumn";
+            this.UnitColumn.ReadOnly = true;
+            this.UnitColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.UnitColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.UnitColumn.Width = 51;
+            // 
+            // Column8
+            // 
+            this.Column8.Frozen = true;
+            this.Column8.HeaderText = "Discount";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 74;
+            // 
+            // Column9
+            // 
+            this.Column9.Frozen = true;
+            this.Column9.HeaderText = "Order Qty";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Width = 77;
+            // 
+            // Column11
+            // 
+            this.Column11.Frozen = true;
+            this.Column11.HeaderText = "Del. Qty";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Width = 70;
+            // 
+            // Column10
+            // 
+            this.Column10.Frozen = true;
+            this.Column10.HeaderText = "DZ. Rate";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Width = 76;
+            // 
+            // Column14
+            // 
+            this.Column14.Frozen = true;
+            this.Column14.HeaderText = "Pr. rate";
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            this.Column14.Width = 66;
+            // 
+            // Column12
+            // 
+            this.Column12.Frozen = true;
+            this.Column12.HeaderText = "Amount";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            this.Column12.Width = 68;
             // 
             // label22
             // 
@@ -288,6 +392,7 @@
             this.btnNewDisc.TabIndex = 632;
             this.btnNewDisc.Text = "Apply New Discount";
             this.btnNewDisc.UseVisualStyleBackColor = true;
+            this.btnNewDisc.Visible = false;
             // 
             // btnIrnHelp
             // 
@@ -324,6 +429,7 @@
             this.label13.TabIndex = 619;
             this.label13.Text = "Contract #";
             this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label13.Visible = false;
             // 
             // lblContractNo
             // 
@@ -337,6 +443,7 @@
             this.lblContractNo.Size = new System.Drawing.Size(233, 17);
             this.lblContractNo.TabIndex = 618;
             this.lblContractNo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblContractNo.Visible = false;
             // 
             // textBox4
             // 
@@ -813,6 +920,7 @@
             this.btnDOView.TabIndex = 662;
             this.btnDOView.Text = "D.O View";
             this.btnDOView.UseVisualStyleBackColor = true;
+            this.btnDOView.Visible = false;
             this.btnDOView.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnNewRate
@@ -824,6 +932,7 @@
             this.btnNewRate.TabIndex = 661;
             this.btnNewRate.Text = "Apply New Rate";
             this.btnNewRate.UseVisualStyleBackColor = true;
+            this.btnNewRate.Visible = false;
             // 
             // label37
             // 
@@ -854,6 +963,7 @@
             this.btnResetCont.TabIndex = 666;
             this.btnResetCont.Text = "Reset Cont";
             this.btnResetCont.UseVisualStyleBackColor = true;
+            this.btnResetCont.Visible = false;
             // 
             // lblGodown
             // 
@@ -890,6 +1000,7 @@
             this.label39.TabIndex = 670;
             this.label39.Text = "Discount";
             this.label39.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label39.Visible = false;
             // 
             // label40
             // 
@@ -903,6 +1014,7 @@
             this.label40.Size = new System.Drawing.Size(136, 17);
             this.label40.TabIndex = 669;
             this.label40.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label40.Visible = false;
             // 
             // label41
             // 
@@ -992,6 +1104,7 @@
             this.radioButton5.TabIndex = 682;
             this.radioButton5.Text = "Group Printing";
             this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.Visible = false;
             // 
             // radioButton6
             // 
@@ -1003,6 +1116,7 @@
             this.radioButton6.TabIndex = 681;
             this.radioButton6.Text = "Simple printing";
             this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.Visible = false;
             // 
             // checkBox1
             // 
@@ -1039,6 +1153,7 @@
             this.radioButton2.TabIndex = 678;
             this.radioButton2.Text = "Urdu Print";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.Visible = false;
             // 
             // txtInvNo
             // 
@@ -1086,7 +1201,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(916, 250);
+            this.tabPage2.Size = new System.Drawing.Size(839, 250);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Insert New";
             // 
@@ -1151,6 +1266,19 @@
             this.cbo_I_Size.Size = new System.Drawing.Size(130, 21);
             this.cbo_I_Size.TabIndex = 4;
             // 
+            // label12
+            // 
+            this.label12.AllowDrop = true;
+            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label12.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label12.Location = new System.Drawing.Point(14, 62);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(49, 21);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "Size";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // label14
             // 
             this.label14.AllowDrop = true;
@@ -1163,6 +1291,19 @@
             this.label14.TabIndex = 6;
             this.label14.Text = "Color";
             this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label11
+            // 
+            this.label11.AllowDrop = true;
+            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label11.Location = new System.Drawing.Point(382, 62);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(82, 21);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "UOM";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lbl_I_ItemName
             // 
@@ -1215,36 +1356,6 @@
             this.txt_I_ItemID.Text = "1";
             this.txt_I_ItemID.DoubleClick += new System.EventHandler(this.txt_I_ItemID_DoubleClick);
             this.txt_I_ItemID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_I_ItemID_KeyDown);
-            // 
-            // SizeColumn
-            // 
-            this.SizeColumn.Frozen = true;
-            this.SizeColumn.HeaderText = "Size";
-            this.SizeColumn.Name = "SizeColumn";
-            this.SizeColumn.ReadOnly = true;
-            this.SizeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SizeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.SizeColumn.Width = 52;
-            // 
-            // ColorColumn
-            // 
-            this.ColorColumn.Frozen = true;
-            this.ColorColumn.HeaderText = "Colour ";
-            this.ColorColumn.Name = "ColorColumn";
-            this.ColorColumn.ReadOnly = true;
-            this.ColorColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColorColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColorColumn.Width = 65;
-            // 
-            // UnitColumn
-            // 
-            this.UnitColumn.Frozen = true;
-            this.UnitColumn.HeaderText = "Unit";
-            this.UnitColumn.Name = "UnitColumn";
-            this.UnitColumn.ReadOnly = true;
-            this.UnitColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.UnitColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.UnitColumn.Width = 51;
             // 
             // sSMaster
             // 
@@ -1421,104 +1532,6 @@
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
             this.dataGridViewTextBoxColumn9.Width = 68;
-            // 
-            // Column1
-            // 
-            this.Column1.Frozen = true;
-            this.Column1.HeaderText = "Code";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 57;
-            // 
-            // Column2
-            // 
-            this.Column2.Frozen = true;
-            this.Column2.HeaderText = "Item Code";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 80;
-            // 
-            // Column3
-            // 
-            this.Column3.Frozen = true;
-            this.Column3.HeaderText = "Name";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 60;
-            // 
-            // Column8
-            // 
-            this.Column8.Frozen = true;
-            this.Column8.HeaderText = "Discount";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Width = 74;
-            // 
-            // Column9
-            // 
-            this.Column9.Frozen = true;
-            this.Column9.HeaderText = "Order Qty";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Width = 77;
-            // 
-            // Column11
-            // 
-            this.Column11.Frozen = true;
-            this.Column11.HeaderText = "Del. Qty";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            this.Column11.Width = 70;
-            // 
-            // Column10
-            // 
-            this.Column10.Frozen = true;
-            this.Column10.HeaderText = "DZ. Rate";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            this.Column10.Width = 76;
-            // 
-            // Column14
-            // 
-            this.Column14.Frozen = true;
-            this.Column14.HeaderText = "Pr. rate";
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            this.Column14.Width = 66;
-            // 
-            // Column12
-            // 
-            this.Column12.Frozen = true;
-            this.Column12.HeaderText = "Amount";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            this.Column12.Width = 68;
-            // 
-            // label11
-            // 
-            this.label11.AllowDrop = true;
-            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label11.Location = new System.Drawing.Point(382, 62);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(82, 21);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "UOM";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label12
-            // 
-            this.label12.AllowDrop = true;
-            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label12.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label12.Location = new System.Drawing.Point(14, 62);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(49, 21);
-            this.label12.TabIndex = 4;
-            this.label12.Text = "Size";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // frmInvoiceEntry
             // 

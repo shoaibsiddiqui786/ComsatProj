@@ -15,8 +15,6 @@ using GUI_Task.PrintReport;
 using GUI_Task.PrintViewer;
 using GUI_Task.PrintVw6;
 
-//
-
 // *** Important Note ***  Voucher Type is now ALCP_Validation # 69 
 // *** Important Note ***  Journal Voucher 267, CRV 268, CPV 269, BRV 270, BPV 271
 

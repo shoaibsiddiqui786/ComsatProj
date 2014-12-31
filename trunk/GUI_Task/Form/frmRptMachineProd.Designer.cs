@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRptMachineProd));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpToDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.radioButton11 = new System.Windows.Forms.RadioButton();
             this.radioButton12 = new System.Windows.Forms.RadioButton();
             this.radioButton8 = new System.Windows.Forms.RadioButton();
@@ -41,10 +42,10 @@
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.optItemWise = new System.Windows.Forms.RadioButton();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.optDetail = new System.Windows.Forms.RadioButton();
             this.cboMachineNo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -88,8 +89,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dateTimePicker2);
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.dtpToDate);
+            this.groupBox2.Controls.Add(this.dtpFromDate);
             this.groupBox2.Controls.Add(this.radioButton11);
             this.groupBox2.Controls.Add(this.radioButton12);
             this.groupBox2.Controls.Add(this.radioButton8);
@@ -97,29 +98,29 @@
             this.groupBox2.Controls.Add(this.radioButton4);
             this.groupBox2.Controls.Add(this.radioButton3);
             this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radioButton1);
+            this.groupBox2.Controls.Add(this.optItemWise);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.radioButton7);
+            this.groupBox2.Controls.Add(this.optDetail);
             this.groupBox2.Location = new System.Drawing.Point(30, 74);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(482, 239);
             this.groupBox2.TabIndex = 61;
             this.groupBox2.TabStop = false;
             // 
-            // dateTimePicker2
+            // dtpToDate
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(124, 117);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(90, 20);
-            this.dateTimePicker2.TabIndex = 93;
+            this.dtpToDate.Location = new System.Drawing.Point(124, 117);
+            this.dtpToDate.Name = "dtpToDate";
+            this.dtpToDate.Size = new System.Drawing.Size(90, 20);
+            this.dtpToDate.TabIndex = 93;
             // 
-            // dateTimePicker1
+            // dtpFromDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(124, 76);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(90, 20);
-            this.dateTimePicker1.TabIndex = 92;
+            this.dtpFromDate.Location = new System.Drawing.Point(124, 76);
+            this.dtpFromDate.Name = "dtpFromDate";
+            this.dtpFromDate.Size = new System.Drawing.Size(90, 20);
+            this.dtpFromDate.TabIndex = 92;
             // 
             // radioButton11
             // 
@@ -198,16 +199,16 @@
             this.radioButton2.Text = "Item/Color Wise";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // optItemWise
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(253, 30);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(80, 19);
-            this.radioButton1.TabIndex = 81;
-            this.radioButton1.Text = "Item Wise";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.optItemWise.AutoSize = true;
+            this.optItemWise.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.optItemWise.Location = new System.Drawing.Point(253, 30);
+            this.optItemWise.Name = "optItemWise";
+            this.optItemWise.Size = new System.Drawing.Size(80, 19);
+            this.optItemWise.TabIndex = 81;
+            this.optItemWise.Text = "Item Wise";
+            this.optItemWise.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
@@ -239,18 +240,18 @@
             this.label10.Text = "  From Date  ";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // radioButton7
+            // optDetail
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Checked = true;
-            this.radioButton7.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton7.Location = new System.Drawing.Point(253, 13);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(57, 19);
-            this.radioButton7.TabIndex = 76;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Detail";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.optDetail.AutoSize = true;
+            this.optDetail.Checked = true;
+            this.optDetail.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.optDetail.Location = new System.Drawing.Point(253, 13);
+            this.optDetail.Name = "optDetail";
+            this.optDetail.Size = new System.Drawing.Size(57, 19);
+            this.optDetail.TabIndex = 76;
+            this.optDetail.TabStop = true;
+            this.optDetail.Text = "Detail";
+            this.optDetail.UseVisualStyleBackColor = true;
             // 
             // cboMachineNo
             // 
@@ -282,6 +283,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(555, 392);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "frmRptMachineProd";
             this.Text = "Machine Production Report";
@@ -306,15 +308,15 @@
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton optItemWise;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.RadioButton radioButton7;
+        private System.Windows.Forms.RadioButton optDetail;
         private System.Windows.Forms.RadioButton radioButton11;
         private System.Windows.Forms.RadioButton radioButton12;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpToDate;
+        private System.Windows.Forms.DateTimePicker dtpFromDate;
     }
 }

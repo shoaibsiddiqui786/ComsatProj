@@ -193,7 +193,7 @@
             this.lblAccountName.Size = new System.Drawing.Size(280, 15);
             this.lblAccountName.TabIndex = 157;
             this.lblAccountName.Text = "                                                                                 " +
-    "          ";
+                "          ";
             this.lblAccountName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // frmPeriodAcc
@@ -216,7 +216,7 @@
             this.Controls.Add(this.label1);
             this.KeyPreview = true;
             this.Name = "frmPeriodAcc";
-            this.Text = "Period With Accounts";
+            this.Text = "Period With Accounts / Mall Khata";
             this.Load += new System.EventHandler(this.period_With_Accounts_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmPeriodAcc_KeyDown);
             this.ResumeLayout(false);

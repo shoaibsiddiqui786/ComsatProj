@@ -462,17 +462,18 @@ namespace GUI_Task
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(454, 355);
+            this.btnDelete.Location = new System.Drawing.Point(352, 383);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(67, 22);
             this.btnDelete.TabIndex = 306;
             this.btnDelete.Text = "Delete ";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Visible = false;
             // 
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(454, 383);
+            this.btnExit.Location = new System.Drawing.Point(454, 355);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(66, 22);
             this.btnExit.TabIndex = 307;
@@ -510,6 +511,7 @@ namespace GUI_Task
             this.btnUnselectAll.TabIndex = 310;
             this.btnUnselectAll.Text = "UnSelect All";
             this.btnUnselectAll.UseVisualStyleBackColor = true;
+            this.btnUnselectAll.Visible = false;
             // 
             // btnSelectAll
             // 
@@ -520,6 +522,7 @@ namespace GUI_Task
             this.btnSelectAll.TabIndex = 311;
             this.btnSelectAll.Text = "Select All";
             this.btnSelectAll.UseVisualStyleBackColor = true;
+            this.btnSelectAll.Visible = false;
             // 
             // btnResetForm
             // 
@@ -530,6 +533,7 @@ namespace GUI_Task
             this.btnResetForm.TabIndex = 312;
             this.btnResetForm.Text = "Reset Form";
             this.btnResetForm.UseVisualStyleBackColor = true;
+            this.btnResetForm.Visible = false;
             // 
             // sSMaster
             // 

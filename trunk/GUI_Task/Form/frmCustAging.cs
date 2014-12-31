@@ -6,6 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using GUI_Task.StringFun01;
+using GUI_Task.PrintReport;
+using GUI_Task.PrintVw6;
 
 namespace GUI_Task
 {
@@ -180,7 +183,99 @@ namespace GUI_Task
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            if(optWithDishChq.Checked == true)
+            {
+            string fRptTitle = this.Text;
+            string plstField = "@Para_Code,@Para_No,@PDate";
+            string plstType = "18,8,18"; // {"8, 8, 8, 8, 8, 8"};
+            string plstValue = this.mskAccCode.Text + "," + 9 + "," + DateTime.Today.ToString("yyyy-MM-dd");
+               // +"," + StrF01.D2Str(this.dtpToDate.Value);
 
+            //dsLedgerNew pDs = new dsLedgerNew();
+
+            DataSet pDs = new DataSet();
+            CrDue_Rep rpt1 = new CrDue_Rep();
+
+            frmPrintVw6 rptLedger2 = new frmPrintVw6(
+               fRptTitle,
+               "9",
+               DateTime.Today.ToString("yyyy-MM-dd"),
+               //StrF01.D2Str(this.dtpFromDate.Value),
+               //StrF01.D2Str(this.dtpToDate.Value),
+               "Due_Rep",
+               plstField,
+               plstType,
+               plstValue,
+               pDs,
+               rpt1,
+               "SP"
+               );
+
+            //rptLedger2.ShowDialog();
+            rptLedger2.Show();
+        }
+            else if(optWithoutDishChq.Checked == true)
+            {
+                string fRptTitle = this.Text;
+                string plstField = "@Para_Code,@Para_No,@PDate";
+                string plstType = "18,8,18"; // {"8, 8, 8, 8, 8, 8"};
+                string plstValue = this.mskAccCode.Text + "," + 9 + "," + DateTime.Today.ToString("yyyy-MM-dd");
+                // +"," + StrF01.D2Str(this.dtpToDate.Value);
+
+                //dsLedgerNew pDs = new dsLedgerNew();
+
+                DataSet pDs = new DataSet();
+                CrDue_RepCheqNew rpt1 = new CrDue_RepCheqNew();
+
+                frmPrintVw6 rptLedger2 = new frmPrintVw6(
+                   fRptTitle,
+                   "9",
+                   DateTime.Today.ToString("yyyy-MM-dd"),
+                    //StrF01.D2Str(this.dtpFromDate.Value),
+                    //StrF01.D2Str(this.dtpToDate.Value),
+                   "Due_RepCheqNew",
+                   plstField,
+                   plstType,
+                   plstValue,
+                   pDs,
+                   rpt1,
+                   "SP"
+                   );
+
+                //rptLedger2.ShowDialog();
+                rptLedger2.Show();
+            }
+            else if(optCrDaysWithDishChq.Checked == true)
+            {
+                string fRptTitle = this.Text;
+                string plstField = "@Para_Code,@Para_No,@PDate";
+                string plstType = "18,8,18"; // {"8, 8, 8, 8, 8, 8"};
+                string plstValue = this.mskAccCode.Text + "," + 9 + "," + DateTime.Today.ToString("yyyy-MM-dd");
+                // +"," + StrF01.D2Str(this.dtpToDate.Value);
+
+                //dsLedgerNew pDs = new dsLedgerNew();
+
+                DataSet pDs = new DataSet();
+                CrDue_RepCrDaysCust rpt1 = new CrDue_RepCrDaysCust();
+
+                frmPrintVw6 rptLedger2 = new frmPrintVw6(
+                   fRptTitle,
+                   "9",
+                   DateTime.Today.ToString("yyyy-MM-dd"),
+                    //StrF01.D2Str(this.dtpFromDate.Value),
+                    //StrF01.D2Str(this.dtpToDate.Value),
+                   "Due_RepCrDayCust",
+                   plstField,
+                   plstType,
+                   plstValue,
+                   pDs,
+                   rpt1,
+                   "SP"
+                   );
+
+                //rptLedger2.ShowDialog();
+                rptLedger2.Show();
+            }
         }
     }
 }

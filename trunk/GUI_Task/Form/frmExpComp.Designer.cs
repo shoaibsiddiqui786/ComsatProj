@@ -35,7 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.mskAccCode = new System.Windows.Forms.MaskedTextBox();
-            this.dt = new System.Windows.Forms.DateTimePicker();
+            this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.lblAccountName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -125,12 +125,12 @@
             this.mskAccCode.DoubleClick += new System.EventHandler(this.mskAccCode_DoubleClick);
             this.mskAccCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mskAccCode_KeyDown);
             // 
-            // dt
+            // dtpFromDate
             // 
-            this.dt.Location = new System.Drawing.Point(139, 87);
-            this.dt.Name = "dt";
-            this.dt.Size = new System.Drawing.Size(150, 20);
-            this.dt.TabIndex = 67;
+            this.dtpFromDate.Location = new System.Drawing.Point(139, 87);
+            this.dtpFromDate.Name = "dtpFromDate";
+            this.dtpFromDate.Size = new System.Drawing.Size(150, 20);
+            this.dtpFromDate.TabIndex = 67;
             // 
             // lblAccountName
             // 
@@ -151,7 +151,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(442, 201);
             this.Controls.Add(this.lblAccountName);
-            this.Controls.Add(this.dt);
+            this.Controls.Add(this.dtpFromDate);
             this.Controls.Add(this.mskAccCode);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnHelp);
@@ -178,7 +178,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.MaskedTextBox mskAccCode;
-        private System.Windows.Forms.DateTimePicker dt;
+        private System.Windows.Forms.DateTimePicker dtpFromDate;
         private System.Windows.Forms.Label lblAccountName;
     }
 }
