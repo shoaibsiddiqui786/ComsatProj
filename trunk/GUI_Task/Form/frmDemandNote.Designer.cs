@@ -53,13 +53,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblDemandNote = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.optGRNHistory = new System.Windows.Forms.RadioButton();
-            this.optSimple = new System.Windows.Forms.RadioButton();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.txtNoteBottom = new System.Windows.Forms.TextBox();
-            this.lblNote = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtDNNo = new System.Windows.Forms.TextBox();
@@ -104,19 +98,12 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.optInProcess = new System.Windows.Forms.RadioButton();
-            this.optApprovedVerified = new System.Windows.Forms.RadioButton();
-            this.optMultiItem = new System.Windows.Forms.RadioButton();
-            this.optSingleItem = new System.Windows.Forms.RadioButton();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.gBox.SuspendLayout();
             this.sSMaster.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtNoteMain
@@ -167,6 +154,7 @@
             this.btnAddNew.TabIndex = 9;
             this.btnAddNew.Text = "Add New";
             this.btnAddNew.UseVisualStyleBackColor = true;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // dtpDN
             // 
@@ -358,82 +346,16 @@
             this.lblDemandNote.Text = "Demand Note#  ";
             this.lblDemandNote.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.optGRNHistory);
-            this.groupBox1.Controls.Add(this.optSimple);
-            this.groupBox1.Enabled = false;
-            this.groupBox1.Location = new System.Drawing.Point(18, 451);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(205, 43);
-            this.groupBox1.TabIndex = 135;
-            this.groupBox1.TabStop = false;
-            // 
-            // optGRNHistory
-            // 
-            this.optGRNHistory.AutoSize = true;
-            this.optGRNHistory.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optGRNHistory.Location = new System.Drawing.Point(81, 13);
-            this.optGRNHistory.Name = "optGRNHistory";
-            this.optGRNHistory.Size = new System.Drawing.Size(121, 19);
-            this.optGRNHistory.TabIndex = 61;
-            this.optGRNHistory.Text = "With GRN History";
-            this.optGRNHistory.UseVisualStyleBackColor = true;
-            // 
-            // optSimple
-            // 
-            this.optSimple.AutoSize = true;
-            this.optSimple.Checked = true;
-            this.optSimple.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optSimple.Location = new System.Drawing.Point(0, 13);
-            this.optSimple.Name = "optSimple";
-            this.optSimple.Size = new System.Drawing.Size(64, 19);
-            this.optSimple.TabIndex = 60;
-            this.optSimple.TabStop = true;
-            this.optSimple.Text = "Simple";
-            this.optSimple.UseVisualStyleBackColor = true;
-            // 
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(143, 502);
+            this.btnExit.Location = new System.Drawing.Point(25, 460);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(97, 27);
             this.btnExit.TabIndex = 11;
             this.btnExit.Text = "Esc=Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.Location = new System.Drawing.Point(14, 502);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(97, 27);
-            this.btnPrint.TabIndex = 10;
-            this.btnPrint.Text = "Printing";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            // 
-            // txtNoteBottom
-            // 
-            this.txtNoteBottom.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNoteBottom.Location = new System.Drawing.Point(499, 502);
-            this.txtNoteBottom.Name = "txtNoteBottom";
-            this.txtNoteBottom.Size = new System.Drawing.Size(423, 21);
-            this.txtNoteBottom.TabIndex = 143;
-            // 
-            // lblNote
-            // 
-            this.lblNote.AllowDrop = true;
-            this.lblNote.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblNote.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNote.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblNote.Location = new System.Drawing.Point(399, 505);
-            this.lblNote.Name = "lblNote";
-            this.lblNote.Size = new System.Drawing.Size(84, 17);
-            this.lblNote.TabIndex = 144;
-            this.lblNote.Text = "   Note ";
-            this.lblNote.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblTotal
             // 
@@ -442,7 +364,7 @@
             this.lblTotal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblTotal.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblTotal.Location = new System.Drawing.Point(835, 468);
+            this.lblTotal.Location = new System.Drawing.Point(831, 460);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(87, 17);
             this.lblTotal.TabIndex = 145;
@@ -454,7 +376,7 @@
             this.label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label9.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label9.Location = new System.Drawing.Point(757, 468);
+            this.label9.Location = new System.Drawing.Point(753, 460);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(72, 17);
             this.label9.TabIndex = 146;
@@ -765,7 +687,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(284, 502);
+            this.btnSave.Location = new System.Drawing.Point(166, 460);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(97, 27);
             this.btnSave.TabIndex = 12;
@@ -784,7 +706,7 @@
             this.tStextTotal,
             this.tSlblAlert,
             this.textAlert});
-            this.sSMaster.Location = new System.Drawing.Point(0, 536);
+            this.sSMaster.Location = new System.Drawing.Point(0, 493);
             this.sSMaster.Name = "sSMaster";
             this.sSMaster.Size = new System.Drawing.Size(923, 22);
             this.sSMaster.TabIndex = 610;
@@ -900,87 +822,18 @@
             this.dataGridViewTextBoxColumn8.HeaderText = "Stock Available";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             // 
-            // optInProcess
-            // 
-            this.optInProcess.AutoSize = true;
-            this.optInProcess.Checked = true;
-            this.optInProcess.Enabled = false;
-            this.optInProcess.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optInProcess.Location = new System.Drawing.Point(526, 466);
-            this.optInProcess.Name = "optInProcess";
-            this.optInProcess.Size = new System.Drawing.Size(86, 19);
-            this.optInProcess.TabIndex = 60;
-            this.optInProcess.TabStop = true;
-            this.optInProcess.Text = "In Process";
-            this.optInProcess.UseVisualStyleBackColor = true;
-            // 
-            // optApprovedVerified
-            // 
-            this.optApprovedVerified.AutoSize = true;
-            this.optApprovedVerified.Enabled = false;
-            this.optApprovedVerified.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optApprovedVerified.Location = new System.Drawing.Point(629, 466);
-            this.optApprovedVerified.Name = "optApprovedVerified";
-            this.optApprovedVerified.Size = new System.Drawing.Size(125, 19);
-            this.optApprovedVerified.TabIndex = 61;
-            this.optApprovedVerified.Text = "Approved/Verified";
-            this.optApprovedVerified.UseVisualStyleBackColor = true;
-            // 
-            // optMultiItem
-            // 
-            this.optMultiItem.AutoSize = true;
-            this.optMultiItem.Checked = true;
-            this.optMultiItem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optMultiItem.Location = new System.Drawing.Point(6, 10);
-            this.optMultiItem.Name = "optMultiItem";
-            this.optMultiItem.Size = new System.Drawing.Size(188, 19);
-            this.optMultiItem.TabIndex = 60;
-            this.optMultiItem.TabStop = true;
-            this.optMultiItem.Text = "Multi Item Group {Size/Colour}";
-            this.optMultiItem.UseVisualStyleBackColor = true;
-            // 
-            // optSingleItem
-            // 
-            this.optSingleItem.AutoSize = true;
-            this.optSingleItem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optSingleItem.Location = new System.Drawing.Point(6, 36);
-            this.optSingleItem.Name = "optSingleItem";
-            this.optSingleItem.Size = new System.Drawing.Size(198, 19);
-            this.optSingleItem.TabIndex = 61;
-            this.optSingleItem.Text = "Single Item Group {Size/Colour}";
-            this.optSingleItem.UseVisualStyleBackColor = true;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.optSingleItem);
-            this.groupBox4.Controls.Add(this.optMultiItem);
-            this.groupBox4.Enabled = false;
-            this.groupBox4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(647, 37);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(235, 65);
-            this.groupBox4.TabIndex = 132;
-            this.groupBox4.TabStop = false;
-            // 
             // frmDemandNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 558);
+            this.ClientSize = new System.Drawing.Size(923, 515);
             this.Controls.Add(this.sSMaster);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.txtDNNo);
-            this.Controls.Add(this.optInProcess);
-            this.Controls.Add(this.optApprovedVerified);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.lblTotal);
-            this.Controls.Add(this.lblNote);
-            this.Controls.Add(this.txtNoteBottom);
-            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.txtNoteMain);
             this.Controls.Add(this.cboEmpCode);
             this.Controls.Add(this.label7);
@@ -1002,8 +855,6 @@
             this.Load += new System.EventHandler(this.frmDemandNote_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmDemandNote_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -1011,8 +862,6 @@
             this.gBox.PerformLayout();
             this.sSMaster.ResumeLayout(false);
             this.sSMaster.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1036,13 +885,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblDemandNote;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton optGRNHistory;
-        private System.Windows.Forms.RadioButton optSimple;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnPrint;
-        private System.Windows.Forms.TextBox txtNoteBottom;
-        private System.Windows.Forms.Label lblNote;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtDNNo;
@@ -1096,11 +939,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn UnitName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.RadioButton optInProcess;
-        private System.Windows.Forms.RadioButton optApprovedVerified;
-        private System.Windows.Forms.RadioButton optMultiItem;
-        private System.Windows.Forms.RadioButton optSingleItem;
-        private System.Windows.Forms.GroupBox groupBox4;
 
     }
 }

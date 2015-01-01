@@ -914,6 +914,12 @@ namespace GUI_Task
             //childForm.MdiParent = this;
             //childForm.Text = frmMain.ActiveForm.Name + childFormNumber++;
             //childForm.Show();
+           // Form newMDIChild = new Form();
+            // Set the parent form of the child window.
+            //newMDIChild.MdiParent = this;
+            // Display the new form.
+            //newMDIChild.Show();
+            //this.runningTransactionsToolStripMenuItem.Click += new System.EventHandler(this.runningTransactionsToolStripMenuItem);
         }
     }
 }

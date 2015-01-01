@@ -45,7 +45,7 @@ namespace GUI_Task
         {
             if (string.IsNullOrEmpty(this.txtUsername.Text) | string.IsNullOrEmpty(this.txtPassword.Text))
             {
-                MessageBox.Show("provide User Name and Password");
+                MessageBox.Show("Please Provide User Name and Password");
             }
  
             SqlConnection conn = new SqlConnection();
@@ -73,11 +73,6 @@ namespace GUI_Task
 
                  if (this.txtUsername.Text == dr["UserName"].ToString() & this.txtPassword.Text == dr["Password"].ToString())
                  {
-                     //frmMain formSecond = new frmMain();
-                     //if (!CheckForm(formSecond))
-                     //{
-                     //    formSecond.Hide();
-                     //}
                      {
                          //MessageBox.Show("*** Login Successful ***");
                          bool IsOpen = false;
@@ -100,10 +95,6 @@ namespace GUI_Task
                              this.Hide();
 
                          }
-
-                         //frmMain frm = new frmMain();
-                         //frm.Show();
-                         //this.Hide();
                      }
                  }
  
@@ -114,55 +105,13 @@ namespace GUI_Task
                    
                  }              
             }
-                
-           
-            //else if((open = (frmMain)IsFormAlreadyOpen(typeof(frmMain))) == null)
-            //    {
-            //        open = new frmMain();
-            //        open.Hide();
-            //    }
-
+         
             else
             {
                 MessageBox.Show("Invalid UserName or Password\n Access Denied !!!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
-               // MessageBox.Show("Access Denied!!");
-                //if (GUI_Task.frmMain.ActiveForm.ActiveControl.IsDisposed == true)
-                //{
-                //    // Check Internet how to do this
-                //   // GUI_Task.frmMain.ControlCollection.Equals(true)
-                //}
                 this.Close();
             }
         }
-
-        //public static Form IsFormAlreadyOpen(frmMain FormType)
-        //{
-        //    foreach (Form OpenForm in Application.OpenForms)
-        //    {
-        //        if (OpenForm.Name == FormType)
-        //            return OpenForm;
-        //    }
-
-        //    return null;
-        //}
-
-        //private bool CheckForm(Form form)
-        //{
-        //    form = Application.OpenForms[form.Text];
-        //    if (form != null)
-        //        return true;
-        //    else
-        //        return false;
-        //}
-        
-        //private bool CheckForm(frmMain form)
-        //{
-        //    foreach (Form f in Application.OpenForms)
-        //        if (form == f)
-        //            return true;
-
-        //    return false;
-        //}
 
         }
         

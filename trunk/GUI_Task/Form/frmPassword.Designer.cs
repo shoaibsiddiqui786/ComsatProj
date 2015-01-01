@@ -44,7 +44,7 @@
             this.txtNewPassword.Name = "txtNewPassword";
             this.txtNewPassword.PasswordChar = '*';
             this.txtNewPassword.Size = new System.Drawing.Size(181, 20);
-            this.txtNewPassword.TabIndex = 4;
+            this.txtNewPassword.TabIndex = 2;
             // 
             // txtConfirmPassword
             // 
@@ -52,7 +52,7 @@
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.PasswordChar = '*';
             this.txtConfirmPassword.Size = new System.Drawing.Size(181, 20);
-            this.txtConfirmPassword.TabIndex = 5;
+            this.txtConfirmPassword.TabIndex = 3;
             // 
             // label2
             // 
@@ -102,9 +102,10 @@
             this.btnOK.Location = new System.Drawing.Point(76, 139);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(96, 24);
-            this.btnOK.TabIndex = 9;
+            this.btnOK.TabIndex = 4;
             this.btnOK.Text = "O.K";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnExit
             // 
@@ -112,7 +113,7 @@
             this.btnExit.Location = new System.Drawing.Point(201, 139);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(96, 24);
-            this.btnExit.TabIndex = 10;
+            this.btnExit.TabIndex = 5;
             this.btnExit.Text = "Cancel";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.button2_Click);
@@ -123,7 +124,7 @@
             this.txtOldPassword.Name = "txtOldPassword";
             this.txtOldPassword.PasswordChar = '*';
             this.txtOldPassword.Size = new System.Drawing.Size(181, 20);
-            this.txtOldPassword.TabIndex = 11;
+            this.txtOldPassword.TabIndex = 1;
             // 
             // frmPassword
             // 
