@@ -860,13 +860,6 @@ namespace GUI_Task
             frm.Show();
         }
 
-        private void uOMMasterSetupToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //frmUOMMasterSetup frm = new frmUOMMasterSetup();
-            //frm.MdiParent = this;
-            //frm.Show();
-        }
-
         private void customer_Wise_Aging_Click(object sender, EventArgs e)
         {
             frmCustAging frm = new frmCustAging();
@@ -906,20 +899,6 @@ namespace GUI_Task
             frmJournalVoc frm = new frmJournalVoc();
             frm.MdiParent = this;
             frm.Show();
-        }
-
-        private void runningTransactionsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Form childForm = new Form();
-            //childForm.MdiParent = this;
-            //childForm.Text = frmMain.ActiveForm.Name + childFormNumber++;
-            //childForm.Show();
-           // Form newMDIChild = new Form();
-            // Set the parent form of the child window.
-            //newMDIChild.MdiParent = this;
-            // Display the new form.
-            //newMDIChild.Show();
-            //this.runningTransactionsToolStripMenuItem.Click += new System.EventHandler(this.runningTransactionsToolStripMenuItem);
         }
     }
 }
