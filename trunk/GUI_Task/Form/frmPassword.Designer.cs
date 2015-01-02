@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPassword));
             this.txtNewPassword = new System.Windows.Forms.TextBox();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -75,11 +76,11 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(21, 23);
+            this.label1.Location = new System.Drawing.Point(20, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 17);
+            this.label1.Size = new System.Drawing.Size(107, 17);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Old Password:";
+            this.label1.Text = "Current Password:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label3
@@ -139,6 +140,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtConfirmPassword);
             this.Controls.Add(this.txtNewPassword);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "frmPassword";
             this.Text = "Change Password For User";

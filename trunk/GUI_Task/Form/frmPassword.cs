@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
+using GUI_Task.Class;
 
 namespace GUI_Task
 {
@@ -34,6 +35,45 @@ namespace GUI_Task
                 this.Close();
         }
 
+        private void SaveData()
+        {
+            //DataSet ds = new DataSet();
+            //DataRow dRow;
+            string tSQL = string.Empty;
+            string strSaveQry = string.Empty;
+            // Fields 0,1,2,3 are Begin  
+
+            tSQL = "SELECT * ";
+            tSQL += " FROM Users WHERE UserName = 'Usama'";
+
+            try
+            {
+                if (clsDbManager.IDAlreadyExistQry(tSQL) == true)
+                {
+                    //fAlreadyExists = true;
+                    strSaveQry = " UPDATE Users ";
+                    strSaveQry += " SET Password = '" + txtConfirmPassword.Text.ToString() + "'";
+
+                }
+
+                if (!clsDbManager.ExeOne(strSaveQry))
+                {
+                    MessageBox.Show("Not Saved see log...", this.Text.ToString());
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Password Updated Successfully...", this.Text.ToString());
+                    //ClearThisForm();
+                    return;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Unable to Change Password...", this.Text.ToString());
+            }
+        }
+
         private void btnOK_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(this.txtNewPassword.Text) | string.IsNullOrEmpty(this.txtOldPassword.Text) | string.IsNullOrEmpty(this.txtConfirmPassword.Text))
@@ -41,45 +81,29 @@ namespace GUI_Task
                 MessageBox.Show("Invalid Credentials");
             }
 
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Data Source= (Local); Initial Catalog=GUI_Task; User ID=sa; Password=smc786";
-            conn.Open();
-
-            string Password = txtOldPassword.Text;
-
-            SqlCommand cmd = new SqlCommand("select * from Users WHERE UserName = 'Usama' AND Password = '" + txtOldPassword.Text + "'", conn);
-
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-
-            System.Data.SqlClient.SqlDataReader dr = null;
-            dr = cmd.ExecuteReader();
-
             if (txtNewPassword.Text == txtConfirmPassword.Text)
             {
+                string lSQL = string.Empty;
+                lSQL = "SELECT Password FROM Users WHERE UserName = 'Usama'";
 
-                if (dr.Read())
+                clsGetTable.GetDataTable(lSQL);
+                //string test = Convert.ToString(clsGetTable.cmd.ExecuteScalar());
+
+                DataSet ds = new DataSet();
+                ds = clsDbManager.GetData_Set(lSQL, "Users");
+
+                if (txtOldPassword.Text == clsGetTable.GetDataTable(lSQL).ToString())
                 {
-                   // SqlConnection con = new SqlConnection(ConfigurationSettings.AppSettings["ConnectionString"]);
-                   // con.ConnectionString = "Data Source= (Local); Initial Catalog=GUI_Task; User ID=sa; Password=smc786";
-                   // con.Open();
-
-                   // SqlCommand cmd1 = new SqlCommand("UPDATE Users SET Password = '" + txtNewPassword.Text + "'" + "WHERE UserName = 'Usama'", conn);
-                   // MessageBox.Show("Password Changed Successfully !");
-                   // SqlDataAdapter da1 = new SqlDataAdapter(cmd1);
-                   // DataTable dt1 = new DataTable();
-                   //// da.Fill(dt1);
-
-                   // System.Data.SqlClient.SqlDataReader dr1 = null;
-                   // dr1 = cmd.ExecuteReader();
-                   // this.Close();
-
-                    string lSQL = "";
-
-                    DataSet ds = new DataSet();
-                    ds = clsDbManager.GetData_Set(lSQL, "CatDtl");
-  
+                    SaveData();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Old Password Is Incorrect",
+                    "Change Password Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button1);
                 }
             }
             else
