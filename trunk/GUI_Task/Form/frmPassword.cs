@@ -37,8 +37,6 @@ namespace GUI_Task
 
         private void SaveData()
         {
-            //DataSet ds = new DataSet();
-            //DataRow dRow;
             string tSQL = string.Empty;
             string strSaveQry = string.Empty;
             // Fields 0,1,2,3 are Begin  
@@ -64,7 +62,6 @@ namespace GUI_Task
                 else
                 {
                     MessageBox.Show("Password Updated Successfully...", this.Text.ToString());
-                    //ClearThisForm();
                     return;
                 }
             }
@@ -78,21 +75,26 @@ namespace GUI_Task
         {
             if (string.IsNullOrEmpty(this.txtNewPassword.Text) | string.IsNullOrEmpty(this.txtOldPassword.Text) | string.IsNullOrEmpty(this.txtConfirmPassword.Text))
             {
-                MessageBox.Show("Invalid Credentials");
+               // MessageBox.Show("Invalid Credentials");
+                MessageBox.Show("Invalid Credentials",
+                    "Change Password Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button1);
             }
 
-            if (txtNewPassword.Text == txtConfirmPassword.Text)
+            else if (txtNewPassword.Text == txtConfirmPassword.Text)
             {
                 string lSQL = string.Empty;
                 lSQL = "SELECT Password FROM Users WHERE UserName = 'Usama'";
 
-                clsGetTable.GetDataTable(lSQL);
+                //clsGetTable.GetDataTable(lSQL);
                 //string test = Convert.ToString(clsGetTable.cmd.ExecuteScalar());
 
                 DataSet ds = new DataSet();
                 ds = clsDbManager.GetData_Set(lSQL, "Users");
 
-                if (txtOldPassword.Text == clsGetTable.GetDataTable(lSQL).ToString())
+                if (txtOldPassword.Text == ds.Tables[0].Rows[0]["Password"].ToString())
                 {
                     SaveData();
                     this.Close();

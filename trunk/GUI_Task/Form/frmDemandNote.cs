@@ -81,6 +81,8 @@ namespace GUI_Task
         string[] a_Size = new string[0];
         int[] a_SizeInt = new int[0];
 
+        string strDocId = string.Empty;
+
         //bool blnFormLoad = true;
         public frmDemandNote()
         {
@@ -715,16 +717,22 @@ namespace GUI_Task
         {
             bool rtnValue = true;
             string lSQL = string.Empty;
+           
 
             try
             {
                 if (txtDNNo.Text.ToString().Trim(' ', '-') == "")
                 {
                     fDocAlreadyExists = false;
-                    fDocID = clsDbManager.GetNextValDocID("DN", "DNId", fDocWhere, "");
+                    //fDocWhere = " Doc_vt_id = " + fDocTypeID.ToString();
+                    //fDocWhere += " AND doc_Fiscal_ID = " + fDocFiscal.ToString();
+                    fDocID = clsDbManager.GetNextValDocID("DN", "DocId", fDocWhere, "");
+                    strDocId = "1-" + DateTime.Now.Year.ToString() + fDocID.ToString();
+                    txtDNNo.Text = strDocId;
 
                     lSQL = "insert into DN (";
-                    lSQL += "  DNId ";                                         // 1-
+                    lSQL += " fDocId ";
+                    lSQL += ", DNId ";                                         // 1-
                     lSQL += ", Date ";                                     // 2-
                     lSQL += ", DepartmentId ";                                            // 3-
                     lSQL += ", EmployeeId ";                                         // 4-
@@ -737,6 +745,7 @@ namespace GUI_Task
                     lSQL += " ) values (";
                     //
                     lSQL += "'" + fDocID.ToString() + "'";
+                    lSQL += ",'"+ strDocId.ToString() + "'";
                     lSQL += ", " + StrF01.D2Str(dtpDN) + "";                 // 6-
                     lSQL += ",'" + cboDepartment.SelectedValue.ToString() + "'";
                     lSQL += ",'" + cboEmpCode.SelectedValue.ToString() + "'";
@@ -776,6 +785,7 @@ namespace GUI_Task
 
                     lSQL += " where ";
                     lSQL += fDocWhere;
+                    //lSQL += fDocID;
                     //
 
                 }
@@ -828,7 +838,7 @@ namespace GUI_Task
                     lSQL = "INSERT INTO dnDetail (DNId";
                     lSQL += ",ItemId,Des,SizeId,ColorId,Qty)";
                     lSQL += "VALUES (";
-                    //lSQL += "'" + fDocID + "'";
+                    lSQL += "'" + fDocID + "'";
                     lSQL += "'" + txtDNNo.Text.ToString() + "'";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColDN.ItemID].Value.ToString() + "";
                     lSQL += ", '" + grd.Rows[dGVRow].Cells[(int)GColDN.Description].Value.ToString() + "'";
