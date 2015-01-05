@@ -130,6 +130,7 @@
             this.optCashStat.TabStop = true;
             this.optCashStat.Text = "Cash Statement";
             this.optCashStat.UseVisualStyleBackColor = true;
+            this.optCashStat.Visible = false;
             // 
             // optCashRok
             // 
@@ -142,6 +143,7 @@
             this.optCashRok.TabStop = true;
             this.optCashRok.Text = "Cash Roker";
             this.optCashRok.UseVisualStyleBackColor = true;
+            this.optCashRok.Visible = false;
             // 
             // optBankStat
             // 
@@ -154,6 +156,7 @@
             this.optBankStat.TabStop = true;
             this.optBankStat.Text = "Cash/Bank Statement";
             this.optBankStat.UseVisualStyleBackColor = true;
+            this.optBankStat.Visible = false;
             // 
             // groupBox1
             // 
@@ -195,7 +198,7 @@
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(77, 407);
+            this.label3.Location = new System.Drawing.Point(35, 101);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(118, 17);
             this.label3.TabIndex = 2;
@@ -209,7 +212,7 @@
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(223, 407);
+            this.label4.Location = new System.Drawing.Point(181, 101);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(116, 17);
             this.label4.TabIndex = 59;
@@ -223,7 +226,7 @@
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(361, 407);
+            this.label5.Location = new System.Drawing.Point(319, 101);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(123, 17);
             this.label5.TabIndex = 61;
@@ -237,7 +240,7 @@
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(497, 407);
+            this.label6.Location = new System.Drawing.Point(455, 101);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(115, 17);
             this.label6.TabIndex = 62;
@@ -255,7 +258,7 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            this.grdCashStat.Location = new System.Drawing.Point(3, 77);
+            this.grdCashStat.Location = new System.Drawing.Point(-6, 218);
             this.grdCashStat.Name = "grdCashStat";
             this.grdCashStat.Size = new System.Drawing.Size(725, 327);
             this.grdCashStat.TabIndex = 65;
@@ -295,7 +298,7 @@
             this.lblOpeningBalance.AutoSize = true;
             this.lblOpeningBalance.BackColor = System.Drawing.Color.NavajoWhite;
             this.lblOpeningBalance.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOpeningBalance.Location = new System.Drawing.Point(74, 435);
+            this.lblOpeningBalance.Location = new System.Drawing.Point(32, 129);
             this.lblOpeningBalance.Name = "lblOpeningBalance";
             this.lblOpeningBalance.Size = new System.Drawing.Size(121, 15);
             this.lblOpeningBalance.TabIndex = 137;
@@ -307,7 +310,7 @@
             this.lblReceipts.AutoSize = true;
             this.lblReceipts.BackColor = System.Drawing.Color.NavajoWhite;
             this.lblReceipts.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReceipts.Location = new System.Drawing.Point(220, 435);
+            this.lblReceipts.Location = new System.Drawing.Point(178, 129);
             this.lblReceipts.Name = "lblReceipts";
             this.lblReceipts.Size = new System.Drawing.Size(121, 15);
             this.lblReceipts.TabIndex = 138;
@@ -319,7 +322,7 @@
             this.lblPayments.AutoSize = true;
             this.lblPayments.BackColor = System.Drawing.Color.NavajoWhite;
             this.lblPayments.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayments.Location = new System.Drawing.Point(363, 435);
+            this.lblPayments.Location = new System.Drawing.Point(321, 129);
             this.lblPayments.Name = "lblPayments";
             this.lblPayments.Size = new System.Drawing.Size(121, 15);
             this.lblPayments.TabIndex = 139;
@@ -331,7 +334,7 @@
             this.lblNetBalance.AutoSize = true;
             this.lblNetBalance.BackColor = System.Drawing.Color.NavajoWhite;
             this.lblNetBalance.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNetBalance.Location = new System.Drawing.Point(494, 435);
+            this.lblNetBalance.Location = new System.Drawing.Point(452, 129);
             this.lblNetBalance.Name = "lblNetBalance";
             this.lblNetBalance.Size = new System.Drawing.Size(121, 15);
             this.lblNetBalance.TabIndex = 140;
@@ -342,7 +345,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(731, 468);
+            this.ClientSize = new System.Drawing.Size(597, 172);
             this.Controls.Add(this.lblNetBalance);
             this.Controls.Add(this.lblPayments);
             this.Controls.Add(this.lblReceipts);

@@ -65,7 +65,7 @@ namespace GUI_Task
                     " T, T",
                     true,
                     "",
-                    " Type='A'",
+                    " Type='I'",
                     "TextBox"
                     );
 

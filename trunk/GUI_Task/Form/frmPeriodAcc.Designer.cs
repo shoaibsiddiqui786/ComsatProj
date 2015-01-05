@@ -111,6 +111,7 @@
             this.optRptGroupAc.TabStop = true;
             this.optRptGroupAc.Text = "Group A/c Report";
             this.optRptGroupAc.UseVisualStyleBackColor = true;
+            this.optRptGroupAc.Visible = false;
             // 
             // optRptMallKhata
             // 
@@ -122,6 +123,7 @@
             this.optRptMallKhata.TabIndex = 43;
             this.optRptMallKhata.Text = "Mall Khata Report";
             this.optRptMallKhata.UseVisualStyleBackColor = true;
+            this.optRptMallKhata.Visible = false;
             // 
             // btnHelp
             // 
@@ -200,7 +202,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(457, 232);
+            this.ClientSize = new System.Drawing.Size(429, 216);
             this.Controls.Add(this.lblAccountName);
             this.Controls.Add(this.dtpToDate);
             this.Controls.Add(this.dtpFromDate);
