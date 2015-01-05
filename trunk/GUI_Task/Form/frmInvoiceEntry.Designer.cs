@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInvoiceEntry));
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnGrpPrint = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -1616,6 +1617,7 @@
             this.Controls.Add(this.label26);
             this.Controls.Add(this.dtpInv);
             this.Controls.Add(this.label27);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "frmInvoiceEntry";
             this.Text = " Invoice Entry";

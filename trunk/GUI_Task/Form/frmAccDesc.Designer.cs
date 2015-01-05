@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccDesc));
             this.mskAccCode = new System.Windows.Forms.MaskedTextBox();
             this.lblAccCode = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
@@ -294,6 +295,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.mskAccCode);
             this.Controls.Add(this.lblAccCode);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAccDesc";
             this.Text = "Account Description";
             this.Load += new System.EventHandler(this.frmAccDesc_Load);

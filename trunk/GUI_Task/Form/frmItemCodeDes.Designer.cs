@@ -29,6 +29,7 @@ namespace GUI_Task
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmItemCodeDes));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
@@ -632,6 +633,7 @@ namespace GUI_Task
             this.Controls.Add(this.btnSelectAll);
             this.Controls.Add(this.btnResetForm);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "frmItemCodeDes";
             this.Text = "Item Code Description";
