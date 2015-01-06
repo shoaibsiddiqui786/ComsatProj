@@ -587,10 +587,6 @@ namespace GUI_Task
 
         private void issueReturnItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //frmIssueRetnItems frm = new frmIssueRetnItems();
-            //frm.MdiParent = this;
-            //frm.Show(); 
-
             frmIssueRetItems frm = new frmIssueRetItems();
             frm.MdiParent = this;
             frm.Show();

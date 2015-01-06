@@ -226,6 +226,7 @@ namespace GUI_Task
                 lSQL,
                 fFieldList,
                 fColFormat);
+            SumVoc();
         }
 
 
@@ -654,15 +655,7 @@ namespace GUI_Task
             fLastRow = 0;
         }
 
-        private void SumVoc()
-        {
-            bool bcheck;
-            decimal fQty = 0;
-            decimal fAmount = 0;
-            decimal rtnVal = 0;
-            decimal outValue = 0;
-
-        }
+       
         private void cmdSave_Click(object sender, EventArgs e)
         {
             SaveData();
@@ -990,6 +983,54 @@ namespace GUI_Task
         private void txt_I_ItemID_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void SumVoc()
+        {
+            bool bcheck;
+            decimal fQty = 0;
+            decimal fAmount = 0;
+            decimal rtnVal = 0;
+            decimal outValue = 0;
+
+            for (int i = 0; i < grd.RowCount; i++)
+            {
+                if (grd.Rows[i].Cells[(int)GColIstm.CurrentStock].Value != null)
+                {
+                    bcheck = decimal.TryParse(grd.Rows[i].Cells[(int)GColIstm.CurrentStock].Value.ToString(), out outValue);
+                    if (bcheck)
+                    {
+                        rtnVal += outValue;
+                        fAmount = fAmount + outValue;
+                    }
+                }
+            }
+
+            lblCurrentStock.Text = String.Format("{0:0,0.00}", fAmount);
+        }
+        
+        private void ClearTextBoxes()
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                    {
+                        (control as TextBox).Clear();
+                        lblCurrentStock.Text = "";
+                    }
+                    else
+                        func(control.Controls);
+            };
+
+            func(Controls);
+        }
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            grd.Rows.Clear();
+            ClearTextBoxes();
         }
 
 
