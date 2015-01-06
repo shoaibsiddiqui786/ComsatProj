@@ -855,6 +855,32 @@ namespace GUI_Task
 
             lblTotal.Text = String.Format("{0:0,0.00}", fAmount);
         }
+        
+        private void ClearTextBoxes()
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                    {
+                        (control as TextBox).Clear();
+                        lblTime.Text= "";
+                        lblTotal.Text = "";
+                    }
+                    else
+                        func(control.Controls);
+            };
+
+            func(Controls);
+        }
+
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            grd.Rows.Clear();
+            ClearTextBoxes();
+        }
     }
 }
 

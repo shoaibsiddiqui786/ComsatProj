@@ -52,9 +52,7 @@
             this.cboGate = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtRecievingPersonName = new System.Windows.Forms.TextBox();
-            this.btnPrint = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.chkPrinter = new System.Windows.Forms.CheckBox();
             this.optnProcess = new System.Windows.Forms.RadioButton();
             this.optApprovedVerified = new System.Windows.Forms.RadioButton();
             this.label9 = new System.Windows.Forms.Label();
@@ -98,6 +96,8 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chkPrinter = new System.Windows.Forms.CheckBox();
+            this.btnPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -341,38 +341,16 @@
             this.txtRecievingPersonName.Size = new System.Drawing.Size(327, 20);
             this.txtRecievingPersonName.TabIndex = 177;
             // 
-            // btnPrint
-            // 
-            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnPrint.Location = new System.Drawing.Point(99, 409);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(84, 20);
-            this.btnPrint.TabIndex = 16;
-            this.btnPrint.Text = "Printing";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            // 
             // btnExit
             // 
             this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(189, 409);
+            this.btnExit.Location = new System.Drawing.Point(164, 411);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(88, 20);
             this.btnExit.TabIndex = 17;
             this.btnExit.Text = "Esc=Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // chkPrinter
-            // 
-            this.chkPrinter.AutoSize = true;
-            this.chkPrinter.Checked = true;
-            this.chkPrinter.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkPrinter.Location = new System.Drawing.Point(283, 412);
-            this.chkPrinter.Name = "chkPrinter";
-            this.chkPrinter.Size = new System.Drawing.Size(56, 17);
-            this.chkPrinter.TabIndex = 181;
-            this.chkPrinter.Text = "Printer";
-            this.chkPrinter.UseVisualStyleBackColor = true;
             // 
             // optnProcess
             // 
@@ -387,6 +365,7 @@
             this.optnProcess.TabStop = true;
             this.optnProcess.Text = "In Process";
             this.optnProcess.UseVisualStyleBackColor = true;
+            this.optnProcess.Visible = false;
             // 
             // optApprovedVerified
             // 
@@ -399,6 +378,7 @@
             this.optApprovedVerified.TabIndex = 183;
             this.optApprovedVerified.Text = "Approved/Verified";
             this.optApprovedVerified.UseVisualStyleBackColor = true;
+            this.optApprovedVerified.Visible = false;
             // 
             // label9
             // 
@@ -443,6 +423,7 @@
             this.btnAddNew.Size = new System.Drawing.Size(76, 23);
             this.btnAddNew.TabIndex = 188;
             this.btnAddNew.UseVisualStyleBackColor = true;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // btnHelp
             // 
@@ -714,7 +695,7 @@
             // btnSave
             // 
             this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(12, 409);
+            this.btnSave.Location = new System.Drawing.Point(43, 412);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(81, 20);
             this.btnSave.TabIndex = 6;
@@ -834,6 +815,30 @@
             this.dataGridViewTextBoxColumn5.HeaderText = "Qty";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
+            // chkPrinter
+            // 
+            this.chkPrinter.AutoSize = true;
+            this.chkPrinter.Checked = true;
+            this.chkPrinter.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPrinter.Location = new System.Drawing.Point(283, 412);
+            this.chkPrinter.Name = "chkPrinter";
+            this.chkPrinter.Size = new System.Drawing.Size(56, 17);
+            this.chkPrinter.TabIndex = 181;
+            this.chkPrinter.Text = "Printer";
+            this.chkPrinter.UseVisualStyleBackColor = true;
+            this.chkPrinter.Visible = false;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnPrint.Location = new System.Drawing.Point(99, 409);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(84, 20);
+            this.btnPrint.TabIndex = 16;
+            this.btnPrint.Text = "Printing";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Visible = false;
+            // 
             // frmGateInward
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -901,9 +906,7 @@
         private System.Windows.Forms.ComboBox cboGate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtRecievingPersonName;
-        private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.CheckBox chkPrinter;
         private System.Windows.Forms.RadioButton optnProcess;
         private System.Windows.Forms.RadioButton optApprovedVerified;
         private System.Windows.Forms.Label label9;
@@ -956,5 +959,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.CheckBox chkPrinter;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

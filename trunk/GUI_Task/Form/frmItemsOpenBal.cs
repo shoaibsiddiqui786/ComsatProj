@@ -19,14 +19,14 @@ namespace GUI_Task
         ItemName = 2,
         SizeName = 3,
         ColorName = 4,
-        UnitName = 5,
+        //UnitName = 5,
         GodownName = 6,
         Qty = 7,
         Rate = 8,
         Amount = 9,
         SizeID = 10,
         ColorID = 11,
-        UOMID = 12,
+       // UOMID = 12,
         GodownID = 13
 
     }
@@ -148,17 +148,17 @@ namespace GUI_Task
             ColorColumn.DisplayMember = ds.Tables[0].Columns[1].ToString();
             ds.Clear();
 
-            //UOM Combo Fill
-            lSQL = "select UOMID, UnitName from IMS_UOM order by UnitName";
+            ////UOM Combo Fill
+            //lSQL = "select UOMID, UnitName from IMS_UOM order by UnitName";
 
-            clsFillCombo.FillCombo(cbo_I_UOM, clsGVar.ConString1, "IMS_UOM" + "," + "UnitName" + "," + "False", lSQL);
-            fcboDefaultValue = Convert.ToInt16(cbo_I_UOM.SelectedValue);
+            //clsFillCombo.FillCombo(cbo_I_UOM, clsGVar.ConString1, "IMS_UOM" + "," + "UnitName" + "," + "False", lSQL);
+            //fcboDefaultValue = Convert.ToInt16(cbo_I_UOM.SelectedValue);
 
-            ds = clsDbManager.GetData_Set(lSQL, "IMS_UOM");
-            UnitColumn.DataSource = ds.Tables[0];
-            UnitColumn.ValueMember = ds.Tables[0].Columns[0].ToString();
-            UnitColumn.DisplayMember = ds.Tables[0].Columns[1].ToString();
-            ds.Clear();
+            //ds = clsDbManager.GetData_Set(lSQL, "IMS_UOM");
+            //UnitColumn.DataSource = ds.Tables[0];
+            //UnitColumn.ValueMember = ds.Tables[0].Columns[0].ToString();
+            //UnitColumn.DisplayMember = ds.Tables[0].Columns[1].ToString();
+            //ds.Clear();
 
             //Godown cOMBO
             lSQL = "select cgdCode, cgdDesc from catdtl where cgcode=" + Convert.ToString((int)Category.enmGodown);
@@ -198,7 +198,7 @@ namespace GUI_Task
 
             clsDbManager.SetGridHeaderCmb(
                 grd,
-                14,
+                12,
                 fHDR,
                 fColWidth,
                 fColMaxInputLen,
@@ -220,24 +220,14 @@ namespace GUI_Task
             string lSQL = "";
 
             lSQL += " select id.ItemId AS Code, i.ItemCode, i.Name AS ItemName, sz.cgdDesc AS SizeName, clr.cgdDesc AS ColorName, ";
-            lSQL += "u.UnitName,  gd.cgdDesc AS Godown, id.Qty, id.Rate, isNull(id.Qty,0)*isNull(id.Rate,0) AS Amount, id.SizeId, id.ColorId, id.GodownId, u.UOMID";
+            lSQL += " gd.cgdDesc AS Godown, id.Qty, id.Rate, isNull(id.Qty,0)*isNull(id.Rate,0) AS Amount, id.SizeId, id.ColorId, id.GodownId";
         lSQL +=  "  from IOBDetail id ";
         lSQL +=   " INNER JOIN Item i ON i.ItemId=id.ItemId ";
         lSQL +=    "INNER JOIN CatDtl sz ON id.SizeId = sz.cgdCode AND sz.cgCode = 5 ";
         lSQL +=    "INNER JOIN CatDtl clr ON id.ColorID=clr.cgdCode AND clr.cgCode=3 ";
         lSQL +=   " INNER JOIN CatDtl gd ON id.GodownId = gd.cgdCode AND gd.cgCode = 2 ";
         lSQL +=    " INNER JOIN Item_Sec it ON it.Code = i.ItemId ";
-        lSQL += "  INNER JOIN IMS_UOM u ON u.UOMID = u.UOMID";
         lSQL += " where id.IOBId = '" + txtIOBNo.Text.ToString() + "'; ";   
-
-            //lSQL += " select id.ItemId AS Code, i.Name AS ItemName, sz.cgdDesc AS SizeName, clr.cgdDesc AS ColorName, ";
-            //lSQL += " gd.cgdDesc AS GodownName, i.StockLevel, e.Qty AS IssueQty, i.Qty AS ReturnQty, (isnull(it.Qty_In+i.Qty,0)) AS NewStock ";
-            //lSQL += " from IssueRetDetail id INNER JOIN Item i ON i.ItemId=id.ItemId";
-            //lSQL += "  INNER JOIN CatDtl sz ON id.SizeId = sz.cgdCode AND sz.cgCode = 5 ";
-            //lSQL += " JOIN CatDtl clr ON h.ColorID=clr.cgdCode AND clr.cgCode=3 ";
-            //lSQL += " INNER JOIN CatDtl gd ON id.GodownId = gd.cgdCode AND gd.cgCode = 2 ";
-            //lSQL += " INNER JOIN IssueDetail e ON id.ItemId = e.ItemId INNER JOIN Item_Sec it ON it.Code = i.ItemId ";
-            //lSQL += " where e.IssueId = '" + txt_I_ItemID.Text.ToString() + "'; ";
 
             clsDbManager.FillDataGrid(
                 grd,
@@ -466,14 +456,14 @@ namespace GUI_Task
             lFieldList += ",ItemName";                  // 2-    ItemName";     
             lFieldList += ",SizeName";              // 3-    Size";       
             lFieldList += ",ColorName";             // 4-    Color";      
-            lFieldList += ",UnitName";               // 5-    UOM";        
+           // lFieldList += ",UnitName";               // 5-    UOM";        
             lFieldList += ",Godown";                 // 6-    godown";     
             lFieldList += ",Qty";                    // 7    Qty";   
             lFieldList += ",Rate";                   // 8    Rate";      
             lFieldList += ",Amount";                 // 9    Amount";  
             lFieldList += ",SizeId";                 // 10    sizeId";         
             lFieldList += ",ColorId";                // 11    ColorId";       
-            lFieldList += ",UomID";                  // 12    UOMID";     
+           // lFieldList += ",UomID";                  // 12    UOMID";     
             lFieldList += ",GodownId";               // 13    GodownId";
 
             lHDR += "Item ID";            // 0-    ItemID";     
@@ -481,21 +471,21 @@ namespace GUI_Task
             lHDR += ",Item Name";         // 2-    ItemName";   
             lHDR += ",Size";              // 3-    Size";       
             lHDR += ",Color";             // 4-    Color";      
-            lHDR += ",UOM";             // 5-    UOM";       
+           // lHDR += ",UOM";             // 5-    UOM";       
             lHDR += ",Godown";           // 6-    godown";    
             lHDR += ",Qty";         // 7    Qty";     
             lHDR += ",Rate";          // 8    Rate";        
             lHDR += ",Amount";       // 9    Amount";  
             lHDR += ",SizeID";            // 10    sizeId";    
             lHDR += ",ColorID";    // 11    ColorId";     
-            lHDR += ",UOMID";             // 12    UOMID";       
+           // lHDR += ",UOMID";             // 12    UOMID";       
             lHDR += ",GodownID";           // 13    GodownId";  
 
             // Col Visible Width
             lColWidth = "   5";               // 0-    ItemID";      
             lColWidth += ",12";                 // 1-    ItemCode";  
             lColWidth += ", 20";              // 2-    ItemName";     
-            lColWidth += ", 7";               // 3-    Size";       
+            //lColWidth += ", 7";               // 3-    Size";       
             lColWidth += ", 7";               // 4-    Color";      
             lColWidth += ", 7";                // 5-    UOM";        
             lColWidth += ", 7";                // 6-    godown";     
@@ -503,7 +493,7 @@ namespace GUI_Task
             lColWidth += ", 7";              // 8    Rate";        
             lColWidth += ", 7";                // 9    Amount";  
             lColWidth += ", 7";                // 10    sizeId";     
-            lColWidth += ", 7";              // 11    ColorId";      
+           // lColWidth += ", 7";              // 11    ColorId";      
             lColWidth += ", 7";              // 12    UOMID";       
             lColWidth += ", 10";             // 13    GodownId";  
                            
@@ -511,7 +501,7 @@ namespace GUI_Task
             // Column Input Length/Width
             lColMaxInputLen = "  0";                // 0-    ItemID";      
             lColMaxInputLen += ", 0";                 // 1-    ItemCode";  
-            lColMaxInputLen += ", 0";               // 2-    ItemName";    
+           // lColMaxInputLen += ", 0";               // 2-    ItemName";    
             lColMaxInputLen += ", 0";               // 3-    Size";       
             lColMaxInputLen += ", 0";               // 4-    Color";      
             lColMaxInputLen += ", 0";                // 5-    UOM";        
@@ -519,7 +509,7 @@ namespace GUI_Task
             lColMaxInputLen += ", 0";              // 7    Qty";    
             lColMaxInputLen += ", 0";              // 8    Rate";       
             lColMaxInputLen += ", 0";                // 9    Amount";  
-            lColMaxInputLen += ", 0";                // 10    sizeId";     
+          //  lColMaxInputLen += ", 0";                // 10    sizeId";     
             lColMaxInputLen += ", 0";              // 11    ColorId";     
             lColMaxInputLen += ", 0";              // 12    UOMID";      
             lColMaxInputLen += ", 0";              // 13    GodownId"; 
@@ -528,7 +518,7 @@ namespace GUI_Task
             lColMinWidth = "   0";                        // 0-    ItemID";    
             lColMinWidth += ", 0";                          // 1-    ItemCode";
             lColMinWidth += ", 0";                        // 2-    ItemName";  
-            lColMinWidth += ", 0";                        // 3-    Size";      
+           // lColMinWidth += ", 0";                        // 3-    Size";      
             lColMinWidth += ", 0";                        // 4-    Color";     
             lColMinWidth += ", 0";                         // 5-    UOM";      
             lColMinWidth += ", 0";                         // 6-    godown";   
@@ -536,14 +526,14 @@ namespace GUI_Task
             lColMinWidth += ", 0";                     // 8    Rate";        
             lColMinWidth += ", 0";                         // 9    Amount";  
             lColMinWidth += ", 0";                         // 10    sizeId";   
-            lColMinWidth += ", 0";                     // 11    ColorId";     
+          //  lColMinWidth += ", 0";                     // 11    ColorId";     
             lColMinWidth += ", 0";                     // 12    UOMID";       
             lColMinWidth += ", 0";                     // 13    GodownId";     
 
             // Column Format
             lColFormat = "  T";                           // 0-    ItemID";    
             lColFormat += ", T";                            // 1-    ItemCode";
-            lColFormat += ", T";                          // 2-    ItemName";  
+           // lColFormat += ", T";                          // 2-    ItemName";  
             lColFormat += ", T";                          // 3-    Size";      
             lColFormat += ", T";                          // 4-    Color";     
             lColFormat += ", T";                           // 5-    UOM";      
@@ -553,7 +543,7 @@ namespace GUI_Task
             lColFormat += ",N2";                           // 9    Amount";  
             lColFormat += ", H";                           // 10    sizeId";   
             lColFormat += ", H";                     // 11    ColorId";      
-            lColFormat += ", H";                     // 12    UOMID";        
+           // lColFormat += ", H";                     // 12    UOMID";        
             lColFormat += ", H";                     // 13    GodownId";         
 
             // Column ReadOnly 1= readonly, 0 = read-write
@@ -562,14 +552,14 @@ namespace GUI_Task
             lColReadOnly += ",1";                           // 2-    ItemName";  
             lColReadOnly += ",0";                           // 3-    Size";      
             lColReadOnly += ",0";                           // 4-    Color";     
-            lColReadOnly += ",0";                            // 5-    UOM";      
+           // lColReadOnly += ",0";                            // 5-    UOM";      
             lColReadOnly += ",0";                           // 6-    godown";   
             lColReadOnly += ",0";                    // 7    Qty";      
             lColReadOnly += ",0";                    // 8    Rate";         
             lColReadOnly += ",1";                            // 9    Amount";  
             lColReadOnly += ",0";                            // 10    sizeId";   
             lColReadOnly += ",0";                    // 11    ColorId";      
-            lColReadOnly += ",0";                    // 12    UOMID";        
+           // lColReadOnly += ",0";                    // 12    UOMID";        
             lColReadOnly += ",0";                    // 13    GodownId";         
 
             // For Saving Time
@@ -578,14 +568,14 @@ namespace GUI_Task
             tColType += ",  SKP";                  // 2-    ItemName";  
             tColType += ",  SKP";                  // 3-    Size";      
             tColType += ",  SKP";                  // 4-    Color";     
-            tColType += ",  SKP";                   // 5-    UOM";      
+          //  tColType += ",  SKP";                   // 5-    UOM";      
             tColType += ", SKP";                  // 6-    godown";   
             tColType += ", N2";           // 7    Qty";       
             tColType += ", N2";           // 8    Rate";          
             tColType += ", N2";                   // 9    Amount";  
             tColType += ", N0";                   // 10    sizeId";   
             tColType += ", N0";           // 11    ColorId";       
-            tColType += ", N0";           // 12    UOMID";         
+            //tColType += ", N0";           // 12    UOMID";         
             tColType += ", N0";           // 13    GodownId";         
 
             tFieldName += "Code";                        // 0-    ItemID";    
@@ -593,14 +583,14 @@ namespace GUI_Task
             tFieldName += ",ItemName";                   // 2-    ItemName";  
             tFieldName += ",SizeName";                   // 3-    Size";        
             tFieldName += ",ColorName";                  // 4-    Color";       
-            tFieldName += ",UOM";                       // 5-    UOM";      
+           // tFieldName += ",UOM";                       // 5-    UOM";      
             tFieldName += ",Godown";                   // 6-    godown";   
             tFieldName += ",Qty";               // 7    Qty";      
             tFieldName += ",Rate";                // 8    Rate";         
             tFieldName += ",Amount";                  // 9    Amount";  
             tFieldName += ",SizeID";                     // 10    sizeId";   
             tFieldName += ",ColorID";           // 11    ColorId";      
-            tFieldName += ",UOMID";                  // 12    UOMID";        
+            //tFieldName += ",UOMID";                  // 12    UOMID";        
             tFieldName += ",GodownID";                // 13    GodownId";         
 
 
@@ -641,7 +631,7 @@ namespace GUI_Task
                 lbl_I_ItemName.Text.ToString(),                                // 1-    ItemCode";
                 cbo_I_Size.Text.ToString(),                                  // 2-    ItemName";  
                 cbo_I_Color.Text.ToString(),                                 // 3-    Size";        
-                cbo_I_UOM.Text.ToString(),                                   // 4-    Color";       
+                //cbo_I_UOM.Text.ToString(),                                   // 4-    Color";       
                 cboGodown.Text.ToString(),                                  // 5-    UOM";      
                 txtQty.Text.ToString(),                                       // 6-    godown";   
                 txtRate.Text.ToString(),                          // 7    Qty";    
@@ -650,7 +640,7 @@ namespace GUI_Task
                 //"",                                                       // 9    Amount";  
                 cbo_I_Size.SelectedValue.ToString(),                         // 10    sizeId";   
                 cbo_I_Color.SelectedValue.ToString(),               // 11    ColorId";      
-                cbo_I_UOM.SelectedValue.ToString(),                      // 12    UOMID";        
+                //cbo_I_UOM.SelectedValue.ToString(),                      // 12    UOMID";        
                 cboGodown.SelectedValue.ToString());                      // 13    GodownId";       
         }
         
@@ -1016,6 +1006,14 @@ namespace GUI_Task
                 return false;
             }
 
+        }
+
+        private void txtIOBNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                LookUp_Voc();
+            }
         }
 
 

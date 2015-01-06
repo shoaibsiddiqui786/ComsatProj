@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPurchaseOrder));
             this.txtDNNo = new System.Windows.Forms.TextBox();
             this.cboEmpCode = new System.Windows.Forms.ComboBox();
             this.dtpDN = new System.Windows.Forms.DateTimePicker();
@@ -1076,6 +1077,7 @@
             this.Controls.Add(this.cboEmpCode);
             this.Controls.Add(this.txtDNNo);
             this.Controls.Add(this.lblDepartment);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "frmPurchaseOrder";
             this.Text = "Purchase Order";

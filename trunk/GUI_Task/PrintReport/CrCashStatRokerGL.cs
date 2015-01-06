@@ -16,14 +16,14 @@ namespace GUI_Task.PrintReport {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CrDue_Rep : ReportClass {
+    public class CrCashStatRokerGL : ReportClass {
         
-        public CrDue_Rep() {
+        public CrCashStatRokerGL() {
         }
         
         public override string ResourceName {
             get {
-                return "CrDue_Rep.rpt";
+                return "CrCashStatRokerGL.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace GUI_Task.PrintReport {
         
         public override string FullResourceName {
             get {
-                return "GUI_Task.PrintReport.CrDue_Rep.rpt";
+                return "GUI_Task.PrintReport.CrCashStatRokerGL.rpt";
             }
             set {
                 // Do nothing
@@ -90,7 +90,7 @@ namespace GUI_Task.PrintReport {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Para_Code {
+        public CrystalDecisions.Shared.IParameterField Parameter_CashCode {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -98,7 +98,7 @@ namespace GUI_Task.PrintReport {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Para_No {
+        public CrystalDecisions.Shared.IParameterField Parameter_FromDate {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }
@@ -106,7 +106,7 @@ namespace GUI_Task.PrintReport {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_PDate {
+        public CrystalDecisions.Shared.IParameterField Parameter_ToDate {
             get {
                 return this.DataDefinition.ParameterFields[2];
             }
@@ -114,9 +114,9 @@ namespace GUI_Task.PrintReport {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCrDue_Rep : Component, ICachedReport {
+    public class CachedCrCashStatRokerGL : Component, ICachedReport {
         
-        public CachedCrDue_Rep() {
+        public CachedCrCashStatRokerGL() {
         }
         
         [Browsable(false)]
@@ -153,7 +153,7 @@ namespace GUI_Task.PrintReport {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CrDue_Rep rpt = new CrDue_Rep();
+            CrCashStatRokerGL rpt = new CrCashStatRokerGL();
             rpt.Site = this.Site;
             return rpt;
         }
