@@ -729,6 +729,7 @@ namespace GUI_Task
                     fDocID = clsDbManager.GetNextValDocID("DN", "DocId", fDocWhere, "");
                     strDocId = "1-" + DateTime.Now.Year.ToString() + fDocID.ToString();
                     txtDNNo.Text = strDocId;
+                    fDocID += fDocID;
 
                     lSQL = "insert into DN (";
                     lSQL += "  DocId ";
