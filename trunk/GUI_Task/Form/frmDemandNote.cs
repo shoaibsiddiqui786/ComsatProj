@@ -731,7 +731,7 @@ namespace GUI_Task
                     txtDNNo.Text = strDocId;
 
                     lSQL = "insert into DN (";
-                    lSQL += " fDocId ";
+                    lSQL += "  DocId ";
                     lSQL += ", DNId ";                                         // 1-
                     lSQL += ", Date ";                                     // 2-
                     lSQL += ", DepartmentId ";                                            // 3-
@@ -744,7 +744,7 @@ namespace GUI_Task
                     lSQL += ", BranchId ";                                        // 7-
                     lSQL += " ) values (";
                     //
-                    lSQL += "'" + fDocID.ToString() + "'";
+                    lSQL += fDocID.ToString();
                     lSQL += ",'"+ strDocId.ToString() + "'";
                     lSQL += ", " + StrF01.D2Str(dtpDN) + "";                 // 6-
                     lSQL += ",'" + cboDepartment.SelectedValue.ToString() + "'";
@@ -835,11 +835,11 @@ namespace GUI_Task
                         }
                     }
 
-                    lSQL = "INSERT INTO dnDetail (DNId";
-                    lSQL += ",ItemId,Des,SizeId,ColorId,Qty)";
-                    lSQL += "VALUES (";
-                    lSQL += "'" + fDocID + "'";
-                    lSQL += "'" + txtDNNo.Text.ToString() + "'";
+                    lSQL = "INSERT INTO dnDetail (DocId ";
+                    lSQL += ",DNId,ItemId,Des,SizeId,ColorId,Qty)";
+                    lSQL += " VALUES (";
+                    lSQL += fDocID;
+                    lSQL += ", '" + txtDNNo.Text.ToString() + "'";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColDN.ItemID].Value.ToString() + "";
                     lSQL += ", '" + grd.Rows[dGVRow].Cells[(int)GColDN.Description].Value.ToString() + "'";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColDN.SizeID].Value.ToString() + "";
