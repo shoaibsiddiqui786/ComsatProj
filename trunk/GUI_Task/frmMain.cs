@@ -468,9 +468,9 @@ namespace GUI_Task
 
         private void goodRecieveNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //frmGdRecNote frm = new frmGdRecNote();
-            //frm.MdiParent = this;
-            //frm.Show();
+            frmGdRecNote frm = new frmGdRecNote();
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void gateOutwardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -580,9 +580,9 @@ namespace GUI_Task
 
         private void goodsRecieveNoteReturnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //frmGdRecNoteReturn frm = new frmGdRecNoteReturn();
-            //frm.MdiParent = this;
-            //frm.Show();
+            frmGdRecNoteReturn frm = new frmGdRecNoteReturn();
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void issueReturnItemsToolStripMenuItem_Click(object sender, EventArgs e)

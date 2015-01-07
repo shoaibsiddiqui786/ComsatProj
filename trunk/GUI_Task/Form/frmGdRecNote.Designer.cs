@@ -1,6 +1,6 @@
 ﻿namespace GUI_Task
 {
-    partial class frmGRN
+    partial class frmGdRecNote
     {
         /// <summary>
         /// Required designer variable.
@@ -46,7 +46,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.dtpGI = new System.Windows.Forms.DateTimePicker();
             this.label20 = new System.Windows.Forms.Label();
-            this.btnHelp = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.cboLC = new System.Windows.Forms.ComboBox();
@@ -66,7 +65,6 @@
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtRecPerName = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -76,10 +74,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.txtDiscount = new System.Windows.Forms.TextBox();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.txtGRN = new System.Windows.Forms.TextBox();
             this.cboGodowns = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -126,6 +120,7 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnHelp = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.InsertNew.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -343,16 +338,6 @@
             this.label20.Text = " Date";
             this.label20.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // btnHelp
-            // 
-            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Location = new System.Drawing.Point(493, -2);
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(68, 22);
-            this.btnHelp.TabIndex = 189;
-            this.btnHelp.Text = "F1=Help";
-            this.btnHelp.UseVisualStyleBackColor = true;
-            // 
             // label4
             // 
             this.label4.AllowDrop = true;
@@ -537,23 +522,13 @@
             // btnExit
             // 
             this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(217, 447);
+            this.btnExit.Location = new System.Drawing.Point(121, 447);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(88, 20);
             this.btnExit.TabIndex = 206;
             this.btnExit.Text = "Esc=Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnPrint.Location = new System.Drawing.Point(123, 447);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(88, 20);
-            this.btnPrint.TabIndex = 205;
-            this.btnPrint.Text = "Printing";
-            this.btnPrint.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
@@ -662,50 +637,6 @@
             this.label23.TabIndex = 211;
             this.label23.Text = "   Net Value";
             this.label23.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label24
-            // 
-            this.label24.AllowDrop = true;
-            this.label24.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label24.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label24.Location = new System.Drawing.Point(533, 447);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(72, 17);
-            this.label24.TabIndex = 213;
-            this.label24.Text = "Discount";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // txtDiscount
-            // 
-            this.txtDiscount.Location = new System.Drawing.Point(610, 446);
-            this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.Size = new System.Drawing.Size(103, 20);
-            this.txtDiscount.TabIndex = 214;
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton5.Location = new System.Drawing.Point(396, 447);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(120, 19);
-            this.radioButton5.TabIndex = 216;
-            this.radioButton5.Text = "With GRN History";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // radioButton6
-            // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Checked = true;
-            this.radioButton6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton6.Location = new System.Drawing.Point(326, 446);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(64, 19);
-            this.radioButton6.TabIndex = 215;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Simple";
-            this.radioButton6.UseVisualStyleBackColor = true;
             // 
             // txtGRN
             // 
@@ -1186,23 +1117,31 @@
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.Width = 68;
             // 
-            // frmGRN
+            // btnHelp
+            // 
+            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.Location = new System.Drawing.Point(493, 0);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(68, 22);
+            this.btnHelp.TabIndex = 616;
+            this.btnHelp.Text = "F1=Help";
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+            // 
+            // frmGdRecNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1003, 492);
+            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.lblGateInward);
             this.Controls.Add(this.sSMaster);
             this.Controls.Add(this.InsertNew);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.cboGodowns);
             this.Controls.Add(this.txtGRN);
-            this.Controls.Add(this.radioButton5);
-            this.Controls.Add(this.radioButton6);
-            this.Controls.Add(this.txtDiscount);
-            this.Controls.Add(this.label24);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label18);
@@ -1210,7 +1149,6 @@
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtRecPerName);
             this.Controls.Add(this.label14);
@@ -1220,7 +1158,6 @@
             this.Controls.Add(this.cboLC);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.dtpGRN);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dtpGI);
@@ -1240,7 +1177,9 @@
             this.Controls.Add(this.mskPurchaseCode);
             this.Controls.Add(this.label3);
             this.KeyPreview = true;
-            this.Name = "frmGRN";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "frmGdRecNote";
             this.Text = "Goods Recieve Note";
             this.Load += new System.EventHandler(this.Goods_Recieve_Note_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmGdRecNote_KeyDown);
@@ -1277,7 +1216,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker dtpGI;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cboLC;
@@ -1286,7 +1224,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView grd;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtRecPerName;
         private System.Windows.Forms.Label label14;
@@ -1296,10 +1233,6 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox txtDiscount;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.TextBox txtGRN;
         private System.Windows.Forms.ComboBox cboGodowns;
         private System.Windows.Forms.Label label11;
@@ -1357,5 +1290,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.Button btnHelp;
     }
 }

@@ -1115,7 +1115,7 @@ namespace GUI_Task
         {
             if (e.KeyCode == Keys.F1)
             {
-               
+                LookUp_Voc();
             }
         }
 
@@ -1568,6 +1568,11 @@ namespace GUI_Task
         private void lblGateOutwordId_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            LookUp_Voc();
         }
 
         

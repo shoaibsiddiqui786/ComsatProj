@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSales));
-            this.optApprovedVerified = new System.Windows.Forms.RadioButton();
-            this.optInProcess = new System.Windows.Forms.RadioButton();
-            this.txtDiscount = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
             this.lblNetValue = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.lblTotalQty = new System.Windows.Forms.Label();
@@ -41,7 +37,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtDeliveryPersonName = new System.Windows.Forms.TextBox();
             this.grd = new System.Windows.Forms.DataGridView();
@@ -127,6 +122,7 @@
             this.tSlblAlert = new System.Windows.Forms.ToolStripStatusLabel();
             this.textAlert = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblGateOutwordId = new System.Windows.Forms.Label();
+            this.btnHelp = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -134,56 +130,6 @@
             this.groupBox2.SuspendLayout();
             this.sSMaster.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // optApprovedVerified
-            // 
-            this.optApprovedVerified.AutoSize = true;
-            this.optApprovedVerified.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optApprovedVerified.Location = new System.Drawing.Point(373, 412);
-            this.optApprovedVerified.Name = "optApprovedVerified";
-            this.optApprovedVerified.Size = new System.Drawing.Size(119, 19);
-            this.optApprovedVerified.TabIndex = 267;
-            this.optApprovedVerified.Text = "Approved/Verified";
-            this.optApprovedVerified.UseVisualStyleBackColor = true;
-            this.optApprovedVerified.Visible = false;
-            this.optApprovedVerified.CheckedChanged += new System.EventHandler(this.optApprovedVerified_CheckedChanged);
-            // 
-            // optInProcess
-            // 
-            this.optInProcess.AutoSize = true;
-            this.optInProcess.Checked = true;
-            this.optInProcess.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optInProcess.Location = new System.Drawing.Point(282, 413);
-            this.optInProcess.Name = "optInProcess";
-            this.optInProcess.Size = new System.Drawing.Size(84, 19);
-            this.optInProcess.TabIndex = 266;
-            this.optInProcess.TabStop = true;
-            this.optInProcess.Text = "In Process";
-            this.optInProcess.UseVisualStyleBackColor = true;
-            this.optInProcess.Visible = false;
-            this.optInProcess.CheckedChanged += new System.EventHandler(this.optInProcess_CheckedChanged);
-            // 
-            // txtDiscount
-            // 
-            this.txtDiscount.Location = new System.Drawing.Point(596, 412);
-            this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.Size = new System.Drawing.Size(103, 20);
-            this.txtDiscount.TabIndex = 265;
-            this.txtDiscount.TextChanged += new System.EventHandler(this.txtDiscount_TextChanged);
-            // 
-            // label24
-            // 
-            this.label24.AllowDrop = true;
-            this.label24.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label24.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label24.Location = new System.Drawing.Point(519, 413);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(72, 17);
-            this.label24.TabIndex = 264;
-            this.label24.Text = "Discount";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label24.Click += new System.EventHandler(this.label24_Click);
             // 
             // lblNetValue
             // 
@@ -285,7 +231,7 @@
             // btnExit
             // 
             this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(150, 411);
+            this.btnExit.Location = new System.Drawing.Point(99, 410);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(90, 20);
             this.btnExit.TabIndex = 257;
@@ -293,22 +239,10 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.button6_Click);
             // 
-            // btnPrint
-            // 
-            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnPrint.Location = new System.Drawing.Point(92, 411);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(88, 20);
-            this.btnPrint.TabIndex = 256;
-            this.btnPrint.Text = "Printing";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Visible = false;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
             // btnSave
             // 
             this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(49, 413);
+            this.btnSave.Location = new System.Drawing.Point(12, 410);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(79, 20);
             this.btnSave.TabIndex = 255;
@@ -1254,21 +1188,29 @@
             this.lblGateOutwordId.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblGateOutwordId.Click += new System.EventHandler(this.lblGateOutwordId_Click);
             // 
+            // btnHelp
+            // 
+            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.Location = new System.Drawing.Point(494, 3);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(68, 22);
+            this.btnHelp.TabIndex = 616;
+            this.btnHelp.Text = "F1=Help";
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+            // 
             // frmSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(908, 457);
+            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.lblGateOutwordId);
             this.Controls.Add(this.sSMaster);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.cboGodown);
             this.Controls.Add(this.txtSale);
-            this.Controls.Add(this.optApprovedVerified);
-            this.Controls.Add(this.optInProcess);
-            this.Controls.Add(this.txtDiscount);
-            this.Controls.Add(this.label24);
             this.Controls.Add(this.lblNetValue);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.lblTotalQty);
@@ -1277,7 +1219,6 @@
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtDeliveryPersonName);
             this.Controls.Add(this.cboType);
@@ -1303,6 +1244,8 @@
             this.Controls.Add(this.txtNote);
             this.Controls.Add(this.cboItemGroup);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmSales";
             this.Text = "Sales (Gate Outward)";
             this.Load += new System.EventHandler(this.Sales_Load);
@@ -1322,10 +1265,6 @@
 
         #endregion
 
-        private System.Windows.Forms.RadioButton optApprovedVerified;
-        private System.Windows.Forms.RadioButton optInProcess;
-        private System.Windows.Forms.TextBox txtDiscount;
-        private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label lblNetValue;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label lblTotalQty;
@@ -1334,7 +1273,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtDeliveryPersonName;
         private System.Windows.Forms.DataGridView grd;
@@ -1420,5 +1358,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button btnHelp;
     }
 }

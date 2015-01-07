@@ -31,7 +31,7 @@ namespace GUI_Task
         //UOMID = 15,
         GodownId = 13
     }
-    public partial class frmGRN : Form
+    public partial class frmGdRecNote : Form
     {
         //******* Grid Variable Setting -- Begin ******
         string fHDR = string.Empty;                       // Column Header
@@ -75,7 +75,7 @@ namespace GUI_Task
 
         bool blnFormLoad = true;
         int fcboDefaultValue = 0;
-        public frmGRN()
+        public frmGdRecNote()
         {
             InitializeComponent();
         }
@@ -229,7 +229,7 @@ namespace GUI_Task
                     " GRN g INNER JOIN CatDtl cd on g.ItemGroupID = cd.cgdCode AND cd.cgCode = 6 INNER JOIN GRNDetail gd on gd.GRNId = g.GRNId ",
                     this.Text.ToString(),
                     1,
-                    " GRN ID, GateInward No, Date, Item Group, Gate",
+                    " GRN ID, Type ,LC, Item Group, Qty",
                     "8,12,8,12,8",
                     " T, T, T, T, T",
                     true,
@@ -589,7 +589,7 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
                     lSQL += ", " + cboGodowns.SelectedValue.ToString() + "";
                     lSQL += ", 1";
                     lSQL += ", " + txtRecPerName.Text.ToString() + "";
-                    lSQL += ", " + txtDiscount.Text.ToString() + "";
+                    //lSQL += ", " + txtDiscount.Text.ToString() + "";
                     lSQL += ")";
                 }
                 else
@@ -1162,6 +1162,11 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
         private void mskVendeCode_DoubleClick(object sender, EventArgs e)
         {
             LookUp_GL();
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            LookUp_Voc();
         }
 
        
