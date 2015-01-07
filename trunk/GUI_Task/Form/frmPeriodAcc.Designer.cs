@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPeriodAcc));
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -111,6 +112,7 @@
             this.optRptGroupAc.TabStop = true;
             this.optRptGroupAc.Text = "Group A/c Report";
             this.optRptGroupAc.UseVisualStyleBackColor = true;
+            this.optRptGroupAc.Visible = false;
             // 
             // optRptMallKhata
             // 
@@ -122,6 +124,7 @@
             this.optRptMallKhata.TabIndex = 43;
             this.optRptMallKhata.Text = "Mall Khata Report";
             this.optRptMallKhata.UseVisualStyleBackColor = true;
+            this.optRptMallKhata.Visible = false;
             // 
             // btnHelp
             // 
@@ -200,7 +203,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(457, 232);
+            this.ClientSize = new System.Drawing.Size(429, 216);
             this.Controls.Add(this.lblAccountName);
             this.Controls.Add(this.dtpToDate);
             this.Controls.Add(this.dtpFromDate);
@@ -214,6 +217,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "frmPeriodAcc";
             this.Text = "Period With Accounts / Mall Khata";

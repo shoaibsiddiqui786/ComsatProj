@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDeliveryOrder));
             this.btnPrintDet = new System.Windows.Forms.Button();
             this.btnPrintGrp = new System.Windows.Forms.Button();
             this.btnUrduPrint = new System.Windows.Forms.Button();
@@ -1498,6 +1499,7 @@
             this.Controls.Add(this.label26);
             this.Controls.Add(this.dtpDO);
             this.Controls.Add(this.label27);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDeliveryOrder";
             this.Text = "Delivery Order";
             this.Load += new System.EventHandler(this.frmDeliveryOrder_Load);

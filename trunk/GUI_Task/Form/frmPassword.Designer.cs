@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPassword));
             this.txtNewPassword = new System.Windows.Forms.TextBox();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,7 +45,7 @@
             this.txtNewPassword.Name = "txtNewPassword";
             this.txtNewPassword.PasswordChar = '*';
             this.txtNewPassword.Size = new System.Drawing.Size(181, 20);
-            this.txtNewPassword.TabIndex = 4;
+            this.txtNewPassword.TabIndex = 2;
             // 
             // txtConfirmPassword
             // 
@@ -52,7 +53,7 @@
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.PasswordChar = '*';
             this.txtConfirmPassword.Size = new System.Drawing.Size(181, 20);
-            this.txtConfirmPassword.TabIndex = 5;
+            this.txtConfirmPassword.TabIndex = 3;
             // 
             // label2
             // 
@@ -75,11 +76,11 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(21, 23);
+            this.label1.Location = new System.Drawing.Point(20, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 17);
+            this.label1.Size = new System.Drawing.Size(107, 17);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Old Password:";
+            this.label1.Text = "Current Password:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label3
@@ -102,9 +103,10 @@
             this.btnOK.Location = new System.Drawing.Point(76, 139);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(96, 24);
-            this.btnOK.TabIndex = 9;
+            this.btnOK.TabIndex = 4;
             this.btnOK.Text = "O.K";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnExit
             // 
@@ -112,7 +114,7 @@
             this.btnExit.Location = new System.Drawing.Point(201, 139);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(96, 24);
-            this.btnExit.TabIndex = 10;
+            this.btnExit.TabIndex = 5;
             this.btnExit.Text = "Cancel";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.button2_Click);
@@ -123,7 +125,7 @@
             this.txtOldPassword.Name = "txtOldPassword";
             this.txtOldPassword.PasswordChar = '*';
             this.txtOldPassword.Size = new System.Drawing.Size(181, 20);
-            this.txtOldPassword.TabIndex = 11;
+            this.txtOldPassword.TabIndex = 1;
             // 
             // frmPassword
             // 
@@ -138,6 +140,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtConfirmPassword);
             this.Controls.Add(this.txtNewPassword);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "frmPassword";
             this.Text = "Change Password For User";

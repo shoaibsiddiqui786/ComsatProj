@@ -49,8 +49,6 @@
             this.salesGateOutwardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gateOutwardDeliveryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.finishItemRecieveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.finishItemRecieveDeptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.claimContractorProductionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.godownToGodownShiftingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,7 +56,6 @@
             this.itemsOpeningBalanceWIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockLevelMaximumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.issueItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.issueItemsFormulaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.issueItemBatchWiseDeptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.goodsRecieveNoteReturnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -171,6 +168,7 @@
             this.securityToolStripMenuItem1,
             this.runningTransactionsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.MdiWindowListItem = this.runningTransactionsToolStripMenuItem;
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(822, 24);
             this.menuStrip1.TabIndex = 0;
@@ -247,8 +245,6 @@
             this.salesGateOutwardToolStripMenuItem,
             this.gateOutwardDeliveryToolStripMenuItem,
             this.toolStripSeparator6,
-            this.finishItemRecieveToolStripMenuItem,
-            this.finishItemRecieveDeptToolStripMenuItem,
             this.claimContractorProductionToolStripMenuItem,
             this.toolStripSeparator7,
             this.godownToGodownShiftingToolStripMenuItem,
@@ -256,7 +252,6 @@
             this.itemsOpeningBalanceWIPToolStripMenuItem,
             this.stockLevelMaximumToolStripMenuItem,
             this.toolStripSeparator8,
-            this.issueItemsToolStripMenuItem,
             this.issueItemsFormulaToolStripMenuItem,
             this.issueItemBatchWiseDeptToolStripMenuItem,
             this.goodsRecieveNoteReturnToolStripMenuItem,
@@ -324,26 +319,13 @@
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(225, 6);
             // 
-            // finishItemRecieveToolStripMenuItem
-            // 
-            this.finishItemRecieveToolStripMenuItem.Name = "finishItemRecieveToolStripMenuItem";
-            this.finishItemRecieveToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.finishItemRecieveToolStripMenuItem.Text = "Finish Item Recieve";
-            this.finishItemRecieveToolStripMenuItem.Click += new System.EventHandler(this.finishItemRecieveToolStripMenuItem_Click);
-            // 
-            // finishItemRecieveDeptToolStripMenuItem
-            // 
-            this.finishItemRecieveDeptToolStripMenuItem.Name = "finishItemRecieveDeptToolStripMenuItem";
-            this.finishItemRecieveDeptToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.finishItemRecieveDeptToolStripMenuItem.Text = "Finish Item Recieve (Dept.)";
-            this.finishItemRecieveDeptToolStripMenuItem.Click += new System.EventHandler(this.finishItemRecieveDeptToolStripMenuItem_Click);
-            // 
             // claimContractorProductionToolStripMenuItem
             // 
             this.claimContractorProductionToolStripMenuItem.Enabled = false;
             this.claimContractorProductionToolStripMenuItem.Name = "claimContractorProductionToolStripMenuItem";
             this.claimContractorProductionToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.claimContractorProductionToolStripMenuItem.Text = "Claim Contractor Production";
+            this.claimContractorProductionToolStripMenuItem.Visible = false;
             this.claimContractorProductionToolStripMenuItem.Click += new System.EventHandler(this.claimContractorProductionToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
@@ -370,6 +352,7 @@
             this.itemsOpeningBalanceWIPToolStripMenuItem.Name = "itemsOpeningBalanceWIPToolStripMenuItem";
             this.itemsOpeningBalanceWIPToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.itemsOpeningBalanceWIPToolStripMenuItem.Text = "Items Opening balance (WIP)";
+            this.itemsOpeningBalanceWIPToolStripMenuItem.Visible = false;
             this.itemsOpeningBalanceWIPToolStripMenuItem.Click += new System.EventHandler(this.itemsOpeningBalanceWIPToolStripMenuItem_Click);
             // 
             // stockLevelMaximumToolStripMenuItem
@@ -384,18 +367,11 @@
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             this.toolStripSeparator8.Size = new System.Drawing.Size(225, 6);
             // 
-            // issueItemsToolStripMenuItem
-            // 
-            this.issueItemsToolStripMenuItem.Name = "issueItemsToolStripMenuItem";
-            this.issueItemsToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.issueItemsToolStripMenuItem.Text = "Issue Items";
-            this.issueItemsToolStripMenuItem.Click += new System.EventHandler(this.issueItemsToolStripMenuItem_Click);
-            // 
             // issueItemsFormulaToolStripMenuItem
             // 
             this.issueItemsFormulaToolStripMenuItem.Name = "issueItemsFormulaToolStripMenuItem";
             this.issueItemsFormulaToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.issueItemsFormulaToolStripMenuItem.Text = "Issue Items (Formula)";
+            this.issueItemsFormulaToolStripMenuItem.Text = "Issue Items";
             this.issueItemsFormulaToolStripMenuItem.Click += new System.EventHandler(this.issueItemsFormulaToolStripMenuItem_Click);
             // 
             // issueItemBatchWiseDeptToolStripMenuItem
@@ -403,6 +379,7 @@
             this.issueItemBatchWiseDeptToolStripMenuItem.Name = "issueItemBatchWiseDeptToolStripMenuItem";
             this.issueItemBatchWiseDeptToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.issueItemBatchWiseDeptToolStripMenuItem.Text = "Issue Item Batch Wise (Dept.)";
+            this.issueItemBatchWiseDeptToolStripMenuItem.Visible = false;
             this.issueItemBatchWiseDeptToolStripMenuItem.Click += new System.EventHandler(this.issueItemBatchWiseDeptToolStripMenuItem_Click);
             // 
             // goodsRecieveNoteReturnToolStripMenuItem
@@ -618,6 +595,7 @@
             this.uOMMasterSetupToolStripMenuItem.Name = "uOMMasterSetupToolStripMenuItem";
             this.uOMMasterSetupToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.uOMMasterSetupToolStripMenuItem.Text = "UOM Master Setup";
+            this.uOMMasterSetupToolStripMenuItem.Visible = false;
             this.uOMMasterSetupToolStripMenuItem.Click += new System.EventHandler(this.uOMMasterSetupToolStripMenuItem_Click);
             // 
             // toolStripSeparator19
@@ -753,6 +731,7 @@
             this.expense_Comparison.Name = "expense_Comparison";
             this.expense_Comparison.Size = new System.Drawing.Size(207, 22);
             this.expense_Comparison.Text = "Expense Comparison";
+            this.expense_Comparison.Visible = false;
             this.expense_Comparison.Click += new System.EventHandler(this.toolStripMenuItem13_Click);
             // 
             // customer_List
@@ -884,6 +863,7 @@
             this.toolStripMenuItem32.Name = "toolStripMenuItem32";
             this.toolStripMenuItem32.Size = new System.Drawing.Size(349, 22);
             this.toolStripMenuItem32.Text = "Stock Report Item Wise/WIP Stock";
+            this.toolStripMenuItem32.Visible = false;
             this.toolStripMenuItem32.Click += new System.EventHandler(this.toolStripMenuItem32_Click);
             // 
             // toolStripMenuItem33
@@ -1267,18 +1247,12 @@
         private System.Windows.Forms.ToolStripMenuItem salesGateOutwardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gateOutwardDeliveryToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripMenuItem finishItemRecieveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem finishItemRecieveDeptToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem claimContractorProductionToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem godownToGodownShiftingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem itemsOpeningBalanceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem itemsOpeningBalanceWIPToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stockLevelMaximumToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
-        private System.Windows.Forms.ToolStripMenuItem issueItemsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem issueItemsFormulaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem issueItemBatchWiseDeptToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem goodsRecieveNoteReturnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem issueReturnItemsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saleOrderEntryToolStripMenuItem;
@@ -1309,6 +1283,9 @@
         private System.Windows.Forms.ToolStripMenuItem packFormulaDefinitionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem groupSizeColourToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mainGroupToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem itemsOpeningBalanceWIPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem issueItemsFormulaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem issueItemBatchWiseDeptToolStripMenuItem;
     }
 }
 

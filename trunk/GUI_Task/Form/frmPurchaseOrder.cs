@@ -552,13 +552,6 @@ namespace GUI_Task
 
         private void LookUp_Voc()
         {
-
-            //string pSource,
-            //int pRow,
-            //int pCol
-
-            // MessageBox.Show("Lookup Source: " + pSource);
-
             // 1- KeyField
             // 2- Field List
             // 3- Table Name
@@ -571,49 +564,7 @@ namespace GUI_Task
             // 10 Join String Otherwise Empty String.
             // 11 Optional Where
             // 11 Return Control Type TextBox or MaskedTextBox Default mtextBox
-            //
-            //select doc_id, doc_strid, doc_date, doc_remarks, doc_amt 
-            //from gl_tran
-            //where doc_vt_id=1 and doc_fiscal_id=1
-
-            //SELECT d.Ord_No, d.Cont_No, d.Ord_Date, h.Name AS CustName, d.Qty, d.Amount, d.Category
-            //FROM Ord_Det d INNER JOIN Heads h ON d.Customer=h.Code
-            //WHERE d.Category = 1
-            //                    "d.DNId",
-            //                    "d.Date, ig.cgdDesc AS ItemGroupName, pd.department_name, " 
-            //                    + "pe.first_name + ' ' + pe.last_name AS EmpName, d.Note ",
-            //                    "DN d INNER JOIN CatDtl ig ON d.ItemGroupId=ig.cgdCode AND ig.cgCode=6 "
-            //                    + "INNER JOIN PR_Department pd ON d.DepartmentId=pd.departmentid " 
-            //                    + "INNER JOIN PR_Employee pe ON d.EmployeeId=pe.employeeid",
-            //                    this.Text.ToString(),
-            //                    1,
-            //                    "DN#,Date,Item Group Name,Department Name,Employee Name,Note ",
-            //                    "10,8,12,12,12,15",
-            //                    " T, T, T, T, T, T",
-            //                    true,
-            //                    "",
-
-             //"sl.StockLevelId",
-             //   " sl.Date, cd.cgdDesc AS ItemGroupName, sl.Note ",
-             //   "  StockLevel sl inner join StockLevelDetail sld on sl.StockLevelId=sld.StockLevelId "
-             //   + " inner join CatDtl cd on sl.ItemGroupID=cd.cgdCode AND cd.cgCode=6",
-             //       this.Text.ToString(),
-             //       1,
-             //       "Stock #,Date,Item Group Name,Note",
-             //       "12,8,15,20",
-             //       " T, T, T, T",
-             //       true,
-             //       "",
-             //   //"d.Category = " + cboMainGroup.SelectedValue.ToString(), 
-             //       "",
-             //       "TextBox"
-             //       );
-//            select po.POId, po.Date, po.DNId, po.DNDate, e.first_name + ' ' + e.last_name AS EmployeeName,
-// po.Note
-//from PO po
-//inner join PoDetail pod on po.POId=pod.POId
-//inner join PR_Employee e on po.EmployeeId=e.employeeid
-
+            
 
             frmLookUp sForm = new frmLookUp(
                     "po.POId",
@@ -627,7 +578,6 @@ namespace GUI_Task
                     " T, T, T, T, T, T",
                     true,
                     "",
-                //"d.Category = " + cboMainGroup.SelectedValue.ToString(), 
                     "",
                     "TextBox"
                     );
@@ -649,19 +599,7 @@ namespace GUI_Task
                         //LoadSampleData();
                         //SumVoc();
                     }
-
-                    //txtOrderNo.Text = txtPassDataVocID.Text.ToString();
-                    //grdVoucher[pCol, pRow].Value = tmtext.Text.ToString();
-                    //System.Windows.Forms.SendKeys.Send("{TAB}");
                 }
-
-                //if (msk_AccountID.Text.ToString() == "" || msk_AccountID.Text.ToString() == string.Empty)
-                //{
-                //    return;
-                //}
-                //msk_AccountID.Text = sForm.lupassControl.ToString();
-                ////grdVoucher[pCol, pRow].Value = msk_AccountID.Text.ToString();
-                //System.Windows.Forms.SendKeys.Send("{TAB}");
             }
         }
         #endregion

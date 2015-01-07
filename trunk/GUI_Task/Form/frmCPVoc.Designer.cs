@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCPVoc));
             this.txtManualDoc = new System.Windows.Forms.TextBox();
             this.grdVoucher = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -718,6 +719,7 @@
             this.Controls.Add(this.btn_Clear);
             this.Controls.Add(this.txtManualDoc);
             this.Controls.Add(this.lblVocCodeName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "frmCPVoc";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

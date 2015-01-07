@@ -45,7 +45,7 @@ namespace GUI_Task
         {
             if (string.IsNullOrEmpty(this.txtUsername.Text) | string.IsNullOrEmpty(this.txtPassword.Text))
             {
-                MessageBox.Show("provide User Name and Password");
+                MessageBox.Show("Please Provide User Name and Password");
             }
  
             SqlConnection conn = new SqlConnection();
@@ -73,11 +73,6 @@ namespace GUI_Task
 
                  if (this.txtUsername.Text == dr["UserName"].ToString() & this.txtPassword.Text == dr["Password"].ToString())
                  {
-                     //frmMain formSecond = new frmMain();
-                     //if (!CheckForm(formSecond))
-                     //{
-                     //    formSecond.Hide();
-                     //}
                      {
                          //MessageBox.Show("*** Login Successful ***");
                          bool IsOpen = false;
@@ -100,10 +95,6 @@ namespace GUI_Task
                              this.Hide();
 
                          }
-
-                         //frmMain frm = new frmMain();
-                         //frm.Show();
-                         //this.Hide();
                      }
                  }
  
@@ -114,55 +105,90 @@ namespace GUI_Task
                    
                  }              
             }
-                
-           
-            //else if((open = (frmMain)IsFormAlreadyOpen(typeof(frmMain))) == null)
-            //    {
-            //        open = new frmMain();
-            //        open.Hide();
-            //    }
-
+         
             else
             {
                 MessageBox.Show("Invalid UserName or Password\n Access Denied !!!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
-               // MessageBox.Show("Access Denied!!");
-                //if (GUI_Task.frmMain.ActiveForm.ActiveControl.IsDisposed == true)
-                //{
-                //    // Check Internet how to do this
-                //   // GUI_Task.frmMain.ControlCollection.Equals(true)
-                //}
                 this.Close();
             }
         }
 
-        //public static Form IsFormAlreadyOpen(frmMain FormType)
-        //{
-        //    foreach (Form OpenForm in Application.OpenForms)
-        //    {
-        //        if (OpenForm.Name == FormType)
-        //            return OpenForm;
-        //    }
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (string.IsNullOrEmpty(this.txtUsername.Text) | string.IsNullOrEmpty(this.txtPassword.Text))
+                {
+                    MessageBox.Show("Please Provide User Name and Password");
+                }
 
-        //    return null;
-        //}
+                SqlConnection conn = new SqlConnection();
+                conn.ConnectionString = "Data Source= (Local); Initial Catalog=GUI_Task; User ID=sa; Password=smc786";
+                conn.Open();
 
-        //private bool CheckForm(Form form)
-        //{
-        //    form = Application.OpenForms[form.Text];
-        //    if (form != null)
-        //        return true;
-        //    else
-        //        return false;
-        //}
-        
-        //private bool CheckForm(frmMain form)
-        //{
-        //    foreach (Form f in Application.OpenForms)
-        //        if (form == f)
-        //            return true;
+                string UserName = txtUsername.Text;
+                string Password = txtPassword.Text;
 
-        //    return false;
-        //}
+                SqlCommand cmd = new SqlCommand("select * from Users WHERE UserName = '" + txtUsername.Text + "' and Password = '" + txtPassword.Text + "'", conn);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                System.Data.SqlClient.SqlDataReader dr = null;
+                dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    SqlConnection con = new SqlConnection(ConfigurationSettings.AppSettings["ConnectionString"]);
+                    con.ConnectionString = "Data Source= (Local); Initial Catalog=GUI_Task; User ID=sa; Password=smc786";
+                    con.Open();
+
+
+                    if (this.txtUsername.Text == dr["UserName"].ToString() & this.txtPassword.Text == dr["Password"].ToString())
+                    {
+                        {
+                            //MessageBox.Show("*** Login Successful ***");
+                            bool IsOpen = false;
+                            foreach (Form f in Application.OpenForms)
+                            {
+                                if (f.Name == "frmMain")
+                                {
+                                    IsOpen = true;
+                                    f.Focus();
+                                    MessageBox.Show("This User Is Already Logged In");
+                                    this.Hide();
+                                    break;
+                                }
+                            }
+
+                            if (IsOpen == false)
+                            {
+                                frmMain frm = new frmMain();
+                                frm.Show();
+                                this.Hide();
+
+                            }
+                        }
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Invalid UserName or Password", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Access Denied!!");
+
+                    }
+                }
+
+                else
+                {
+                    MessageBox.Show("Invalid UserName or Password\n Access Denied !!!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+            }
+        }
+
+       
 
         }
         

@@ -504,8 +504,17 @@ namespace GUI_Task
             {
                 lSQL = "select max(" + pKeyFieldID + ") as maxvalue";
                 lSQL += " from " + pTable;
-                lSQL += " where ";
-                lSQL += pWhere;
+                if (pWhere != string.Empty)
+                {
+                    lSQL += " where ";
+                    lSQL += pWhere;
+                }
+                else
+                {
+                    lSQL = "select max(" + pKeyFieldID + ") as maxvalue";
+                    lSQL += " from " + pTable;
+                    //lSQL += " where ";
+                }
                 //lSQL += " and ";
                 //lSQL += clsGVar.LGCY;
             }

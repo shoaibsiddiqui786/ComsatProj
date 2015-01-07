@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPurchaseOrder));
             this.txtDNNo = new System.Windows.Forms.TextBox();
             this.cboEmpCode = new System.Windows.Forms.ComboBox();
             this.dtpDN = new System.Windows.Forms.DateTimePicker();
@@ -41,9 +42,6 @@
             this.txtDepartment = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.lblNameDataUp = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.optSingleItem = new System.Windows.Forms.RadioButton();
-            this.optMultiItem = new System.Windows.Forms.RadioButton();
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnHelp3 = new System.Windows.Forms.Button();
             this.btnHelp2 = new System.Windows.Forms.Button();
@@ -62,7 +60,6 @@
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnPrint = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.lblNote = new System.Windows.Forms.Label();
@@ -72,18 +69,12 @@
             this.blVenderCode = new System.Windows.Forms.Label();
             this.lblPurchaseCode = new System.Windows.Forms.Label();
             this.lblItemGroup = new System.Windows.Forms.Label();
-            this.optPurchasePrint = new System.Windows.Forms.RadioButton();
-            this.optOfficePrint = new System.Windows.Forms.RadioButton();
-            this.lblSuggestionOfCash = new System.Windows.Forms.Label();
-            this.txtSuggestionOfCash = new System.Windows.Forms.TextBox();
             this.listBox21 = new System.Windows.Forms.ListBox();
             this.lblValue = new System.Windows.Forms.Label();
             this.lst = new System.Windows.Forms.ListBox();
             this.lblQty = new System.Windows.Forms.Label();
             this.lblNameBottom = new System.Windows.Forms.Label();
             this.lblNameUp = new System.Windows.Forms.Label();
-            this.optApprovedVerified = new System.Windows.Forms.RadioButton();
-            this.optInProcess = new System.Windows.Forms.RadioButton();
             this.btnHelp4 = new System.Windows.Forms.Button();
             this.txtPONo = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -122,7 +113,6 @@
             this.tStextTotal = new System.Windows.Forms.ToolStripStatusLabel();
             this.tSlblAlert = new System.Windows.Forms.ToolStripStatusLabel();
             this.textAlert = new System.Windows.Forms.ToolStripStatusLabel();
-            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -269,46 +259,11 @@
             this.lblNameDataUp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblNameDataUp.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNameDataUp.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblNameDataUp.Location = new System.Drawing.Point(389, 77);
+            this.lblNameDataUp.Location = new System.Drawing.Point(392, 80);
             this.lblNameDataUp.Name = "lblNameDataUp";
             this.lblNameDataUp.Size = new System.Drawing.Size(367, 17);
             this.lblNameDataUp.TabIndex = 142;
             this.lblNameDataUp.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.optSingleItem);
-            this.groupBox4.Controls.Add(this.optMultiItem);
-            this.groupBox4.Enabled = false;
-            this.groupBox4.Location = new System.Drawing.Point(678, 5);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(235, 65);
-            this.groupBox4.TabIndex = 143;
-            this.groupBox4.TabStop = false;
-            // 
-            // optSingleItem
-            // 
-            this.optSingleItem.AutoSize = true;
-            this.optSingleItem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optSingleItem.Location = new System.Drawing.Point(6, 36);
-            this.optSingleItem.Name = "optSingleItem";
-            this.optSingleItem.Size = new System.Drawing.Size(198, 19);
-            this.optSingleItem.TabIndex = 61;
-            this.optSingleItem.Text = "Single Item Group {Size/Colour}";
-            this.optSingleItem.UseVisualStyleBackColor = true;
-            // 
-            // optMultiItem
-            // 
-            this.optMultiItem.AutoSize = true;
-            this.optMultiItem.Checked = true;
-            this.optMultiItem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optMultiItem.Location = new System.Drawing.Point(6, 10);
-            this.optMultiItem.Name = "optMultiItem";
-            this.optMultiItem.Size = new System.Drawing.Size(188, 19);
-            this.optMultiItem.TabIndex = 60;
-            this.optMultiItem.TabStop = true;
-            this.optMultiItem.Text = "Multi Item Group {Size/Colour}";
-            this.optMultiItem.UseVisualStyleBackColor = true;
             // 
             // btnHelp
             // 
@@ -324,7 +279,7 @@
             // btnHelp3
             // 
             this.btnHelp3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp3.Location = new System.Drawing.Point(535, 52);
+            this.btnHelp3.Location = new System.Drawing.Point(762, 104);
             this.btnHelp3.Name = "btnHelp3";
             this.btnHelp3.Size = new System.Drawing.Size(78, 22);
             this.btnHelp3.TabIndex = 144;
@@ -474,16 +429,6 @@
             this.Column13.Name = "Column13";
             this.Column13.Width = 68;
             // 
-            // btnPrint
-            // 
-            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.Location = new System.Drawing.Point(107, 398);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(97, 27);
-            this.btnPrint.TabIndex = 148;
-            this.btnPrint.Text = "Printing";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -593,52 +538,6 @@
             this.lblItemGroup.Text = "Item Group";
             this.lblItemGroup.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // optPurchasePrint
-            // 
-            this.optPurchasePrint.AutoSize = true;
-            this.optPurchasePrint.Checked = true;
-            this.optPurchasePrint.Enabled = false;
-            this.optPurchasePrint.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optPurchasePrint.Location = new System.Drawing.Point(216, 403);
-            this.optPurchasePrint.Name = "optPurchasePrint";
-            this.optPurchasePrint.Size = new System.Drawing.Size(127, 19);
-            this.optPurchasePrint.TabIndex = 159;
-            this.optPurchasePrint.TabStop = true;
-            this.optPurchasePrint.Text = "For Purchase Print";
-            this.optPurchasePrint.UseVisualStyleBackColor = true;
-            // 
-            // optOfficePrint
-            // 
-            this.optOfficePrint.AutoSize = true;
-            this.optOfficePrint.Enabled = false;
-            this.optOfficePrint.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optOfficePrint.Location = new System.Drawing.Point(368, 402);
-            this.optOfficePrint.Name = "optOfficePrint";
-            this.optOfficePrint.Size = new System.Drawing.Size(84, 19);
-            this.optOfficePrint.TabIndex = 160;
-            this.optOfficePrint.Text = "Office Print";
-            this.optOfficePrint.UseVisualStyleBackColor = true;
-            // 
-            // lblSuggestionOfCash
-            // 
-            this.lblSuggestionOfCash.AllowDrop = true;
-            this.lblSuggestionOfCash.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblSuggestionOfCash.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSuggestionOfCash.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblSuggestionOfCash.Location = new System.Drawing.Point(451, 429);
-            this.lblSuggestionOfCash.Name = "lblSuggestionOfCash";
-            this.lblSuggestionOfCash.Size = new System.Drawing.Size(140, 17);
-            this.lblSuggestionOfCash.TabIndex = 161;
-            this.lblSuggestionOfCash.Text = "Suggestion of Cash";
-            this.lblSuggestionOfCash.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // txtSuggestionOfCash
-            // 
-            this.txtSuggestionOfCash.Location = new System.Drawing.Point(614, 428);
-            this.txtSuggestionOfCash.Name = "txtSuggestionOfCash";
-            this.txtSuggestionOfCash.Size = new System.Drawing.Size(227, 20);
-            this.txtSuggestionOfCash.TabIndex = 162;
-            // 
             // listBox21
             // 
             this.listBox21.BackColor = System.Drawing.Color.NavajoWhite;
@@ -710,32 +609,6 @@
             this.lblNameUp.TabIndex = 168;
             this.lblNameUp.Text = "Name";
             this.lblNameUp.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // optApprovedVerified
-            // 
-            this.optApprovedVerified.AutoSize = true;
-            this.optApprovedVerified.Enabled = false;
-            this.optApprovedVerified.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optApprovedVerified.Location = new System.Drawing.Point(794, 149);
-            this.optApprovedVerified.Name = "optApprovedVerified";
-            this.optApprovedVerified.Size = new System.Drawing.Size(119, 19);
-            this.optApprovedVerified.TabIndex = 170;
-            this.optApprovedVerified.Text = "Approved/Verified";
-            this.optApprovedVerified.UseVisualStyleBackColor = true;
-            // 
-            // optInProcess
-            // 
-            this.optInProcess.AutoSize = true;
-            this.optInProcess.Checked = true;
-            this.optInProcess.Enabled = false;
-            this.optInProcess.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optInProcess.Location = new System.Drawing.Point(697, 149);
-            this.optInProcess.Name = "optInProcess";
-            this.optInProcess.Size = new System.Drawing.Size(84, 19);
-            this.optInProcess.TabIndex = 169;
-            this.optInProcess.TabStop = true;
-            this.optInProcess.Text = "In Process";
-            this.optInProcess.UseVisualStyleBackColor = true;
             // 
             // btnHelp4
             // 
@@ -1172,18 +1045,12 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.txtPONo);
             this.Controls.Add(this.btnHelp4);
-            this.Controls.Add(this.optApprovedVerified);
-            this.Controls.Add(this.optInProcess);
             this.Controls.Add(this.lblNameUp);
             this.Controls.Add(this.lblNameBottom);
             this.Controls.Add(this.listBox21);
             this.Controls.Add(this.lblValue);
             this.Controls.Add(this.lst);
             this.Controls.Add(this.lblQty);
-            this.Controls.Add(this.txtSuggestionOfCash);
-            this.Controls.Add(this.lblSuggestionOfCash);
-            this.Controls.Add(this.optOfficePrint);
-            this.Controls.Add(this.optPurchasePrint);
             this.Controls.Add(this.lblItemGroup);
             this.Controls.Add(this.lblPurchaseCode);
             this.Controls.Add(this.blVenderCode);
@@ -1193,12 +1060,10 @@
             this.Controls.Add(this.lblNote);
             this.Controls.Add(this.txtNote);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnHelp2);
             this.Controls.Add(this.btnHelp3);
             this.Controls.Add(this.btnHelp);
-            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.lblNameDataUp);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.txtDepartment);
@@ -1212,13 +1077,12 @@
             this.Controls.Add(this.cboEmpCode);
             this.Controls.Add(this.txtDNNo);
             this.Controls.Add(this.lblDepartment);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "frmPurchaseOrder";
             this.Text = "Purchase Order";
             this.Load += new System.EventHandler(this.Purchase_Order_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmPurchaseOrder_KeyDown);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -1247,15 +1111,11 @@
         private System.Windows.Forms.TextBox txtDepartment;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblNameDataUp;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.RadioButton optSingleItem;
-        private System.Windows.Forms.RadioButton optMultiItem;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btnHelp3;
         private System.Windows.Forms.Button btnHelp2;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridView grd;
-        private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.Label lblNote;
@@ -1265,18 +1125,12 @@
         private System.Windows.Forms.Label blVenderCode;
         private System.Windows.Forms.Label lblPurchaseCode;
         private System.Windows.Forms.Label lblItemGroup;
-        private System.Windows.Forms.RadioButton optPurchasePrint;
-        private System.Windows.Forms.RadioButton optOfficePrint;
-        private System.Windows.Forms.Label lblSuggestionOfCash;
-        private System.Windows.Forms.TextBox txtSuggestionOfCash;
         private System.Windows.Forms.ListBox listBox21;
         private System.Windows.Forms.Label lblValue;
         private System.Windows.Forms.ListBox lst;
         private System.Windows.Forms.Label lblQty;
         private System.Windows.Forms.Label lblNameBottom;
         private System.Windows.Forms.Label lblNameUp;
-        private System.Windows.Forms.RadioButton optApprovedVerified;
-        private System.Windows.Forms.RadioButton optInProcess;
         private System.Windows.Forms.Button btnHelp4;
         private System.Windows.Forms.TextBox txtPONo;
         private System.Windows.Forms.TabControl tabControl1;
