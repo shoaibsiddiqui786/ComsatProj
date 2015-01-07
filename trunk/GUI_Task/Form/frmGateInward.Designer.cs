@@ -339,7 +339,7 @@
             this.txtRecievingPersonName.Location = new System.Drawing.Point(189, 382);
             this.txtRecievingPersonName.Name = "txtRecievingPersonName";
             this.txtRecievingPersonName.Size = new System.Drawing.Size(327, 20);
-            this.txtRecievingPersonName.TabIndex = 6;
+            this.txtRecievingPersonName.TabIndex = 177;
             // 
             // btnExit
             // 
@@ -421,7 +421,7 @@
             this.btnAddNew.Location = new System.Drawing.Point(614, 2);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(76, 23);
-            this.btnAddNew.TabIndex = 9;
+            this.btnAddNew.TabIndex = 188;
             this.btnAddNew.UseVisualStyleBackColor = true;
             this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
@@ -431,7 +431,7 @@
             this.btnHelp.Location = new System.Drawing.Point(529, 2);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(79, 21);
-            this.btnHelp.TabIndex = 8;
+            this.btnHelp.TabIndex = 189;
             this.btnHelp.Text = "[F1] = Help";
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
@@ -503,7 +503,7 @@
             this.cboGodown.Location = new System.Drawing.Point(732, 60);
             this.cboGodown.Name = "cboGodown";
             this.cboGodown.Size = new System.Drawing.Size(137, 23);
-            this.cboGodown.TabIndex = 16;
+            this.cboGodown.TabIndex = 9;
             // 
             // label4
             // 
@@ -524,7 +524,7 @@
             this.txtQty.Location = new System.Drawing.Point(600, 58);
             this.txtQty.Name = "txtQty";
             this.txtQty.Size = new System.Drawing.Size(62, 21);
-            this.txtQty.TabIndex = 15;
+            this.txtQty.TabIndex = 8;
             // 
             // txtDescription
             // 
@@ -532,7 +532,7 @@
             this.txtDescription.Location = new System.Drawing.Point(110, 58);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(199, 21);
-            this.txtDescription.TabIndex = 13;
+            this.txtDescription.TabIndex = 6;
             // 
             // label10
             // 
@@ -566,7 +566,7 @@
             this.btnAdd.Location = new System.Drawing.Point(360, 87);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(54, 21);
-            this.btnAdd.TabIndex = 17;
+            this.btnAdd.TabIndex = 10;
             this.btnAdd.Text = "&Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -579,7 +579,7 @@
             this.cbo_I_UOM.Location = new System.Drawing.Point(416, 58);
             this.cbo_I_UOM.Name = "cbo_I_UOM";
             this.cbo_I_UOM.Size = new System.Drawing.Size(124, 23);
-            this.cbo_I_UOM.TabIndex = 14;
+            this.cbo_I_UOM.TabIndex = 7;
             // 
             // cbo_I_Color
             // 
@@ -589,7 +589,7 @@
             this.cbo_I_Color.Location = new System.Drawing.Point(759, 29);
             this.cbo_I_Color.Name = "cbo_I_Color";
             this.cbo_I_Color.Size = new System.Drawing.Size(108, 23);
-            this.cbo_I_Color.TabIndex = 12;
+            this.cbo_I_Color.TabIndex = 5;
             // 
             // cbo_I_Size
             // 
@@ -599,7 +599,7 @@
             this.cbo_I_Size.Location = new System.Drawing.Point(570, 29);
             this.cbo_I_Size.Name = "cbo_I_Size";
             this.cbo_I_Size.Size = new System.Drawing.Size(130, 23);
-            this.cbo_I_Size.TabIndex = 11;
+            this.cbo_I_Size.TabIndex = 4;
             // 
             // label29
             // 
@@ -687,7 +687,7 @@
             this.txt_I_ItemID.Location = new System.Drawing.Point(103, 29);
             this.txt_I_ItemID.Name = "txt_I_ItemID";
             this.txt_I_ItemID.Size = new System.Drawing.Size(76, 21);
-            this.txt_I_ItemID.TabIndex = 10;
+            this.txt_I_ItemID.TabIndex = 6;
             this.txt_I_ItemID.Text = "1";
             this.txt_I_ItemID.DoubleClick += new System.EventHandler(this.txt_I_ItemID_DoubleClick);
             this.txt_I_ItemID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_I_ItemID_KeyDown);
@@ -698,7 +698,7 @@
             this.btnSave.Location = new System.Drawing.Point(43, 412);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(81, 20);
-            this.btnSave.TabIndex = 7;
+            this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
