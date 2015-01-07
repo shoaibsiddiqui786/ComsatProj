@@ -1,6 +1,6 @@
 ﻿namespace GUI_Task
 {
-    partial class frmGRNReturn
+    partial class frmGdRecNoteReturn
     {
         /// <summary>
         /// Required designer variable.
@@ -1123,7 +1123,7 @@
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.Width = 68;
             // 
-            // frmGRNReturn
+            // frmGdRecNoteReturn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1165,7 +1165,7 @@
             this.Controls.Add(this.label20);
             this.Controls.Add(this.cboEmpCode);
             this.KeyPreview = true;
-            this.Name = "frmGRNReturn";
+            this.Name = "frmGdRecNoteReturn";
             this.Text = "Goods Recieve Note Return";
             this.Load += new System.EventHandler(this.frmGdRecNoteReturn_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmGdRecNoteReturn_KeyDown);

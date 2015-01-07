@@ -81,6 +81,8 @@ namespace GUI_Task
         bool blnFormLoad = true;
         int fcboDefaultValue = 0;
 
+        string strDocId = string.Empty;
+
 
 
         public frmDeliveryOrder()
@@ -429,10 +431,13 @@ namespace GUI_Task
             tSQL += " INNER JOIN DO_Det dt on dh.Do_No = dt.DO_No ";
             try
             {
-                ds = clsDbManager.GetData_Set(tSQL, "Heads");
+                ds = clsDbManager.GetData_Set(tSQL, "Do_Det");
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     dRow = ds.Tables[0].Rows[0];
+                    dtpDO.Text = (ds.Tables[0].Rows[0]["Do_Date"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Do_Date"].ToString());
+                    //dtpOrd.Text = (ds.Tables[0].Rows[0]["Ord_Date"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Ord_Date"].ToString());
+
                     if (ds.Tables[0].Rows.Count > 0)
                     {
                         ds.Clear();
@@ -524,16 +529,35 @@ namespace GUI_Task
             string tSQL = string.Empty;
 
             // Fields 0,1,2,3 are Begin 
+ 
+            //tSQL += " select dd.Ord_No, dd.Do_Date, dd.Ord_Date, dd.Adda, dd.Customer, h.Name, dd.SaleType ,dd.Detail, ";
+            //tSQL += " i.cgdDesc AS ItemGroupName, dd.Category, dd.Qty, dd.Amount ";
+            //tSQL += " from DO_Det dd ";
+            //tSQL += " INNER JOIN CatDtl i on dd.ItemGroupID = i.cgdCode AND cgCode = 6 ";
+            //tSQL += " LEFT OUTER JOIN Heads h ON dd.Customer = h.Code ";
 
-            tSQL += " select dd.Ord_No, dd.Do_Date, dd.Detail, i.cgdDesc AS ItemGroupName, dd.Category, dd.Qty, dd.Amount ";
+            tSQL += " select DISTINCT RIGHT(Itemcode,1) AS Category, dd.Ord_No, gd.cgdDesc AS GodownName, dd.Adda, dd.Do_Date, dd.Ord_Date, dd.Customer, h.Name, dd.SaleType ,dd.Detail, ";
+			tSQL += " i.cgdDesc AS ItemGroupName, dd.Category, dd.Qty, dd.Amount ";
             tSQL += " from DO_Det dd ";
             tSQL += " INNER JOIN CatDtl i on dd.ItemGroupID = i.cgdCode AND cgCode = 6 ";
+            tSQL += " LEFT OUTER JOIN Heads h ON dd.Customer = h.Code ";
+            tSQL += " INNER JOIN CatDtl gd ON dd.Godown = gd.cgdCode AND gd.cgCode = 2 ";
+            tSQL += " INNER JOIN Item it ON dd.Category = it.ItemId ";
             try
             {
-                ds = clsDbManager.GetData_Set(tSQL, "Heads");
+                ds = clsDbManager.GetData_Set(tSQL, "DO_Det");
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     dRow = ds.Tables[0].Rows[0];
+                    dtpOrd.Text = (ds.Tables[0].Rows[0]["Ord_Date"] == DBNull.Value ? DateTime.Now.ToString() : ds.Tables[0].Rows[0]["Ord_Date"].ToString());
+                    txtSaleType.Text = (ds.Tables[0].Rows[0]["SaleType"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["SaleType"].ToString());
+                    mskCustomerCode.Text = (ds.Tables[0].Rows[0]["Customer"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Customer"].ToString());
+                    lblCustName.Text = (ds.Tables[0].Rows[0]["Name"] == DBNull.Value ? DateTime.Now.ToString() : ds.Tables[0].Rows[0]["Name"].ToString());
+                    txtSaleType.Text = (ds.Tables[0].Rows[0]["SaleType"] == DBNull.Value ? DateTime.Now.ToString() : ds.Tables[0].Rows[0]["SaleType"].ToString());
+                    cboAdda.Text = (ds.Tables[0].Rows[0]["Adda"] == DBNull.Value ? DateTime.Now.ToString() : ds.Tables[0].Rows[0]["Adda"].ToString());
+                    cboGodown.Text = (ds.Tables[0].Rows[0]["GodownName"] == DBNull.Value ? DateTime.Now.ToString() : ds.Tables[0].Rows[0]["GodownName"].ToString());
+                    cboItemGroup.Text = (ds.Tables[0].Rows[0]["ItemGroupName"] == DBNull.Value ? DateTime.Now.ToString() : ds.Tables[0].Rows[0]["ItemGroupName"].ToString());
+                    cboCategory.Text = (ds.Tables[0].Rows[0]["Category"] == DBNull.Value ? DateTime.Now.ToString() : ds.Tables[0].Rows[0]["Category"].ToString());
                     if (ds.Tables[0].Rows.Count > 0)
                     {
                         ds.Clear();
@@ -988,10 +1012,15 @@ namespace GUI_Task
                 if (txtDONo.Text.ToString().Trim(' ', '-') == "")
                 {
                     fDocAlreadyExists = false;
-                    fDocID = clsDbManager.GetNextValDocID("DO_Det", "DO_No", fDocWhere, "");
+                    fDocID = clsDbManager.GetNextValDocID("DO_Det", "DocId", fDocWhere, "");
+                    fDocID = fDocID + 1;
+                    strDocId = "1-" + DateTime.Now.Year.ToString() + "-" + fDocID.ToString();
+                    txtDONo.Text = strDocId;
+                    
 
                     lSQL = "insert into DO_Det (";
-                    lSQL += "  DO_No ";                              //  0-    ItemID";   
+                    lSQL += " DocId ";
+                    lSQL += ", DO_No ";
                     lSQL += ", DO_Date ";                                //  1-    ItemCod  
                     lSQL += ", Customer ";                                        //  2-    ItemNam 
                     lSQL += ", Ord_No ";                                        //  4-    SizeNam  
@@ -1004,13 +1033,13 @@ namespace GUI_Task
                     lSQL += ", Godown ";
                     lSQL += " ) values (";
                     //                                               
-                    lSQL += "'" + fDocID.ToString() + "'";             
-                    lSQL += ",'" + txtDONo.Text.ToString() + "'";    
+                    lSQL += fDocID.ToString();
+                    lSQL += ",'" + strDocId.ToString() + "'";   
                     lSQL += ", " + StrF01.D2Str(dtpDO) + "";         
-                    lSQL += ",'" + mskCustomerCode + "'";
-                    lSQL += ",'" + txtOrderNo + "'";
+                    lSQL += ",'" + mskCustomerCode.Text.ToString() + "'";
+                    lSQL += ",'" + txtOrderNo.Text.ToString() + "'";
                     lSQL += ", 1";
-                    lSQL += ", " + StrF01.D2Str(dtpBuilty) + "";
+                    lSQL += ", " + StrF01.D2Str(dtpOrd) + "";
                     lSQL += ", 10";
                     lSQL += ", " + cboAdda.SelectedValue.ToString() + "";
                     lSQL += ", " + cboCategory.SelectedValue.ToString() + "";
@@ -1085,10 +1114,11 @@ namespace GUI_Task
                         }
                     }
 
-                    lSQL = "INSERT INTO DO_Hist (DO_No";
-                    lSQL += ",Code,SizeId,ColorID,Rate,Qty,FromDelivery)";
+                    lSQL = "INSERT INTO DO_Hist (DocId";
+                    lSQL += ",DO_No,Code,SizeId,ColorID,Rate,Qty,FromDelivery)";
                     lSQL += " VALUES (";
-                    lSQL += "'" + txtDONo.Text.ToString() + "'";
+                    lSQL += "" + fDocID + "";
+                    lSQL += ", '" + strDocId.ToString() + "'";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColDO.ItemID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColDO.SizeID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColDO.ColorID].Value.ToString() + "";
@@ -1135,6 +1165,21 @@ namespace GUI_Task
         {
             SaveData();
             MessageBox.Show("Data Saved Successfullly");
+        }
+
+        private void lblInvQty_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboGodown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblContactNo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

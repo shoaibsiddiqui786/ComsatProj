@@ -31,7 +31,7 @@ namespace GUI_Task
         //UOMID = 15,
         GodownId = 13
     }
-    public partial class frmGRN : Form
+    public partial class frmGdRecNote : Form
     {
         //******* Grid Variable Setting -- Begin ******
         string fHDR = string.Empty;                       // Column Header
@@ -75,7 +75,7 @@ namespace GUI_Task
 
         bool blnFormLoad = true;
         int fcboDefaultValue = 0;
-        public frmGRN()
+        public frmGdRecNote()
         {
             InitializeComponent();
         }

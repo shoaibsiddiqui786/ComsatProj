@@ -321,7 +321,6 @@
             // 
             // claimContractorProductionToolStripMenuItem
             // 
-            this.claimContractorProductionToolStripMenuItem.Enabled = false;
             this.claimContractorProductionToolStripMenuItem.Name = "claimContractorProductionToolStripMenuItem";
             this.claimContractorProductionToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.claimContractorProductionToolStripMenuItem.Text = "Claim Contractor Production";

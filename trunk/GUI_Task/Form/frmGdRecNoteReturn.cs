@@ -36,7 +36,7 @@ namespace GUI_Task
     }
     
     
-    public partial class frmGRNReturn : Form
+    public partial class frmGdRecNoteReturn : Form
     {
         //******* Grid Variable Setting -- Begin ******
         string fHDR = string.Empty;                       // Column Header
@@ -80,7 +80,7 @@ namespace GUI_Task
 
         bool blnFormLoad = true;
         int fcboDefaultValue = 0;
-        public frmGRNReturn()
+        public frmGdRecNoteReturn()
         {
             InitializeComponent();
         }
