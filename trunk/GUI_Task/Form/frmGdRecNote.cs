@@ -31,7 +31,7 @@ namespace GUI_Task
         //UOMID = 15,
         GodownId = 13
     }
-    public partial class frmGdRecNote : Form
+    public partial class frmGRN : Form
     {
         //******* Grid Variable Setting -- Begin ******
         string fHDR = string.Empty;                       // Column Header
@@ -75,7 +75,7 @@ namespace GUI_Task
 
         bool blnFormLoad = true;
         int fcboDefaultValue = 0;
-        public frmGdRecNote()
+        public frmGRN()
         {
             InitializeComponent();
         }
@@ -225,11 +225,11 @@ namespace GUI_Task
         {
             frmLookUp sForm = new frmLookUp(
                     "g.GRNId",
-                    "g.TypeId, g.Date, cd.cgdDesc AS ItemGroupName, gd.Qty ",
+                    "g.TypeId, g.LCId, cd.cgdDesc AS ItemGroupName, gd.Qty ",
                     " GRN g INNER JOIN CatDtl cd on g.ItemGroupID = cd.cgdCode AND cd.cgCode = 6 INNER JOIN GRNDetail gd on gd.GRNId = g.GRNId ",
                     this.Text.ToString(),
                     1,
-                    " GRN ID, Type , Date, Item Group, Gate",
+                    " GRN ID, GateInward No, Date, Item Group, Gate",
                     "8,12,8,12,8",
                     " T, T, T, T, T",
                     true,
@@ -274,9 +274,9 @@ namespace GUI_Task
             string tSQL = string.Empty;
 
             // Fields 0,1,2,3 are Begin  
-
-
-            tSQL = " select g.GRNId,g.Date, g.GateInwordId, g.GateInwordDate,t.cgdDesc AS TypeName,l.cgdDesc AS LCName,gt.cgdDesc AS GateName,g.Note, ";
+            
+            
+tSQL = " select g.GRNId,g.Date, g.GateInwordId,t.cgdDesc AS TypeName,l.cgdDesc AS LCName,gt.cgdDesc AS GateName,g.Note, ";
 tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
            tSQL +=  " from GRN g INNER JOIN CatDtl cd on g.ItemGroupID = cd.cgdCode AND cd.cgCode = 6 ";
             tSQL += " INNER JOIN GRNDetail gd on gd.GRNId = g.GRNId INNER JOIN CatDtl t ON g.TypeId=t.cgdCode AND t.cgCode = 8 ";
@@ -289,9 +289,8 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
                 {
                     dRow = ds.Tables[0].Rows[0];
                     dtpGRN.Text = (ds.Tables[0].Rows[0]["Date"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Date"].ToString());
-                    txtGateInward.Text = (ds.Tables[0].Rows[0]["GateInwordId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateInwordId"].ToString());
-                     dtpGI.Text = (ds.Tables[0].Rows[0]["GateInwordDate"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateInwordDate"].ToString());
-                    //dtpGI.Text = (ds.Tables[0].Rows[0]["Date"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Gate"].ToString());
+                    lblGateInward.Text = (ds.Tables[0].Rows[0]["GateInwordId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateInwordId"].ToString());
+                     //dtpGI.Text = (ds.Tables[0].Rows[0]["GateInwordDate"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateInwordDate"].ToString());
                     cboType.Text = (ds.Tables[0].Rows[0]["TypeName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["TypeName"].ToString());
                     cboLC.Text = (ds.Tables[0].Rows[0]["LCName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["LCName"].ToString());
                     cboGodowns.Text = (ds.Tables[0].Rows[0]["GateInwordId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateInwordId"].ToString());
@@ -590,7 +589,7 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
                     lSQL += ", " + cboGodowns.SelectedValue.ToString() + "";
                     lSQL += ", 1";
                     lSQL += ", " + txtRecPerName.Text.ToString() + "";
-                    //lSQL += ", " + txtDiscount.Text.ToString() + "";
+                    lSQL += ", " + txtDiscount.Text.ToString() + "";
                     lSQL += ")";
                 }
                 else
@@ -1163,11 +1162,6 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
         private void mskVendeCode_DoubleClick(object sender, EventArgs e)
         {
             LookUp_GL();
-        }
-
-        private void btnHelp_Click(object sender, EventArgs e)
-        {
-            LookUp_Voc();
         }
 
        

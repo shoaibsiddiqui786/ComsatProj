@@ -524,14 +524,14 @@
             this.bankRecieptVoucherToolStripMenuItem.Name = "bankRecieptVoucherToolStripMenuItem";
             this.bankRecieptVoucherToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.bankRecieptVoucherToolStripMenuItem.Text = "Bank Reciept Voucher";
-            //this.bankRecieptVoucherToolStripMenuItem.Click += new System.EventHandler(this.bankRecieptVoucherToolStripMenuItem_Click);
+            this.bankRecieptVoucherToolStripMenuItem.Click += new System.EventHandler(this.bankRecieptVoucherToolStripMenuItem_Click);
             // 
             // bankPaymentVoucherToolStripMenuItem
             // 
             this.bankPaymentVoucherToolStripMenuItem.Name = "bankPaymentVoucherToolStripMenuItem";
             this.bankPaymentVoucherToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.bankPaymentVoucherToolStripMenuItem.Text = "Bank Payment Voucher";
-          //  this.bankPaymentVoucherToolStripMenuItem.Click += new System.EventHandler(this.bankPaymentVoucherToolStripMenuItem_Click);
+            this.bankPaymentVoucherToolStripMenuItem.Click += new System.EventHandler(this.bankPaymentVoucherToolStripMenuItem_Click);
             // 
             // toolStripSeparator13
             // 
@@ -596,7 +596,7 @@
             this.itemCodeDescriptionToolStripMenuItem.Name = "itemCodeDescriptionToolStripMenuItem";
             this.itemCodeDescriptionToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.itemCodeDescriptionToolStripMenuItem.Text = "Item Code Description";
-           // this.itemCodeDescriptionToolStripMenuItem.Click += new System.EventHandler(this.itemCodeDescriptionToolStripMenuItem_Click);
+            this.itemCodeDescriptionToolStripMenuItem.Click += new System.EventHandler(this.itemCodeDescriptionToolStripMenuItem_Click);
             // 
             // itemRateChangeToolStripMenuItem
             // 

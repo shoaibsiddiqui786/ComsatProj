@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.optApprovedVerified = new System.Windows.Forms.RadioButton();
+            this.optInProcess = new System.Windows.Forms.RadioButton();
+            this.txtDiscount = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.lblNetValue = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.lblTotalQty = new System.Windows.Forms.Label();
@@ -36,6 +40,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtDeliveryPersonName = new System.Windows.Forms.TextBox();
             this.grd = new System.Windows.Forms.DataGridView();
@@ -55,6 +60,9 @@
             this.cboLC = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.optSingleItem = new System.Windows.Forms.RadioButton();
+            this.optMultiItem = new System.Windows.Forms.RadioButton();
             this.dtpSale = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.dtpGateOut = new System.Windows.Forms.DateTimePicker();
@@ -101,8 +109,6 @@
             this.label30 = new System.Windows.Forms.Label();
             this.txtStock = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.cbo_I_Color = new System.Windows.Forms.ComboBox();
             this.cbo_I_Size = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
@@ -111,6 +117,9 @@
             this.lbl_I_ItemCode = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.txt_I_ItemID = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.sSMaster = new System.Windows.Forms.StatusStrip();
             this.tSlblUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.tStextUser = new System.Windows.Forms.ToolStripStatusLabel();
@@ -121,14 +130,65 @@
             this.tSlblAlert = new System.Windows.Forms.ToolStripStatusLabel();
             this.textAlert = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblGateOutwordId = new System.Windows.Forms.Label();
-            this.btnHelp = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.sSMaster.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // optApprovedVerified
+            // 
+            this.optApprovedVerified.AutoSize = true;
+            this.optApprovedVerified.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.optApprovedVerified.Location = new System.Drawing.Point(373, 412);
+            this.optApprovedVerified.Name = "optApprovedVerified";
+            this.optApprovedVerified.Size = new System.Drawing.Size(119, 19);
+            this.optApprovedVerified.TabIndex = 267;
+            this.optApprovedVerified.Text = "Approved/Verified";
+            this.optApprovedVerified.UseVisualStyleBackColor = true;
+            this.optApprovedVerified.CheckedChanged += new System.EventHandler(this.optApprovedVerified_CheckedChanged);
+            // 
+            // optInProcess
+            // 
+            this.optInProcess.AutoSize = true;
+            this.optInProcess.Checked = true;
+            this.optInProcess.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.optInProcess.Location = new System.Drawing.Point(282, 413);
+            this.optInProcess.Name = "optInProcess";
+            this.optInProcess.Size = new System.Drawing.Size(84, 19);
+            this.optInProcess.TabIndex = 266;
+            this.optInProcess.TabStop = true;
+            this.optInProcess.Text = "In Process";
+            this.optInProcess.UseVisualStyleBackColor = true;
+            this.optInProcess.CheckedChanged += new System.EventHandler(this.optInProcess_CheckedChanged);
+            // 
+            // txtDiscount
+            // 
+            this.txtDiscount.Location = new System.Drawing.Point(596, 412);
+            this.txtDiscount.Name = "txtDiscount";
+            this.txtDiscount.Size = new System.Drawing.Size(103, 20);
+            this.txtDiscount.TabIndex = 265;
+            this.txtDiscount.TextChanged += new System.EventHandler(this.txtDiscount_TextChanged);
+            // 
+            // label24
+            // 
+            this.label24.AllowDrop = true;
+            this.label24.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label24.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label24.Location = new System.Drawing.Point(519, 413);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(72, 17);
+            this.label24.TabIndex = 264;
+            this.label24.Text = "Discount";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label24.Click += new System.EventHandler(this.label24_Click);
             // 
             // lblNetValue
             // 
@@ -165,7 +225,7 @@
             this.lblTotalQty.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblTotalQty.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalQty.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblTotalQty.Location = new System.Drawing.Point(596, 411);
+            this.lblTotalQty.Location = new System.Drawing.Point(596, 382);
             this.lblTotalQty.Name = "lblTotalQty";
             this.lblTotalQty.Size = new System.Drawing.Size(103, 17);
             this.lblTotalQty.TabIndex = 261;
@@ -178,7 +238,7 @@
             this.label21.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label21.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label21.Location = new System.Drawing.Point(511, 413);
+            this.label21.Location = new System.Drawing.Point(519, 383);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(72, 17);
             this.label21.TabIndex = 260;
@@ -230,13 +290,24 @@
             // btnExit
             // 
             this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(92, 410);
+            this.btnExit.Location = new System.Drawing.Point(186, 410);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(90, 20);
             this.btnExit.TabIndex = 257;
             this.btnExit.Text = "Esc=Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnPrint.Location = new System.Drawing.Point(92, 411);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(88, 20);
+            this.btnPrint.TabIndex = 256;
+            this.btnPrint.Text = "Printing";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnSave
             // 
@@ -251,7 +322,7 @@
             // 
             // txtDeliveryPersonName
             // 
-            this.txtDeliveryPersonName.Location = new System.Drawing.Point(195, 383);
+            this.txtDeliveryPersonName.Location = new System.Drawing.Point(186, 382);
             this.txtDeliveryPersonName.Name = "txtDeliveryPersonName";
             this.txtDeliveryPersonName.Size = new System.Drawing.Size(327, 20);
             this.txtDeliveryPersonName.TabIndex = 254;
@@ -432,6 +503,43 @@
             this.label4.Text = "LC #";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.optSingleItem);
+            this.groupBox4.Controls.Add(this.optMultiItem);
+            this.groupBox4.Location = new System.Drawing.Point(683, 32);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(211, 65);
+            this.groupBox4.TabIndex = 245;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
+            // 
+            // optSingleItem
+            // 
+            this.optSingleItem.AutoSize = true;
+            this.optSingleItem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.optSingleItem.Location = new System.Drawing.Point(6, 36);
+            this.optSingleItem.Name = "optSingleItem";
+            this.optSingleItem.Size = new System.Drawing.Size(198, 19);
+            this.optSingleItem.TabIndex = 61;
+            this.optSingleItem.Text = "Single Item Group {Size/Colour}";
+            this.optSingleItem.UseVisualStyleBackColor = true;
+            this.optSingleItem.CheckedChanged += new System.EventHandler(this.optSingleItem_CheckedChanged);
+            // 
+            // optMultiItem
+            // 
+            this.optMultiItem.AutoSize = true;
+            this.optMultiItem.Checked = true;
+            this.optMultiItem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.optMultiItem.Location = new System.Drawing.Point(6, 10);
+            this.optMultiItem.Name = "optMultiItem";
+            this.optMultiItem.Size = new System.Drawing.Size(188, 19);
+            this.optMultiItem.TabIndex = 60;
+            this.optMultiItem.TabStop = true;
+            this.optMultiItem.Text = "Multi Item Group {Size/Colour}";
+            this.optMultiItem.UseVisualStyleBackColor = true;
+            this.optMultiItem.CheckedChanged += new System.EventHandler(this.optMultiItem_CheckedChanged);
             // 
             // dtpSale
             // 
@@ -951,31 +1059,6 @@
             this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            ""});
-            this.comboBox1.Location = new System.Drawing.Point(104, 54);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(137, 21);
-            this.comboBox1.TabIndex = 45;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // label19
-            // 
-            this.label19.AllowDrop = true;
-            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label19.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label19.Location = new System.Drawing.Point(18, 54);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(80, 21);
-            this.label19.TabIndex = 46;
-            this.label19.Text = "Godown";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label19.Click += new System.EventHandler(this.label19_Click);
-            // 
             // cbo_I_Color
             // 
             this.cbo_I_Color.FormattingEnabled = true;
@@ -1080,6 +1163,43 @@
             this.txt_I_ItemID.Text = "1";
             this.txt_I_ItemID.TextChanged += new System.EventHandler(this.txt_I_ItemID_TextChanged);
             this.txt_I_ItemID.DoubleClick += new System.EventHandler(this.txt_I_ItemID_DoubleClick);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.radioButton2);
+            this.groupBox1.Location = new System.Drawing.Point(683, 32);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(211, 65);
+            this.groupBox1.TabIndex = 245;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Location = new System.Drawing.Point(6, 36);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(198, 19);
+            this.radioButton1.TabIndex = 61;
+            this.radioButton1.Text = "Single Item Group {Size/Colour}";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Checked = true;
+            this.radioButton2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton2.Location = new System.Drawing.Point(6, 10);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(188, 19);
+            this.radioButton2.TabIndex = 60;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Multi Item Group {Size/Colour}";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // sSMaster
             // 
@@ -1187,29 +1307,46 @@
             this.lblGateOutwordId.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblGateOutwordId.Click += new System.EventHandler(this.lblGateOutwordId_Click);
             // 
-            // btnHelp
+            // label19
             // 
-            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Location = new System.Drawing.Point(494, 3);
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(68, 22);
-            this.btnHelp.TabIndex = 616;
-            this.btnHelp.Text = "F1=Help";
-            this.btnHelp.UseVisualStyleBackColor = true;
-            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+            this.label19.AllowDrop = true;
+            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label19.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label19.Location = new System.Drawing.Point(18, 54);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(80, 21);
+            this.label19.TabIndex = 46;
+            this.label19.Text = "Godown";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label19.Click += new System.EventHandler(this.label19_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            ""});
+            this.comboBox1.Location = new System.Drawing.Point(104, 54);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(137, 21);
+            this.comboBox1.TabIndex = 45;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // frmSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(908, 457);
-            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.lblGateOutwordId);
             this.Controls.Add(this.sSMaster);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.cboGodown);
             this.Controls.Add(this.txtSale);
+            this.Controls.Add(this.optApprovedVerified);
+            this.Controls.Add(this.optInProcess);
+            this.Controls.Add(this.txtDiscount);
+            this.Controls.Add(this.label24);
             this.Controls.Add(this.lblNetValue);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.lblTotalQty);
@@ -1218,12 +1355,15 @@
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtDeliveryPersonName);
             this.Controls.Add(this.cboType);
             this.Controls.Add(this.cboLC);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.dtpSale);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dtpGateOut);
@@ -1247,11 +1387,15 @@
             this.Load += new System.EventHandler(this.Sales_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmSales_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.sSMaster.ResumeLayout(false);
             this.sSMaster.PerformLayout();
             this.ResumeLayout(false);
@@ -1261,6 +1405,10 @@
 
         #endregion
 
+        private System.Windows.Forms.RadioButton optApprovedVerified;
+        private System.Windows.Forms.RadioButton optInProcess;
+        private System.Windows.Forms.TextBox txtDiscount;
+        private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label lblNetValue;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label lblTotalQty;
@@ -1269,6 +1417,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtDeliveryPersonName;
         private System.Windows.Forms.DataGridView grd;
@@ -1276,6 +1425,9 @@
         private System.Windows.Forms.ComboBox cboLC;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.RadioButton optSingleItem;
+        private System.Windows.Forms.RadioButton optMultiItem;
         private System.Windows.Forms.DateTimePicker dtpSale;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker dtpGateOut;
@@ -1312,6 +1464,9 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.StatusStrip sSMaster;
         private System.Windows.Forms.ToolStripStatusLabel tSlblUser;
         private System.Windows.Forms.ToolStripStatusLabel tStextUser;
@@ -1354,6 +1509,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Button btnHelp;
     }
 }
