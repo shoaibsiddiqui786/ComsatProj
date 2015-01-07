@@ -79,6 +79,9 @@ namespace GUI_Task
         bool blnFormLoad = true;
         int fcboDefaultValue = 0;
 
+        string strDocId = string.Empty;
+
+
         public frmGateInward()
         {
             InitializeComponent();
@@ -686,11 +689,15 @@ namespace GUI_Task
                 if (txtGateInward.Text.ToString().Trim(' ', '-') == "")
                 {
                     fDocAlreadyExists = false;
-                    fDocID = clsDbManager.GetNextValDocID("GateInword", "GateInwordId", fDocWhere, "");
+                    fDocID = clsDbManager.GetNextValDocID("GateInword", "DocId", fDocWhere, "");
+                    strDocId = "1-" + DateTime.Now.Year.ToString() + fDocID.ToString();
+                    txtGateInward.Text = strDocId;
+                    fDocID += fDocID;
 
                     lSQL = "insert into GateInword (";
-                    lSQL += "  GateInwordId ";                              //  0-    ItemID";   
-                    lSQL += ", GateInwordNo ";                                //  1-    ItemCod  
+                    lSQL += " DocId ";
+                    lSQL += ", GateInwordId ";                              //  0-    ItemID";   
+                    //lSQL += ", GateInwordNo ";                                //  1-    ItemCod  
                     lSQL += ", Date ";                                        //  2-    ItemNam 
                     lSQL += ", VendorId ";                                      // 3- Descripti
                     lSQL += ", Note ";                                        //  4-    SizeNam  
@@ -702,11 +709,12 @@ namespace GUI_Task
                     lSQL += ", BranchId ";                                    // 10    ColorID"  
                     lSQL += " ) values (";
                     //                                                       
-                    lSQL += "'" + fDocID.ToString() + "'";                  //  0-    ItemID";   
-                    lSQL += ",'" + txtGateInward.Text.ToString() + "";        //  1-    ItemCod  
+                    lSQL += fDocID.ToString();
+                    lSQL += ",'" + strDocId.ToString() + "'";   
+                   // lSQL += ",'" + txtGateInward.Text.ToString() + "'";        //  1-    ItemCod  
                     lSQL += ", " + StrF01.D2Str(dtpGateInword) + "";          //  2-    ItemNam 
-                    lSQL += ",";                                              // 3- Descripti
-                    lSQL += ",'" + txtNote + "'";                             //  4-    SizeNam  
+                    lSQL += ", 1";                                              // 3- Descripti
+                    lSQL += ",'" + txtNote.Text.ToString() + "'";                             //  4-    SizeNam  
                     lSQL += ", " + cboItemGroup.SelectedValue.ToString() + "";  //  5-    ColorNa  
                     lSQL += ", 1";                                            //  6-    UOMName
                     lSQL += ", 0";                                            // 7- GodownName
@@ -783,10 +791,11 @@ namespace GUI_Task
                         }
                     }
 
-                    lSQL = "INSERT INTO GateInwordDetail (GateInwordId";
-                    lSQL += ",ItemId,SizeId,ColorID,GodownId,Qty,Description)";
+                    lSQL = "INSERT INTO GateInwordDetail( DocId ";
+                    lSQL += ",GateInwordId,ItemId,SizeId,ColorID,GodownId,Qty,Description)";
                     lSQL += " VALUES (";
-                    lSQL += "'" + txtGateInward.Text.ToString() + "'";
+                    lSQL += "" + fDocID + "";
+                    lSQL += ", '" + txtGateInward.Text.ToString() + "'";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGIn.ItemID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGIn.SizeID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGIn.ColorID].Value.ToString() + "";
