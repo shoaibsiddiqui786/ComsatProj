@@ -36,7 +36,7 @@ namespace GUI_Task
     }
     
     
-    public partial class frmGRNReturn : Form
+    public partial class frmGdRecNoteReturn : Form
     {
         //******* Grid Variable Setting -- Begin ******
         string fHDR = string.Empty;                       // Column Header
@@ -80,7 +80,7 @@ namespace GUI_Task
 
         bool blnFormLoad = true;
         int fcboDefaultValue = 0;
-        public frmGRNReturn()
+        public frmGdRecNoteReturn()
         {
             InitializeComponent();
         }
@@ -338,7 +338,7 @@ namespace GUI_Task
             //lFieldList += ",UnitName";              //  5-    UOMName";
             lFieldList += ",GodownName";            //  6- GodownName
             lFieldList += ",Stock";                 //  7- Stock
-            lFieldList += ",Qty";                   //  8- Qty
+            lFieldList += ",GRNQty";                   //  8- Qty
             lFieldList += ",RetrunQty";                   //  8- Qty
           //  lFieldList += ",New Stock";                   //  8- Qty
             lFieldList += ",Rate";                   //  8- Qty
@@ -353,12 +353,12 @@ namespace GUI_Task
             lHDR += ",Item Code";         //  1-    ItemCode";     
             lHDR += ",Item Name";         //  2-    ItemName";
             //lHDR += ",Description";         //  2-    ItemName";
-            lHDR += ",Size";       //  3-    SizeName";      
-            lHDR += ",Color";              //  4-    ColorName";     
+            lHDR += ",SizeName";       //  3-    SizeName";      
+            lHDR += ",ColorName";              //  4-    ColorName";     
             //lHDR += ",UOM Name";             //  5-    UOMName";
-            lHDR += ",Godown";          //  6- GodownName
+            lHDR += ",GodownName";          //  6- GodownName
             lHDR += ",Stock";            //  7- Stock
-            lHDR += ",Qty";               //  8- Qty
+            lHDR += ",GRNQty";               //  8- Qty
             lHDR += ",RetrunQty";               //  8- Qty
             //lHDR += ",New Stock";               //  8- Qty
             lHDR += ",Rate";               //  8- Qty
@@ -499,7 +499,7 @@ namespace GUI_Task
             tFieldName += ",GodownName";          //  6- GodownName
             tFieldName += ",Stock";        //  7- Stock
         
-            tFieldName += ",Qty";               //  8- Qty
+            tFieldName += ",GRNQty";               //  8- Qty
             tFieldName += ",RetrunQty";               //  8- Qty
             //tFieldName += ",NewStock";          //  2-    New Stock";
             tFieldName += ",Rate";          //  2-    Rate";
@@ -1139,6 +1139,11 @@ namespace GUI_Task
             }
 
          //   lblTotal.Text = String.Format("{0:0,0.00}", fAmount);
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            LookUp_Voc();
         }
 
 

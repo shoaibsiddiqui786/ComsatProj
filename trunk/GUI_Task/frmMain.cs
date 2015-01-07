@@ -113,9 +113,9 @@ namespace GUI_Task
 
         private void toolStripMenuItem18_Click(object sender, EventArgs e)
         {
-            frmTrialBal frm = new frmTrialBal();
-            frm.MdiParent = this;
-            frm.Show();
+            //frmTrialBal frm = new frmTrialBal();
+            //frm.MdiParent = this;
+            //frm.Show();
         }
 
         private void toolStripMenuItem19_Click(object sender, EventArgs e)
@@ -468,9 +468,9 @@ namespace GUI_Task
 
         private void goodRecieveNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //frmGdRecNote frm = new frmGdRecNote();
-            //frm.MdiParent = this;
-            //frm.Show();
+            frmGdRecNote frm = new frmGdRecNote();
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void gateOutwardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -580,9 +580,9 @@ namespace GUI_Task
 
         private void goodsRecieveNoteReturnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //frmGdRecNoteReturn frm = new frmGdRecNoteReturn();
-            //frm.MdiParent = this;
-            //frm.Show();
+            frmGdRecNoteReturn frm = new frmGdRecNoteReturn();
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void issueReturnItemsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -778,68 +778,68 @@ namespace GUI_Task
 
         private void cashRecieptVoucherToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCRVoc frm = new frmCRVoc();
-            frm.MdiParent = this;
-            frm.Show();
+            //frmCRVoc frm = new frmCRVoc();
+            //frm.MdiParent = this;
+            //frm.Show();
         }
 
         private void cashPaymentVoucherToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCPVoc frm = new frmCPVoc();
-            frm.MdiParent = this;
-            frm.Show();
+            //frmCPVoc frm = new frmCPVoc();
+            //frm.MdiParent = this;
+            //frm.Show();
         }
 
-        private void bankRecieptVoucherToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmBRVoc frm = new frmBRVoc();
-            frm.MdiParent = this;
-            frm.Show();
-        }
+       // private void bankRecieptVoucherToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    frmBRVoc frm = new frmBRVoc();
+        //    frm.MdiParent = this;
+        //    frm.Show();
+      //  }
 
-        private void bankPaymentVoucherToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmBPVoc frm = new frmBPVoc();
-            frm.MdiParent = this;
-            frm.Show();
-        }
+        //private void bankPaymentVoucherToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    //frmBPVoc frm = new frmBPVoc();
+        //    //frm.MdiParent = this;
+        //    //frm.Show();
+        //}
 
-        private void discountVoucherToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmDiscVoc frm = new frmDiscVoc();
-            frm.MdiParent = this;
-            frm.Show();
-        }
+        //private void discountVoucherToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    //frmDiscVoc frm = new frmDiscVoc();
+        //    //frm.MdiParent = this;
+        //    //frm.Show();
+        //}
 
-        private void chequeRecieveVoucherToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmChqReceVoc frm = new frmChqReceVoc();
-            frm.MdiParent = this;
-            frm.Show();
-        }
+        //private void chequeRecieveVoucherToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    frmChqReceVoc frm = new frmChqReceVoc();
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
 
-        private void chequePaymentVoucherToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmChqPayVoc frm = new frmChqPayVoc();
-            frm.MdiParent = this;
-            frm.Show();
-        }
+        //private void chequePaymentVoucherToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    frmChqPayVoc frm = new frmChqPayVoc();
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
 
-        private void returnBankRecieveVoucherToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmRetBankVoc frm = new frmRetBankVoc();
-            frm.MdiParent = this;
-            frm.Show();
-        }
+        //private void returnBankRecieveVoucherToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    frmRetBankVoc frm = new frmRetBankVoc();
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
 
-        private void chequwReturnCashToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmChqRet frm = new frmChqRet();
-            frm.MdiParent = this;
-            frm.Show();
-        }
+        //private void chequwReturnCashToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    frmChqRet frm = new frmChqRet();
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
 
-        private void itemCodeDescriptionToolStripMenuItem_Click(object sender, EventArgs e)
+        private void itemcodedescriptiontoolstripmenuitem_click(object sender, eventargs e)
         {
             frmItemCodeDes frm = new frmItemCodeDes();
             frm.MdiParent = this;

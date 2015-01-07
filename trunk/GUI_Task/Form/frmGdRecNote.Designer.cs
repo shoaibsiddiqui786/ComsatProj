@@ -1,6 +1,6 @@
 ﻿namespace GUI_Task
 {
-    partial class frmGRN
+    partial class frmGdRecNote
     {
         /// <summary>
         /// Required designer variable.
@@ -54,19 +54,10 @@
             this.cboGate = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.grd = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SizeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ColorColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.GodownColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtRecPerName = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -76,10 +67,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.txtDiscount = new System.Windows.Forms.TextBox();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.txtGRN = new System.Windows.Forms.TextBox();
             this.cboGodowns = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -115,7 +102,7 @@
             this.tStextTotal = new System.Windows.Forms.ToolStripStatusLabel();
             this.tSlblAlert = new System.Windows.Forms.ToolStripStatusLabel();
             this.textAlert = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lblGateInward = new System.Windows.Forms.Label();
+            this.txtGateInward = new System.Windows.Forms.TextBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -124,6 +111,14 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
@@ -352,6 +347,7 @@
             this.btnHelp.TabIndex = 189;
             this.btnHelp.Text = "F1=Help";
             this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // label4
             // 
@@ -440,30 +436,6 @@
             this.grd.Size = new System.Drawing.Size(975, 201);
             this.grd.TabIndex = 201;
             // 
-            // Column1
-            // 
-            this.Column1.Frozen = true;
-            this.Column1.HeaderText = "Code";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 57;
-            // 
-            // Column2
-            // 
-            this.Column2.Frozen = true;
-            this.Column2.HeaderText = "Item Code";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 80;
-            // 
-            // Column3
-            // 
-            this.Column3.Frozen = true;
-            this.Column3.HeaderText = "Name";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 60;
-            // 
             // SizeColumn
             // 
             this.SizeColumn.Frozen = true;
@@ -494,66 +466,16 @@
             this.GodownColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.GodownColumn.Width = 72;
             // 
-            // Column8
-            // 
-            this.Column8.Frozen = true;
-            this.Column8.HeaderText = "Stock";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Width = 60;
-            // 
-            // Column10
-            // 
-            this.Column10.Frozen = true;
-            this.Column10.HeaderText = "Qty";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            this.Column10.Width = 48;
-            // 
-            // Column12
-            // 
-            this.Column12.Frozen = true;
-            this.Column12.HeaderText = "Rate";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            this.Column12.Width = 55;
-            // 
-            // Column13
-            // 
-            this.Column13.Frozen = true;
-            this.Column13.HeaderText = "Amount";
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            this.Column13.Width = 68;
-            // 
-            // Column11
-            // 
-            this.Column11.Frozen = true;
-            this.Column11.HeaderText = "New Stock";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            this.Column11.Width = 85;
-            // 
             // btnExit
             // 
             this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(217, 447);
+            this.btnExit.Location = new System.Drawing.Point(123, 446);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(88, 20);
             this.btnExit.TabIndex = 206;
             this.btnExit.Text = "Esc=Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnPrint.Location = new System.Drawing.Point(123, 447);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(88, 20);
-            this.btnPrint.TabIndex = 205;
-            this.btnPrint.Text = "Printing";
-            this.btnPrint.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
@@ -662,50 +584,6 @@
             this.label23.TabIndex = 211;
             this.label23.Text = "   Net Value";
             this.label23.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label24
-            // 
-            this.label24.AllowDrop = true;
-            this.label24.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label24.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label24.Location = new System.Drawing.Point(533, 447);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(72, 17);
-            this.label24.TabIndex = 213;
-            this.label24.Text = "Discount";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // txtDiscount
-            // 
-            this.txtDiscount.Location = new System.Drawing.Point(610, 446);
-            this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.Size = new System.Drawing.Size(103, 20);
-            this.txtDiscount.TabIndex = 214;
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton5.Location = new System.Drawing.Point(396, 447);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(120, 19);
-            this.radioButton5.TabIndex = 216;
-            this.radioButton5.Text = "With GRN History";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // radioButton6
-            // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Checked = true;
-            this.radioButton6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton6.Location = new System.Drawing.Point(326, 446);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(64, 19);
-            this.radioButton6.TabIndex = 215;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Simple";
-            this.radioButton6.UseVisualStyleBackColor = true;
             // 
             // txtGRN
             // 
@@ -1095,18 +973,12 @@
             this.textAlert.Text = "Ready";
             this.textAlert.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblGateInward
+            // txtGateInward
             // 
-            this.lblGateInward.AllowDrop = true;
-            this.lblGateInward.BackColor = System.Drawing.Color.NavajoWhite;
-            this.lblGateInward.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblGateInward.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGateInward.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblGateInward.Location = new System.Drawing.Point(121, 21);
-            this.lblGateInward.Name = "lblGateInward";
-            this.lblGateInward.Size = new System.Drawing.Size(148, 21);
-            this.lblGateInward.TabIndex = 612;
-            this.lblGateInward.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.txtGateInward.Location = new System.Drawing.Point(121, 21);
+            this.txtGateInward.Name = "txtGateInward";
+            this.txtGateInward.Size = new System.Drawing.Size(150, 20);
+            this.txtGateInward.TabIndex = 612;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1172,6 +1044,70 @@
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             this.dataGridViewTextBoxColumn8.Width = 85;
             // 
+            // Column1
+            // 
+            this.Column1.Frozen = true;
+            this.Column1.HeaderText = "Code";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 57;
+            // 
+            // Column2
+            // 
+            this.Column2.Frozen = true;
+            this.Column2.HeaderText = "Item Code";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 80;
+            // 
+            // Column3
+            // 
+            this.Column3.Frozen = true;
+            this.Column3.HeaderText = "Name";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 60;
+            // 
+            // Column8
+            // 
+            this.Column8.Frozen = true;
+            this.Column8.HeaderText = "Stock";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 60;
+            // 
+            // Column10
+            // 
+            this.Column10.Frozen = true;
+            this.Column10.HeaderText = "Qty";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Width = 48;
+            // 
+            // Column12
+            // 
+            this.Column12.Frozen = true;
+            this.Column12.HeaderText = "Rate";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            this.Column12.Width = 55;
+            // 
+            // Column13
+            // 
+            this.Column13.Frozen = true;
+            this.Column13.HeaderText = "Amount";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            this.Column13.Width = 68;
+            // 
+            // Column11
+            // 
+            this.Column11.Frozen = true;
+            this.Column11.HeaderText = "New Stock";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Width = 85;
+            // 
             // dataGridViewTextBoxColumn9
             // 
             this.dataGridViewTextBoxColumn9.Frozen = true;
@@ -1186,23 +1122,19 @@
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.Width = 68;
             // 
-            // frmGRN
+            // frmGdRecNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1003, 492);
-            this.Controls.Add(this.lblGateInward);
+            this.Controls.Add(this.txtGateInward);
             this.Controls.Add(this.sSMaster);
             this.Controls.Add(this.InsertNew);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.cboGodowns);
             this.Controls.Add(this.txtGRN);
-            this.Controls.Add(this.radioButton5);
-            this.Controls.Add(this.radioButton6);
-            this.Controls.Add(this.txtDiscount);
-            this.Controls.Add(this.label24);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label18);
@@ -1210,7 +1142,6 @@
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtRecPerName);
             this.Controls.Add(this.label14);
@@ -1240,7 +1171,7 @@
             this.Controls.Add(this.mskPurchaseCode);
             this.Controls.Add(this.label3);
             this.KeyPreview = true;
-            this.Name = "frmGRN";
+            this.Name = "frmGdRecNote";
             this.Text = "Goods Recieve Note";
             this.Load += new System.EventHandler(this.Goods_Recieve_Note_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmGdRecNote_KeyDown);
@@ -1286,7 +1217,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView grd;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtRecPerName;
         private System.Windows.Forms.Label label14;
@@ -1296,10 +1226,6 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox txtDiscount;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.TextBox txtGRN;
         private System.Windows.Forms.ComboBox cboGodowns;
         private System.Windows.Forms.Label label11;
@@ -1345,7 +1271,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.Label lblGateInward;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -1357,5 +1282,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.TextBox txtGateInward;
     }
 }

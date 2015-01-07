@@ -268,58 +268,13 @@
   <data name="browse icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Icon\Images\browse icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <!--<data name="cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icon\Images\cancel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>-->
-  <!--<data name="close icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icon\Images\close icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>-->
-  <!--<data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icon\Images\delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_1176139_546982358700601_902572117_n" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\1176139_546982358700601_902572117_n.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="duplicate icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icon\Images\duplicate icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_300px_COMSATS_Logo_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\300px-COMSATS_Logo.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="exit and save icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icon\Images\exit and save icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_319648_284696054886609_1024035219_n" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\319648_284696054886609_1024035219_n.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="exit icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icon\Images\exit icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="forward icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icon\Images\forward icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="group icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icon\Images\group icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="help" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icon\Images\help.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="modify icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icon\Images\modify icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="new voucher" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icon\Images\new voucher.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ok" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icon\Images\ok.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="preview icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icon\Images\preview icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="print" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icon\Images\print.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="reset icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icon\Images\reset icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icon\Images\save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icon\Images\search.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="unselect" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Icon\Images\unselect.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>-->
 </root>
