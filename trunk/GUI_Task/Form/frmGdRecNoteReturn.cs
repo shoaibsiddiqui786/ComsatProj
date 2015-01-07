@@ -1141,6 +1141,11 @@ namespace GUI_Task
          //   lblTotal.Text = String.Format("{0:0,0.00}", fAmount);
         }
 
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            LookUp_Voc();
+        }
+
 
 
             
