@@ -546,6 +546,7 @@
             this.customerDescriptionToolStripMenuItem.Name = "customerDescriptionToolStripMenuItem";
             this.customerDescriptionToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.customerDescriptionToolStripMenuItem.Text = "Customer Description";
+            this.customerDescriptionToolStripMenuItem.Visible = false;
             this.customerDescriptionToolStripMenuItem.Click += new System.EventHandler(this.customerDescriptionToolStripMenuItem_Click);
             // 
             // venderDescriptionToolStripMenuItem
@@ -553,6 +554,7 @@
             this.venderDescriptionToolStripMenuItem.Name = "venderDescriptionToolStripMenuItem";
             this.venderDescriptionToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.venderDescriptionToolStripMenuItem.Text = "Vender Description";
+            this.venderDescriptionToolStripMenuItem.Visible = false;
             this.venderDescriptionToolStripMenuItem.Click += new System.EventHandler(this.venderDescriptionToolStripMenuItem_Click);
             // 
             // accountDescriptionToolStripMenuItem

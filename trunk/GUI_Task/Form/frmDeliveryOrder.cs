@@ -1167,19 +1167,32 @@ namespace GUI_Task
             MessageBox.Show("Data Saved Successfullly");
         }
 
-        private void lblInvQty_Click(object sender, EventArgs e)
+        private void btnOrdHelp_Click(object sender, EventArgs e)
         {
-
+            LookUp_Voc();
         }
 
-        private void cboGodown_SelectedIndexChanged(object sender, EventArgs e)
+        private void ClearTextBoxes()
         {
+            Action<Control.ControlCollection> func = null;
 
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                        (control as TextBox).Clear();
+                    else
+                        func(control.Controls);
+            };
+
+            func(Controls);
         }
 
-        private void lblContactNo_Click(object sender, EventArgs e)
-        {
 
+        private void btnNewIssues_Click(object sender, EventArgs e)
+        {
+            grd.Rows.Clear();
+            ClearTextBoxes();
         }
     }
 }

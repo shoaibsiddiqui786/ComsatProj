@@ -410,7 +410,6 @@
             this.lblInvQty.Size = new System.Drawing.Size(158, 17);
             this.lblInvQty.TabIndex = 571;
             this.lblInvQty.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblInvQty.Click += new System.EventHandler(this.lblInvQty_Click);
             // 
             // groupBox4
             // 
@@ -497,6 +496,7 @@
             this.btnNewIssues.TabIndex = 568;
             this.btnNewIssues.Text = "Add New";
             this.btnNewIssues.UseVisualStyleBackColor = true;
+            this.btnNewIssues.Click += new System.EventHandler(this.btnNewIssues_Click);
             // 
             // btnordDt
             // 
@@ -516,9 +516,10 @@
             this.btnOrdHelp.Name = "btnOrdHelp";
             this.btnOrdHelp.Size = new System.Drawing.Size(102, 25);
             this.btnOrdHelp.TabIndex = 566;
-            this.btnOrdHelp.Text = "Order Help";
+            this.btnOrdHelp.Text = "[F1] = Help";
             this.btnOrdHelp.UseVisualStyleBackColor = true;
             this.btnOrdHelp.Visible = false;
+            this.btnOrdHelp.Click += new System.EventHandler(this.btnOrdHelp_Click);
             // 
             // btnView
             // 
@@ -619,7 +620,6 @@
             this.cboGodown.Size = new System.Drawing.Size(158, 21);
             this.cboGodown.TabIndex = 12;
             this.cboGodown.Text = "-";
-            this.cboGodown.SelectedIndexChanged += new System.EventHandler(this.cboGodown_SelectedIndexChanged);
             // 
             // label15
             // 
@@ -659,7 +659,6 @@
             this.lblContactNo.Size = new System.Drawing.Size(158, 17);
             this.lblContactNo.TabIndex = 555;
             this.lblContactNo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblContactNo.Click += new System.EventHandler(this.lblContactNo_Click);
             // 
             // txtSaleType
             // 

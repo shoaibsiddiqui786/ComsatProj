@@ -55,7 +55,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.lblContractNo = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtSaleType = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cboAdda = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -65,12 +65,12 @@
             this.lblNameBottom = new System.Windows.Forms.Label();
             this.cboItemGroup = new System.Windows.Forms.ComboBox();
             this.label34 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpBuilty = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtDetail = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBuiltyNo = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.lblSaleType = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -195,7 +195,7 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(113, 560);
+            this.btnExit.Location = new System.Drawing.Point(283, 529);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(102, 25);
             this.btnExit.TabIndex = 644;
@@ -404,6 +404,7 @@
             this.btnIrnHelp.TabIndex = 631;
             this.btnIrnHelp.Text = "Inv Help";
             this.btnIrnHelp.UseVisualStyleBackColor = true;
+            this.btnIrnHelp.Click += new System.EventHandler(this.btnIrnHelp_Click);
             // 
             // label15
             // 
@@ -411,12 +412,13 @@
             this.label15.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label15.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label15.Location = new System.Drawing.Point(395, 189);
+            this.label15.Location = new System.Drawing.Point(395, 211);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(100, 17);
             this.label15.TabIndex = 620;
             this.label15.Text = "Godown";
             this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label15.Visible = false;
             // 
             // label13
             // 
@@ -424,7 +426,7 @@
             this.label13.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label13.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label13.Location = new System.Drawing.Point(395, 216);
+            this.label13.Location = new System.Drawing.Point(395, 186);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(100, 17);
             this.label13.TabIndex = 619;
@@ -439,20 +441,20 @@
             this.lblContractNo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblContractNo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContractNo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblContractNo.Location = new System.Drawing.Point(510, 216);
+            this.lblContractNo.Location = new System.Drawing.Point(510, 186);
             this.lblContractNo.Name = "lblContractNo";
             this.lblContractNo.Size = new System.Drawing.Size(233, 17);
             this.lblContractNo.TabIndex = 618;
             this.lblContractNo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblContractNo.Visible = false;
             // 
-            // textBox4
+            // txtSaleType
             // 
-            this.textBox4.Location = new System.Drawing.Point(561, 49);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(25, 20);
-            this.textBox4.TabIndex = 617;
-            this.textBox4.Text = "C";
+            this.txtSaleType.Location = new System.Drawing.Point(561, 49);
+            this.txtSaleType.Name = "txtSaleType";
+            this.txtSaleType.Size = new System.Drawing.Size(25, 20);
+            this.txtSaleType.TabIndex = 617;
+            this.txtSaleType.Text = "C";
             // 
             // label8
             // 
@@ -565,13 +567,13 @@
             this.label34.Text = "Category";
             this.label34.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // dateTimePicker2
+            // dtpBuilty
             // 
-            this.dateTimePicker2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(111, 155);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(158, 21);
-            this.dateTimePicker2.TabIndex = 607;
+            this.dtpBuilty.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpBuilty.Location = new System.Drawing.Point(111, 155);
+            this.dtpBuilty.Name = "dtpBuilty";
+            this.dtpBuilty.Size = new System.Drawing.Size(158, 21);
+            this.dtpBuilty.TabIndex = 607;
             // 
             // label3
             // 
@@ -599,12 +601,12 @@
             this.label1.Text = "Builty No.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // textBox3
+            // txtDetail
             // 
-            this.textBox3.Location = new System.Drawing.Point(395, 129);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(273, 20);
-            this.textBox3.TabIndex = 604;
+            this.txtDetail.Location = new System.Drawing.Point(395, 129);
+            this.txtDetail.Name = "txtDetail";
+            this.txtDetail.Size = new System.Drawing.Size(273, 20);
+            this.txtDetail.TabIndex = 604;
             // 
             // label2
             // 
@@ -619,12 +621,12 @@
             this.label2.Text = "Details";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // textBox2
+            // txtBuiltyNo
             // 
-            this.textBox2.Location = new System.Drawing.Point(395, 155);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(273, 20);
-            this.textBox2.TabIndex = 602;
+            this.txtBuiltyNo.Location = new System.Drawing.Point(395, 155);
+            this.txtBuiltyNo.Name = "txtBuiltyNo";
+            this.txtBuiltyNo.Size = new System.Drawing.Size(273, 20);
+            this.txtBuiltyNo.TabIndex = 602;
             // 
             // label9
             // 
@@ -862,6 +864,7 @@
             this.label31.TabIndex = 658;
             this.label31.Text = "D.O Date";
             this.label31.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label31.Visible = false;
             // 
             // lblDoDate
             // 
@@ -875,6 +878,7 @@
             this.lblDoDate.Size = new System.Drawing.Size(234, 17);
             this.lblDoDate.TabIndex = 657;
             this.lblDoDate.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblDoDate.Visible = false;
             // 
             // label35
             // 
@@ -886,7 +890,7 @@
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(70, 17);
             this.label35.TabIndex = 660;
-            this.label35.Text = "Bill#";
+            this.label35.Text = "Bill #";
             this.label35.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblBillNo
@@ -941,19 +945,21 @@
             this.label37.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label37.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label37.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label37.Location = new System.Drawing.Point(826, 108);
+            this.label37.Location = new System.Drawing.Point(826, 102);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(70, 17);
             this.label37.TabIndex = 664;
             this.label37.Text = "Claim";
             this.label37.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label37.Visible = false;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(902, 105);
+            this.textBox5.Location = new System.Drawing.Point(902, 102);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(84, 20);
             this.textBox5.TabIndex = 665;
+            this.textBox5.Visible = false;
             // 
             // btnResetCont
             // 
@@ -973,11 +979,12 @@
             this.lblGodown.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblGodown.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGodown.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblGodown.Location = new System.Drawing.Point(510, 186);
+            this.lblGodown.Location = new System.Drawing.Point(510, 208);
             this.lblGodown.Name = "lblGodown";
             this.lblGodown.Size = new System.Drawing.Size(233, 17);
             this.lblGodown.TabIndex = 667;
             this.lblGodown.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblGodown.Visible = false;
             // 
             // btnPictures
             // 
@@ -988,6 +995,7 @@
             this.btnPictures.TabIndex = 668;
             this.btnPictures.Text = "Pictures";
             this.btnPictures.UseVisualStyleBackColor = true;
+            this.btnPictures.Visible = false;
             // 
             // label39
             // 
@@ -1081,6 +1089,7 @@
             this.label45.TabIndex = 676;
             this.label45.Text = "Frieght";
             this.label45.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label45.Visible = false;
             // 
             // label46
             // 
@@ -1094,6 +1103,7 @@
             this.label46.Size = new System.Drawing.Size(130, 17);
             this.label46.TabIndex = 675;
             this.label46.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label46.Visible = false;
             // 
             // radioButton5
             // 
@@ -1130,6 +1140,7 @@
             this.checkBox1.TabIndex = 680;
             this.checkBox1.Text = "Printer";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Visible = false;
             // 
             // radioButton1
             // 
@@ -1143,6 +1154,7 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "English Print";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.Visible = false;
             // 
             // radioButton2
             // 
@@ -1369,7 +1381,7 @@
             this.tStextTotal,
             this.tSlblAlert,
             this.textAlert});
-            this.sSMaster.Location = new System.Drawing.Point(0, 605);
+            this.sSMaster.Location = new System.Drawing.Point(0, 584);
             this.sSMaster.Name = "sSMaster";
             this.sSMaster.Size = new System.Drawing.Size(991, 22);
             this.sSMaster.TabIndex = 686;
@@ -1538,7 +1550,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(991, 627);
+            this.ClientSize = new System.Drawing.Size(991, 606);
             this.Controls.Add(this.dtpDO);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.sSMaster);
@@ -1589,7 +1601,7 @@
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.lblContractNo);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtSaleType);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cboAdda);
             this.Controls.Add(this.label7);
@@ -1599,12 +1611,12 @@
             this.Controls.Add(this.lblNameBottom);
             this.Controls.Add(this.cboItemGroup);
             this.Controls.Add(this.label34);
-            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dtpBuilty);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtDetail);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtBuiltyNo);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.lblSaleType);
             this.Controls.Add(this.label10);
@@ -1652,7 +1664,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lblContractNo;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtSaleType;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cboAdda;
         private System.Windows.Forms.Label label7;
@@ -1662,12 +1674,12 @@
         private System.Windows.Forms.Label lblNameBottom;
         private System.Windows.Forms.ComboBox cboItemGroup;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpBuilty;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtDetail;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtBuiltyNo;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblSaleType;
         private System.Windows.Forms.Label label10;

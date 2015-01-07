@@ -437,22 +437,42 @@ namespace GUI_Task
             string tSQL = string.Empty;
 
             // Fields 0,1,2,3 are Begin 
-            
-            tSQL += " select inv.Inv_No, inv.Inv_Date, inv.BillNo, c.Name, inv.Detail, inv.Qty, inv.Amount ";
+
+            tSQL += " select DISTINCT RIGHT(Itemcode,1) AS Category, inv.Inv_No, inv.Inv_Date, inv.Do_No, inv.Adda, inv.Detail, inv.Ord_Date, inv.Do_Date, inv.SaleType,";
+            tSQL += " inv.BillNo, inv.Customer, c.Name, inv.Detail, inv.Qty, inv.Amount, inv.Bilty_Date, inv.Bilty_No,";
+            tSQL += " i.cgdDesc AS ItemGroupName, inv.Cont_No ";
             tSQL += " from Inv_Det inv ";
             tSQL += " INNER JOIN CustGroup c ON c.Code = inv.Customer ";
+            tSQL += " INNER JOIN CatDtl i ON inv.ItemGroupID = i.cgdCode AND i.cgCode = 6 ";
+            tSQL += " INNER JOIN Item it ON inv.Category = it.ItemId ";
             try
             {
                 ds = clsDbManager.GetData_Set(tSQL, "Heads");
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     dRow = ds.Tables[0].Rows[0];
+                    dtpInv.Text = (ds.Tables[0].Rows[0]["Inv_Date"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Inv_Date"].ToString());
+                    txtDONo.Text = (ds.Tables[0].Rows[0]["Do_No"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Do_No"].ToString());
+                    dtpDO.Text = (ds.Tables[0].Rows[0]["Do_Date"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Do_Date"].ToString());
+                    txtSaleType.Text = (ds.Tables[0].Rows[0]["SaleType"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["SaleType"].ToString());
+                    mskCustomerCode.Text = (ds.Tables[0].Rows[0]["Customer"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Customer"].ToString());
+                    lblNameBottom.Text = (ds.Tables[0].Rows[0]["Name"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Name"].ToString());
+                    lblBillNo.Text = (ds.Tables[0].Rows[0]["BillNo"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["BillNo"].ToString());
+                    lblOrderDate.Text = (ds.Tables[0].Rows[0]["Ord_Date"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Ord_Date"].ToString());
+                    cboAdda.Text = (ds.Tables[0].Rows[0]["Adda"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Adda"].ToString());
+                    lblSaleType.Text = (ds.Tables[0].Rows[0]["SaleType"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["SaleType"].ToString());
+                    txtDetail.Text = (ds.Tables[0].Rows[0]["Detail"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Detail"].ToString());
+                    dtpBuilty.Text = (ds.Tables[0].Rows[0]["Bilty_Date"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Bilty_Date"].ToString());
+                    txtBuiltyNo.Text = (ds.Tables[0].Rows[0]["Bilty_No"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Bilty_No"].ToString());
+                    cboItemGroup.Text = (ds.Tables[0].Rows[0]["ItemGroupName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ItemGroupName"].ToString());
+                    lblContractNo.Text = (ds.Tables[0].Rows[0]["Cont_No"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Cont_No"].ToString());
+                    cboCategory.Text = (ds.Tables[0].Rows[0]["Category"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Category"].ToString());
                     if (ds.Tables[0].Rows.Count > 0)
                     {
                         ds.Clear();
                     }
                     //lblBillNo.Text = (ds.Tables[0].Rows[0]["BillNo"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["BillNo"].ToString());
-                    // LoadGridData();
+                    LoadGridData();
                 }
             }
             catch
@@ -1120,6 +1140,11 @@ namespace GUI_Task
                 return false;
             }
 
+        }
+
+        private void btnIrnHelp_Click(object sender, EventArgs e)
+        {
+            LookUp_Voc();
         }
     }
 }

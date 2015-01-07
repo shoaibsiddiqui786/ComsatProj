@@ -1117,8 +1117,7 @@
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.Width = 68;
             // 
-<<<<<<< HEAD
-=======
+
             // btnHelp
             // 
             this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1130,7 +1129,7 @@
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
->>>>>>> origin/master
+
             // frmGdRecNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1180,11 +1179,10 @@
             this.Controls.Add(this.mskPurchaseCode);
             this.Controls.Add(this.label3);
             this.KeyPreview = true;
-<<<<<<< HEAD
-=======
+
             this.MaximizeBox = false;
             this.MinimizeBox = false;
->>>>>>> origin/master
+
             this.Name = "frmGdRecNote";
             this.Text = "Goods Recieve Note";
             this.Load += new System.EventHandler(this.Goods_Recieve_Note_Load);
