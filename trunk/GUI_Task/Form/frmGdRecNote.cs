@@ -75,6 +75,8 @@ namespace GUI_Task
 
         bool blnFormLoad = true;
         int fcboDefaultValue = 0;
+        string strDocId = string.Empty;
+
         public frmGdRecNote()
         {
             InitializeComponent();
@@ -546,10 +548,14 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
                 if (txtGRN.Text.ToString().Trim(' ', '-') == "")
                 {
                     fDocAlreadyExists = false;
-                    fDocID = clsDbManager.GetNextValDocID("GRN", "GRNId", fDocWhere, "");
+                    fDocID = clsDbManager.GetNextValDocID("GRN", "DocId", fDocWhere, "");
+                    fDocID = fDocID + 1;
+                    strDocId = "1-" + DateTime.Now.Year.ToString() + "-" + fDocID.ToString();
+                    txtGRN.Text = strDocId;
 
                     lSQL = "insert into GRN (";
-                    lSQL += "  GRNId ";                              //  0-    ItemID";   
+                    lSQL += "  DocId ";
+                    lSQL += ", GRNId ";                              //  0-    ItemID";   
                     lSQL += ", Date ";
                     lSQL += "  ,GateInwordId ";   //  1-    ItemCod  
                     lSQL += ", GateInwordDate ";
@@ -567,29 +573,25 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
                     lSQL += ", BranchId ";
                     //lSQL += ",EmployeeID ";
                     //lSQL += ",DeptID ";
-                    lSQL += ",RecPerName ";
-                    lSQL += ",Discount ";
+                    lSQL += ", RecPerName ";
                     lSQL += " ) values (";
                     //                                                       
-                    lSQL += "'" + fDocID.ToString() + "'";
-                    lSQL += ",'" + txtGRN.Text.ToString() + "";
+                    lSQL += fDocID.ToString();
+                    lSQL += ",'" + strDocId.ToString() + "'"; 
                     lSQL += ", " + StrF01.D2Str(dtpGRN) + "";
                     lSQL += ", 1";
                     lSQL += ", " + StrF01.D2Str(dtpGI) + "";
-                    lSQL += ", ";
-                    lSQL += ", ";
+                    lSQL += ", '" + mskVenderCode.Text.ToString() + "'";
+                    lSQL += ", '" + mskPurchaseCode.Text.ToString() + "'";
                     lSQL += ", 1";
                     lSQL += ", 1";
-                    //lSQL += ", 1";
-                    //lSQL += ", 1";
                     lSQL += ", " + cboItemGroup.SelectedValue.ToString() + "";
                     lSQL += ", " + cboGate.SelectedValue.ToString() + "";
                     lSQL += ", 1";
-                    lSQL += ",'" + txtNote + "'";
+                    lSQL += ",'" + txtNote.Text.ToString() + "'";
                     lSQL += ", " + cboGodowns.SelectedValue.ToString() + "";
                     lSQL += ", 1";
-                    lSQL += ", " + txtRecPerName.Text.ToString() + "";
-                    //lSQL += ", " + txtDiscount.Text.ToString() + "";
+                    lSQL += ", '" + txtRecPerName.Text.ToString() + "'";
                     lSQL += ")";
                 }
                 else
@@ -669,10 +671,11 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
                         }
                     }
 
-                    lSQL = "INSERT INTO GRNDetail (GRNId";
-                    lSQL += ",ItemId,SizeId,ColorId,GodownId,Qty,Rate)";
+                    lSQL = "INSERT INTO GRNDetail (DocId";
+                    lSQL += ",GRNId,ItemId,SizeId,ColorId,GodownId,Qty,Rate)";
                     lSQL += " VALUES (";
-                    lSQL += "'" + txtGRN.Text.ToString() + "'";
+                    lSQL += "" + fDocID + "";
+                    lSQL += ", '" + strDocId.ToString() + "'";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.ItemId].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.SizeId].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.ColorId].Value.ToString() + "";
