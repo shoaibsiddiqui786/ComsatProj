@@ -566,7 +566,7 @@ namespace GUI_Task
 
         private void issueItemsFormulaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmIssueItemsFormula frm = new frmIssueItemsFormula();
+            frmIssueItems frm = new frmIssueItems();
             frm.MdiParent = this;
             frm.Show();
         }

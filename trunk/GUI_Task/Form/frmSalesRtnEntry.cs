@@ -260,7 +260,7 @@ namespace GUI_Task
             lSQL += " INNER JOIN CatDtl clr ON h.ColorID=clr.cgdCode AND clr.cgCode = 3 ";
             lSQL += " INNER JOIN IMS_UOM u ON u.UOMID=u.UOMID ";
             lSQL += " INNER JOIN CatDtl gd ON gd.cgdCode=h.GodownID AND gd.cgCode = 2 ";
-            lSQL += " where h.Ret_No = '" + txtInvNo.Text.ToString() + "'; ";
+            lSQL += " where h.Ret_No = '" + txtInvRetNo.Text.ToString() + "'; ";
 
             clsDbManager.FillDataGrid(
                 grd,
@@ -1215,7 +1215,7 @@ namespace GUI_Task
                     lSQL = "INSERT INTO InvR_Hist (Ret_No";
                     lSQL += ",Code,ColorID,SizeId,Discount,Rate,Qty)";
                     lSQL += " VALUES (";
-                    lSQL += "'" + txtInvNo.Text.ToString() + "'";
+                    lSQL += "'" + txtInvRetNo.Text.ToString() + "'";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColSaleRet.ItemID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColSaleRet.ColorID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColSaleRet.SizeID].Value.ToString() + "";
