@@ -16,10 +16,8 @@ namespace GUI_Task
         ItemId = 0,
         ItemCode = 1,
         ItemName = 2,
-        //VenderName = 3,
         SizeName = 3,
         ColorName = 4,
-        //UnitName = 6,
         GodownName = 5,
         Stock = 6,
         Qty = 7,
@@ -28,7 +26,6 @@ namespace GUI_Task
         Amount = 10,
         SizeId =11,
         ColorId = 12,
-        //UOMID = 15,
         GodownId = 13
     }
     public partial class frmGdRecNote : Form
@@ -682,8 +679,6 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.GodownId].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.Qty].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.Rate].Value.ToString() + "";
-                    //lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.Amount].Value.ToString() + "";
-                    //lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.NewStock].Value.ToString() + "";
                     lSQL += ")";
                     fManySQL.Add(lSQL);
                 } // End For loopo
