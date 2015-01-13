@@ -440,6 +440,7 @@
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
             this.toolStripSeparator10.Size = new System.Drawing.Size(165, 6);
+            this.toolStripSeparator10.Visible = false;
             // 
             // invoiceEntryCFToolStripMenuItem
             // 

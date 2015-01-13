@@ -18,13 +18,13 @@ namespace GUI_Task
         ItemName = 2,     // 2 - ItemName
         SizeName = 3,     // 3 - SizeName
         ColorName = 4,    // 4 - ColorName
-        Discount = 5,     // 6 - Discount
-        DelQty = 6,       // 8 - DelQty
-        DzRate = 7,       // 9 - DzRate
-        PrRate = 8,      //10 - PrRate
-        Amount = 9,
-        SizeID = 10,      //11 - SizeID
-        ColorID = 11     //12 - ColorID
+        Discount = 5,     // 5 - Discount
+        DelQty = 6,       // 6 - DelQty
+        DzRate = 7,       // 7 - DzRate
+        PrRate = 8,       // 8 - PrRate
+        Amount = 9,       // 9 - Amount
+        SizeID = 10,      //10 - SizeID
+        ColorID = 11      //11 - ColorID
     }
 
     public partial class frmInvoiceEntry : Form
@@ -470,7 +470,6 @@ namespace GUI_Task
                     {
                         ds.Clear();
                     }
-                    //lblBillNo.Text = (ds.Tables[0].Rows[0]["BillNo"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["BillNo"].ToString());
                     LoadGridData();
                     SumVoc();
                 }
@@ -598,21 +597,19 @@ namespace GUI_Task
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            grd.Rows.Add(txt_I_ItemID.Text.ToString(),  // 0 - ItemID
-               lbl_I_ItemCode.Text.ToString(),          // 1 - ItemCode 
-               lbl_I_ItemName.Text.ToString(),          // 2 - ItemName
-               cbo_I_Size.Text.ToString(),              // 3 - SizeName
-               cbo_I_Color.Text.ToString(),             // 4 - ColorName
-               //cbo_I_UOM.Text.ToString(),               // 5 - UnitName
-               "0",                                     // 6 - Discount
-               txtOrderQty.Text.ToString(),             // 7 - OrdQty
-               txtDelQty.Text.ToString(),                                     // 8 - DelQty
-               (Convert.ToInt32(txtPairRate.Text) *2 ).ToString(),                          // 9 - DzRate
-               txtPairRate.Text.ToString(),       //10 - PrRate
-   cbo_I_Size.SelectedValue.ToString(),                 //11 - SizeID
-   cbo_I_Color.SelectedValue.ToString()                //12 - ColorID
-   //cbo_I_UOM.SelectedValue.ToString()
-   );                 //13 - UOMID
+            grd.Rows.Add(txt_I_ItemID.Text.ToString(),              // 0 - ItemID
+               lbl_I_ItemCode.Text.ToString(),                      // 1 - ItemCode 
+               lbl_I_ItemName.Text.ToString(),                      // 2 - ItemName
+               cbo_I_Size.Text.ToString(),                          // 3 - SizeName
+               cbo_I_Color.Text.ToString(),                          // 4 - ColorName
+               "0",                                                  // 5 - Discount                       
+               txtDelQty.Text.ToString(),                            // 6 - DelQty
+               (Convert.ToInt32(txtPairRate.Text) * 12).ToString(),   // 7 - DzRate
+               txtPairRate.Text.ToString(),                          // 8 - PrRate
+               (Convert.ToInt32(txtDelQty.Text) * Convert.ToInt32(txtPairRate.Text)).ToString(),  // 9 - Amount
+   cbo_I_Size.SelectedValue.ToString(),                              //10 - SizeID
+   cbo_I_Color.SelectedValue.ToString()                              //11 - ColorID
+   );                                                               
             SumVoc();
         }
 

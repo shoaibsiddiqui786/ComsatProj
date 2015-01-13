@@ -108,6 +108,10 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.gBox = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtPairRate = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtDelQty = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.cbo_I_Color = new System.Windows.Forms.ComboBox();
             this.cbo_I_Size = new System.Windows.Forms.ComboBox();
@@ -146,12 +150,6 @@
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtOrderQty = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtDelQty = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtPairRate = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.tb.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -937,6 +935,7 @@
             this.label41.TabIndex = 672;
             this.label41.Text = "Order value";
             this.label41.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label41.Visible = false;
             // 
             // lblOrdVal
             // 
@@ -950,6 +949,7 @@
             this.lblOrdVal.Size = new System.Drawing.Size(130, 17);
             this.lblOrdVal.TabIndex = 671;
             this.lblOrdVal.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblOrdVal.Visible = false;
             // 
             // label43
             // 
@@ -1124,8 +1124,6 @@
             this.gBox.Controls.Add(this.txtPairRate);
             this.gBox.Controls.Add(this.label11);
             this.gBox.Controls.Add(this.txtDelQty);
-            this.gBox.Controls.Add(this.label8);
-            this.gBox.Controls.Add(this.txtOrderQty);
             this.gBox.Controls.Add(this.btnAdd);
             this.gBox.Controls.Add(this.cbo_I_Color);
             this.gBox.Controls.Add(this.cbo_I_Size);
@@ -1141,6 +1139,48 @@
             this.gBox.TabIndex = 26;
             this.gBox.TabStop = false;
             this.gBox.Text = "Input Entry";
+            // 
+            // label17
+            // 
+            this.label17.AllowDrop = true;
+            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label17.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label17.Location = new System.Drawing.Point(196, 101);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(83, 21);
+            this.label17.TabIndex = 15;
+            this.label17.Text = "Pair Rate";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txtPairRate
+            // 
+            this.txtPairRate.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPairRate.Location = new System.Drawing.Point(291, 99);
+            this.txtPairRate.Name = "txtPairRate";
+            this.txtPairRate.Size = new System.Drawing.Size(76, 21);
+            this.txtPairRate.TabIndex = 6;
+            // 
+            // label11
+            // 
+            this.label11.AllowDrop = true;
+            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label11.Location = new System.Drawing.Point(382, 64);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(86, 21);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "Delivered Qty";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txtDelQty
+            // 
+            this.txtDelQty.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDelQty.Location = new System.Drawing.Point(474, 62);
+            this.txtDelQty.Name = "txtDelQty";
+            this.txtDelQty.Size = new System.Drawing.Size(76, 21);
+            this.txtDelQty.TabIndex = 5;
             // 
             // btnAdd
             // 
@@ -1262,7 +1302,7 @@
             this.tStextTotal,
             this.tSlblAlert,
             this.textAlert});
-            this.sSMaster.Location = new System.Drawing.Point(0, 572);
+            this.sSMaster.Location = new System.Drawing.Point(0, 560);
             this.sSMaster.Name = "sSMaster";
             this.sSMaster.Size = new System.Drawing.Size(886, 22);
             this.sSMaster.TabIndex = 686;
@@ -1499,74 +1539,11 @@
             this.Column12.ReadOnly = true;
             this.Column12.Width = 68;
             // 
-            // label8
-            // 
-            this.label8.AllowDrop = true;
-            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label8.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label8.Location = new System.Drawing.Point(382, 62);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(83, 21);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Order Qty";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // txtOrderQty
-            // 
-            this.txtOrderQty.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOrderQty.Location = new System.Drawing.Point(471, 62);
-            this.txtOrderQty.Name = "txtOrderQty";
-            this.txtOrderQty.Size = new System.Drawing.Size(76, 21);
-            this.txtOrderQty.TabIndex = 4;
-            // 
-            // label11
-            // 
-            this.label11.AllowDrop = true;
-            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label11.Location = new System.Drawing.Point(14, 99);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(86, 21);
-            this.label11.TabIndex = 13;
-            this.label11.Text = "Delivered Qty";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // txtDelQty
-            // 
-            this.txtDelQty.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDelQty.Location = new System.Drawing.Point(106, 99);
-            this.txtDelQty.Name = "txtDelQty";
-            this.txtDelQty.Size = new System.Drawing.Size(76, 21);
-            this.txtDelQty.TabIndex = 5;
-            // 
-            // label17
-            // 
-            this.label17.AllowDrop = true;
-            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label17.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label17.Location = new System.Drawing.Point(196, 101);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(83, 21);
-            this.label17.TabIndex = 15;
-            this.label17.Text = "Pair Rate";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // txtPairRate
-            // 
-            this.txtPairRate.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPairRate.Location = new System.Drawing.Point(291, 99);
-            this.txtPairRate.Name = "txtPairRate";
-            this.txtPairRate.Size = new System.Drawing.Size(76, 21);
-            this.txtPairRate.TabIndex = 6;
-            // 
             // frmInvoiceEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(886, 594);
+            this.ClientSize = new System.Drawing.Size(886, 582);
             this.Controls.Add(this.dtpDO);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.sSMaster);
@@ -1785,7 +1762,5 @@
         private System.Windows.Forms.TextBox txtPairRate;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtDelQty;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtOrderQty;
     }
 }

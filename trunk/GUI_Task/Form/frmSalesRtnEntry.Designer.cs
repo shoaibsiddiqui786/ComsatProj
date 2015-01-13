@@ -64,10 +64,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtBulityNo = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.dtpOrdDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpBuilty = new System.Windows.Forms.DateTimePicker();
             this.lblOrdDate = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.lblSaleType = new System.Windows.Forms.Label();
             this.mskCustomerCode = new System.Windows.Forms.MaskedTextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -79,18 +77,6 @@
             this.label27 = new System.Windows.Forms.Label();
             this.Column5 = new System.Windows.Forms.DataGridViewLinkColumn();
             this.grd = new System.Windows.Forms.DataGridView();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SizeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ColorColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.UnitColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.GodownColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDiscount = new System.Windows.Forms.TextBox();
             this.lblInvDate = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -117,12 +103,10 @@
             this.cboGodown = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.cbo_I_UOM = new System.Windows.Forms.ComboBox();
             this.cbo_I_Color = new System.Windows.Forms.ComboBox();
             this.cbo_I_Size = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.lbl_I_ItemName = new System.Windows.Forms.Label();
             this.lbl_I_ItemCode = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -160,6 +144,16 @@
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SizeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ColorColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.GodownColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.tbd.SuspendLayout();
@@ -179,6 +173,7 @@
             this.radioButton5.TabIndex = 650;
             this.radioButton5.Text = "Simple Printing";
             this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.UseWaitCursor = true;
             this.radioButton5.Visible = false;
             // 
             // btnPrintDel
@@ -190,6 +185,7 @@
             this.btnPrintDel.TabIndex = 648;
             this.btnPrintDel.Text = "Printing Detail";
             this.btnPrintDel.UseVisualStyleBackColor = true;
+            this.btnPrintDel.UseWaitCursor = true;
             this.btnPrintDel.Visible = false;
             // 
             // btnGrpPrint
@@ -201,6 +197,7 @@
             this.btnGrpPrint.TabIndex = 647;
             this.btnGrpPrint.Text = "Printing Group";
             this.btnGrpPrint.UseVisualStyleBackColor = true;
+            this.btnGrpPrint.UseWaitCursor = true;
             this.btnGrpPrint.Visible = false;
             // 
             // btnUrduPrint
@@ -212,6 +209,7 @@
             this.btnUrduPrint.TabIndex = 646;
             this.btnUrduPrint.Text = "Urdu Printing";
             this.btnUrduPrint.UseVisualStyleBackColor = true;
+            this.btnUrduPrint.UseWaitCursor = true;
             this.btnUrduPrint.Visible = false;
             // 
             // btnSave
@@ -223,6 +221,7 @@
             this.btnSave.TabIndex = 645;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseWaitCursor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnExit
@@ -234,6 +233,7 @@
             this.btnExit.TabIndex = 644;
             this.btnExit.Text = "Esc=Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.UseWaitCursor = true;
             // 
             // chkPrinter
             // 
@@ -246,6 +246,7 @@
             this.chkPrinter.TabIndex = 642;
             this.chkPrinter.Text = "Printer";
             this.chkPrinter.UseVisualStyleBackColor = true;
+            this.chkPrinter.UseWaitCursor = true;
             this.chkPrinter.Visible = false;
             // 
             // radioButton1
@@ -260,6 +261,7 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Group Printing";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.UseWaitCursor = true;
             this.radioButton1.Visible = false;
             // 
             // label22
@@ -274,6 +276,7 @@
             this.label22.TabIndex = 635;
             this.label22.Text = "Ret. Qty";
             this.label22.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label22.UseWaitCursor = true;
             // 
             // label24
             // 
@@ -287,6 +290,7 @@
             this.label24.TabIndex = 637;
             this.label24.Text = "Balance";
             this.label24.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label24.UseWaitCursor = true;
             this.label24.Visible = false;
             // 
             // lblBal
@@ -301,6 +305,7 @@
             this.lblBal.Size = new System.Drawing.Size(102, 17);
             this.lblBal.TabIndex = 636;
             this.lblBal.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblBal.UseWaitCursor = true;
             this.lblBal.Visible = false;
             // 
             // lblRetQty
@@ -315,6 +320,7 @@
             this.lblRetQty.Size = new System.Drawing.Size(102, 17);
             this.lblRetQty.TabIndex = 634;
             this.lblRetQty.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblRetQty.UseWaitCursor = true;
             // 
             // groupBox4
             // 
@@ -325,6 +331,7 @@
             this.groupBox4.Size = new System.Drawing.Size(235, 65);
             this.groupBox4.TabIndex = 633;
             this.groupBox4.TabStop = false;
+            this.groupBox4.UseWaitCursor = true;
             this.groupBox4.Visible = false;
             // 
             // radioButton4
@@ -337,6 +344,7 @@
             this.radioButton4.TabIndex = 61;
             this.radioButton4.Text = "Single Item Group {Size/Colour}";
             this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.UseWaitCursor = true;
             // 
             // radioButton3
             // 
@@ -350,6 +358,7 @@
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Multi Item Group {Size/Colour}";
             this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.UseWaitCursor = true;
             // 
             // label20
             // 
@@ -363,6 +372,7 @@
             this.label20.TabIndex = 627;
             this.label20.Text = "Discount";
             this.label20.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label20.UseWaitCursor = true;
             this.label20.Visible = false;
             // 
             // lblContQty
@@ -377,6 +387,7 @@
             this.lblContQty.Size = new System.Drawing.Size(119, 17);
             this.lblContQty.TabIndex = 626;
             this.lblContQty.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblContQty.UseWaitCursor = true;
             this.lblContQty.Visible = false;
             // 
             // label15
@@ -391,6 +402,7 @@
             this.label15.TabIndex = 620;
             this.label15.Text = "Cont. Qty";
             this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label15.UseWaitCursor = true;
             this.label15.Visible = false;
             // 
             // label13
@@ -405,6 +417,7 @@
             this.label13.TabIndex = 619;
             this.label13.Text = "Del. Qty";
             this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label13.UseWaitCursor = true;
             // 
             // lblDelQty
             // 
@@ -418,6 +431,7 @@
             this.lblDelQty.Size = new System.Drawing.Size(119, 17);
             this.lblDelQty.TabIndex = 618;
             this.lblDelQty.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblDelQty.UseWaitCursor = true;
             // 
             // txtSaleType
             // 
@@ -426,6 +440,7 @@
             this.txtSaleType.Size = new System.Drawing.Size(25, 20);
             this.txtSaleType.TabIndex = 617;
             this.txtSaleType.Text = "C";
+            this.txtSaleType.UseWaitCursor = true;
             // 
             // label8
             // 
@@ -439,6 +454,7 @@
             this.label8.TabIndex = 616;
             this.label8.Text = "Sale Type";
             this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label8.UseWaitCursor = true;
             // 
             // cboAdda
             // 
@@ -450,6 +466,7 @@
             this.cboAdda.Size = new System.Drawing.Size(273, 21);
             this.cboAdda.TabIndex = 615;
             this.cboAdda.Text = "-";
+            this.cboAdda.UseWaitCursor = true;
             // 
             // label7
             // 
@@ -463,6 +480,7 @@
             this.label7.TabIndex = 614;
             this.label7.Text = "Adda ";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label7.UseWaitCursor = true;
             // 
             // label5
             // 
@@ -476,6 +494,7 @@
             this.label5.TabIndex = 613;
             this.label5.Text = "Customer";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label5.UseWaitCursor = true;
             // 
             // lblCustName
             // 
@@ -489,6 +508,7 @@
             this.lblCustName.Size = new System.Drawing.Size(273, 17);
             this.lblCustName.TabIndex = 612;
             this.lblCustName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblCustName.UseWaitCursor = true;
             // 
             // cboCategory
             // 
@@ -500,6 +520,7 @@
             this.cboCategory.Size = new System.Drawing.Size(135, 21);
             this.cboCategory.TabIndex = 611;
             this.cboCategory.Text = "-";
+            this.cboCategory.UseWaitCursor = true;
             this.cboCategory.Visible = false;
             // 
             // label4
@@ -508,23 +529,25 @@
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(284, 189);
+            this.label4.Location = new System.Drawing.Point(191, 185);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 17);
             this.label4.TabIndex = 610;
             this.label4.Text = "Item Group";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label4.UseWaitCursor = true;
             // 
             // cboItemGroup
             // 
             this.cboItemGroup.FormattingEnabled = true;
             this.cboItemGroup.Items.AddRange(new object[] {
             ""});
-            this.cboItemGroup.Location = new System.Drawing.Point(404, 185);
+            this.cboItemGroup.Location = new System.Drawing.Point(297, 184);
             this.cboItemGroup.Name = "cboItemGroup";
             this.cboItemGroup.Size = new System.Drawing.Size(273, 21);
             this.cboItemGroup.TabIndex = 609;
             this.cboItemGroup.Text = "-";
+            this.cboItemGroup.UseWaitCursor = true;
             // 
             // label3
             // 
@@ -532,12 +555,13 @@
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(12, 185);
+            this.label3.Location = new System.Drawing.Point(12, 158);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 17);
             this.label3.TabIndex = 606;
-            this.label3.Text = "Builty Date Date";
+            this.label3.Text = "Builty Date";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label3.UseWaitCursor = true;
             // 
             // label1
             // 
@@ -551,6 +575,7 @@
             this.label1.TabIndex = 605;
             this.label1.Text = "Builty No.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label1.UseWaitCursor = true;
             // 
             // txtDetails
             // 
@@ -558,6 +583,7 @@
             this.txtDetails.Name = "txtDetails";
             this.txtDetails.Size = new System.Drawing.Size(273, 20);
             this.txtDetails.TabIndex = 604;
+            this.txtDetails.UseWaitCursor = true;
             // 
             // label2
             // 
@@ -571,6 +597,7 @@
             this.label2.TabIndex = 603;
             this.label2.Text = "Details";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label2.UseWaitCursor = true;
             // 
             // txtBulityNo
             // 
@@ -578,6 +605,7 @@
             this.txtBulityNo.Name = "txtBulityNo";
             this.txtBulityNo.Size = new System.Drawing.Size(273, 20);
             this.txtBulityNo.TabIndex = 602;
+            this.txtBulityNo.UseWaitCursor = true;
             // 
             // label9
             // 
@@ -585,20 +613,22 @@
             this.label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label9.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label9.Location = new System.Drawing.Point(12, 159);
+            this.label9.Location = new System.Drawing.Point(12, 132);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(100, 17);
             this.label9.TabIndex = 601;
             this.label9.Text = "Order Date";
             this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label9.UseWaitCursor = true;
             // 
-            // dtpOrdDate
+            // dtpBuilty
             // 
-            this.dtpOrdDate.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpOrdDate.Location = new System.Drawing.Point(120, 182);
-            this.dtpOrdDate.Name = "dtpOrdDate";
-            this.dtpOrdDate.Size = new System.Drawing.Size(158, 21);
-            this.dtpOrdDate.TabIndex = 607;
+            this.dtpBuilty.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpBuilty.Location = new System.Drawing.Point(120, 155);
+            this.dtpBuilty.Name = "dtpBuilty";
+            this.dtpBuilty.Size = new System.Drawing.Size(158, 21);
+            this.dtpBuilty.TabIndex = 607;
+            this.dtpBuilty.UseWaitCursor = true;
             // 
             // lblOrdDate
             // 
@@ -607,37 +637,12 @@
             this.lblOrdDate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblOrdDate.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOrdDate.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblOrdDate.Location = new System.Drawing.Point(120, 156);
+            this.lblOrdDate.Location = new System.Drawing.Point(120, 129);
             this.lblOrdDate.Name = "lblOrdDate";
             this.lblOrdDate.Size = new System.Drawing.Size(158, 17);
             this.lblOrdDate.TabIndex = 600;
             this.lblOrdDate.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label10
-            // 
-            this.label10.AllowDrop = true;
-            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label10.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label10.Location = new System.Drawing.Point(14, 130);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(100, 17);
-            this.label10.TabIndex = 599;
-            this.label10.Text = "Sale Type";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblSaleType
-            // 
-            this.lblSaleType.AllowDrop = true;
-            this.lblSaleType.BackColor = System.Drawing.Color.NavajoWhite;
-            this.lblSaleType.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblSaleType.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSaleType.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblSaleType.Location = new System.Drawing.Point(120, 130);
-            this.lblSaleType.Name = "lblSaleType";
-            this.lblSaleType.Size = new System.Drawing.Size(158, 17);
-            this.lblSaleType.TabIndex = 598;
-            this.lblSaleType.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblOrdDate.UseWaitCursor = true;
             // 
             // mskCustomerCode
             // 
@@ -647,6 +652,7 @@
             this.mskCustomerCode.Name = "mskCustomerCode";
             this.mskCustomerCode.Size = new System.Drawing.Size(158, 22);
             this.mskCustomerCode.TabIndex = 597;
+            this.mskCustomerCode.UseWaitCursor = true;
             this.mskCustomerCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mskCustomerCode_KeyDown);
             this.mskCustomerCode.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.mskCustomerCode_MouseDoubleClick);
             // 
@@ -656,12 +662,13 @@
             this.label33.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label33.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label33.Location = new System.Drawing.Point(16, 105);
+            this.label33.Location = new System.Drawing.Point(12, 104);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(100, 17);
             this.label33.TabIndex = 596;
             this.label33.Text = "Customer Code";
             this.label33.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label33.UseWaitCursor = true;
             // 
             // label25
             // 
@@ -675,6 +682,7 @@
             this.label25.TabIndex = 595;
             this.label25.Text = "Invoice #";
             this.label25.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label25.UseWaitCursor = true;
             // 
             // txtInvNo
             // 
@@ -682,6 +690,7 @@
             this.txtInvNo.Name = "txtInvNo";
             this.txtInvNo.Size = new System.Drawing.Size(158, 20);
             this.txtInvNo.TabIndex = 594;
+            this.txtInvNo.UseWaitCursor = true;
             this.txtInvNo.DoubleClick += new System.EventHandler(this.txtInvNo_DoubleClick);
             this.txtInvNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInvNo_KeyDown);
             // 
@@ -697,6 +706,7 @@
             this.label30.TabIndex = 593;
             this.label30.Text = "Main Group";
             this.label30.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label30.UseWaitCursor = true;
             // 
             // cboMainGroup
             // 
@@ -707,6 +717,7 @@
             this.cboMainGroup.Name = "cboMainGroup";
             this.cboMainGroup.Size = new System.Drawing.Size(355, 21);
             this.cboMainGroup.TabIndex = 592;
+            this.cboMainGroup.UseWaitCursor = true;
             // 
             // label26
             // 
@@ -720,6 +731,7 @@
             this.label26.TabIndex = 591;
             this.label26.Text = "Invoice Ret No.";
             this.label26.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label26.UseWaitCursor = true;
             // 
             // dtpInvRetDate
             // 
@@ -728,6 +740,7 @@
             this.dtpInvRetDate.Name = "dtpInvRetDate";
             this.dtpInvRetDate.Size = new System.Drawing.Size(122, 21);
             this.dtpInvRetDate.TabIndex = 590;
+            this.dtpInvRetDate.UseWaitCursor = true;
             // 
             // label27
             // 
@@ -741,6 +754,7 @@
             this.label27.TabIndex = 589;
             this.label27.Text = " Date";
             this.label27.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label27.UseWaitCursor = true;
             // 
             // Column5
             // 
@@ -761,9 +775,7 @@
             this.Column16,
             this.SizeColumn,
             this.ColorColumn,
-            this.UnitColumn,
             this.GodownColumn,
-            this.Column21,
             this.Column22,
             this.Column23,
             this.Column24,
@@ -773,86 +785,7 @@
             this.grd.ReadOnly = true;
             this.grd.Size = new System.Drawing.Size(972, 245);
             this.grd.TabIndex = 691;
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "Code";
-            this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
-            // 
-            // Column15
-            // 
-            this.Column15.HeaderText = "ItemCode";
-            this.Column15.Name = "Column15";
-            this.Column15.ReadOnly = true;
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "ItemName";
-            this.Column16.Name = "Column16";
-            this.Column16.ReadOnly = true;
-            // 
-            // SizeColumn
-            // 
-            this.SizeColumn.HeaderText = "Size";
-            this.SizeColumn.Name = "SizeColumn";
-            this.SizeColumn.ReadOnly = true;
-            this.SizeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SizeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // ColorColumn
-            // 
-            this.ColorColumn.HeaderText = "Color";
-            this.ColorColumn.Name = "ColorColumn";
-            this.ColorColumn.ReadOnly = true;
-            this.ColorColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColorColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // UnitColumn
-            // 
-            this.UnitColumn.HeaderText = "Unit";
-            this.UnitColumn.Name = "UnitColumn";
-            this.UnitColumn.ReadOnly = true;
-            this.UnitColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.UnitColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // GodownColumn
-            // 
-            this.GodownColumn.HeaderText = "Godown";
-            this.GodownColumn.Name = "GodownColumn";
-            this.GodownColumn.ReadOnly = true;
-            this.GodownColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.GodownColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column21
-            // 
-            this.Column21.HeaderText = "Discount";
-            this.Column21.Name = "Column21";
-            this.Column21.ReadOnly = true;
-            // 
-            // Column22
-            // 
-            this.Column22.HeaderText = "Inv.Qty";
-            this.Column22.Name = "Column22";
-            this.Column22.ReadOnly = true;
-            // 
-            // Column23
-            // 
-            this.Column23.HeaderText = "RetQty";
-            this.Column23.Name = "Column23";
-            this.Column23.ReadOnly = true;
-            // 
-            // Column24
-            // 
-            this.Column24.HeaderText = "Rate";
-            this.Column24.Name = "Column24";
-            this.Column24.ReadOnly = true;
-            // 
-            // Column25
-            // 
-            this.Column25.HeaderText = "Amount";
-            this.Column25.Name = "Column25";
-            this.Column25.ReadOnly = true;
+            this.grd.UseWaitCursor = true;
             // 
             // txtDiscount
             // 
@@ -860,6 +793,7 @@
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.Size = new System.Drawing.Size(217, 20);
             this.txtDiscount.TabIndex = 651;
+            this.txtDiscount.UseWaitCursor = true;
             this.txtDiscount.Visible = false;
             // 
             // lblInvDate
@@ -874,6 +808,7 @@
             this.lblInvDate.Size = new System.Drawing.Size(119, 17);
             this.lblInvDate.TabIndex = 655;
             this.lblInvDate.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblInvDate.UseWaitCursor = true;
             // 
             // label17
             // 
@@ -887,6 +822,7 @@
             this.label17.TabIndex = 654;
             this.label17.Text = "Inv. Date";
             this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label17.UseWaitCursor = true;
             // 
             // label18
             // 
@@ -900,6 +836,7 @@
             this.label18.TabIndex = 653;
             this.label18.Text = "Do Date";
             this.label18.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label18.UseWaitCursor = true;
             // 
             // lblDODate
             // 
@@ -913,6 +850,7 @@
             this.lblDODate.Size = new System.Drawing.Size(119, 17);
             this.lblDODate.TabIndex = 652;
             this.lblDODate.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblDODate.UseWaitCursor = true;
             // 
             // btnPictures
             // 
@@ -923,6 +861,7 @@
             this.btnPictures.TabIndex = 680;
             this.btnPictures.Text = "Pictures";
             this.btnPictures.UseVisualStyleBackColor = true;
+            this.btnPictures.UseWaitCursor = true;
             this.btnPictures.Visible = false;
             // 
             // btnNewInv
@@ -934,6 +873,7 @@
             this.btnNewInv.TabIndex = 679;
             this.btnNewInv.Text = "New Invoice ";
             this.btnNewInv.UseVisualStyleBackColor = true;
+            this.btnNewInv.UseWaitCursor = true;
             // 
             // btnDOView
             // 
@@ -944,6 +884,7 @@
             this.btnDOView.TabIndex = 678;
             this.btnDOView.Text = "D.O View";
             this.btnDOView.UseVisualStyleBackColor = true;
+            this.btnDOView.UseWaitCursor = true;
             this.btnDOView.Visible = false;
             // 
             // btnNewRate
@@ -955,6 +896,7 @@
             this.btnNewRate.TabIndex = 677;
             this.btnNewRate.Text = "Apply New Rate";
             this.btnNewRate.UseVisualStyleBackColor = true;
+            this.btnNewRate.UseWaitCursor = true;
             this.btnNewRate.Visible = false;
             // 
             // btnNewDisc
@@ -966,6 +908,7 @@
             this.btnNewDisc.TabIndex = 676;
             this.btnNewDisc.Text = "Apply New Discount";
             this.btnNewDisc.UseVisualStyleBackColor = true;
+            this.btnNewDisc.UseWaitCursor = true;
             this.btnNewDisc.Visible = false;
             // 
             // btnInvHelp
@@ -977,6 +920,7 @@
             this.btnInvHelp.TabIndex = 675;
             this.btnInvHelp.Text = "Inv Help";
             this.btnInvHelp.UseVisualStyleBackColor = true;
+            this.btnInvHelp.UseWaitCursor = true;
             // 
             // label31
             // 
@@ -990,6 +934,7 @@
             this.label31.TabIndex = 682;
             this.label31.Text = "DO #";
             this.label31.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label31.UseWaitCursor = true;
             // 
             // txtDONo
             // 
@@ -997,6 +942,7 @@
             this.txtDONo.Name = "txtDONo";
             this.txtDONo.Size = new System.Drawing.Size(158, 20);
             this.txtDONo.TabIndex = 681;
+            this.txtDONo.UseWaitCursor = true;
             this.txtDONo.DoubleClick += new System.EventHandler(this.txtDONo_DoubleClick);
             this.txtDONo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDONo_KeyDown);
             // 
@@ -1012,6 +958,7 @@
             this.label32.TabIndex = 684;
             this.label32.Text = "Return Value";
             this.label32.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label32.UseWaitCursor = true;
             // 
             // label35
             // 
@@ -1021,10 +968,11 @@
             this.label35.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label35.Location = new System.Drawing.Point(561, 518);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(86, 17);
+            this.label35.Size = new System.Drawing.Size(86, 10);
             this.label35.TabIndex = 686;
             this.label35.Text = "Order Value";
             this.label35.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label35.UseWaitCursor = true;
             // 
             // lblOrdVal
             // 
@@ -1035,9 +983,10 @@
             this.lblOrdVal.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblOrdVal.Location = new System.Drawing.Point(653, 519);
             this.lblOrdVal.Name = "lblOrdVal";
-            this.lblOrdVal.Size = new System.Drawing.Size(102, 17);
+            this.lblOrdVal.Size = new System.Drawing.Size(102, 10);
             this.lblOrdVal.TabIndex = 685;
             this.lblOrdVal.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblOrdVal.UseWaitCursor = true;
             // 
             // lblRetVal
             // 
@@ -1051,6 +1000,7 @@
             this.lblRetVal.Size = new System.Drawing.Size(102, 17);
             this.lblRetVal.TabIndex = 683;
             this.lblRetVal.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblRetVal.UseWaitCursor = true;
             // 
             // button1
             // 
@@ -1061,6 +1011,7 @@
             this.button1.TabIndex = 687;
             this.button1.Text = "Contract View";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseWaitCursor = true;
             this.button1.Visible = false;
             // 
             // txtInvRetNo
@@ -1069,6 +1020,7 @@
             this.txtInvRetNo.Name = "txtInvRetNo";
             this.txtInvRetNo.Size = new System.Drawing.Size(158, 20);
             this.txtInvRetNo.TabIndex = 690;
+            this.txtInvRetNo.UseWaitCursor = true;
             this.txtInvRetNo.DoubleClick += new System.EventHandler(this.txtInvRetNo_DoubleClick);
             this.txtInvRetNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInvRetNo_KeyDown);
             // 
@@ -1081,6 +1033,7 @@
             this.tbd.SelectedIndex = 0;
             this.tbd.Size = new System.Drawing.Size(980, 270);
             this.tbd.TabIndex = 692;
+            this.tbd.UseWaitCursor = true;
             // 
             // tabPage1
             // 
@@ -1092,6 +1045,7 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "GridView";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.UseWaitCursor = true;
             // 
             // tabPage2
             // 
@@ -1100,21 +1054,20 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(972, 247);
+            this.tabPage2.Size = new System.Drawing.Size(972, 244);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Insert New";
+            this.tabPage2.UseWaitCursor = true;
             // 
             // gBox
             // 
             this.gBox.Controls.Add(this.cboGodown);
             this.gBox.Controls.Add(this.label6);
             this.gBox.Controls.Add(this.btnAdd);
-            this.gBox.Controls.Add(this.cbo_I_UOM);
             this.gBox.Controls.Add(this.cbo_I_Color);
             this.gBox.Controls.Add(this.cbo_I_Size);
             this.gBox.Controls.Add(this.label12);
             this.gBox.Controls.Add(this.label14);
-            this.gBox.Controls.Add(this.label11);
             this.gBox.Controls.Add(this.lbl_I_ItemName);
             this.gBox.Controls.Add(this.lbl_I_ItemCode);
             this.gBox.Controls.Add(this.label19);
@@ -1125,16 +1078,18 @@
             this.gBox.TabIndex = 27;
             this.gBox.TabStop = false;
             this.gBox.Text = "Input Entry";
+            this.gBox.UseWaitCursor = true;
             // 
             // cboGodown
             // 
             this.cboGodown.FormattingEnabled = true;
             this.cboGodown.Items.AddRange(new object[] {
             ""});
-            this.cboGodown.Location = new System.Drawing.Point(330, 62);
+            this.cboGodown.Location = new System.Drawing.Point(105, 62);
             this.cboGodown.Name = "cboGodown";
             this.cboGodown.Size = new System.Drawing.Size(151, 21);
             this.cboGodown.TabIndex = 11;
+            this.cboGodown.UseWaitCursor = true;
             // 
             // label6
             // 
@@ -1142,12 +1097,13 @@
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(242, 62);
+            this.label6.Location = new System.Drawing.Point(17, 63);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(82, 21);
             this.label6.TabIndex = 12;
             this.label6.Text = "Godown";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label6.UseWaitCursor = true;
             // 
             // btnAdd
             // 
@@ -1158,17 +1114,8 @@
             this.btnAdd.TabIndex = 10;
             this.btnAdd.Text = "&Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.UseWaitCursor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // cbo_I_UOM
-            // 
-            this.cbo_I_UOM.FormattingEnabled = true;
-            this.cbo_I_UOM.Items.AddRange(new object[] {
-            ""});
-            this.cbo_I_UOM.Location = new System.Drawing.Point(103, 61);
-            this.cbo_I_UOM.Name = "cbo_I_UOM";
-            this.cbo_I_UOM.Size = new System.Drawing.Size(124, 21);
-            this.cbo_I_UOM.TabIndex = 7;
             // 
             // cbo_I_Color
             // 
@@ -1179,6 +1126,7 @@
             this.cbo_I_Color.Name = "cbo_I_Color";
             this.cbo_I_Color.Size = new System.Drawing.Size(128, 21);
             this.cbo_I_Color.TabIndex = 5;
+            this.cbo_I_Color.UseWaitCursor = true;
             // 
             // cbo_I_Size
             // 
@@ -1189,6 +1137,7 @@
             this.cbo_I_Size.Name = "cbo_I_Size";
             this.cbo_I_Size.Size = new System.Drawing.Size(130, 21);
             this.cbo_I_Size.TabIndex = 4;
+            this.cbo_I_Size.UseWaitCursor = true;
             // 
             // label12
             // 
@@ -1202,6 +1151,7 @@
             this.label12.TabIndex = 4;
             this.label12.Text = "Size";
             this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label12.UseWaitCursor = true;
             // 
             // label14
             // 
@@ -1215,19 +1165,7 @@
             this.label14.TabIndex = 6;
             this.label14.Text = "Color";
             this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label11
-            // 
-            this.label11.AllowDrop = true;
-            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label11.Location = new System.Drawing.Point(15, 61);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(82, 21);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "UOM";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label14.UseWaitCursor = true;
             // 
             // lbl_I_ItemName
             // 
@@ -1242,6 +1180,7 @@
             this.lbl_I_ItemName.TabIndex = 3;
             this.lbl_I_ItemName.Text = "Item Name";
             this.lbl_I_ItemName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbl_I_ItemName.UseWaitCursor = true;
             // 
             // lbl_I_ItemCode
             // 
@@ -1256,6 +1195,7 @@
             this.lbl_I_ItemCode.TabIndex = 2;
             this.lbl_I_ItemCode.Text = "Item Code";
             this.lbl_I_ItemCode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbl_I_ItemCode.UseWaitCursor = true;
             // 
             // label19
             // 
@@ -1269,6 +1209,7 @@
             this.label19.TabIndex = 0;
             this.label19.Text = "Item ID";
             this.label19.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label19.UseWaitCursor = true;
             // 
             // txt_I_ItemID
             // 
@@ -1278,6 +1219,7 @@
             this.txt_I_ItemID.Size = new System.Drawing.Size(76, 21);
             this.txt_I_ItemID.TabIndex = 1;
             this.txt_I_ItemID.Text = "1";
+            this.txt_I_ItemID.UseWaitCursor = true;
             this.txt_I_ItemID.DoubleClick += new System.EventHandler(this.txt_I_ItemID_DoubleClick);
             this.txt_I_ItemID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_I_ItemID_KeyDown);
             // 
@@ -1292,11 +1234,12 @@
             this.tStextTotal,
             this.tSlblAlert,
             this.textAlert});
-            this.sSMaster.Location = new System.Drawing.Point(0, 544);
+            this.sSMaster.Location = new System.Drawing.Point(0, 523);
             this.sSMaster.Name = "sSMaster";
             this.sSMaster.Size = new System.Drawing.Size(1008, 22);
             this.sSMaster.TabIndex = 693;
             this.sSMaster.Text = "statusStrip1";
+            this.sSMaster.UseWaitCursor = true;
             // 
             // tSlblUser
             // 
@@ -1544,11 +1487,77 @@
             this.Column12.ReadOnly = true;
             this.Column12.Width = 96;
             // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Code";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "ItemCode";
+            this.Column15.Name = "Column15";
+            this.Column15.ReadOnly = true;
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "ItemName";
+            this.Column16.Name = "Column16";
+            this.Column16.ReadOnly = true;
+            // 
+            // SizeColumn
+            // 
+            this.SizeColumn.HeaderText = "Size";
+            this.SizeColumn.Name = "SizeColumn";
+            this.SizeColumn.ReadOnly = true;
+            this.SizeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SizeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // ColorColumn
+            // 
+            this.ColorColumn.HeaderText = "Color";
+            this.ColorColumn.Name = "ColorColumn";
+            this.ColorColumn.ReadOnly = true;
+            this.ColorColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColorColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // GodownColumn
+            // 
+            this.GodownColumn.HeaderText = "Godown";
+            this.GodownColumn.Name = "GodownColumn";
+            this.GodownColumn.ReadOnly = true;
+            this.GodownColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.GodownColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column22
+            // 
+            this.Column22.HeaderText = "Inv.Qty";
+            this.Column22.Name = "Column22";
+            this.Column22.ReadOnly = true;
+            // 
+            // Column23
+            // 
+            this.Column23.HeaderText = "RetQty";
+            this.Column23.Name = "Column23";
+            this.Column23.ReadOnly = true;
+            // 
+            // Column24
+            // 
+            this.Column24.HeaderText = "Rate";
+            this.Column24.Name = "Column24";
+            this.Column24.ReadOnly = true;
+            // 
+            // Column25
+            // 
+            this.Column25.HeaderText = "Amount";
+            this.Column25.Name = "Column25";
+            this.Column25.ReadOnly = true;
+            // 
             // frmSalesRtnEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 566);
+            this.ClientSize = new System.Drawing.Size(1008, 545);
             this.Controls.Add(this.sSMaster);
             this.Controls.Add(this.tbd);
             this.Controls.Add(this.txtInvRetNo);
@@ -1603,10 +1612,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtBulityNo);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.dtpOrdDate);
+            this.Controls.Add(this.dtpBuilty);
             this.Controls.Add(this.lblOrdDate);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.lblSaleType);
             this.Controls.Add(this.mskCustomerCode);
             this.Controls.Add(this.label33);
             this.Controls.Add(this.label25);
@@ -1620,6 +1627,7 @@
             this.KeyPreview = true;
             this.Name = "frmSalesRtnEntry";
             this.Text = "Sales Return Entry";
+            this.UseWaitCursor = true;
             this.Load += new System.EventHandler(this.frmSalesRtnEntry_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmSalesRtnEntry_KeyDown);
             this.groupBox4.ResumeLayout(false);
@@ -1674,10 +1682,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBulityNo;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker dtpOrdDate;
+        private System.Windows.Forms.DateTimePicker dtpBuilty;
         private System.Windows.Forms.Label lblOrdDate;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label lblSaleType;
         private System.Windows.Forms.MaskedTextBox mskCustomerCode;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label25;
@@ -1737,12 +1743,10 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox gBox;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.ComboBox cbo_I_UOM;
         private System.Windows.Forms.ComboBox cbo_I_Color;
         private System.Windows.Forms.ComboBox cbo_I_Size;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lbl_I_ItemName;
         private System.Windows.Forms.Label lbl_I_ItemCode;
         private System.Windows.Forms.Label label19;
@@ -1763,9 +1767,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         private System.Windows.Forms.DataGridViewComboBoxColumn SizeColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn ColorColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn UnitColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn GodownColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
