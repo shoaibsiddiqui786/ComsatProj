@@ -49,19 +49,6 @@
             this.btnHelp2 = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.grd = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SizeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ColorColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.UnitColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtNote = new System.Windows.Forms.TextBox();
@@ -76,10 +63,8 @@
             this.optOfficePrint = new System.Windows.Forms.RadioButton();
             this.lblSuggestionOfCash = new System.Windows.Forms.Label();
             this.txtSuggestionOfCash = new System.Windows.Forms.TextBox();
-            this.listBox21 = new System.Windows.Forms.ListBox();
-            this.lblValue = new System.Windows.Forms.Label();
-            this.lst = new System.Windows.Forms.ListBox();
-            this.lblQty = new System.Windows.Forms.Label();
+            this.lblVa = new System.Windows.Forms.Label();
+            this.lbl = new System.Windows.Forms.Label();
             this.lblNameBottom = new System.Windows.Forms.Label();
             this.lblNameUp = new System.Windows.Forms.Label();
             this.optApprovedVerified = new System.Windows.Forms.RadioButton();
@@ -122,6 +107,31 @@
             this.tStextTotal = new System.Windows.Forms.ToolStripStatusLabel();
             this.tSlblAlert = new System.Windows.Forms.ToolStripStatusLabel();
             this.textAlert = new System.Windows.Forms.ToolStripStatusLabel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.SizeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ColorColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblQty = new System.Windows.Forms.Label();
+            this.lblVal = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -284,6 +294,7 @@
             this.groupBox4.Size = new System.Drawing.Size(235, 65);
             this.groupBox4.TabIndex = 143;
             this.groupBox4.TabStop = false;
+            this.groupBox4.Visible = false;
             // 
             // optSingleItem
             // 
@@ -323,7 +334,7 @@
             // btnHelp3
             // 
             this.btnHelp3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp3.Location = new System.Drawing.Point(535, 52);
+            this.btnHelp3.Location = new System.Drawing.Point(763, 77);
             this.btnHelp3.Name = "btnHelp3";
             this.btnHelp3.Size = new System.Drawing.Size(78, 22);
             this.btnHelp3.TabIndex = 144;
@@ -354,7 +365,7 @@
             // 
             // grd
             // 
-            this.grd.AllowUserToOrderColumns = true;
+            this.grd.AllowUserToDeleteRows = false;
             this.grd.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.grd.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.grd.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -366,7 +377,6 @@
             this.Column4,
             this.SizeColumn,
             this.ColorColumn,
-            this.UnitColumn,
             this.Column8,
             this.Column9,
             this.Column10,
@@ -375,103 +385,9 @@
             this.Column13});
             this.grd.Location = new System.Drawing.Point(-1, 3);
             this.grd.Name = "grd";
+            this.grd.ReadOnly = true;
             this.grd.Size = new System.Drawing.Size(931, 184);
             this.grd.TabIndex = 147;
-            // 
-            // Column1
-            // 
-            this.Column1.Frozen = true;
-            this.Column1.HeaderText = "Code";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 57;
-            // 
-            // Column2
-            // 
-            this.Column2.Frozen = true;
-            this.Column2.HeaderText = "Item Code";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 80;
-            // 
-            // Column3
-            // 
-            this.Column3.Frozen = true;
-            this.Column3.HeaderText = "Name";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 60;
-            // 
-            // Column4
-            // 
-            this.Column4.Frozen = true;
-            this.Column4.HeaderText = "Description ";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 88;
-            // 
-            // SizeColumn
-            // 
-            this.SizeColumn.Frozen = true;
-            this.SizeColumn.HeaderText = "Size";
-            this.SizeColumn.Name = "SizeColumn";
-            this.SizeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SizeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.SizeColumn.Width = 52;
-            // 
-            // ColorColumn
-            // 
-            this.ColorColumn.Frozen = true;
-            this.ColorColumn.HeaderText = "Colour ";
-            this.ColorColumn.Name = "ColorColumn";
-            this.ColorColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColorColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColorColumn.Width = 65;
-            // 
-            // UnitColumn
-            // 
-            this.UnitColumn.Frozen = true;
-            this.UnitColumn.HeaderText = "UOM";
-            this.UnitColumn.Name = "UnitColumn";
-            this.UnitColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.UnitColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.UnitColumn.Width = 57;
-            // 
-            // Column8
-            // 
-            this.Column8.Frozen = true;
-            this.Column8.HeaderText = "Stock";
-            this.Column8.Name = "Column8";
-            this.Column8.Width = 60;
-            // 
-            // Column9
-            // 
-            this.Column9.Frozen = true;
-            this.Column9.HeaderText = "DN Qty";
-            this.Column9.Name = "Column9";
-            this.Column9.Width = 67;
-            // 
-            // Column10
-            // 
-            this.Column10.Frozen = true;
-            this.Column10.HeaderText = "PO Qty";
-            this.Column10.Name = "Column10";
-            this.Column10.Width = 66;
-            // 
-            // Column11
-            // 
-            this.Column11.Frozen = true;
-            this.Column11.HeaderText = "Remaining Qty";
-            this.Column11.Name = "Column11";
-            this.Column11.Width = 101;
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "Last Rate";
-            this.Column12.Name = "Column12";
-            this.Column12.Width = 78;
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "Amount";
-            this.Column13.Name = "Column13";
-            this.Column13.Width = 68;
             // 
             // btnPrint
             // 
@@ -482,6 +398,7 @@
             this.btnPrint.TabIndex = 148;
             this.btnPrint.Text = "Printing";
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Visible = false;
             // 
             // btnSave
             // 
@@ -604,6 +521,7 @@
             this.optPurchasePrint.TabStop = true;
             this.optPurchasePrint.Text = "For Purchase Print";
             this.optPurchasePrint.UseVisualStyleBackColor = true;
+            this.optPurchasePrint.Visible = false;
             // 
             // optOfficePrint
             // 
@@ -615,6 +533,7 @@
             this.optOfficePrint.TabIndex = 160;
             this.optOfficePrint.Text = "Office Print";
             this.optOfficePrint.UseVisualStyleBackColor = true;
+            this.optOfficePrint.Visible = false;
             // 
             // lblSuggestionOfCash
             // 
@@ -636,51 +555,31 @@
             this.txtSuggestionOfCash.Size = new System.Drawing.Size(227, 20);
             this.txtSuggestionOfCash.TabIndex = 162;
             // 
-            // listBox21
+            // lblVa
             // 
-            this.listBox21.BackColor = System.Drawing.Color.NavajoWhite;
-            this.listBox21.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.listBox21.FormattingEnabled = true;
-            this.listBox21.Location = new System.Drawing.Point(798, 402);
-            this.listBox21.Name = "listBox21";
-            this.listBox21.Size = new System.Drawing.Size(144, 17);
-            this.listBox21.TabIndex = 166;
+            this.lblVa.AllowDrop = true;
+            this.lblVa.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblVa.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVa.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblVa.Location = new System.Drawing.Point(727, 402);
+            this.lblVa.Name = "lblVa";
+            this.lblVa.Size = new System.Drawing.Size(65, 17);
+            this.lblVa.TabIndex = 165;
+            this.lblVa.Text = "Value";
+            this.lblVa.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // lblValue
+            // lbl
             // 
-            this.lblValue.AllowDrop = true;
-            this.lblValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblValue.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValue.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblValue.Location = new System.Drawing.Point(727, 402);
-            this.lblValue.Name = "lblValue";
-            this.lblValue.Size = new System.Drawing.Size(65, 17);
-            this.lblValue.TabIndex = 165;
-            this.lblValue.Text = "Value";
-            this.lblValue.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lst
-            // 
-            this.lst.BackColor = System.Drawing.Color.NavajoWhite;
-            this.lst.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lst.FormattingEnabled = true;
-            this.lst.Location = new System.Drawing.Point(557, 402);
-            this.lst.Name = "lst";
-            this.lst.Size = new System.Drawing.Size(160, 17);
-            this.lst.TabIndex = 164;
-            // 
-            // lblQty
-            // 
-            this.lblQty.AllowDrop = true;
-            this.lblQty.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblQty.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQty.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblQty.Location = new System.Drawing.Point(458, 401);
-            this.lblQty.Name = "lblQty";
-            this.lblQty.Size = new System.Drawing.Size(93, 17);
-            this.lblQty.TabIndex = 163;
-            this.lblQty.Text = "Qty";
-            this.lblQty.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbl.AllowDrop = true;
+            this.lbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbl.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lbl.Location = new System.Drawing.Point(458, 401);
+            this.lbl.Name = "lbl";
+            this.lbl.Size = new System.Drawing.Size(93, 17);
+            this.lbl.TabIndex = 163;
+            this.lbl.Text = "Qty";
+            this.lbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblNameBottom
             // 
@@ -718,6 +617,7 @@
             this.optApprovedVerified.TabIndex = 170;
             this.optApprovedVerified.Text = "Approved/Verified";
             this.optApprovedVerified.UseVisualStyleBackColor = true;
+            this.optApprovedVerified.Visible = false;
             // 
             // optInProcess
             // 
@@ -731,11 +631,12 @@
             this.optInProcess.TabStop = true;
             this.optInProcess.Text = "In Process";
             this.optInProcess.UseVisualStyleBackColor = true;
+            this.optInProcess.Visible = false;
             // 
             // btnHelp4
             // 
             this.btnHelp4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp4.Location = new System.Drawing.Point(762, 77);
+            this.btnHelp4.Location = new System.Drawing.Point(762, 107);
             this.btnHelp4.Name = "btnHelp4";
             this.btnHelp4.Size = new System.Drawing.Size(78, 22);
             this.btnHelp4.TabIndex = 171;
@@ -1157,11 +1058,227 @@
             this.textAlert.Text = "Ready";
             this.textAlert.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(107, 398);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(97, 27);
+            this.button2.TabIndex = 612;
+            this.button2.Text = "Esc = Exit";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // SizeColumn
+            // 
+            this.SizeColumn.Frozen = true;
+            this.SizeColumn.HeaderText = "Size";
+            this.SizeColumn.Name = "SizeColumn";
+            this.SizeColumn.ReadOnly = true;
+            this.SizeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SizeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.SizeColumn.Width = 52;
+            // 
+            // ColorColumn
+            // 
+            this.ColorColumn.Frozen = true;
+            this.ColorColumn.HeaderText = "Colour ";
+            this.ColorColumn.Name = "ColorColumn";
+            this.ColorColumn.ReadOnly = true;
+            this.ColorColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColorColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColorColumn.Width = 65;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.Frozen = true;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Code";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 57;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.Frozen = true;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Item Code";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.Frozen = true;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.Frozen = true;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Description ";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 88;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.Frozen = true;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Stock";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.Frozen = true;
+            this.dataGridViewTextBoxColumn6.HeaderText = "DN Qty";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 67;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.Frozen = true;
+            this.dataGridViewTextBoxColumn7.HeaderText = "PO Qty";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 66;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.Frozen = true;
+            this.dataGridViewTextBoxColumn8.HeaderText = "Remaining Qty";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 101;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "Last Rate";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Width = 78;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.HeaderText = "Amount";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Width = 68;
+            // 
+            // Column1
+            // 
+            this.Column1.Frozen = true;
+            this.Column1.HeaderText = "Code";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 57;
+            // 
+            // Column2
+            // 
+            this.Column2.Frozen = true;
+            this.Column2.HeaderText = "Item Code";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 80;
+            // 
+            // Column3
+            // 
+            this.Column3.Frozen = true;
+            this.Column3.HeaderText = "Name";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 60;
+            // 
+            // Column4
+            // 
+            this.Column4.Frozen = true;
+            this.Column4.HeaderText = "Description ";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 88;
+            // 
+            // Column8
+            // 
+            this.Column8.Frozen = true;
+            this.Column8.HeaderText = "Stock";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 60;
+            // 
+            // Column9
+            // 
+            this.Column9.Frozen = true;
+            this.Column9.HeaderText = "DN Qty";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Width = 67;
+            // 
+            // Column10
+            // 
+            this.Column10.Frozen = true;
+            this.Column10.HeaderText = "PO Qty";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Width = 66;
+            // 
+            // Column11
+            // 
+            this.Column11.Frozen = true;
+            this.Column11.HeaderText = "Remaining Qty";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Width = 101;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Last Rate";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            this.Column12.Width = 78;
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Amount";
+            this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            this.Column13.Width = 68;
+            // 
+            // lblQty
+            // 
+            this.lblQty.AllowDrop = true;
+            this.lblQty.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblQty.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblQty.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQty.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblQty.Location = new System.Drawing.Point(557, 404);
+            this.lblQty.Name = "lblQty";
+            this.lblQty.Size = new System.Drawing.Size(100, 17);
+            this.lblQty.TabIndex = 613;
+            this.lblQty.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblVal
+            // 
+            this.lblVal.AllowDrop = true;
+            this.lblVal.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblVal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblVal.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVal.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblVal.Location = new System.Drawing.Point(798, 403);
+            this.lblVal.Name = "lblVal";
+            this.lblVal.Size = new System.Drawing.Size(100, 17);
+            this.lblVal.TabIndex = 614;
+            this.lblVal.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // frmPurchaseOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(946, 486);
+            this.Controls.Add(this.lblVal);
+            this.Controls.Add(this.lblQty);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.sSMaster);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.txtPONo);
@@ -1170,10 +1287,8 @@
             this.Controls.Add(this.optInProcess);
             this.Controls.Add(this.lblNameUp);
             this.Controls.Add(this.lblNameBottom);
-            this.Controls.Add(this.listBox21);
-            this.Controls.Add(this.lblValue);
-            this.Controls.Add(this.lst);
-            this.Controls.Add(this.lblQty);
+            this.Controls.Add(this.lblVa);
+            this.Controls.Add(this.lbl);
             this.Controls.Add(this.txtSuggestionOfCash);
             this.Controls.Add(this.lblSuggestionOfCash);
             this.Controls.Add(this.optOfficePrint);
@@ -1263,10 +1378,8 @@
         private System.Windows.Forms.RadioButton optOfficePrint;
         private System.Windows.Forms.Label lblSuggestionOfCash;
         private System.Windows.Forms.TextBox txtSuggestionOfCash;
-        private System.Windows.Forms.ListBox listBox21;
-        private System.Windows.Forms.Label lblValue;
-        private System.Windows.Forms.ListBox lst;
-        private System.Windows.Forms.Label lblQty;
+        private System.Windows.Forms.Label lblVa;
+        private System.Windows.Forms.Label lbl;
         private System.Windows.Forms.Label lblNameBottom;
         private System.Windows.Forms.Label lblNameUp;
         private System.Windows.Forms.RadioButton optApprovedVerified;
@@ -1300,19 +1413,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtAmount;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewComboBoxColumn SizeColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ColorColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn UnitColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.StatusStrip sSMaster;
         private System.Windows.Forms.ToolStripStatusLabel tSlblUser;
         private System.Windows.Forms.ToolStripStatusLabel tStextUser;
@@ -1322,5 +1422,30 @@
         private System.Windows.Forms.ToolStripStatusLabel tStextTotal;
         private System.Windows.Forms.ToolStripStatusLabel tSlblAlert;
         private System.Windows.Forms.ToolStripStatusLabel textAlert;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewComboBoxColumn SizeColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ColorColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.Label lblQty;
+        private System.Windows.Forms.Label lblVal;
     }
 }

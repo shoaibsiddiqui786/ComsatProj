@@ -19,17 +19,14 @@ namespace GUI_Task
         ItemName = 2,
         SizeName = 3,
         ColorName = 4,
-        UnitName = 5,
-        Stock = 6,
-        DNQty = 7,
-        POQty = 8,
-        RemQty = 9,
-        LastRate = 10,
-        Amount = 11,
-        SizeID = 12,
-        ColorID = 13,
-        UOMID = 14,
-        //GodownID = 12
+        Stock = 5,
+        DNQty = 6,
+        POQty = 7,
+        RemQty = 8,
+        LastRate = 9,
+        Amount = 10,
+        SizeID = 11,
+        ColorID = 12,
     }
     public partial class frmPurchaseOrder : Form
     {
@@ -145,19 +142,6 @@ namespace GUI_Task
             ColorColumn.DisplayMember = ds.Tables[0].Columns[1].ToString();
             ds.Clear();
 
-            //UOM Combo Fill
-            lSQL = "select UOMID, UnitName from IMS_UOM order by UnitName";
-
-            clsFillCombo.FillCombo(cbo_I_UOM, clsGVar.ConString1, "IMS_UOM" + "," + "UnitName" + "," + "False", lSQL);
-            fcboDefaultValue = Convert.ToInt16(cbo_I_UOM.SelectedValue);
-
-            ds = clsDbManager.GetData_Set(lSQL, "IMS_UOM");
-            UnitColumn.DataSource = ds.Tables[0];
-            UnitColumn.ValueMember = ds.Tables[0].Columns[0].ToString();
-            UnitColumn.DisplayMember = ds.Tables[0].Columns[1].ToString();
-            ds.Clear();
-           
-
         }
         private void button6_Click(object sender, EventArgs e)
         {
@@ -186,7 +170,7 @@ namespace GUI_Task
 
             clsDbManager.SetGridHeaderCmb(
                 grd,
-                15,
+                13,
                 fHDR,
                 fColWidth,
                 fColMaxInputLen,
@@ -265,7 +249,34 @@ namespace GUI_Task
             decimal rtnVal = 0;
             decimal outValue = 0;
 
+            for (int i = 0; i < grd.RowCount; i++)
+            {
+                if (grd.Rows[i].Cells[(int)GColPO.Amount].Value != null)
+                {
+                    bcheck = decimal.TryParse(grd.Rows[i].Cells[(int)GColPO.Amount].Value.ToString(), out outValue);
+                    if (bcheck)
+                    {
+                        rtnVal += outValue;
+                        fAmount = fAmount + outValue;
+                    }
+                }
+                if (grd.Rows[i].Cells[(int)GColPO.POQty].Value != null)
+                {
+                    bcheck = decimal.TryParse(grd.Rows[i].Cells[(int)GColPO.POQty].Value.ToString(), out outValue);
+                    if (bcheck)
+                    {
+                        rtnVal += outValue;
+                        fQty = fQty + outValue;
+                    }
+                } // if != null
+                //grdVoucher[2, i].Value = (i + 1).ToString();
+            }
+
+            lblVal.Text = String.Format("{0:0,0.00}", fAmount);
+            lblQty.Text = String.Format("{0:0,0.00}", fQty);
+
         }
+
         private void cmdSave_Click(object sender, EventArgs e)
         {
             SaveData();
@@ -650,18 +661,7 @@ namespace GUI_Task
                         //SumVoc();
                     }
 
-                    //txtOrderNo.Text = txtPassDataVocID.Text.ToString();
-                    //grdVoucher[pCol, pRow].Value = tmtext.Text.ToString();
-                    //System.Windows.Forms.SendKeys.Send("{TAB}");
                 }
-
-                //if (msk_AccountID.Text.ToString() == "" || msk_AccountID.Text.ToString() == string.Empty)
-                //{
-                //    return;
-                //}
-                //msk_AccountID.Text = sForm.lupassControl.ToString();
-                ////grdVoucher[pCol, pRow].Value = msk_AccountID.Text.ToString();
-                //System.Windows.Forms.SendKeys.Send("{TAB}");
             }
         }
         #endregion
@@ -893,15 +893,14 @@ namespace GUI_Task
         private void LoadGridData()
         {
             string lSQL = "";
-            lSQL += " SELECT h.ItemId AS Code, i.ItemCode, i.Name AS ItemName, ";
+            lSQL += " SELECT h.ItemId, i.ItemCode, i.Name AS ItemName, ";
 			lSQL += " sz.cgdDesc AS SizeName, ";
-            lSQL += " clr.cgdDesc AS ColorName, "; 
-            lSQL += " u.UnitName, h.DNQty, h.POQty, h.RemainingQty, h.LastRate, 0 AS Amount, ";
-            lSQL += " h.SizeID, h.ColorID, i.UOMID ";
+            lSQL += " clr.cgdDesc AS ColorName,  0 AS Stock, ";
+            lSQL += " h.DNQty, h.POQty, h.RemainingQty AS RemQty, h.LastRate, 0 AS Amount, ";
+            lSQL += " h.SizeID, h.ColorID";
             lSQL += " from PoDetail h INNER JOIN Item i ON h.ItemId=i.ItemId ";
-            lSQL += " JOIN CatDtl clr ON h.ColorID=clr.cgdCode AND clr.cgCode=3 ";
+            lSQL += " INNER JOIN CatDtl clr ON h.ColorID=clr.cgdCode AND clr.cgCode=3 ";
             lSQL += " INNER JOIN CatDtl sz ON h.sizeid=sz.cgdCode AND sz.cgCode=5 ";
-            lSQL += " INNER JOIN IMS_UOM u ON i.UOMID=u.UOMID ";
             lSQL += " where h.POId ='" + txtPONo.Text.ToString() + "'; ";
 
             clsDbManager.FillDataGrid(
@@ -909,6 +908,8 @@ namespace GUI_Task
                 lSQL,
                 fFieldList,
                 fColFormat);
+
+            SumVoc();
         }
 
         private void chkReadOnly_CheckedChanged(object sender, EventArgs e)
@@ -960,7 +961,6 @@ namespace GUI_Task
             lFieldList += ",ItemName";      //ItemName = 2, 
             lFieldList += ",SizeName";      //SizeName = 3, 
             lFieldList += ",ColorName";     //ColorName = 4,
-            lFieldList += ",UnitName";      //UnitName = 5, 
             lFieldList += ",stock";         //Stock = 6,  
             lFieldList += ",DNQty";         //DNQty = 7,
             lFieldList += ",POQty";         //POQty = 8,
@@ -969,7 +969,6 @@ namespace GUI_Task
             lFieldList += ",Amount";        //Amount = 11,
             lFieldList += ",SizeId";        //SizeID = 12,
             lFieldList += ",ColorId";       //ColorID = 13, 
-            lFieldList += ",UOMID";         //UOMID = 14,
             //lFieldList += ",AvailBal";     
             //ItemID = 0,
             //ItemCode = 1, 
@@ -1006,7 +1005,6 @@ namespace GUI_Task
             lHDR += ",Item Name";   //ItemName = 2,    
             lHDR += ",Size";        //SizeName = 3,    
             lHDR += ",Color";       //ColorName = 4,   
-            lHDR += ",UOM";      //UnitName = 5,    
             lHDR += ",Stock";       //Stock = 6,  
             lHDR += ",DNQty";       //DNQty = 7,
             lHDR += ",POQty";       //POQty = 8, 
@@ -1015,7 +1013,6 @@ namespace GUI_Task
             lHDR += ",Amount";      //Amount = 11,
             lHDR += ",SizeId";       //SizeID = 12,
             lHDR += ",ColorId";     //ColorID = 13, 
-            lHDR += ",UOMID";       //UOMID = 14,
 
             //lHDR += ",Ord.UnDel.Qty";     // 12    OrdUnDelQty";  
             //lHDR += ",Rate";              // 13    Rate";         
@@ -1028,14 +1025,12 @@ namespace GUI_Task
             lColWidth += ", 20";                // 2-    ItemName";     
             lColWidth += ", 7";                // 3-    SizeID";       
             lColWidth += ", 7";                // 5-    ColorID";      
-            lColWidth += ", 7";                // 6-    UOMID";        
             lColWidth += ", 7";                // 7-    stock";     
             lColWidth += ", 7";                // 8-    DNQty";      
             lColWidth += ", 7";                // 9-    POQty";       
             lColWidth += ", 7";                // 10    RemQty";   
             lColWidth += ", 7";                // 11    lastRate";      
             lColWidth += ", 7";                // 12    amount";  
-            lColWidth += ", 7";                // 13    SizeId";         
             lColWidth += ", 10";               // 14    SizeID";       
             lColWidth += ", 7";                // 15    AvailBal";     
 
@@ -1045,14 +1040,12 @@ namespace GUI_Task
             lColMaxInputLen += ", 0";                // 2-    ItemName";  
             lColMaxInputLen += ", 0";               // 3-    SizeID";     
             lColMaxInputLen += ", 0";               // 5-    ColorID";    
-            lColMaxInputLen += ", 0";               // 6-    UOMID";      
             lColMaxInputLen += ", 0";               // 7-    stock";      
             lColMaxInputLen += ", 0";               // 8-    DNQty";      
             lColMaxInputLen += ", 0";               // 9-    POQty";      
             lColMaxInputLen += ", 0";               // 10    RemQty";    
             lColMaxInputLen += ", 0";               // 11    lastRate";   
             lColMaxInputLen += ", 0";               // 12    amount";   
-            lColMaxInputLen += ", 0";               // 13    SizeId";     
             lColMaxInputLen += ", 0";               // 14    SizeID";     
             lColMaxInputLen += ", 0";               // 15    AvailBal";   
 
@@ -1062,14 +1055,12 @@ namespace GUI_Task
             lColMinWidth += ", 0";                       // 2-    ItemName"; 
             lColMinWidth += ", 0";                      // 3-    SizeID";    
             lColMinWidth += ", 0";                      // 5-    ColorID";   
-            lColMinWidth += ", 0";                      // 6-    UOMID";     
             lColMinWidth += ", 0";                      // 7-    stock";     
             lColMinWidth += ", 0";                    // 8-    DNQty";       
             lColMinWidth += ", 0";                    // 9-    POQty";       
             lColMinWidth += ", 0";                      // 10    RemQty";   
             lColMinWidth += ", 0";                      // 11    lastRate";  
             lColMinWidth += ", 0";                    // 12    amount";    
-            lColMinWidth += ", 0";                    // 13    SizeId";      
             lColMinWidth += ", 0";                    // 14    SizeID";      
             lColMinWidth += ", 0";                      // 15    AvailBal";  
 
@@ -1079,7 +1070,6 @@ namespace GUI_Task
             lColFormat += ", T";                     //ItemName = 2, 
             lColFormat += ", T";                     //SizeName = 3, 
             lColFormat += ", T";                     //ColorName = 4,
-            lColFormat += ", T";                     //UnitName = 5, 
             lColFormat += ",N0";                     //Stock = 6,  
             lColFormat += ",N0";                     //DNQty = 7,
             lColFormat += ",N0";                     //POQty = 8,
@@ -1088,7 +1078,6 @@ namespace GUI_Task
             lColFormat += ",N2";                     //Amount = 11,
             lColFormat += ", H";                      //SizeID = 12,
             lColFormat += ", H";                      //ColorID = 13, 
-            lColFormat += ", H";                   //UOMID = 14, 
 
             // Column ReadOnly 1= readonly, 0 = read-write
             lColReadOnly = "  1";                   //ItemID = 0,
@@ -1096,7 +1085,6 @@ namespace GUI_Task
             lColReadOnly += ",1";                   //ItemName = 2, 
             lColReadOnly += ",0";                   //SizeName = 3, 
             lColReadOnly += ",0";                   //ColorName = 4,
-            lColReadOnly += ",0";                   //UnitName = 5, 
             lColReadOnly += ",0";                   //Stock = 6,  
             lColReadOnly += ",0";                   //DNQty = 7,
             lColReadOnly += ",0";                   //POQty = 8,
@@ -1105,7 +1093,6 @@ namespace GUI_Task
             lColReadOnly += ",0";                   //Amount = 11,
             lColReadOnly += ",1";                   //SizeID = 12,
             lColReadOnly += ",1";                   //ColorID = 13, 
-            lColReadOnly += ",1";                   //UOMID = 14, 
 
             // For Saving Time
             tColType += "  N0";            //ItemID = 0,
@@ -1113,7 +1100,6 @@ namespace GUI_Task
             tColType += ",  SKP";          //ItemName = 2,  
             tColType += ",  SKP";          //SizeName = 3,  
             tColType += ",  SKP";          //ColorName = 4, 
-            tColType += ",  SKP";          //UnitName = 5,  
             tColType += ", N0";            //Stock = 6,  
             tColType += ", N0";            //DNQty = 7,
             tColType += ", N0";            //POQty = 8,
@@ -1122,14 +1108,12 @@ namespace GUI_Task
             tColType += ", N0";            //Amount = 11,
             tColType += ", N0";            //SizeID = 12,
             tColType += ", N0";            //ColorID = 13, 
-            tColType += ", N0";            //UOMID = 14,
 
             tFieldName += "Code";              //ItemID = 0,
             tFieldName += ",ItemCode";         //ItemCode = 1, 
             tFieldName += ",ItemName";         //ItemName = 2, 
             tFieldName += ",SizeName";         //SizeName = 3,  
             tFieldName += ",ColorName";        //ColorName = 4, 
-            tFieldName += ",UnitName";         //UnitName = 5, 
             tFieldName += ",Stock";         //Stock = 6,  
             tFieldName += ",DNQty";        //DNQty = 7, 
             tFieldName += ",POQty";         //POQty = 8, 
@@ -1138,7 +1122,6 @@ namespace GUI_Task
             tFieldName += ",Amount";    //Amount = 11, 
             tFieldName += ",SizeID";           //SizeID = 12, 
             tFieldName += ",ColorID";         //ColorID = 13,  
-            tFieldName += ",UOMID";       //UOMID = 14, 
 
 
             fHDR = lHDR;
@@ -1391,6 +1374,11 @@ namespace GUI_Task
             {
                 LookUp_Voc1();
             }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
