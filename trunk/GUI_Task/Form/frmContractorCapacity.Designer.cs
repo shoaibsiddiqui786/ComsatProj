@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.grdContCapacity = new System.Windows.Forms.DataGridView();
+            this.grd = new System.Windows.Forms.DataGridView();
+            this.ContractorColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grdContCapacity2 = new System.Windows.Forms.DataGridView();
+            this.grd2 = new System.Windows.Forms.DataGridView();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,26 +43,44 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnExitSave = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.cboItemGrp = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.grdContCapacity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdContCapacity2)).BeginInit();
+            this.cboItemGroup = new System.Windows.Forms.ComboBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grd2)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // grdContCapacity
+            // grd
             // 
-            this.grdContCapacity.AllowUserToDeleteRows = false;
-            this.grdContCapacity.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.grdContCapacity.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.grdContCapacity.BackgroundColor = System.Drawing.Color.Gray;
-            this.grdContCapacity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdContCapacity.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.grd.AllowUserToDeleteRows = false;
+            this.grd.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.grd.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.grd.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.grd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grd.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ContractorColumn,
             this.Column1,
             this.Column2});
-            this.grdContCapacity.Location = new System.Drawing.Point(1, 33);
-            this.grdContCapacity.Name = "grdContCapacity";
-            this.grdContCapacity.ReadOnly = true;
-            this.grdContCapacity.Size = new System.Drawing.Size(648, 235);
-            this.grdContCapacity.TabIndex = 639;
+            this.grd.Location = new System.Drawing.Point(3, 0);
+            this.grd.Name = "grd";
+            this.grd.ReadOnly = true;
+            this.grd.Size = new System.Drawing.Size(626, 241);
+            this.grd.TabIndex = 639;
+            // 
+            // ContractorColumn
+            // 
+            this.ContractorColumn.HeaderText = "ContractorCode";
+            this.ContractorColumn.Name = "ContractorColumn";
+            this.ContractorColumn.ReadOnly = true;
+            this.ContractorColumn.Width = 106;
             // 
             // Column1
             // 
@@ -77,25 +96,25 @@
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
-            // grdContCapacity2
+            // grd2
             // 
-            this.grdContCapacity2.AllowUserToDeleteRows = false;
-            this.grdContCapacity2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.grdContCapacity2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.grdContCapacity2.BackgroundColor = System.Drawing.Color.Gray;
-            this.grdContCapacity2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdContCapacity2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.grd2.AllowUserToDeleteRows = false;
+            this.grd2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.grd2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.grd2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.grd2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grd2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column8,
             this.Column9,
             this.Column10,
             this.Column11,
             this.Column14,
             this.Column12});
-            this.grdContCapacity2.Location = new System.Drawing.Point(1, 265);
-            this.grdContCapacity2.Name = "grdContCapacity2";
-            this.grdContCapacity2.ReadOnly = true;
-            this.grdContCapacity2.Size = new System.Drawing.Size(648, 193);
-            this.grdContCapacity2.TabIndex = 640;
+            this.grd2.Location = new System.Drawing.Point(3, 3);
+            this.grd2.Name = "grd2";
+            this.grd2.ReadOnly = true;
+            this.grd2.Size = new System.Drawing.Size(613, 175);
+            this.grd2.TabIndex = 640;
             // 
             // Column8
             // 
@@ -141,8 +160,8 @@
             // 
             // btnGetAll
             // 
-            this.btnGetAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGetAll.Location = new System.Drawing.Point(512, 2);
+            this.btnGetAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGetAll.Location = new System.Drawing.Point(492, 2);
             this.btnGetAll.Name = "btnGetAll";
             this.btnGetAll.Size = new System.Drawing.Size(104, 25);
             this.btnGetAll.TabIndex = 679;
@@ -183,45 +202,111 @@
             this.label4.Text = "Item Group";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // cboItemGrp
+            // cboItemGroup
             // 
-            this.cboItemGrp.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.cboItemGrp.FormattingEnabled = true;
-            this.cboItemGrp.Items.AddRange(new object[] {
+            this.cboItemGroup.BackColor = System.Drawing.SystemColors.Window;
+            this.cboItemGroup.FormattingEnabled = true;
+            this.cboItemGroup.Items.AddRange(new object[] {
             ""});
-            this.cboItemGrp.Location = new System.Drawing.Point(132, 5);
-            this.cboItemGrp.Name = "cboItemGrp";
-            this.cboItemGrp.Size = new System.Drawing.Size(273, 21);
-            this.cboItemGrp.TabIndex = 682;
-            this.cboItemGrp.Text = "-";
+            this.cboItemGroup.Location = new System.Drawing.Point(132, 5);
+            this.cboItemGroup.Name = "cboItemGroup";
+            this.cboItemGroup.Size = new System.Drawing.Size(273, 21);
+            this.cboItemGroup.TabIndex = 682;
+            this.cboItemGroup.Text = "-";
+            this.cboItemGroup.SelectedIndexChanged += new System.EventHandler(this.cboItemGroup_SelectedIndexChanged);
+            this.cboItemGroup.Click += new System.EventHandler(this.cboItemGroup_Click);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(12, 33);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(627, 212);
+            this.tabControl1.TabIndex = 684;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tabPage1.Controls.Add(this.grd);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(619, 186);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "GridView";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(619, 186);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "InsertNew";
+            // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabPage3);
+            this.tabControl2.Controls.Add(this.tabPage4);
+            this.tabControl2.Location = new System.Drawing.Point(12, 251);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(627, 207);
+            this.tabControl2.TabIndex = 685;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tabPage3.Controls.Add(this.grd2);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(619, 181);
+            this.tabPage3.TabIndex = 0;
+            this.tabPage3.Text = "GridView";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(619, 181);
+            this.tabPage4.TabIndex = 1;
+            this.tabPage4.Text = "InsertNew";
             // 
             // frmContractorCapacity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(651, 493);
+            this.Controls.Add(this.tabControl2);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.cboItemGrp);
+            this.Controls.Add(this.cboItemGroup);
             this.Controls.Add(this.btnExitSave);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnGetAll);
-            this.Controls.Add(this.grdContCapacity2);
-            this.Controls.Add(this.grdContCapacity);
             this.Name = "frmContractorCapacity";
             this.Text = "Contractor Capacity";
             this.Load += new System.EventHandler(this.frm_Contractor_Capacity_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.grdContCapacity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdContCapacity2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grd2)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView grdContCapacity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridView grdContCapacity2;
+        private System.Windows.Forms.DataGridView grd;
+        private System.Windows.Forms.DataGridView grd2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
@@ -232,6 +317,15 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnExitSave;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cboItemGrp;
+        private System.Windows.Forms.ComboBox cboItemGroup;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ContractorColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
     }
 }

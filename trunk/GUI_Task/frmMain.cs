@@ -11,6 +11,8 @@ namespace GUI_Task
 {
     public partial class frmMain : Form
     {
+        private int childFormNumber = 0;
+
         public frmMain()
         {
             InitializeComponent();
@@ -161,7 +163,10 @@ namespace GUI_Task
 
         private void toolStripMenuItem26_Click(object sender, EventArgs e)
         {
-            frmRptPendingOrd1 frm = new frmRptPendingOrd1();
+            //frmRptPendingOrd1 frm = new frmRptPendingOrd1();
+            //frm.MdiParent = this;
+            //frm.Show();
+            frmPendingOrd frm = new frmPendingOrd();
             frm.MdiParent = this;
             frm.Show();
         }
@@ -463,9 +468,9 @@ namespace GUI_Task
 
         private void goodRecieveNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //frmGdRecNote frm = new frmGdRecNote();
-            //frm.MdiParent = this;
-            //frm.Show();
+            frmGdRecNote frm = new frmGdRecNote();
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void gateOutwardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -561,7 +566,7 @@ namespace GUI_Task
 
         private void issueItemsFormulaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmIssueItemsFormula frm = new frmIssueItemsFormula();
+            frmIssueItems frm = new frmIssueItems();
             frm.MdiParent = this;
             frm.Show();
         }
@@ -575,17 +580,13 @@ namespace GUI_Task
 
         private void goodsRecieveNoteReturnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //frmGdRecNoteReturn frm = new frmGdRecNoteReturn();
-            //frm.MdiParent = this;
-            //frm.Show();
+            frmGdRecNoteReturn frm = new frmGdRecNoteReturn();
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void issueReturnItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //frmIssueRetnItems frm = new frmIssueRetnItems();
-            //frm.MdiParent = this;
-            //frm.Show(); 
-
             frmIssueRetItems frm = new frmIssueRetItems();
             frm.MdiParent = this;
             frm.Show();
@@ -901,6 +902,20 @@ namespace GUI_Task
             frmJournalVoc frm = new frmJournalVoc();
             frm.MdiParent = this;
             frm.Show();
+        }
+
+        private void runningTransactionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Form childForm = new Form();
+            //childForm.MdiParent = this;
+            //childForm.Text = frmMain.ActiveForm.Name + childFormNumber++;
+            //childForm.Show();
+           // Form newMDIChild = new Form();
+            // Set the parent form of the child window.
+            //newMDIChild.MdiParent = this;
+            // Display the new form.
+            //newMDIChild.Show();
+            //this.runningTransactionsToolStripMenuItem.Click += new System.EventHandler(this.runningTransactionsToolStripMenuItem);
         }
     }
 }

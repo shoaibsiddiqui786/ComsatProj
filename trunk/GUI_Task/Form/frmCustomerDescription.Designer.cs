@@ -28,8 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomerDescription));
             this.tabCustDesc = new System.Windows.Forms.TabControl();
             this.tabPage = new System.Windows.Forms.TabPage();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtUAdd1 = new System.Windows.Forms.TextBox();
+            this.txtDiscount = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtUName = new System.Windows.Forms.TextBox();
             this.sSMaster = new System.Windows.Forms.StatusStrip();
             this.tSlblUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.tStextUser = new System.Windows.Forms.ToolStripStatusLabel();
@@ -87,12 +94,6 @@
             this.btnEnv = new System.Windows.Forms.Button();
             this.btnCityHelp = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtDiscount = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtUName = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtUAdd1 = new System.Windows.Forms.TextBox();
             this.tabCustDesc.SuspendLayout();
             this.tabPage.SuspendLayout();
             this.sSMaster.SuspendLayout();
@@ -152,6 +153,66 @@
             this.tabPage.TabIndex = 0;
             this.tabPage.Text = "General Information";
             this.tabPage.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // label16
+            // 
+            this.label16.AllowDrop = true;
+            this.label16.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label16.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label16.Location = new System.Drawing.Point(355, 353);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(124, 17);
+            this.label16.TabIndex = 948;
+            this.label16.Text = "Urdu Address";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txtUAdd1
+            // 
+            this.txtUAdd1.Location = new System.Drawing.Point(355, 379);
+            this.txtUAdd1.Name = "txtUAdd1";
+            this.txtUAdd1.Size = new System.Drawing.Size(168, 20);
+            this.txtUAdd1.TabIndex = 947;
+            // 
+            // txtDiscount
+            // 
+            this.txtDiscount.Location = new System.Drawing.Point(136, 406);
+            this.txtDiscount.Name = "txtDiscount";
+            this.txtDiscount.Size = new System.Drawing.Size(210, 20);
+            this.txtDiscount.TabIndex = 946;
+            // 
+            // label14
+            // 
+            this.label14.AllowDrop = true;
+            this.label14.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label14.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label14.Location = new System.Drawing.Point(6, 435);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(124, 17);
+            this.label14.TabIndex = 945;
+            this.label14.Text = "Urdu Name";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label15
+            // 
+            this.label15.AllowDrop = true;
+            this.label15.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label15.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label15.Location = new System.Drawing.Point(6, 409);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(124, 17);
+            this.label15.TabIndex = 944;
+            this.label15.Text = "Discount";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txtUName
+            // 
+            this.txtUName.Location = new System.Drawing.Point(136, 432);
+            this.txtUName.Name = "txtUName";
+            this.txtUName.Size = new System.Drawing.Size(210, 20);
+            this.txtUName.TabIndex = 943;
             // 
             // sSMaster
             // 
@@ -492,7 +553,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(529, 428);
+            this.tabPage2.Size = new System.Drawing.Size(529, 477);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Discount";
             // 
@@ -714,66 +775,6 @@
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtDiscount
-            // 
-            this.txtDiscount.Location = new System.Drawing.Point(136, 406);
-            this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.Size = new System.Drawing.Size(210, 20);
-            this.txtDiscount.TabIndex = 946;
-            // 
-            // label14
-            // 
-            this.label14.AllowDrop = true;
-            this.label14.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label14.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label14.Location = new System.Drawing.Point(6, 435);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(124, 17);
-            this.label14.TabIndex = 945;
-            this.label14.Text = "Urdu Name";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label15
-            // 
-            this.label15.AllowDrop = true;
-            this.label15.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label15.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label15.Location = new System.Drawing.Point(6, 409);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(124, 17);
-            this.label15.TabIndex = 944;
-            this.label15.Text = "Discount";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // txtUName
-            // 
-            this.txtUName.Location = new System.Drawing.Point(136, 432);
-            this.txtUName.Name = "txtUName";
-            this.txtUName.Size = new System.Drawing.Size(210, 20);
-            this.txtUName.TabIndex = 943;
-            // 
-            // label16
-            // 
-            this.label16.AllowDrop = true;
-            this.label16.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label16.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label16.Location = new System.Drawing.Point(355, 353);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(124, 17);
-            this.label16.TabIndex = 948;
-            this.label16.Text = "Urdu Address";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // txtUAdd1
-            // 
-            this.txtUAdd1.Location = new System.Drawing.Point(355, 379);
-            this.txtUAdd1.Name = "txtUAdd1";
-            this.txtUAdd1.Size = new System.Drawing.Size(168, 20);
-            this.txtUAdd1.TabIndex = 947;
-            // 
             // frmCustomerDescription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -788,6 +789,7 @@
             this.Controls.Add(this.btnCityHelp);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tabCustDesc);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCustomerDescription";
             this.Text = "Customer Description";
             this.Load += new System.EventHandler(this.frmCustomerDescription_Load);

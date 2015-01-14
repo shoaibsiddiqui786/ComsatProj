@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using GUI_Task.StringFun01;
 
 namespace GUI_Task
 {
@@ -120,10 +121,10 @@ namespace GUI_Task
             frmLookUp sForm = new frmLookUp(
                     "Code",
                     "Name",
-                    "Vendor",
+                    "Heads",
                     this.Text.ToString(),
                     1,
-                    "Code,Name",
+                    " Code, Name",
                     "16,40",
                     " T, T",
                     true,
@@ -171,9 +172,9 @@ namespace GUI_Task
 
         private void PassData(object sender)
         {
-            //mskSupplierCode.Mask = "";
+           // mskSupplierCode.Mask = "";
             mskSupplierCode.Text = ((TextBox)sender).Text;
-           // mskSupplierCode.Mask = clsGVar.maskGLCode;
+           //mskSupplierCode.Mask = clsGVar.maskGLCode;
             //mskSupplierCode.Text = ((MaskedTextBox)sender).Text;
             //mskSupplierCode.Mask = clsGVar.maskGLCode;
 
@@ -187,12 +188,13 @@ namespace GUI_Task
             string tSQL = string.Empty;
 
             // Fields 0,1,2,3 are Begin  
-            tSQL = " SELECT Code,Name, Add1,Add2,City,Contact,Phone,Mobile,Fax,Email,UName,UAdd1 from Vendor ";
-            tSQL += " where Code ='" + mskSupplierCode.Text.ToString() + "';";
+            tSQL = " SELECT v.Code,h.Name, h.Add1,h.Add2,h.City,h.Contact,h.Phone,h.Mobile,h.Fax,h.Email,v.UName,v.UAdd1 from Vendor v ";
+            tSQL += " inner join Heads h on v.Code=Right(h.Code,7) and Left(h.Code,6)='3-2-02'";
+            tSQL += " where h.Code ='" + mskSupplierCode.Text.ToString() + "';";
 
             try
             {
-                ds = clsDbManager.GetData_Set(tSQL, "Vendor");
+                ds = clsDbManager.GetData_Set(tSQL, "Heads");
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     dRow = ds.Tables[0].Rows[0];
@@ -250,76 +252,107 @@ namespace GUI_Task
                 //and LEFT(h.Code,6)='3-2-02'
                 //and v.Code='01-0001'
 
-                //if (mskSupplierCode.Text.ToString().Trim(' ', '-') == "")
-                //{
-//                    fDocAlreadyExists = false;
-//                    fDocID = clsDbManager.GetNextValDocID("Vendor", "Code", fDocWhere, "");
+                if (mskSupplierCode.Text.ToString().Trim(' ', '-') == "")
+                {
+                    fDocAlreadyExists = false;
+                    fDocID = clsDbManager.GetNextValDocID("Vendor", "Code", fDocWhere, "");
 
-//                    lSQL = "insert into Vendor (";
-//                    lSQL += "  Code ";                              //  0-    ItemID";   
-//                    lSQL += ", Name ";                                //  1-    ItemCod  
-//                    lSQL += ", Contact ";                                        //  2-    ItemNam 
-//                    lSQL += ", Add1 ";                                      // 3- Descripti
-//                    lSQL += ", Add2 ";                                        //  4-    SizeNam  
-//                    lSQL += ", Phone ";                                 //  5-    ColorNa  
-//                    lSQL += ", Mobile ";                                      //  6-    UOMName
-//                    lSQL += ", Fax ";                                      // 7- GodownName
-//                    lSQL += ", Email ";                                         // 8- Qty
-//                    lSQL += ", UName ";                                      // 9    SizeID";   
-//                    lSQL += ", UAdd1 ";                                    // 10    ColorID"  
-//                    lSQL += " ) values (";
-////fDocID.ToString()
-//                    //                                                       
-//                    lSQL += "'" + fDocID.ToString() + "'";                  //  0-    ItemID";   
-//                    lSQL += "," + txtSupplierName + "'";        //  1-    ItemCod  
-//                    lSQL += "," + txtContact + "'";          //  2-    ItemNam 
-//                    lSQL += ",'" + txtAdd1 + "'" ;                                              // 3- Descripti
-//                    lSQL += ",'" + txtAdd1 + "'";                             //  4-    SizeNam  
-//                    lSQL += ",'" + txtPhone + "'";  //  5-    ColorNa  
-//                    lSQL += ",'" + txtMobile + "'";                                            //  6-    UOMName
-//                    lSQL += ",'" + txtFax + "'";                                            // 7- GodownName
-//                    lSQL += ",'" + txtEmail + "'";                                              // 8- Qty
-//                    lSQL += ",'" + txtUName + "'";                                             // 9    SizeID";   
-//                    lSQL += ",'" + txtUAdd1 + "'";                                            // 10    ColorID"  
-//                    lSQL += ")";                                              // 11    UOMID"; 
-                //}                                                               // 12- GodownID
-               // else
-                //{
-                fDocWhere = " Code = '" + mskSupplierCode.Text.ToString() + "'";
-                    if (clsDbManager.IDAlreadyExistWw("Vendor", "Code", fDocWhere))
+                    lSQL = "insert into Vendor (";
+                    lSQL += "  Code ";                              //  0-    ItemID";   
+                    lSQL += ", Name ";
+                    lSQL += ", City ";//  1-    ItemCod  
+                    lSQL += ", Contact ";                                        //  2-    ItemNam 
+                    lSQL += ", Add1 ";                                      // 3- Descripti
+                    lSQL += ", Add2 ";                                        //  4-    SizeNam  
+                    lSQL += ", Phone ";                                 //  5-    ColorNa  
+                    lSQL += ", Mobile ";                                      //  6-    UOMName
+                    lSQL += ", Fax ";                                      // 7- GodownName
+                    lSQL += ", Email ";                                         // 8- Qty
+                    lSQL += ", UName ";                                      // 9    SizeID";   
+                    lSQL += ", UAdd1 ";                                    // 10    ColorID"  
+                    lSQL += " ) values (";
+                    //fDocID.ToString()
+                    //                                                       
+                    lSQL += "'" + fDocID.ToString() + "'";                  //  0-    ItemID";   
+                    lSQL += "," + txtSupplierName + "'";        //  1-    ItemCod  
+                    lSQL += "," + txtCity + "'"; 
+                    lSQL += "," + txtContact + "'";          //  2-    ItemNam 
+                    lSQL += ",'" + txtAdd1 + "'";                                              // 3- Descripti
+                    lSQL += ",'" + txtAdd1 + "'";                             //  4-    SizeNam  
+                    lSQL += ",'" + txtPhone + "'";  //  5-    ColorNa  
+                    lSQL += ",'" + txtMobile + "'";                                            //  6-    UOMName
+                    lSQL += ",'" + txtFax + "'";                                            // 7- GodownName
+                    lSQL += ",'" + txtEmail + "'";                                              // 8- Qty
+                    lSQL += ",'" + txtUName + "'";                                             // 9    SizeID";   
+                    lSQL += ",'" + txtUAdd1 + "'";                                            // 10    ColorID"  
+                    lSQL += ")";                                              // 11    UOMID"; 
+                }                                                               // 12- GodownID
+                else
+                {
+                    fDocWhere = " Code = '" + mskSupplierCode.Text.ToString() + "'";
+                    if (clsDbManager.IDAlreadyExistWw("Heads", "Code", fDocWhere))
                     {
 
-                    fDocAlreadyExists = true;
-                    lSQL = "delete from  ";
-                       lSQL += " where " + fDocWhere;
+                        fDocAlreadyExists = true;
+                        lSQL = "delete from  Heads";
+                        lSQL += " where " + fDocWhere;
 
                         fManySQL.Add(lSQL);
-                    //    //
-                    
+                        //    //
 
-                    lSQL = "update Vendor set";
-                    lSQL += "  Name = '"+txtSupplierName.Text.ToString()+"'";
-                    lSQL += ",Contact ='"+txtContact.Text.ToString()+"'";
-                    lSQL += ", Add1 = '" + txtAdd1.Text.ToString() + "'";
-                    lSQL += ", Add2 = '" + txtAdd2.Text.ToString() + "'";
-                    lSQL += ", Phone = '" + txtPhone.Text.ToString() + "'";
-                    lSQL += ", Mobile = '" + txtMobile.Text.ToString() + "'";
-                    lSQL += ", Fax = '" + txtFax.Text.ToString() + "'";
-                    lSQL += ", UName ='" + txtUName.Text.ToString() + "'";
-                    lSQL += ", UAdd1 = '" + txtUAdd1.Text.ToString() + "'";
-                    lSQL += " where ";
-                    lSQL += fDocWhere;
+                    }
+                        lSQL = "update Heads set";
+                        lSQL += "  Name = '" + txtSupplierName.Text.ToString() + "'";
+                        lSQL += ",Contact ='" + txtContact.Text.ToString() + "'";
 
-               }
-                fManySQL.Add(lSQL);
+                        lSQL += ", Add1 = '" + txtAdd1.Text.ToString() + "'";
+                        lSQL += ", Add2 = '" + txtAdd2.Text.ToString() + "'"; 
+                        lSQL += ",City ='" + txtCity.Text.ToString() + "'";
+                       
+                        lSQL += ", Phone = '" + txtPhone.Text.ToString() + "'";
+                        lSQL += ", Mobile = '" + txtMobile.Text.ToString() + "'";
+                        lSQL += ", Fax = '" + txtFax.Text.ToString() + "'";
+                        lSQL += ", Email = '" + txtEmail.Text.ToString() + "'";
+                        //lSQL += ", UName ='" + txtUName.Text.ToString() + "'";
+                        //lSQL += ", UAdd1 = '" + txtUAdd1.Text.ToString() + "'";
+
+                        lSQL += " where ";
+                        lSQL += fDocWhere;
+
+                    }
+                   fManySQL.Add(lSQL);
 
 
-                return rtnValue;
-            }
+                    return rtnValue;
+                }
+            
+
             catch (Exception ex)
             {
                 rtnValue = false;
                 MessageBox.Show("Save Master Doc: " + ex.Message, this.Text.ToString());
+                return false;
+            }
+        }
+
+        private bool FormValidation()
+        {
+            bool lRtnValue = true;
+            DateTime lNow = DateTime.Now;
+            decimal lDebit = 0;
+            decimal lCredit = 0;
+            fDocAmt = 0;
+            try
+            {
+                //SumVoc();
+
+                return lRtnValue;
+
+            }
+            catch (Exception ex)
+            {
+                fTErr++;
+                ErrrMsg = StrF01.BuildErrMsg(ErrrMsg, "Exception: FormValidation -> " + ex.Message.ToString());
                 return false;
             }
         }
@@ -348,14 +381,14 @@ namespace GUI_Task
             //        return false;
             //    }
             //    fLastRow = grd.Rows.Count - 1;    
-                //if (!FormValidation())
-                //{
-                //    textAlert.Text = "Form Validation Error: Not Saved." + "  " + lNow.ToString();
-                //    MessageBox.Show(ErrrMsg, "Save: " + this.Text.ToString());
-                //    return false;
-                //}
+            if (!FormValidation())
+            {
+                textAlert.Text = "Form Validation Error: Not Saved." + "  " + lNow.ToString();
+                MessageBox.Show(ErrrMsg, "Save: " + this.Text.ToString());
+                return false;
+            }
 
-                //fManySQL = new List<string>();
+            fManySQL = new List<string>();
 
                 //// Prepare Master Doc Query List
                 ////fTNOT = GridTNOT(grd);
@@ -375,11 +408,11 @@ namespace GUI_Task
                 //    }
                 //}
                 //else
-                //{
-                //    DateTime now = DateTime.Now;
-                //    textAlert.Text = "selected Box Empty... " + now.ToString("T");
-                //    // pending return false;
-                //}
+                {
+                    DateTime now = DateTime.Now;
+                    textAlert.Text = "selected Box Empty... " + now.ToString("T");
+                    // pending return false;
+                }
                 // Execute Query
                 if (fManySQL.Count > 0)
                 {
@@ -399,7 +432,7 @@ namespace GUI_Task
                 {
                     MessageBox.Show("Data Preparation list empty, Not Saved...", this.Text.ToString());
                     return false;
-                } // End Execute Query
+               } // End Execute Query
             }
 
 

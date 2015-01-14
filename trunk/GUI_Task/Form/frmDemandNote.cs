@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using GUI_Task.Class;
 using GUI_Task.StringFun01;
@@ -83,6 +80,8 @@ namespace GUI_Task
 
         string[] a_Size = new string[0];
         int[] a_SizeInt = new int[0];
+
+        string strDocId = string.Empty;
 
         //bool blnFormLoad = true;
         public frmDemandNote()
@@ -718,16 +717,23 @@ namespace GUI_Task
         {
             bool rtnValue = true;
             string lSQL = string.Empty;
+           
 
             try
             {
                 if (txtDNNo.Text.ToString().Trim(' ', '-') == "")
                 {
                     fDocAlreadyExists = false;
-                    fDocID = clsDbManager.GetNextValDocID("DN", "DNId", fDocWhere, "");
+                    //fDocWhere = " Doc_vt_id = " + fDocTypeID.ToString();
+                    //fDocWhere += " AND doc_Fiscal_ID = " + fDocFiscal.ToString();
+                    fDocID = clsDbManager.GetNextValDocID("DN", "DocId", fDocWhere, "");
+                    strDocId = "1-" + DateTime.Now.Year.ToString() + fDocID.ToString();
+                    txtDNNo.Text = strDocId;
+                    fDocID += fDocID;
 
                     lSQL = "insert into DN (";
-                    lSQL += "  DNId ";                                         // 1-
+                    lSQL += "  DocId ";
+                    lSQL += ", DNId ";                                         // 1-
                     lSQL += ", Date ";                                     // 2-
                     lSQL += ", DepartmentId ";                                            // 3-
                     lSQL += ", EmployeeId ";                                         // 4-
@@ -739,7 +745,8 @@ namespace GUI_Task
                     lSQL += ", BranchId ";                                        // 7-
                     lSQL += " ) values (";
                     //
-                    lSQL += "'" + fDocID.ToString() + "'";
+                    lSQL += fDocID.ToString();
+                    lSQL += ",'"+ strDocId.ToString() + "'";
                     lSQL += ", " + StrF01.D2Str(dtpDN) + "";                 // 6-
                     lSQL += ",'" + cboDepartment.SelectedValue.ToString() + "'";
                     lSQL += ",'" + cboEmpCode.SelectedValue.ToString() + "'";
@@ -779,6 +786,7 @@ namespace GUI_Task
 
                     lSQL += " where ";
                     lSQL += fDocWhere;
+                    //lSQL += fDocID;
                     //
 
                 }
@@ -828,11 +836,11 @@ namespace GUI_Task
                         }
                     }
 
-                    lSQL = "INSERT INTO dnDetail (DNId";
-                    lSQL += ",ItemId,Des,SizeId,ColorId,Qty)";
-                    lSQL += "VALUES (";
-                    //lSQL += "'" + fDocID + "'";
-                    lSQL += "'" + txtDNNo.Text.ToString() + "'";
+                    lSQL = "INSERT INTO dnDetail (DocId ";
+                    lSQL += ",DNId,ItemId,Des,SizeId,ColorId,Qty)";
+                    lSQL += " VALUES (";
+                    lSQL += fDocID;
+                    lSQL += ", '" + txtDNNo.Text.ToString() + "'";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColDN.ItemID].Value.ToString() + "";
                     lSQL += ", '" + grd.Rows[dGVRow].Cells[(int)GColDN.Description].Value.ToString() + "'";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColDN.SizeID].Value.ToString() + "";
@@ -986,6 +994,30 @@ namespace GUI_Task
 
             lblTotal.Text = String.Format("{0:0,0.00}", fAmount);
         }
+
+        private void ClearTextBoxes()
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                        (control as TextBox).Clear();
+                    else
+                        func(control.Controls);
+            };
+
+            func(Controls);
+        }
+
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            grd.Rows.Clear();
+            ClearTextBoxes();
+        }
+
+       
        
     }
 }

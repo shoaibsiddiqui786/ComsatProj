@@ -51,7 +51,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.optEnglishPrint = new System.Windows.Forms.RadioButton();
             this.optUrduPrint = new System.Windows.Forms.RadioButton();
-            this.btnNewOrd2 = new System.Windows.Forms.Button();
             this.btnUrduPrint2 = new System.Windows.Forms.Button();
             this.btnContView = new System.Windows.Forms.Button();
             this.btnOrdHelp = new System.Windows.Forms.Button();
@@ -114,9 +113,21 @@
             this.txtOrderNo = new System.Windows.Forms.TextBox();
             this.chkReadOnly = new System.Windows.Forms.CheckBox();
             this.grd = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SizeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ColorColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.UnitColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Disc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContRemQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrdUndelQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gBox = new System.Windows.Forms.GroupBox();
             this.lblAvailBal = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -161,18 +172,6 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Disc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContRemQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrdUndelQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -205,8 +204,6 @@
             // chkPrinter
             // 
             this.chkPrinter.AutoSize = true;
-            this.chkPrinter.Checked = true;
-            this.chkPrinter.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkPrinter.Location = new System.Drawing.Point(346, 488);
             this.chkPrinter.Name = "chkPrinter";
             this.chkPrinter.Size = new System.Drawing.Size(56, 17);
@@ -217,24 +214,25 @@
             // optGroupPrint
             // 
             this.optGroupPrint.AutoSize = true;
-            this.optGroupPrint.Checked = true;
             this.optGroupPrint.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optGroupPrint.Location = new System.Drawing.Point(186, 468);
             this.optGroupPrint.Name = "optGroupPrint";
             this.optGroupPrint.Size = new System.Drawing.Size(87, 19);
             this.optGroupPrint.TabIndex = 598;
-            this.optGroupPrint.TabStop = true;
             this.optGroupPrint.Text = "Group Print";
             this.optGroupPrint.UseVisualStyleBackColor = true;
+            this.optGroupPrint.Visible = false;
             // 
             // lblDetailPrint
             // 
             this.lblDetailPrint.AutoSize = true;
+            this.lblDetailPrint.Checked = true;
             this.lblDetailPrint.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDetailPrint.Location = new System.Drawing.Point(287, 467);
             this.lblDetailPrint.Name = "lblDetailPrint";
             this.lblDetailPrint.Size = new System.Drawing.Size(85, 19);
             this.lblDetailPrint.TabIndex = 597;
+            this.lblDetailPrint.TabStop = true;
             this.lblDetailPrint.Text = "Detail Print";
             this.lblDetailPrint.UseVisualStyleBackColor = true;
             // 
@@ -248,6 +246,7 @@
             this.optOrderWiseDoStatus.TabIndex = 596;
             this.optOrderWiseDoStatus.Text = "OrderWise Do Status";
             this.optOrderWiseDoStatus.UseVisualStyleBackColor = true;
+            this.optOrderWiseDoStatus.Visible = false;
             // 
             // optOrderProdProgDZN
             // 
@@ -259,6 +258,7 @@
             this.optOrderProdProgDZN.TabIndex = 595;
             this.optOrderProdProgDZN.Text = "Order,Production Progress(DZN)";
             this.optOrderProdProgDZN.UseVisualStyleBackColor = true;
+            this.optOrderProdProgDZN.Visible = false;
             // 
             // optOrderProdProcPair
             // 
@@ -270,6 +270,7 @@
             this.optOrderProdProcPair.TabIndex = 594;
             this.optOrderProdProcPair.Text = "Order,Production Progress(Pair)";
             this.optOrderProdProcPair.UseVisualStyleBackColor = true;
+            this.optOrderProdProcPair.Visible = false;
             // 
             // optOrderProdProcDZNBatch
             // 
@@ -281,6 +282,7 @@
             this.optOrderProdProcDZNBatch.TabIndex = 593;
             this.optOrderProdProcDZNBatch.Text = "Order,Production Progress(DZN) batch";
             this.optOrderProdProcDZNBatch.UseVisualStyleBackColor = true;
+            this.optOrderProdProcDZNBatch.Visible = false;
             // 
             // optOrderProdprogDZNBatchPair
             // 
@@ -292,6 +294,7 @@
             this.optOrderProdprogDZNBatchPair.TabIndex = 592;
             this.optOrderProdprogDZNBatchPair.Text = "Order,Production Progress(DZN) batch Pair";
             this.optOrderProdprogDZNBatchPair.UseVisualStyleBackColor = true;
+            this.optOrderProdprogDZNBatchPair.Visible = false;
             // 
             // txtDiscountRs
             // 
@@ -437,6 +440,7 @@
             this.optEnglishPrint.TabIndex = 576;
             this.optEnglishPrint.Text = "English Print";
             this.optEnglishPrint.UseVisualStyleBackColor = true;
+            this.optEnglishPrint.Visible = false;
             // 
             // optUrduPrint
             // 
@@ -448,16 +452,7 @@
             this.optUrduPrint.TabIndex = 575;
             this.optUrduPrint.Text = "Urdu Print";
             this.optUrduPrint.UseVisualStyleBackColor = true;
-            // 
-            // btnNewOrd2
-            // 
-            this.btnNewOrd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewOrd2.Location = new System.Drawing.Point(1, 463);
-            this.btnNewOrd2.Name = "btnNewOrd2";
-            this.btnNewOrd2.Size = new System.Drawing.Size(84, 25);
-            this.btnNewOrd2.TabIndex = 574;
-            this.btnNewOrd2.Text = "New Order";
-            this.btnNewOrd2.UseVisualStyleBackColor = true;
+            this.optUrduPrint.Visible = false;
             // 
             // btnUrduPrint2
             // 
@@ -529,6 +524,7 @@
             this.btnDeliveryOrd.TabIndex = 567;
             this.btnDeliveryOrd.Text = "Delivery Order";
             this.btnDeliveryOrd.UseVisualStyleBackColor = true;
+            this.btnDeliveryOrd.Visible = false;
             // 
             // btnNewOrd
             // 
@@ -549,6 +545,7 @@
             this.btnGetBal.TabIndex = 565;
             this.btnGetBal.Text = "Get Balance";
             this.btnGetBal.UseVisualStyleBackColor = true;
+            this.btnGetBal.Visible = false;
             // 
             // btnExit
             // 
@@ -572,6 +569,7 @@
             this.chkRate.TabIndex = 578;
             this.chkRate.Text = "Rate";
             this.chkRate.UseVisualStyleBackColor = true;
+            this.chkRate.Visible = false;
             // 
             // chkEdit
             // 
@@ -605,6 +603,7 @@
             this.btnUrduPrint.TabIndex = 564;
             this.btnUrduPrint.Text = "Urdu Printing";
             this.btnUrduPrint.UseVisualStyleBackColor = true;
+            this.btnUrduPrint.Visible = false;
             // 
             // lblBalance
             // 
@@ -744,7 +743,6 @@
             this.mskCustomerCode.Name = "mskCustomerCode";
             this.mskCustomerCode.Size = new System.Drawing.Size(158, 22);
             this.mskCustomerCode.TabIndex = 11;
-            //this.mskCustomerCode.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskCustomerCode_MaskInputRejected);
             this.mskCustomerCode.DoubleClick += new System.EventHandler(this.mskCustomerCode_DoubleClick);
             // 
             // label34
@@ -971,6 +969,7 @@
             this.groupBox4.Size = new System.Drawing.Size(146, 51);
             this.groupBox4.TabIndex = 530;
             this.groupBox4.TabStop = false;
+            this.groupBox4.Visible = false;
             // 
             // label9
             // 
@@ -1138,6 +1137,7 @@
             this.optOrderProdProcProgBatchDept.TabIndex = 602;
             this.optOrderProdProcProgBatchDept.Text = "Order,Production Progress Batch Dept.";
             this.optOrderProdProcProgBatchDept.UseVisualStyleBackColor = true;
+            this.optOrderProdProcProgBatchDept.Visible = false;
             // 
             // txtOrderNo
             // 
@@ -1157,6 +1157,7 @@
             this.chkReadOnly.Size = new System.Drawing.Size(128, 20);
             this.chkReadOnly.TabIndex = 605;
             this.chkReadOnly.Text = "Read Only Cells";
+            this.chkReadOnly.Visible = false;
             // 
             // grd
             // 
@@ -1185,6 +1186,30 @@
             this.grd.Name = "grd";
             this.grd.Size = new System.Drawing.Size(961, 153);
             this.grd.TabIndex = 22;
+            // 
+            // Column1
+            // 
+            this.Column1.Frozen = true;
+            this.Column1.HeaderText = "Code";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 57;
+            // 
+            // Column2
+            // 
+            this.Column2.Frozen = true;
+            this.Column2.HeaderText = "Item Code";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 80;
+            // 
+            // Column3
+            // 
+            this.Column3.Frozen = true;
+            this.Column3.HeaderText = "Name";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 60;
             // 
             // SizeColumn
             // 
@@ -1218,6 +1243,78 @@
             this.UnitColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.UnitColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.UnitColumn.Width = 51;
+            // 
+            // Disc
+            // 
+            this.Disc.Frozen = true;
+            this.Disc.HeaderText = "Disc.";
+            this.Disc.Name = "Disc";
+            this.Disc.ReadOnly = true;
+            this.Disc.Width = 56;
+            // 
+            // ContQty
+            // 
+            this.ContQty.Frozen = true;
+            this.ContQty.HeaderText = "Cont.Qty";
+            this.ContQty.Name = "ContQty";
+            this.ContQty.ReadOnly = true;
+            this.ContQty.Width = 73;
+            // 
+            // Column9
+            // 
+            this.Column9.Frozen = true;
+            this.Column9.HeaderText = "Order Qty";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Width = 77;
+            // 
+            // ContRemQty
+            // 
+            this.ContRemQty.Frozen = true;
+            this.ContRemQty.HeaderText = "Cont.Rem.Qty";
+            this.ContRemQty.Name = "ContRemQty";
+            this.ContRemQty.ReadOnly = true;
+            this.ContRemQty.Width = 98;
+            // 
+            // Column11
+            // 
+            this.Column11.Frozen = true;
+            this.Column11.HeaderText = "Del. Qty";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Width = 70;
+            // 
+            // OrdUndelQty
+            // 
+            this.OrdUndelQty.Frozen = true;
+            this.OrdUndelQty.HeaderText = "Ord.UnDel.Qty";
+            this.OrdUndelQty.Name = "OrdUndelQty";
+            this.OrdUndelQty.ReadOnly = true;
+            this.OrdUndelQty.Width = 101;
+            // 
+            // Rate
+            // 
+            this.Rate.Frozen = true;
+            this.Rate.HeaderText = "Rate";
+            this.Rate.Name = "Rate";
+            this.Rate.ReadOnly = true;
+            this.Rate.Width = 55;
+            // 
+            // Amount
+            // 
+            this.Amount.Frozen = true;
+            this.Amount.HeaderText = "Amount";
+            this.Amount.Name = "Amount";
+            this.Amount.ReadOnly = true;
+            this.Amount.Width = 68;
+            // 
+            // Column8
+            // 
+            this.Column8.Frozen = true;
+            this.Column8.HeaderText = "Available Bal.";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 96;
             // 
             // gBox
             // 
@@ -1305,7 +1402,6 @@
             this.cbo_I_Color.Name = "cbo_I_Color";
             this.cbo_I_Color.Size = new System.Drawing.Size(120, 21);
             this.cbo_I_Color.TabIndex = 7;
-           // this.cbo_I_Color.SelectedIndexChanged += new System.EventHandler(this.cbo_I_Color_SelectedIndexChanged);
             this.cbo_I_Color.Click += new System.EventHandler(this.cbo_I_Color_Click);
             // 
             // cbo_I_Size
@@ -1496,7 +1592,7 @@
             // cmdSave
             // 
             this.cmdSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdSave.Location = new System.Drawing.Point(745, 548);
+            this.cmdSave.Location = new System.Drawing.Point(1, 464);
             this.cmdSave.Name = "cmdSave";
             this.cmdSave.Size = new System.Drawing.Size(84, 25);
             this.cmdSave.TabIndex = 608;
@@ -1685,102 +1781,6 @@
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
             this.dataGridViewTextBoxColumn12.Width = 97;
             // 
-            // Column1
-            // 
-            this.Column1.Frozen = true;
-            this.Column1.HeaderText = "Code";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 57;
-            // 
-            // Column2
-            // 
-            this.Column2.Frozen = true;
-            this.Column2.HeaderText = "Item Code";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 80;
-            // 
-            // Column3
-            // 
-            this.Column3.Frozen = true;
-            this.Column3.HeaderText = "Name";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 60;
-            // 
-            // Disc
-            // 
-            this.Disc.Frozen = true;
-            this.Disc.HeaderText = "Disc.";
-            this.Disc.Name = "Disc";
-            this.Disc.ReadOnly = true;
-            this.Disc.Width = 56;
-            // 
-            // ContQty
-            // 
-            this.ContQty.Frozen = true;
-            this.ContQty.HeaderText = "Cont.Qty";
-            this.ContQty.Name = "ContQty";
-            this.ContQty.ReadOnly = true;
-            this.ContQty.Width = 73;
-            // 
-            // Column9
-            // 
-            this.Column9.Frozen = true;
-            this.Column9.HeaderText = "Order Qty";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Width = 77;
-            // 
-            // ContRemQty
-            // 
-            this.ContRemQty.Frozen = true;
-            this.ContRemQty.HeaderText = "Cont.Rem.Qty";
-            this.ContRemQty.Name = "ContRemQty";
-            this.ContRemQty.ReadOnly = true;
-            this.ContRemQty.Width = 98;
-            // 
-            // Column11
-            // 
-            this.Column11.Frozen = true;
-            this.Column11.HeaderText = "Del. Qty";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            this.Column11.Width = 70;
-            // 
-            // OrdUndelQty
-            // 
-            this.OrdUndelQty.Frozen = true;
-            this.OrdUndelQty.HeaderText = "Ord.UnDel.Qty";
-            this.OrdUndelQty.Name = "OrdUndelQty";
-            this.OrdUndelQty.ReadOnly = true;
-            this.OrdUndelQty.Width = 101;
-            // 
-            // Rate
-            // 
-            this.Rate.Frozen = true;
-            this.Rate.HeaderText = "Rate";
-            this.Rate.Name = "Rate";
-            this.Rate.ReadOnly = true;
-            this.Rate.Width = 55;
-            // 
-            // Amount
-            // 
-            this.Amount.Frozen = true;
-            this.Amount.HeaderText = "Amount";
-            this.Amount.Name = "Amount";
-            this.Amount.ReadOnly = true;
-            this.Amount.Width = 68;
-            // 
-            // Column8
-            // 
-            this.Column8.Frozen = true;
-            this.Column8.HeaderText = "Available Bal.";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Width = 96;
-            // 
             // dataGridViewTextBoxColumn13
             // 
             this.dataGridViewTextBoxColumn13.Frozen = true;
@@ -1838,7 +1838,6 @@
             this.Controls.Add(this.label17);
             this.Controls.Add(this.optEnglishPrint);
             this.Controls.Add(this.optUrduPrint);
-            this.Controls.Add(this.btnNewOrd2);
             this.Controls.Add(this.btnUrduPrint2);
             this.Controls.Add(this.btnContView);
             this.Controls.Add(this.btnOrdHelp);
@@ -1940,7 +1939,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.RadioButton optEnglishPrint;
         private System.Windows.Forms.RadioButton optUrduPrint;
-        private System.Windows.Forms.Button btnNewOrd2;
         private System.Windows.Forms.Button btnUrduPrint2;
         private System.Windows.Forms.Button btnContView;
         private System.Windows.Forms.Button btnOrdHelp;

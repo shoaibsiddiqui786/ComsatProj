@@ -306,6 +306,7 @@
             this.Controls.Add(this.fillToolStrip);
             this.Controls.Add(this.dsItemsBindingNavigator);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmItemsHelpAuto";
             this.Text = "Items Help";
             this.Load += new System.EventHandler(this.frmItemsHelpAuto_Load);

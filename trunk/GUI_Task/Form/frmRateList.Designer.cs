@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRateList));
             this.btnStart = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnExit = new System.Windows.Forms.Button();
@@ -134,6 +135,7 @@
             this.Controls.Add(this.optItemChargesRate);
             this.Controls.Add(this.optRatePair);
             this.Controls.Add(this.optRateDozen);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "frmRateList";
             this.Text = "Items Rate List";

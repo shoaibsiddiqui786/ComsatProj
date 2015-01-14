@@ -29,6 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCategoryDescription));
             this.cboCategory = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -122,7 +123,6 @@
             this.lblName.TabIndex = 9;
             this.lblName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblName.Visible = false;
-           // this.lblName.Click += new System.EventHandler(this.lblName_Click);
             // 
             // lblGLName
             // 
@@ -309,6 +309,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.cboCategory);
             this.Controls.Add(this.label5);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "frmCategoryDescription";
             this.Text = "Category Description";
