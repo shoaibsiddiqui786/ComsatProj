@@ -61,6 +61,8 @@ namespace GUI_Task
         bool blnFormLoad = true;
         int fcboDefaultValue = 0;
 
+        string strDocId = string.Empty;
+
         public frmItemCodeDes()
         {
             InitializeComponent();
@@ -127,8 +129,9 @@ namespace GUI_Task
             string tSQL = string.Empty;
 
             // Fields 0,1,2,3 are Begin  
-            tSQL =  "SELECT i.ItemId, i.ItemCode, i.Name, u.UnitName, i.MinLevel, i.MaxLevel, i.StockLevel, i.CreatedDate, i.UrduItemName, i.UrduItemUnit ";
-            tSQL += "from Item i INNER JOIN IMS_UOM u ON i.UOMId = u.UOMID ";
+            tSQL =  " SELECT i.ItemId, i.ItemCode, i.Name, u.UnitName, i.MinLevel, i.MaxLevel, i.StockLevel, i.CreatedDate, i.UrduItemName, i.UrduItemUnit ";
+            tSQL += " from Item i INNER JOIN IMS_UOM u ON i.UOMId = u.UOMID ";
+            tSQL += " where ItemId = " + txtItemID.Text.ToString() + "";
 
             try
             {
@@ -137,8 +140,8 @@ namespace GUI_Task
                 {
                     dRow = ds.Tables[0].Rows[0];
                     txtItemID.Text = (ds.Tables[0].Rows[0]["ItemId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ItemId"].ToString());
-                    lbl_I_ItemCode.Text = (ds.Tables[0].Rows[0]["ItemCode"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ItemCode"].ToString());
-                    lbl_I_ItemName.Text = (ds.Tables[0].Rows[0]["Name"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Name"].ToString());
+                    txtItemCode.Text = (ds.Tables[0].Rows[0]["ItemCode"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ItemCode"].ToString());
+                    txtItemName.Text = (ds.Tables[0].Rows[0]["Name"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Name"].ToString());
                     cboUnit.Text = (ds.Tables[0].Rows[0]["UnitName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["UnitName"].ToString());
                     txtMinLevel.Text = (ds.Tables[0].Rows[0]["MinLevel"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["MinLevel"].ToString());
                     txtMaxLevel.Text = (ds.Tables[0].Rows[0]["MaxLevel"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["MaxLevel"].ToString());
@@ -424,13 +427,16 @@ namespace GUI_Task
                 if (txtItemID.Text.ToString().Trim(' ', '-') == "")
                 {
                     fDocAlreadyExists = false;
+                    fDocID = fDocID + 1;
+                    strDocId = fDocID.ToString();
+                    txtItemID.Text = strDocId;
                     fDocID = clsDbManager.GetNextValDocID("Item", "ItemId", fDocWhere, "");
 
                     lSQL = "insert into Item (";
-                    lSQL += "  ItemId ";                // ItemID                 
-                    lSQL += ", ItemGroupId ";           // ItemGoupId             
+                    lSQL += "  ItemId ";                 // ItemID                 
+                    lSQL += ", ItemGroupId ";           // ItemGoupId 
                     lSQL += ", ItemCode ";              // ItemCode
-                    lSQL += ", ItemName ";              // ItemName             
+                    lSQL += ", Name ";              // ItemName             
                     lSQL += ", UOMId ";                 // UOMId             
                     lSQL += ", MinLevel ";              // MinLevel             
                     lSQL += ", MaxLevel ";              // MaxLevel             
@@ -441,17 +447,16 @@ namespace GUI_Task
                     lSQL += ", GLCode ";                // GLCode
                     lSQL += " ) values (";
                     //                                                       
-                    lSQL += "'" + fDocID.ToString() + "'";                         
-                    lSQL += ",'" + txtItemID.Text.ToString() + "";                 
-                    lSQL += ", " + cboItemGroup.SelectedValue.ToString() + "";     
-                    lSQL += ", " + lbl_I_ItemCode.Text.ToString();                 
-                    lSQL += ",'" + lbl_I_ItemName.Text.ToString() + "'";           
+                    lSQL += "" + fDocID.ToString() + "";
+                    lSQL += ", " + cboItemGroup.SelectedValue.ToString() + "";
+                    lSQL += ",'" + txtItemCode.Text.ToString() + "'";
+                    lSQL += ",'" + txtItemName.Text.ToString() + "'";           
                     lSQL += ", " + cboUnit.SelectedValue.ToString() + "";          
                     lSQL += ", " + txtMinLevel.Text.ToString();                    
                     lSQL += ", " + txtMaxLevel.Text.ToString();                    
                     lSQL += ", " + txtStockLevel.Text.ToString();                  
-                    lSQL += ", " + txtUrduItemName.Text.ToString();                
-                    lSQL += ", " + txtUrduItemUnit.Text.ToString();
+                    lSQL += ",'" + txtUrduItemName.Text.ToString() + "'";                
+                    lSQL += ",'" + txtUrduItemUnit.Text.ToString() + "'";
                     lSQL += ", " + StrF01.D2Str(dtpCreatedDate) + "";
                     lSQL += ", " + txtGLCode.Text.ToString() + "";
                     lSQL += ")";                                                   
@@ -466,7 +471,7 @@ namespace GUI_Task
                     }
 
                     lSQL = "update Item set";
-                    lSQL += "  ItemId = '" + txtItemID.Text.ToString() + "'";                // ItemID        
+                    lSQL += "  ItemId = " + txtItemID.Text.ToString() + "";                // ItemID        
                     lSQL += ", ItemGroupID = " + cboItemGroup.SelectedValue.ToString() + "";  // ItemGroupId   
                     lSQL += ", UOMId = " + cboUnit.SelectedValue.ToString() + "";             // UOMId         
                     lSQL += ", MinLevel = " + txtMinLevel.Text.ToString() + "";            // MinLevel      

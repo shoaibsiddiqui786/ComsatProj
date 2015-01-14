@@ -108,6 +108,21 @@
             this.txtInvRetNo = new System.Windows.Forms.TextBox();
             this.tbd = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.gBox = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtRetQty = new System.Windows.Forms.TextBox();
+            this.cboGodown = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.cbo_I_Color = new System.Windows.Forms.ComboBox();
+            this.cbo_I_Size = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.lbl_I_ItemName = new System.Windows.Forms.Label();
+            this.lbl_I_ItemCode = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txt_I_ItemID = new System.Windows.Forms.TextBox();
             this.sSMaster = new System.Windows.Forms.StatusStrip();
             this.tSlblUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.tStextUser = new System.Windows.Forms.ToolStripStatusLabel();
@@ -141,28 +156,13 @@
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.txt_I_ItemID = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.lbl_I_ItemCode = new System.Windows.Forms.Label();
-            this.lbl_I_ItemName = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.cbo_I_Size = new System.Windows.Forms.ComboBox();
-            this.cbo_I_Color = new System.Windows.Forms.ComboBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cboGodown = new System.Windows.Forms.ComboBox();
-            this.txtRetQty = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.gBox = new System.Windows.Forms.GroupBox();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.tbd.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.sSMaster.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.gBox.SuspendLayout();
+            this.sSMaster.SuspendLayout();
             this.SuspendLayout();
             // 
             // radioButton5
@@ -888,6 +888,7 @@
             this.btnNewInv.TabIndex = 679;
             this.btnNewInv.Text = "New Invoice ";
             this.btnNewInv.UseVisualStyleBackColor = true;
+            this.btnNewInv.Click += new System.EventHandler(this.btnNewInv_Click);
             // 
             // btnDOView
             // 
@@ -1049,6 +1050,192 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "GridView";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tabPage2.Controls.Add(this.gBox);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(972, 244);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Insert New";
+            // 
+            // gBox
+            // 
+            this.gBox.Controls.Add(this.label10);
+            this.gBox.Controls.Add(this.txtRetQty);
+            this.gBox.Controls.Add(this.cboGodown);
+            this.gBox.Controls.Add(this.label6);
+            this.gBox.Controls.Add(this.btnAdd);
+            this.gBox.Controls.Add(this.cbo_I_Color);
+            this.gBox.Controls.Add(this.cbo_I_Size);
+            this.gBox.Controls.Add(this.label12);
+            this.gBox.Controls.Add(this.label14);
+            this.gBox.Controls.Add(this.lbl_I_ItemName);
+            this.gBox.Controls.Add(this.lbl_I_ItemCode);
+            this.gBox.Controls.Add(this.label19);
+            this.gBox.Controls.Add(this.txt_I_ItemID);
+            this.gBox.Location = new System.Drawing.Point(22, 32);
+            this.gBox.Name = "gBox";
+            this.gBox.Size = new System.Drawing.Size(899, 147);
+            this.gBox.TabIndex = 27;
+            this.gBox.TabStop = false;
+            this.gBox.Text = "Input Entry";
+            // 
+            // label10
+            // 
+            this.label10.AllowDrop = true;
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label10.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label10.Location = new System.Drawing.Point(262, 62);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(83, 21);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "Ret Qty";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txtRetQty
+            // 
+            this.txtRetQty.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRetQty.Location = new System.Drawing.Point(351, 62);
+            this.txtRetQty.Name = "txtRetQty";
+            this.txtRetQty.Size = new System.Drawing.Size(76, 21);
+            this.txtRetQty.TabIndex = 6;
+            // 
+            // cboGodown
+            // 
+            this.cboGodown.FormattingEnabled = true;
+            this.cboGodown.Items.AddRange(new object[] {
+            ""});
+            this.cboGodown.Location = new System.Drawing.Point(105, 62);
+            this.cboGodown.Name = "cboGodown";
+            this.cboGodown.Size = new System.Drawing.Size(151, 21);
+            this.cboGodown.TabIndex = 5;
+            // 
+            // label6
+            // 
+            this.label6.AllowDrop = true;
+            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label6.Location = new System.Drawing.Point(17, 63);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(82, 21);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Godown";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(342, 96);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(54, 21);
+            this.btnAdd.TabIndex = 7;
+            this.btnAdd.Text = "&Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // cbo_I_Color
+            // 
+            this.cbo_I_Color.FormattingEnabled = true;
+            this.cbo_I_Color.Items.AddRange(new object[] {
+            ""});
+            this.cbo_I_Color.Location = new System.Drawing.Point(765, 28);
+            this.cbo_I_Color.Name = "cbo_I_Color";
+            this.cbo_I_Color.Size = new System.Drawing.Size(128, 21);
+            this.cbo_I_Color.TabIndex = 4;
+            // 
+            // cbo_I_Size
+            // 
+            this.cbo_I_Size.FormattingEnabled = true;
+            this.cbo_I_Size.Items.AddRange(new object[] {
+            ""});
+            this.cbo_I_Size.Location = new System.Drawing.Point(575, 28);
+            this.cbo_I_Size.Name = "cbo_I_Size";
+            this.cbo_I_Size.Size = new System.Drawing.Size(130, 21);
+            this.cbo_I_Size.TabIndex = 3;
+            // 
+            // label12
+            // 
+            this.label12.AllowDrop = true;
+            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label12.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label12.Location = new System.Drawing.Point(520, 29);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(49, 21);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "Size";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label14
+            // 
+            this.label14.AllowDrop = true;
+            this.label14.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label14.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label14.Location = new System.Drawing.Point(711, 28);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(48, 21);
+            this.label14.TabIndex = 6;
+            this.label14.Text = "Color";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lbl_I_ItemName
+            // 
+            this.lbl_I_ItemName.AllowDrop = true;
+            this.lbl_I_ItemName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.lbl_I_ItemName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbl_I_ItemName.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_I_ItemName.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lbl_I_ItemName.Location = new System.Drawing.Point(291, 29);
+            this.lbl_I_ItemName.Name = "lbl_I_ItemName";
+            this.lbl_I_ItemName.Size = new System.Drawing.Size(218, 21);
+            this.lbl_I_ItemName.TabIndex = 3;
+            this.lbl_I_ItemName.Text = "Item Name";
+            this.lbl_I_ItemName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lbl_I_ItemCode
+            // 
+            this.lbl_I_ItemCode.AllowDrop = true;
+            this.lbl_I_ItemCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.lbl_I_ItemCode.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbl_I_ItemCode.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_I_ItemCode.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lbl_I_ItemCode.Location = new System.Drawing.Point(185, 29);
+            this.lbl_I_ItemCode.Name = "lbl_I_ItemCode";
+            this.lbl_I_ItemCode.Size = new System.Drawing.Size(100, 21);
+            this.lbl_I_ItemCode.TabIndex = 2;
+            this.lbl_I_ItemCode.Text = "Item Code";
+            this.lbl_I_ItemCode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label19
+            // 
+            this.label19.AllowDrop = true;
+            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label19.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label19.Location = new System.Drawing.Point(14, 29);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(83, 21);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "Item ID";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txt_I_ItemID
+            // 
+            this.txt_I_ItemID.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_I_ItemID.Location = new System.Drawing.Point(103, 29);
+            this.txt_I_ItemID.Name = "txt_I_ItemID";
+            this.txt_I_ItemID.Size = new System.Drawing.Size(76, 21);
+            this.txt_I_ItemID.TabIndex = 1;
+            this.txt_I_ItemID.Text = "1";
+            this.txt_I_ItemID.DoubleClick += new System.EventHandler(this.txt_I_ItemID_DoubleClick);
+            this.txt_I_ItemID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_I_ItemID_KeyDown);
             // 
             // sSMaster
             // 
@@ -1320,192 +1507,6 @@
             this.Column12.ReadOnly = true;
             this.Column12.Width = 96;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.tabPage2.Controls.Add(this.gBox);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(972, 244);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Insert New";
-            // 
-            // txt_I_ItemID
-            // 
-            this.txt_I_ItemID.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_I_ItemID.Location = new System.Drawing.Point(103, 29);
-            this.txt_I_ItemID.Name = "txt_I_ItemID";
-            this.txt_I_ItemID.Size = new System.Drawing.Size(76, 21);
-            this.txt_I_ItemID.TabIndex = 1;
-            this.txt_I_ItemID.Text = "1";
-            this.txt_I_ItemID.DoubleClick += new System.EventHandler(this.txt_I_ItemID_DoubleClick);
-            this.txt_I_ItemID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_I_ItemID_KeyDown);
-            // 
-            // label19
-            // 
-            this.label19.AllowDrop = true;
-            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label19.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label19.Location = new System.Drawing.Point(14, 29);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(83, 21);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "Item ID";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lbl_I_ItemCode
-            // 
-            this.lbl_I_ItemCode.AllowDrop = true;
-            this.lbl_I_ItemCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.lbl_I_ItemCode.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbl_I_ItemCode.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_I_ItemCode.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbl_I_ItemCode.Location = new System.Drawing.Point(185, 29);
-            this.lbl_I_ItemCode.Name = "lbl_I_ItemCode";
-            this.lbl_I_ItemCode.Size = new System.Drawing.Size(100, 21);
-            this.lbl_I_ItemCode.TabIndex = 2;
-            this.lbl_I_ItemCode.Text = "Item Code";
-            this.lbl_I_ItemCode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lbl_I_ItemName
-            // 
-            this.lbl_I_ItemName.AllowDrop = true;
-            this.lbl_I_ItemName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.lbl_I_ItemName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbl_I_ItemName.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_I_ItemName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbl_I_ItemName.Location = new System.Drawing.Point(291, 29);
-            this.lbl_I_ItemName.Name = "lbl_I_ItemName";
-            this.lbl_I_ItemName.Size = new System.Drawing.Size(218, 21);
-            this.lbl_I_ItemName.TabIndex = 3;
-            this.lbl_I_ItemName.Text = "Item Name";
-            this.lbl_I_ItemName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label14
-            // 
-            this.label14.AllowDrop = true;
-            this.label14.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label14.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label14.Location = new System.Drawing.Point(711, 28);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(48, 21);
-            this.label14.TabIndex = 6;
-            this.label14.Text = "Color";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label12
-            // 
-            this.label12.AllowDrop = true;
-            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label12.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label12.Location = new System.Drawing.Point(520, 29);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(49, 21);
-            this.label12.TabIndex = 4;
-            this.label12.Text = "Size";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // cbo_I_Size
-            // 
-            this.cbo_I_Size.FormattingEnabled = true;
-            this.cbo_I_Size.Items.AddRange(new object[] {
-            ""});
-            this.cbo_I_Size.Location = new System.Drawing.Point(575, 28);
-            this.cbo_I_Size.Name = "cbo_I_Size";
-            this.cbo_I_Size.Size = new System.Drawing.Size(130, 21);
-            this.cbo_I_Size.TabIndex = 3;
-            // 
-            // cbo_I_Color
-            // 
-            this.cbo_I_Color.FormattingEnabled = true;
-            this.cbo_I_Color.Items.AddRange(new object[] {
-            ""});
-            this.cbo_I_Color.Location = new System.Drawing.Point(765, 28);
-            this.cbo_I_Color.Name = "cbo_I_Color";
-            this.cbo_I_Color.Size = new System.Drawing.Size(128, 21);
-            this.cbo_I_Color.TabIndex = 4;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(342, 96);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(54, 21);
-            this.btnAdd.TabIndex = 7;
-            this.btnAdd.Text = "&Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // label6
-            // 
-            this.label6.AllowDrop = true;
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(17, 63);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(82, 21);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Godown";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // cboGodown
-            // 
-            this.cboGodown.FormattingEnabled = true;
-            this.cboGodown.Items.AddRange(new object[] {
-            ""});
-            this.cboGodown.Location = new System.Drawing.Point(105, 62);
-            this.cboGodown.Name = "cboGodown";
-            this.cboGodown.Size = new System.Drawing.Size(151, 21);
-            this.cboGodown.TabIndex = 5;
-            // 
-            // txtRetQty
-            // 
-            this.txtRetQty.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRetQty.Location = new System.Drawing.Point(351, 62);
-            this.txtRetQty.Name = "txtRetQty";
-            this.txtRetQty.Size = new System.Drawing.Size(76, 21);
-            this.txtRetQty.TabIndex = 6;
-            // 
-            // label10
-            // 
-            this.label10.AllowDrop = true;
-            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label10.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label10.Location = new System.Drawing.Point(262, 62);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(83, 21);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "Ret Qty";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // gBox
-            // 
-            this.gBox.Controls.Add(this.label10);
-            this.gBox.Controls.Add(this.txtRetQty);
-            this.gBox.Controls.Add(this.cboGodown);
-            this.gBox.Controls.Add(this.label6);
-            this.gBox.Controls.Add(this.btnAdd);
-            this.gBox.Controls.Add(this.cbo_I_Color);
-            this.gBox.Controls.Add(this.cbo_I_Size);
-            this.gBox.Controls.Add(this.label12);
-            this.gBox.Controls.Add(this.label14);
-            this.gBox.Controls.Add(this.lbl_I_ItemName);
-            this.gBox.Controls.Add(this.lbl_I_ItemCode);
-            this.gBox.Controls.Add(this.label19);
-            this.gBox.Controls.Add(this.txt_I_ItemID);
-            this.gBox.Location = new System.Drawing.Point(22, 32);
-            this.gBox.Name = "gBox";
-            this.gBox.Size = new System.Drawing.Size(899, 147);
-            this.gBox.TabIndex = 27;
-            this.gBox.TabStop = false;
-            this.gBox.Text = "Input Entry";
-            // 
             // frmSalesRtnEntry
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1587,11 +1588,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
             this.tbd.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.sSMaster.ResumeLayout(false);
-            this.sSMaster.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.gBox.ResumeLayout(false);
             this.gBox.PerformLayout();
+            this.sSMaster.ResumeLayout(false);
+            this.sSMaster.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

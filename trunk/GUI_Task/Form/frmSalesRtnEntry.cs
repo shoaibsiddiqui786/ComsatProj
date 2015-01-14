@@ -243,7 +243,29 @@ namespace GUI_Task
             lSQL += " INNER JOIN IMS_UOM u ON u.UOMID=u.UOMID ";
             lSQL += " INNER JOIN CatDtl gd ON gd.cgdCode=h.GodownID AND gd.cgCode = 2 ";
             lSQL += " INNER JOIN Inv_Det inv ON inv.Ord_No = h.Ord_No ";
-            lSQL += " where h.Ret_No = '" + txtInvRetNo.Text.ToString() + "' OR inv.Inv_No = '" + txtInvNo.Text.ToString() + "'; ";
+            lSQL += " where h.Ret_No = '" + txtInvRetNo.Text.ToString() + "'; ";
+
+            clsDbManager.FillDataGrid(
+                grd,
+                lSQL,
+                fFieldList,
+                fColFormat);
+        }
+
+        private void LoadGridData1()
+        {
+            string lSQL = "";
+            lSQL += " select h.Code, i.ItemCode, i.Name AS ItemName, sz.cgdDesc AS SizeName, ";
+            lSQL += " clr.cgdDesc AS ColorName, '' AS GodownName, h.Discount, ";
+            lSQL += " h.Ord_Qty AS InvQty, h.Qty AS RetQty, (isnull(h.Ord_Qty,0)-h.Qty) AS RemQty, ";
+            lSQL += " h.Rate, (h.Qty*h.Rate) AS Amount, h.SizeId, h.ColorID, 0 AS GodownID ";
+            lSQL += " from Inv_Hist h ";
+            lSQL += " INNER JOIN Item i ON h.Code=i.ItemId ";
+            lSQL += " INNER JOIN CatDtl sz ON h.SizeId=sz.cgdCode AND sz.cgCode=5 ";
+            lSQL += " INNER JOIN CatDtl clr ON h.ColorID=clr.cgdCode AND clr.cgCode = 3 ";
+            lSQL += " INNER JOIN IMS_UOM u ON u.UOMID=u.UOMID ";
+            lSQL += " INNER JOIN Inv_Det inv ON inv.Ord_No = h.Ord_No ";
+            lSQL += " where h.Inv_No = '" + txtInvNo.Text.ToString() + "'; ";
 
             clsDbManager.FillDataGrid(
                 grd,
@@ -447,7 +469,7 @@ namespace GUI_Task
                         ds.Clear();
                     }
                     //lblBillNo.Text = (ds.Tables[0].Rows[0]["BillNo"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["BillNo"].ToString());
-                    LoadGridData();
+                    LoadGridData1();
                     SumVoc();
                 }
             }
@@ -555,6 +577,7 @@ namespace GUI_Task
                     }
                     
                      LoadGridData();
+                     LoadGridData1();
                      SumVoc();
                     
                 }
@@ -1281,6 +1304,28 @@ namespace GUI_Task
 
             lblRetVal.Text = String.Format("{0:0,0.00}", fAmount);
             lblRetQty.Text = String.Format("{0:0,0.00}", fQty);
+        }
+
+        private void ClearTextBoxes()
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                        (control as TextBox).Clear();
+                    else
+                        func(control.Controls);
+            };
+
+            func(Controls);
+        }
+
+        private void btnNewInv_Click(object sender, EventArgs e)
+        {
+            grd.Rows.Clear();
+            ClearTextBoxes();
         }
     }                                                       
 }                                                           

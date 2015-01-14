@@ -32,8 +32,6 @@ namespace GUI_Task
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmItemCodeDes));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.lbl_I_ItemName = new System.Windows.Forms.Label();
-            this.lbl_I_ItemCode = new System.Windows.Forms.Label();
             this.btnDuplicateItems = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
@@ -76,6 +74,8 @@ namespace GUI_Task
             this.tStextTotal = new System.Windows.Forms.ToolStripStatusLabel();
             this.tSlblAlert = new System.Windows.Forms.ToolStripStatusLabel();
             this.textAlert = new System.Windows.Forms.ToolStripStatusLabel();
+            this.txtItemCode = new System.Windows.Forms.TextBox();
+            this.txtItemName = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.sSMaster.SuspendLayout();
@@ -93,9 +93,10 @@ namespace GUI_Task
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabPage1.Controls.Add(this.lbl_I_ItemName);
-            this.tabPage1.Controls.Add(this.lbl_I_ItemCode);
+            this.tabPage1.Controls.Add(this.txtItemName);
+            this.tabPage1.Controls.Add(this.txtItemCode);
             this.tabPage1.Controls.Add(this.btnDuplicateItems);
+            this.tabPage1.Controls.Add(this.btnAddNew);
             this.tabPage1.Controls.Add(this.btnReset);
             this.tabPage1.Controls.Add(this.btnHelp);
             this.tabPage1.Controls.Add(this.btnNewCode);
@@ -129,34 +130,6 @@ namespace GUI_Task
             this.tabPage1.Text = "Item Information";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
-            // lbl_I_ItemName
-            // 
-            this.lbl_I_ItemName.AllowDrop = true;
-            this.lbl_I_ItemName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.lbl_I_ItemName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbl_I_ItemName.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_I_ItemName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbl_I_ItemName.Location = new System.Drawing.Point(115, 60);
-            this.lbl_I_ItemName.Name = "lbl_I_ItemName";
-            this.lbl_I_ItemName.Size = new System.Drawing.Size(280, 21);
-            this.lbl_I_ItemName.TabIndex = 307;
-            this.lbl_I_ItemName.Text = "Item Name";
-            this.lbl_I_ItemName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lbl_I_ItemCode
-            // 
-            this.lbl_I_ItemCode.AllowDrop = true;
-            this.lbl_I_ItemCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.lbl_I_ItemCode.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbl_I_ItemCode.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_I_ItemCode.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbl_I_ItemCode.Location = new System.Drawing.Point(115, 35);
-            this.lbl_I_ItemCode.Name = "lbl_I_ItemCode";
-            this.lbl_I_ItemCode.Size = new System.Drawing.Size(167, 21);
-            this.lbl_I_ItemCode.TabIndex = 306;
-            this.lbl_I_ItemCode.Text = "Item Code";
-            this.lbl_I_ItemCode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // btnDuplicateItems
             // 
             this.btnDuplicateItems.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -166,6 +139,7 @@ namespace GUI_Task
             this.btnDuplicateItems.TabIndex = 305;
             this.btnDuplicateItems.Text = "Duplicat Items A/B/C";
             this.btnDuplicateItems.UseVisualStyleBackColor = true;
+            this.btnDuplicateItems.Visible = false;
             // 
             // btnReset
             // 
@@ -173,17 +147,18 @@ namespace GUI_Task
             this.btnReset.Location = new System.Drawing.Point(401, 30);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(90, 22);
-            this.btnReset.TabIndex = 304;
+            this.btnReset.TabIndex = 6;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Visible = false;
             // 
             // btnHelp
             // 
             this.btnHelp.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Location = new System.Drawing.Point(301, 6);
+            this.btnHelp.Location = new System.Drawing.Point(301, 8);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(94, 22);
-            this.btnHelp.TabIndex = 302;
+            this.btnHelp.TabIndex = 2;
             this.btnHelp.Text = "F1=Help";
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
@@ -191,19 +166,20 @@ namespace GUI_Task
             // btnNewCode
             // 
             this.btnNewCode.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewCode.Location = new System.Drawing.Point(401, 6);
+            this.btnNewCode.Location = new System.Drawing.Point(401, 59);
             this.btnNewCode.Name = "btnNewCode";
             this.btnNewCode.Size = new System.Drawing.Size(90, 22);
             this.btnNewCode.TabIndex = 301;
             this.btnNewCode.Text = "New Code";
             this.btnNewCode.UseVisualStyleBackColor = true;
+            this.btnNewCode.Visible = false;
             // 
             // txtItemID
             // 
             this.txtItemID.Location = new System.Drawing.Point(288, 33);
             this.txtItemID.Name = "txtItemID";
             this.txtItemID.Size = new System.Drawing.Size(107, 20);
-            this.txtItemID.TabIndex = 298;
+            this.txtItemID.TabIndex = 5;
             this.txtItemID.DoubleClick += new System.EventHandler(this.txtItemID_DoubleClick);
             this.txtItemID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtItemID_KeyDown);
             // 
@@ -213,14 +189,14 @@ namespace GUI_Task
             this.dtpCreatedDate.Location = new System.Drawing.Point(115, 192);
             this.dtpCreatedDate.Name = "dtpCreatedDate";
             this.dtpCreatedDate.Size = new System.Drawing.Size(131, 21);
-            this.dtpCreatedDate.TabIndex = 297;
+            this.dtpCreatedDate.TabIndex = 12;
             // 
             // txtGLCode
             // 
             this.txtGLCode.Location = new System.Drawing.Point(115, 275);
             this.txtGLCode.Name = "txtGLCode";
             this.txtGLCode.Size = new System.Drawing.Size(113, 20);
-            this.txtGLCode.TabIndex = 296;
+            this.txtGLCode.TabIndex = 15;
             this.txtGLCode.DoubleClick += new System.EventHandler(this.txtGLCode_DoubleClick);
             this.txtGLCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtGLCode_KeyDown);
             // 
@@ -229,42 +205,42 @@ namespace GUI_Task
             this.txtAccountName.Location = new System.Drawing.Point(234, 275);
             this.txtAccountName.Name = "txtAccountName";
             this.txtAccountName.Size = new System.Drawing.Size(270, 20);
-            this.txtAccountName.TabIndex = 295;
+            this.txtAccountName.TabIndex = 16;
             // 
             // txtUrduItemUnit
             // 
             this.txtUrduItemUnit.Location = new System.Drawing.Point(115, 248);
             this.txtUrduItemUnit.Name = "txtUrduItemUnit";
             this.txtUrduItemUnit.Size = new System.Drawing.Size(180, 20);
-            this.txtUrduItemUnit.TabIndex = 294;
+            this.txtUrduItemUnit.TabIndex = 14;
             // 
             // txtUrduItemName
             // 
             this.txtUrduItemName.Location = new System.Drawing.Point(115, 220);
             this.txtUrduItemName.Name = "txtUrduItemName";
             this.txtUrduItemName.Size = new System.Drawing.Size(180, 20);
-            this.txtUrduItemName.TabIndex = 293;
+            this.txtUrduItemName.TabIndex = 13;
             // 
             // txtMinLevel
             // 
             this.txtMinLevel.Location = new System.Drawing.Point(115, 111);
             this.txtMinLevel.Name = "txtMinLevel";
             this.txtMinLevel.Size = new System.Drawing.Size(131, 20);
-            this.txtMinLevel.TabIndex = 292;
+            this.txtMinLevel.TabIndex = 9;
             // 
             // txtMaxLevel
             // 
             this.txtMaxLevel.Location = new System.Drawing.Point(115, 140);
             this.txtMaxLevel.Name = "txtMaxLevel";
             this.txtMaxLevel.Size = new System.Drawing.Size(131, 20);
-            this.txtMaxLevel.TabIndex = 291;
+            this.txtMaxLevel.TabIndex = 10;
             // 
             // txtStockLevel
             // 
             this.txtStockLevel.Location = new System.Drawing.Point(115, 166);
             this.txtStockLevel.Name = "txtStockLevel";
             this.txtStockLevel.Size = new System.Drawing.Size(131, 20);
-            this.txtStockLevel.TabIndex = 290;
+            this.txtStockLevel.TabIndex = 11;
             // 
             // cboUnit
             // 
@@ -273,7 +249,7 @@ namespace GUI_Task
             this.cboUnit.Location = new System.Drawing.Point(115, 84);
             this.cboUnit.Name = "cboUnit";
             this.cboUnit.Size = new System.Drawing.Size(180, 21);
-            this.cboUnit.TabIndex = 78;
+            this.cboUnit.TabIndex = 8;
             // 
             // cboItemGroup
             // 
@@ -282,7 +258,7 @@ namespace GUI_Task
             this.cboItemGroup.Location = new System.Drawing.Point(115, 6);
             this.cboItemGroup.Name = "cboItemGroup";
             this.cboItemGroup.Size = new System.Drawing.Size(180, 21);
-            this.cboItemGroup.TabIndex = 77;
+            this.cboItemGroup.TabIndex = 1;
             // 
             // lblGLCode
             // 
@@ -455,7 +431,7 @@ namespace GUI_Task
             this.btnExit.Location = new System.Drawing.Point(454, 355);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(66, 22);
-            this.btnExit.TabIndex = 307;
+            this.btnExit.TabIndex = 18;
             this.btnExit.Text = "Esc=Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -463,10 +439,10 @@ namespace GUI_Task
             // btnAddNew
             // 
             this.btnAddNew.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNew.Location = new System.Drawing.Point(379, 355);
+            this.btnAddNew.Location = new System.Drawing.Point(401, 8);
             this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(69, 22);
-            this.btnAddNew.TabIndex = 308;
+            this.btnAddNew.Size = new System.Drawing.Size(90, 22);
+            this.btnAddNew.TabIndex = 3;
             this.btnAddNew.Text = "Add New ";
             this.btnAddNew.UseVisualStyleBackColor = true;
             // 
@@ -476,7 +452,7 @@ namespace GUI_Task
             this.btnSave.Location = new System.Drawing.Point(304, 355);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(69, 22);
-            this.btnSave.TabIndex = 309;
+            this.btnSave.TabIndex = 17;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -597,6 +573,24 @@ namespace GUI_Task
             this.textAlert.Text = "Ready";
             this.textAlert.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // txtItemCode
+            // 
+            this.txtItemCode.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtItemCode.Location = new System.Drawing.Point(115, 33);
+            this.txtItemCode.Name = "txtItemCode";
+            this.txtItemCode.Size = new System.Drawing.Size(167, 20);
+            this.txtItemCode.TabIndex = 4;
+            this.txtItemCode.Text = "Item Code";
+            // 
+            // txtItemName
+            // 
+            this.txtItemName.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtItemName.Location = new System.Drawing.Point(115, 59);
+            this.txtItemName.Name = "txtItemName";
+            this.txtItemName.Size = new System.Drawing.Size(280, 20);
+            this.txtItemName.TabIndex = 7;
+            this.txtItemName.Text = "Item Name";
+            // 
             // frmItemCodeDes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -605,7 +599,6 @@ namespace GUI_Task
             this.Controls.Add(this.sSMaster);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnUnselectAll);
             this.Controls.Add(this.btnSelectAll);
@@ -664,8 +657,6 @@ namespace GUI_Task
         private System.Windows.Forms.Button btnUnselectAll;
         private System.Windows.Forms.Button btnSelectAll;
         private System.Windows.Forms.Button btnResetForm;
-        private System.Windows.Forms.Label lbl_I_ItemName;
-        private System.Windows.Forms.Label lbl_I_ItemCode;
         private System.Windows.Forms.StatusStrip sSMaster;
         private System.Windows.Forms.ToolStripStatusLabel tSlblUser;
         private System.Windows.Forms.ToolStripStatusLabel tStextUser;
@@ -675,5 +666,7 @@ namespace GUI_Task
         private System.Windows.Forms.ToolStripStatusLabel tStextTotal;
         private System.Windows.Forms.ToolStripStatusLabel tSlblAlert;
         private System.Windows.Forms.ToolStripStatusLabel textAlert;
+        private System.Windows.Forms.TextBox txtItemName;
+        private System.Windows.Forms.TextBox txtItemCode;
     }
 }
