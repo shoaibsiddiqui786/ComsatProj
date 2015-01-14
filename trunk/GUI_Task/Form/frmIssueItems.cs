@@ -298,7 +298,7 @@ namespace GUI_Task
                         ds.Clear();
                         //btn_EnableDisable(true);
                     }
-                    //LoadGridData();
+                    LoadGridData();
                 }
             }
             catch
@@ -915,5 +915,11 @@ namespace GUI_Task
             SaveData();
             MessageBox.Show("Data Saved Successfullly");
         }
+
+        private void cboItemGroup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+  

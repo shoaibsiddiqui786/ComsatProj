@@ -617,14 +617,14 @@ namespace GUI_Task
 
             frmLookUp sForm = new frmLookUp(
                     "po.POId",
-                " po.Date, po.DNId, po.DNDate, e.first_name + ' ' + e.last_name AS EmployeeName, po.Note ",
-                " PO po inner join PoDetail pod on po.POId=pod.POId " +
-                "inner join PR_Employee e on po.EmployeeId=e.employeeid",
+                " po.Date, po.DNId, po.DNDate, po.Note ",
+                " PO po  " ,
+          //      "inner join PR_Employee e on po.EmployeeId=e.employeeid",
                     this.Text.ToString(),
                     1,
-                    "PO #, PO Date, DN #, DN Date, Employee Name, Note",
-                    "8,8,8,8,15,20",
-                    " T, T, T, T, T, T",
+                    "PO #, PO Date, DN #, DN Date, Note",
+                    "8,8,8,8,20",
+                    " T, T, T, T, T",
                     true,
                     "",
                 //"d.Category = " + cboMainGroup.SelectedValue.ToString(), 
@@ -705,8 +705,10 @@ namespace GUI_Task
                     dRow = ds.Tables[0].Rows[0];
                     // Starting title as 0
                     txtPONo.Text = (ds.Tables[0].Rows[0]["POId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["POId"].ToString());
-                    //dtpDate.Value = (ds.Tables[0].Rows[0]["Inv_Date"] == DBNull.Value ? DateTime.Now.ToString("T") : Convert.ToDateTime(ds.Tables[0].Rows[0]["Inv_Date"]));
-                    dtpPO.Value =  Convert.ToDateTime(ds.Tables[0].Rows[0]["Date"]);
+                    dtpPO.Text = (ds.Tables[0].Rows[0]["Date"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Date"].ToString());
+                    txtDNNo.Text = (ds.Tables[0].Rows[0]["DNId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["DNId"].ToString());
+                    //dtpPO.Value = (ds.Tables[0].Rows[0]["Date"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Date"].ToString());
+                    //dtpPO.Value =  Convert.ToDateTime(ds.Tables[0].Rows[0]["Date"]);
                     //txtDebitCode.Text = (ds.Tables[0].Rows[0]["Customer"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Customer"].ToString());
                     //lblDescription.Text = (ds.Tables[0].Rows[0]["CustomerName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["CustomerName"].ToString());
                     // txtStockLevelNo.Text = (ds.Tables[0].Rows[0]["StockLevel"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["StockLevel"].ToString());

@@ -3,8 +3,29 @@
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-        <Connections />
-        <Tables />
+        <Connections>
+          <Connection ConnectionStringObject="Data Source=(local);Initial Catalog=GUI_Task;Persist Security Info=True;User ID=sa;Password=smc786" IsAppSettingsProperty="false" Modifier="Assembly" Name="faizi.GUI_Task.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CatDtlTableAdapter" GeneratorDataComponentClassName="CatDtlTableAdapter" Name="CatDtl" UserDataComponentName="CatDtlTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="faizi.GUI_Task.dbo" DbObjectName="GUI_Task.dbo.CatDtl" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        cgdDesc AS Color
+FROM            CatDtl
+WHERE        (cgCode = 3)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Color" DataSetColumn="Color" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
         <Sources />
       </DataSource>
     </xs:appinfo>
@@ -12,11 +33,24 @@
   <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="dsSize" msprop:Generator_TableClassName="dsSizeDataTable" msprop:Generator_TableVarName="tabledsSize" msprop:Generator_TablePropName="dsSize" msprop:Generator_RowDeletingName="dsSizeRowDeleting" msprop:Generator_RowChangingName="dsSizeRowChanging" msprop:Generator_RowEvHandlerName="dsSizeRowChangeEventHandler" msprop:Generator_RowDeletedName="dsSizeRowDeleted" msprop:Generator_UserTableName="dsSize" msprop:Generator_RowChangedName="dsSizeRowChanged" msprop:Generator_RowEvArgName="dsSizeRowChangeEvent" msprop:Generator_RowClassName="dsSizeRow">
+        <xs:element name="dsSize" msprop:Generator_TableClassName="dsSizeDataTable" msprop:Generator_TableVarName="tabledsSize" msprop:Generator_RowChangedName="dsSizeRowChanged" msprop:Generator_TablePropName="dsSize" msprop:Generator_RowDeletingName="dsSizeRowDeleting" msprop:Generator_RowChangingName="dsSizeRowChanging" msprop:Generator_RowEvHandlerName="dsSizeRowChangeEventHandler" msprop:Generator_RowDeletedName="dsSizeRowDeleted" msprop:Generator_RowClassName="dsSizeRow" msprop:Generator_UserTableName="dsSize" msprop:Generator_RowEvArgName="dsSizeRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="SizeID" msprop:Generator_ColumnVarNameInTable="columnSizeID" msprop:Generator_ColumnPropNameInRow="SizeID" msprop:Generator_ColumnPropNameInTable="SizeIDColumn" msprop:Generator_UserColumnName="SizeID" type="xs:string" minOccurs="0" />
               <xs:element name="SizeName" msprop:Generator_ColumnVarNameInTable="columnSizeName" msprop:Generator_ColumnPropNameInRow="SizeName" msprop:Generator_ColumnPropNameInTable="SizeNameColumn" msprop:Generator_UserColumnName="SizeName" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CatDtl" msprop:Generator_TableClassName="CatDtlDataTable" msprop:Generator_TableVarName="tableCatDtl" msprop:Generator_TablePropName="CatDtl" msprop:Generator_RowDeletingName="CatDtlRowDeleting" msprop:Generator_RowChangingName="CatDtlRowChanging" msprop:Generator_RowEvHandlerName="CatDtlRowChangeEventHandler" msprop:Generator_RowDeletedName="CatDtlRowDeleted" msprop:Generator_UserTableName="CatDtl" msprop:Generator_RowChangedName="CatDtlRowChanged" msprop:Generator_RowEvArgName="CatDtlRowChangeEvent" msprop:Generator_RowClassName="CatDtlRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Color" msprop:Generator_ColumnVarNameInTable="columnColor" msprop:Generator_ColumnPropNameInRow="Color" msprop:Generator_ColumnPropNameInTable="ColorColumn" msprop:Generator_UserColumnName="Color" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

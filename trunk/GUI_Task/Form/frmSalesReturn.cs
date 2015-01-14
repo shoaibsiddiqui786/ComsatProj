@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using GUI_Task.Class;
+using GUI_Task.StringFun01;
+using GUI_Task.PrintVw6;
+using GUI_Task.PrintReport;
 
 namespace GUI_Task
 {
@@ -182,6 +185,195 @@ namespace GUI_Task
         private void mskCustCode_DoubleClick(object sender, EventArgs e)
         {
             LookUp_GL();
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            if (optItemWiseDetailSale.Checked == true)
+            { 
+               string fRptTitle = this.Text;
+                string plstField = "@FromDate,@ToDate,@CustCode,@ItemGroupID";
+                string plstType = "18,18,18,8"; // {"8, 8, 8, 8, 8, 8"};
+                string plstValue = StrF01.D2Str(this.dtpFromDate.Value) + "," +
+                    StrF01.D2Str(this.dtpToDate.Value) + "," + mskCustCode.Text.ToString() + "," + this.cboItemGrp.SelectedValue;
+
+                
+                DataSet pDs = new DataSet();
+                CrSaleDetCT rpt1 = new CrSaleDetCT();
+
+                frmPrintVw6 rptLedger2 = new frmPrintVw6(
+                   fRptTitle,
+                   StrF01.D2Str(this.dtpFromDate.Value),
+                   StrF01.D2Str(this.dtpToDate.Value),
+                   "sp_SalesDet",
+                   plstField,
+                   plstType,
+                   plstValue,
+                   pDs,
+                   rpt1,
+                   "SP"
+                   );
+
+                //rptLedger2.ShowDialog();
+                rptLedger2.Show(); 
+            }
+            else if (optSmryItemGrpCat.Checked == true)
+            {
+
+                string fRptTitle = this.Text;
+                string plstField = "@FromDate,@ToDate";
+                string plstType = "18,18"; // {"8, 8, 8, 8, 8, 8"};
+                string plstValue = StrF01.D2Str(this.dtpFromDate.Value) + "," +
+                    StrF01.D2Str(this.dtpToDate.Value) ;
+
+
+                DataSet pDs = new DataSet();
+                CrSalesRetSmryItemCT rpt1 = new CrSalesRetSmryItemCT();
+
+                frmPrintVw6 rptLedger2 = new frmPrintVw6(
+                   fRptTitle,
+                   StrF01.D2Str(this.dtpFromDate.Value),
+                   StrF01.D2Str(this.dtpToDate.Value),
+                   "sp_SalesRetSmryItem",
+                   plstField,
+                   plstType,
+                   plstValue,
+                   pDs,
+                   rpt1,
+                   "SP"
+                   );
+
+                //rptLedger2.ShowDialog();
+                rptLedger2.Show();
+            
+            
+            
+            }
+
+            else if (optItemGrpCatWise.Checked == true)
+            {
+                string fRptTitle = this.Text;
+                string plstField = "@FromDate,@ToDate";
+                string plstType = "18,18"; // {"8, 8, 8, 8, 8, 8"};
+                string plstValue = StrF01.D2Str(this.dtpFromDate.Value) + "," +
+                    StrF01.D2Str(this.dtpToDate.Value);
+
+
+                DataSet pDs = new DataSet();
+                CrSalesRetSmryItemGroupCT rpt1 = new CrSalesRetSmryItemGroupCT();
+
+                frmPrintVw6 rptLedger2 = new frmPrintVw6(
+                   fRptTitle,
+                   StrF01.D2Str(this.dtpFromDate.Value),
+                   StrF01.D2Str(this.dtpToDate.Value),
+                   "sp_SalesRetSmry",
+                   plstField,
+                   plstType,
+                   plstValue,
+                   pDs,
+                   rpt1,
+                   "SP"
+                   );
+
+                //rptLedger2.ShowDialog();
+                rptLedger2.Show();
+            
+            }
+             else if (optSalesRetSmryItemGrpCat.Checked == true)
+            {
+             string fRptTitle = this.Text;
+                string plstField = "@FromDate,@ToDate";
+                string plstType = "18,18"; // {"8, 8, 8, 8, 8, 8"};
+                string plstValue = StrF01.D2Str(this.dtpFromDate.Value) + "," +
+                    StrF01.D2Str(this.dtpToDate.Value);
+
+
+                DataSet pDs = new DataSet();
+                CrSalesRetSmryCT rpt1 = new CrSalesRetSmryCT();
+
+                frmPrintVw6 rptLedger2 = new frmPrintVw6(
+                   fRptTitle,
+                   StrF01.D2Str(this.dtpFromDate.Value),
+                   StrF01.D2Str(this.dtpToDate.Value),
+                   "sp_SalesRetSmry",
+                   plstField,
+                   plstType,
+                   plstValue,
+                   pDs,
+                   rpt1,
+                   "SP"
+                   );
+
+                //rptLedger2.ShowDialog();
+                rptLedger2.Show();
+            
+            
+            }
+            else if (optSalesRetSmryItemGrp.Checked == true)
+            {
+                string fRptTitle = this.Text;
+                string plstField = "@FromDate,@ToDate,@CustCode,@ItemGroupID";
+                string plstType = "18,18,18,8"; // {"8, 8, 8, 8, 8, 8"};
+                string plstValue = StrF01.D2Str(this.dtpFromDate.Value) + "," +
+                    StrF01.D2Str(this.dtpToDate.Value) + "," + mskCustCode.Text.ToString() + "," + this.cboItemGrp.SelectedValue;
+
+
+                DataSet pDs = new DataSet();
+                CrSalesSmryMainGroupCT rpt1 = new CrSalesSmryMainGroupCT();
+
+                frmPrintVw6 rptLedger2 = new frmPrintVw6(
+                   fRptTitle,
+                   StrF01.D2Str(this.dtpFromDate.Value),
+                   StrF01.D2Str(this.dtpToDate.Value),
+                   "sp_SalesSummery",
+                   plstField,
+                   plstType,
+                   plstValue,
+                   pDs,
+                   rpt1,
+                   "SP"
+                   );
+
+                //rptLedger2.ShowDialog();
+                rptLedger2.Show();
+            
+            
+            }
+
+            else if (optSalesRetItemSmry.Checked == true)
+            {
+                string fRptTitle = this.Text;
+                string plstField = "@FromDate,@ToDate,@CustCode,@ItemGroupID";
+                string plstType = "18,18,18,8"; // {"8, 8, 8, 8, 8, 8"};
+                string plstValue = StrF01.D2Str(this.dtpFromDate.Value) + "," +
+                    StrF01.D2Str(this.dtpToDate.Value) + "," + mskCustCode.Text.ToString() + "," + this.cboItemGrp.SelectedValue;
+
+
+                DataSet pDs = new DataSet();
+                CrSalesSmryCT rpt1 = new CrSalesSmryCT();
+
+                frmPrintVw6 rptLedger2 = new frmPrintVw6(
+                   fRptTitle,
+                   StrF01.D2Str(this.dtpFromDate.Value),
+                   StrF01.D2Str(this.dtpToDate.Value),
+                   "sp_SalesSummery",
+                   plstField,
+                   plstType,
+                   plstValue,
+                   pDs,
+                   rpt1,
+                   "SP"
+                   );
+
+                //rptLedger2.ShowDialog();
+                rptLedger2.Show();
+            
+            }
+
+        
+        
+        
+        
         }
 
      
