@@ -867,10 +867,10 @@
       <DependentUpon>dsLogo.xsd</DependentUpon>
     </Compile>
     <Compile Include="PrintReport\CrAccChart.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrAccChart.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrAgingDueRep.cs">
       <DependentUpon>CrAgingDueRep.rpt</DependentUpon>
@@ -921,10 +921,10 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrCashStatRokerGL.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrCashStatRokerGL.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrClaimContSmry.cs">
       <DependentUpon>CrClaimContSmry.rpt</DependentUpon>
@@ -1023,10 +1023,10 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrCustList.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrCustList.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrDailyVoc.cs">
       <DependentUpon>CrDailyVoc.rpt</DependentUpon>
@@ -1047,28 +1047,28 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrDue_Rep.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrDue_Rep.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrDue_RepCheqNew.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrDue_RepCheqNew.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrDue_RepCrDaysCust.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrDue_RepCrDaysCust.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrExCmpRep.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrExCmpRep.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrFtoF.cs">
       <DependentUpon>CrFtoF.rpt</DependentUpon>
@@ -1083,10 +1083,10 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrGIWDate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrGIWDate.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrGLDoc.cs">
       <DependentUpon>CrGLDoc.rpt</DependentUpon>
@@ -1101,22 +1101,22 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrGOWDel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrGOWDel.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrGRNDate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrGRNDate.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrGRNDiscSmry.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrGRNDiscSmry.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrGRNOtherSub.cs">
       <DependentUpon>CrGRNOtherSub.rpt</DependentUpon>
@@ -1125,16 +1125,16 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrGRNRetDate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrGRNRetDate.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrGRNSmry.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrGRNSmry.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrImages.cs">
       <DependentUpon>CrImages.rpt</DependentUpon>
@@ -1299,16 +1299,16 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrMachProd.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrMachProd.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrMachProdItem.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrMachProdItem.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrMallKhata.cs">
       <DependentUpon>CrMallKhata.rpt</DependentUpon>
@@ -1425,46 +1425,64 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrProdPlan.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrProdPlan.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrProdPlanAll.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrProdPlanAll.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrProdPlanAllWOOrd.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrProdPlanAllWOOrd.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrProdPlanProd.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrProdPlanProd.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrProdPlanReq.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrProdPlanReq.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrProdPlanWOOrd.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrProdPlanWOOrd.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrPurchCash.cs">
       <DependentUpon>CrPurchCash.rpt</DependentUpon>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="PrintReport\CrRawImp.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrRawImp.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PrintReport\CrRawLocal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrRawLocal.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PrintReport\CrRawLocalSmry.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrRawLocalSmry.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="PrintReport\CrReceiptSub.cs">
       <DependentUpon>CrReceiptSub.rpt</DependentUpon>
@@ -1473,16 +1491,22 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrRunOrder.cs">
+      <DependentUpon>CrRunOrder.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="PrintReport\CrSaleDetCT.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CrRunOrder.rpt</DependentUpon>
+      <DependentUpon>CrSaleDetCT.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PrintReport\CrSaleOrdDelStatus.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrSaleOrdDelStatus.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrSalePointMain.cs">
       <DependentUpon>CrSalePointMain.rpt</DependentUpon>
@@ -1501,6 +1525,36 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="PrintReport\CrSalesRetSmryCT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrSalesRetSmryCT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PrintReport\CrSalesRetSmryItemCT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrSalesRetSmryItemCT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PrintReport\CrSalesRetSmryItemGroupCT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrSalesRetSmryItemGroupCT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PrintReport\CrSalesSmryCT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrSalesSmryCT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PrintReport\CrSalesSmryMainGroupCT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrSalesSmryMainGroupCT.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="PrintReport\CrStockSumSub.cs">
       <DependentUpon>CrStockSumSub.rpt</DependentUpon>
@@ -1587,10 +1641,10 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrVendList.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CrVendList.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PrintReport\CrVocDaily.cs">
       <DependentUpon>CrVocDaily.rpt</DependentUpon>
@@ -2534,6 +2588,18 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrPurchCash.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="PrintReport\CrRawImp.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrRawImp.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintReport\CrRawLocal.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrRawLocal.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintReport\CrRawLocalSmry.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrRawLocalSmry.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="PrintReport\CrReceiptSub.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrReceiptSub.cs</LastGenOutput>
@@ -2541,6 +2607,10 @@
     <EmbeddedResource Include="PrintReport\CrRunOrder.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrRunOrder.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintReport\CrSaleDetCT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrSaleDetCT.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintReport\CrSaleOrdDelStatus.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -2557,6 +2627,26 @@
     <EmbeddedResource Include="PrintReport\CrSalePointMainZero.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrSalePointMainZero.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintReport\CrSalesRetSmryCT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrSalesRetSmryCT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintReport\CrSalesRetSmryItemCT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrSalesRetSmryItemCT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintReport\CrSalesRetSmryItemGroupCT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrSalesRetSmryItemGroupCT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintReport\CrSalesSmryCT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrSalesSmryCT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintReport\CrSalesSmryMainGroupCT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrSalesSmryMainGroupCT.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintReport\CrStockSumSub.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
