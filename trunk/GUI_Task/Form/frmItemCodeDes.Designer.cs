@@ -32,7 +32,10 @@ namespace GUI_Task
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmItemCodeDes));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtItemName = new System.Windows.Forms.TextBox();
+            this.txtItemCode = new System.Windows.Forms.TextBox();
             this.btnDuplicateItems = new System.Windows.Forms.Button();
+            this.btnAddNew = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnNewCode = new System.Windows.Forms.Button();
@@ -60,7 +63,6 @@ namespace GUI_Task
             this.lblGroup = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnAddNew = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnUnselectAll = new System.Windows.Forms.Button();
             this.btnSelectAll = new System.Windows.Forms.Button();
@@ -74,8 +76,7 @@ namespace GUI_Task
             this.tStextTotal = new System.Windows.Forms.ToolStripStatusLabel();
             this.tSlblAlert = new System.Windows.Forms.ToolStripStatusLabel();
             this.textAlert = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtItemCode = new System.Windows.Forms.TextBox();
-            this.txtItemName = new System.Windows.Forms.TextBox();
+            this.txtCategory = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.sSMaster.SuspendLayout();
@@ -93,6 +94,7 @@ namespace GUI_Task
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage1.Controls.Add(this.txtCategory);
             this.tabPage1.Controls.Add(this.txtItemName);
             this.tabPage1.Controls.Add(this.txtItemCode);
             this.tabPage1.Controls.Add(this.btnDuplicateItems);
@@ -130,6 +132,24 @@ namespace GUI_Task
             this.tabPage1.Text = "Item Information";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // txtItemName
+            // 
+            this.txtItemName.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtItemName.Location = new System.Drawing.Point(115, 59);
+            this.txtItemName.Name = "txtItemName";
+            this.txtItemName.Size = new System.Drawing.Size(280, 20);
+            this.txtItemName.TabIndex = 7;
+            this.txtItemName.Text = "Item Name";
+            // 
+            // txtItemCode
+            // 
+            this.txtItemCode.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtItemCode.Location = new System.Drawing.Point(115, 33);
+            this.txtItemCode.Name = "txtItemCode";
+            this.txtItemCode.Size = new System.Drawing.Size(123, 20);
+            this.txtItemCode.TabIndex = 4;
+            this.txtItemCode.Text = "Item Code";
+            // 
             // btnDuplicateItems
             // 
             this.btnDuplicateItems.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -140,6 +160,16 @@ namespace GUI_Task
             this.btnDuplicateItems.Text = "Duplicat Items A/B/C";
             this.btnDuplicateItems.UseVisualStyleBackColor = true;
             this.btnDuplicateItems.Visible = false;
+            // 
+            // btnAddNew
+            // 
+            this.btnAddNew.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddNew.Location = new System.Drawing.Point(401, 8);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(90, 22);
+            this.btnAddNew.TabIndex = 3;
+            this.btnAddNew.Text = "Add New ";
+            this.btnAddNew.UseVisualStyleBackColor = true;
             // 
             // btnReset
             // 
@@ -172,7 +202,6 @@ namespace GUI_Task
             this.btnNewCode.TabIndex = 301;
             this.btnNewCode.Text = "New Code";
             this.btnNewCode.UseVisualStyleBackColor = true;
-            this.btnNewCode.Visible = false;
             // 
             // txtItemID
             // 
@@ -436,16 +465,6 @@ namespace GUI_Task
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnAddNew
-            // 
-            this.btnAddNew.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNew.Location = new System.Drawing.Point(401, 8);
-            this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(90, 22);
-            this.btnAddNew.TabIndex = 3;
-            this.btnAddNew.Text = "Add New ";
-            this.btnAddNew.UseVisualStyleBackColor = true;
-            // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -573,23 +592,12 @@ namespace GUI_Task
             this.textAlert.Text = "Ready";
             this.textAlert.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtItemCode
+            // txtCategory
             // 
-            this.txtItemCode.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.txtItemCode.Location = new System.Drawing.Point(115, 33);
-            this.txtItemCode.Name = "txtItemCode";
-            this.txtItemCode.Size = new System.Drawing.Size(167, 20);
-            this.txtItemCode.TabIndex = 4;
-            this.txtItemCode.Text = "Item Code";
-            // 
-            // txtItemName
-            // 
-            this.txtItemName.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.txtItemName.Location = new System.Drawing.Point(115, 59);
-            this.txtItemName.Name = "txtItemName";
-            this.txtItemName.Size = new System.Drawing.Size(280, 20);
-            this.txtItemName.TabIndex = 7;
-            this.txtItemName.Text = "Item Name";
+            this.txtCategory.Location = new System.Drawing.Point(244, 33);
+            this.txtCategory.Name = "txtCategory";
+            this.txtCategory.Size = new System.Drawing.Size(31, 20);
+            this.txtCategory.TabIndex = 306;
             // 
             // frmItemCodeDes
             // 
@@ -668,5 +676,6 @@ namespace GUI_Task
         private System.Windows.Forms.ToolStripStatusLabel textAlert;
         private System.Windows.Forms.TextBox txtItemName;
         private System.Windows.Forms.TextBox txtItemCode;
+        private System.Windows.Forms.TextBox txtCategory;
     }
 }
