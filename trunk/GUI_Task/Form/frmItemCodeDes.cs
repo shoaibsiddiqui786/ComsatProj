@@ -154,6 +154,8 @@ namespace GUI_Task
                     {
                         ds.Clear();
                     }
+
+                    btnDuplicateItems.Enabled = true;
                     //LoadGridData();
                     //SumVoc();
                 }
@@ -435,7 +437,7 @@ namespace GUI_Task
                     lSQL = "insert into Item (";
                     lSQL += "  ItemId ";                 // ItemID                 
                     lSQL += ", ItemGroupId ";           // ItemGoupId 
-                    lSQL += ", ItemCode ";              // ItemCode
+                    lSQL += ", ItemSerial ";              // ItemCode
                     lSQL += ", Name ";              // ItemName             
                     lSQL += ", UOMId ";                 // UOMId             
                     lSQL += ", MinLevel ";              // MinLevel             
@@ -445,6 +447,7 @@ namespace GUI_Task
                     lSQL += ", UrduItemUnit ";          // UrduItemUnit              
                     lSQL += ", CreatedDate ";           // CreatedDate             
                     lSQL += ", GLCode ";                // GLCode
+                    lSQL += ", ItemCategory ";
                     lSQL += " ) values (";
                     //                                                       
                     lSQL += "" + fDocID.ToString() + "";
@@ -459,21 +462,22 @@ namespace GUI_Task
                     lSQL += ",'" + txtUrduItemUnit.Text.ToString() + "'";
                     lSQL += ", " + StrF01.D2Str(dtpCreatedDate) + "";
                     lSQL += ", " + txtGLCode.Text.ToString() + "";
+                    lSQL += ", " + txtCategory.Text.ToString() + "";
                     lSQL += ")";                                                   
                 }                                                                  
                 else
                 {
-                    fDocWhere = " ItemId = '" + txtItemID.Text.ToString() + "'";
+                    fDocWhere = " ItemId = " + txtItemID.Text.ToString() + "";
                     if (clsDbManager.IDAlreadyExistWw("Item", "ItemId", fDocWhere))
                     {
                         fDocAlreadyExists = true;
-                        fManySQL.Add(lSQL);
+                        //fManySQL.Add(lSQL);
                     }
 
                     lSQL = "update Item set";
-                    lSQL += "  ItemId = " + txtItemID.Text.ToString() + "";                // ItemID        
-                    lSQL += ", ItemGroupID = " + cboItemGroup.SelectedValue.ToString() + "";  // ItemGroupId   
-                    lSQL += ", UOMId = " + cboUnit.SelectedValue.ToString() + "";             // UOMId         
+                    //lSQL += "  ItemId = " + txtItemID.Text.ToString() + "";                // ItemID        
+                    //lSQL += ", ItemGroupID = " + cboItemGroup.SelectedValue.ToString() + "";  // ItemGroupId   
+                    lSQL += " UOMId = " + cboUnit.SelectedValue.ToString() + "";             // UOMId         
                     lSQL += ", MinLevel = " + txtMinLevel.Text.ToString() + "";            // MinLevel      
                     lSQL += ", MaxLevel = " + txtMaxLevel.Text.ToString() + "";             // MaxLevel      
                     lSQL += ", StockLevel = " + txtStockLevel.Text.ToString() + "";            // StockLevel    
@@ -481,6 +485,8 @@ namespace GUI_Task
                     lSQL += ", UrduItemUnit = '" + txtUrduItemUnit.Text.ToString() + "'";        // UrduItemUnit  
                     lSQL += ", CreatedDate = '" + StrF01.D2Str(dtpCreatedDate.Value) + "'";      // CreatedDate   
                     lSQL += ", GLCode = '" + txtGLCode.Text.ToString() + "'";                   // GLCode
+                    lSQL += ", ItemCategory = '" + txtCategory.Text.ToString() + "'";
+                    //lSQL += ", ItemCode = '" + txtItemCode.Text.ToString() + "'";
                     lSQL += " where ";                
                     lSQL += fDocWhere;                
                                                       
@@ -503,6 +509,88 @@ namespace GUI_Task
         {
             SaveData();
             MessageBox.Show("Data Saved Successfullly");
+        }
+
+        private void ClearTextBoxes()
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                        (control as TextBox).Clear();
+                    else
+                        func(control.Controls);
+            };
+
+            func(Controls);
+        }
+
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            ClearTextBoxes();
+        }
+
+        private void btnNewCode_Click(object sender, EventArgs e)
+        {
+            string tSQL = string.Empty;
+
+            //mySQL = "select top 1 " + pPidField;
+            //mySQL += " from " + pTable + " Where " + pKeyFieldID + " = " + pSearchValue.ToString();
+
+            tSQL = " select isNull(Max(ItemSerial),0)+1 AS ItemSerial, 'A' AS ItemCategory from Item where ItemGroupId= " + cboItemGroup.SelectedValue.ToString();
+            
+            //if (clsDbManager.IDAlreadyExistWw("Item", "ItemSerial", fDocWhere))
+            //{
+            //    fManySQL.Add(mySQL);
+            //}
+            DataSet ds = new DataSet();
+            ds = clsDbManager.GetData_Set(tSQL, "Item");
+
+            txtItemCode.Text = (ds.Tables[0].Rows[0]["ItemSerial"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ItemSerial"].ToString());
+            txtCategory.Text = (ds.Tables[0].Rows[0]["ItemCategory"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ItemCategory"].ToString());
+        }
+
+        private void ASCII()
+        {
+            string eng = txtCategory.Text.ToString();
+            byte[] pass_byte = Encoding.ASCII.GetBytes(eng);
+
+
+            foreach (int element in pass_byte)
+            {
+                txtCategory.Text = element.ToString();
+            }
+
+            //ASCIIEncoding ascii = new ASCIIEncoding();
+            //String decoded = ascii.GetString(pass_byte);
+
+            //txtCategory.Text = decoded;
+
+            int next = Convert.ToInt32(txtCategory.Text.ToString()) + 1;
+            byte[] converted = BitConverter.GetBytes(next);
+            txtCategory.Text = next.ToString();
+
+            ASCIIEncoding ascii = new ASCIIEncoding();
+            String decoded = ascii.GetString(converted);
+
+            txtCategory.Text = decoded;
+            //char engNext = (char)next;
+            //lblEnglish.Text = engNext.ToString();
+        }
+
+        private void btnDuplicateItems_Click(object sender, EventArgs e)
+        {
+            string tSQL = string.Empty;
+
+            tSQL = " select MAX(ItemCategory) AS ItemCategory from Item ";
+
+            DataSet ds = new DataSet();
+            ds = clsDbManager.GetData_Set(tSQL, "Item");
+
+            txtCategory.Text = (ds.Tables[0].Rows[0]["ItemCategory"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ItemCategory"].ToString());
+            ASCII();
         }
 
     }

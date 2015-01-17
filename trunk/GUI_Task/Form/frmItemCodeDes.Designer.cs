@@ -152,6 +152,7 @@ namespace GUI_Task
             // 
             // btnDuplicateItems
             // 
+            this.btnDuplicateItems.Enabled = false;
             this.btnDuplicateItems.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDuplicateItems.Location = new System.Drawing.Point(305, 85);
             this.btnDuplicateItems.Name = "btnDuplicateItems";
@@ -159,7 +160,7 @@ namespace GUI_Task
             this.btnDuplicateItems.TabIndex = 305;
             this.btnDuplicateItems.Text = "Duplicat Items A/B/C";
             this.btnDuplicateItems.UseVisualStyleBackColor = true;
-            this.btnDuplicateItems.Visible = false;
+            this.btnDuplicateItems.Click += new System.EventHandler(this.btnDuplicateItems_Click);
             // 
             // btnAddNew
             // 
@@ -170,11 +171,12 @@ namespace GUI_Task
             this.btnAddNew.TabIndex = 3;
             this.btnAddNew.Text = "Add New ";
             this.btnAddNew.UseVisualStyleBackColor = true;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // btnReset
             // 
             this.btnReset.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(401, 30);
+            this.btnReset.Location = new System.Drawing.Point(401, 59);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(90, 22);
             this.btnReset.TabIndex = 6;
@@ -196,12 +198,13 @@ namespace GUI_Task
             // btnNewCode
             // 
             this.btnNewCode.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewCode.Location = new System.Drawing.Point(401, 59);
+            this.btnNewCode.Location = new System.Drawing.Point(401, 33);
             this.btnNewCode.Name = "btnNewCode";
             this.btnNewCode.Size = new System.Drawing.Size(90, 22);
             this.btnNewCode.TabIndex = 301;
             this.btnNewCode.Text = "New Code";
             this.btnNewCode.UseVisualStyleBackColor = true;
+            this.btnNewCode.Click += new System.EventHandler(this.btnNewCode_Click);
             // 
             // txtItemID
             // 
@@ -594,9 +597,10 @@ namespace GUI_Task
             // 
             // txtCategory
             // 
-            this.txtCategory.Location = new System.Drawing.Point(244, 33);
+            this.txtCategory.Location = new System.Drawing.Point(246, 34);
+            this.txtCategory.MaxLength = 1;
             this.txtCategory.Name = "txtCategory";
-            this.txtCategory.Size = new System.Drawing.Size(31, 20);
+            this.txtCategory.Size = new System.Drawing.Size(36, 20);
             this.txtCategory.TabIndex = 306;
             // 
             // frmItemCodeDes
