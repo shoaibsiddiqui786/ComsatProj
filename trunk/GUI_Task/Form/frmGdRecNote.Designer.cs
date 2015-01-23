@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGdRecNote));
             this.label17 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -75,8 +77,6 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.txtGRN = new System.Windows.Forms.TextBox();
-            this.cboGodowns = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.InsertNew = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -110,6 +110,10 @@
             this.tSlblAlert = new System.Windows.Forms.ToolStripStatusLabel();
             this.textAlert = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblGateInward = new System.Windows.Forms.Label();
+            this.btnHelp = new System.Windows.Forms.Button();
+            this.btnAddNew = new System.Windows.Forms.Button();
+            this.btnEmail = new System.Windows.Forms.Button();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -120,7 +124,6 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnHelp = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.InsertNew.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -248,7 +251,7 @@
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(550, 155);
+            this.txtNote.Location = new System.Drawing.Point(123, 151);
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(300, 20);
             this.txtNote.TabIndex = 175;
@@ -289,7 +292,7 @@
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(429, 154);
+            this.label3.Location = new System.Drawing.Point(2, 150);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 17);
             this.label3.TabIndex = 169;
@@ -403,7 +406,7 @@
             // 
             // grd
             // 
-            this.grd.AllowUserToDeleteRows = false;
+            this.grd.AllowUserToOrderColumns = true;
             this.grd.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.grd.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.grd.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -421,16 +424,15 @@
             this.Column11});
             this.grd.Location = new System.Drawing.Point(4, 3);
             this.grd.Name = "grd";
-            this.grd.ReadOnly = true;
             this.grd.Size = new System.Drawing.Size(975, 201);
             this.grd.TabIndex = 201;
+            this.grd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grd_KeyDown);
             // 
             // Column1
             // 
             this.Column1.Frozen = true;
             this.Column1.HeaderText = "Code";
             this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
             this.Column1.Width = 57;
             // 
             // Column2
@@ -438,7 +440,6 @@
             this.Column2.Frozen = true;
             this.Column2.HeaderText = "Item Code";
             this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
             this.Column2.Width = 80;
             // 
             // Column3
@@ -446,7 +447,6 @@
             this.Column3.Frozen = true;
             this.Column3.HeaderText = "Name";
             this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
             this.Column3.Width = 60;
             // 
             // SizeColumn
@@ -454,7 +454,6 @@
             this.SizeColumn.Frozen = true;
             this.SizeColumn.HeaderText = "Size";
             this.SizeColumn.Name = "SizeColumn";
-            this.SizeColumn.ReadOnly = true;
             this.SizeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.SizeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.SizeColumn.Width = 52;
@@ -464,7 +463,6 @@
             this.ColorColumn.Frozen = true;
             this.ColorColumn.HeaderText = "Colour ";
             this.ColorColumn.Name = "ColorColumn";
-            this.ColorColumn.ReadOnly = true;
             this.ColorColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ColorColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.ColorColumn.Width = 65;
@@ -474,7 +472,6 @@
             this.GodownColumn.Frozen = true;
             this.GodownColumn.HeaderText = "Godown";
             this.GodownColumn.Name = "GodownColumn";
-            this.GodownColumn.ReadOnly = true;
             this.GodownColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.GodownColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.GodownColumn.Width = 72;
@@ -484,7 +481,6 @@
             this.Column8.Frozen = true;
             this.Column8.HeaderText = "Stock";
             this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
             this.Column8.Width = 60;
             // 
             // Column10
@@ -492,7 +488,6 @@
             this.Column10.Frozen = true;
             this.Column10.HeaderText = "Qty";
             this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
             this.Column10.Width = 48;
             // 
             // Column12
@@ -500,7 +495,6 @@
             this.Column12.Frozen = true;
             this.Column12.HeaderText = "Rate";
             this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
             this.Column12.Width = 55;
             // 
             // Column13
@@ -508,7 +502,6 @@
             this.Column13.Frozen = true;
             this.Column13.HeaderText = "Amount";
             this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
             this.Column13.Width = 68;
             // 
             // Column11
@@ -516,7 +509,6 @@
             this.Column11.Frozen = true;
             this.Column11.HeaderText = "New Stock";
             this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
             this.Column11.Width = 85;
             // 
             // btnExit
@@ -647,27 +639,6 @@
             this.txtGRN.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtGRN_KeyDown);
             this.txtGRN.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtGRN_MouseDoubleClick);
             // 
-            // cboGodowns
-            // 
-            this.cboGodowns.FormattingEnabled = true;
-            this.cboGodowns.Location = new System.Drawing.Point(123, 153);
-            this.cboGodowns.Name = "cboGodowns";
-            this.cboGodowns.Size = new System.Drawing.Size(300, 21);
-            this.cboGodowns.TabIndex = 219;
-            // 
-            // label11
-            // 
-            this.label11.AllowDrop = true;
-            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label11.Location = new System.Drawing.Point(2, 153);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(110, 17);
-            this.label11.TabIndex = 220;
-            this.label11.Text = "Godown";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // InsertNew
             // 
             this.InsertNew.Controls.Add(this.tabPage1);
@@ -763,7 +734,7 @@
             // txtRate
             // 
             this.txtRate.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRate.Location = new System.Drawing.Point(104, 123);
+            this.txtRate.Location = new System.Drawing.Point(104, 68);
             this.txtRate.Name = "txtRate";
             this.txtRate.Size = new System.Drawing.Size(94, 21);
             this.txtRate.TabIndex = 9;
@@ -774,7 +745,7 @@
             this.label30.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label30.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label30.Location = new System.Drawing.Point(16, 123);
+            this.label30.Location = new System.Drawing.Point(16, 68);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(82, 21);
             this.label30.TabIndex = 50;
@@ -1039,6 +1010,45 @@
             this.lblGateInward.TabIndex = 612;
             this.lblGateInward.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // btnHelp
+            // 
+            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.Location = new System.Drawing.Point(493, 0);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(68, 22);
+            this.btnHelp.TabIndex = 616;
+            this.btnHelp.Text = "F1=Help";
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+            // 
+            // btnAddNew
+            // 
+            this.btnAddNew.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddNew.Location = new System.Drawing.Point(567, 0);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(74, 22);
+            this.btnAddNew.TabIndex = 618;
+            this.btnAddNew.Text = "Add New";
+            this.btnAddNew.UseVisualStyleBackColor = true;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
+            // 
+            // btnEmail
+            // 
+            this.btnEmail.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEmail.Location = new System.Drawing.Point(215, 447);
+            this.btnEmail.Name = "btnEmail";
+            this.btnEmail.Size = new System.Drawing.Size(81, 20);
+            this.btnEmail.TabIndex = 619;
+            this.btnEmail.Text = "Send Email";
+            this.btnEmail.UseVisualStyleBackColor = true;
+            this.btnEmail.Click += new System.EventHandler(this.btnEmail_Click);
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.Frozen = true;
@@ -1117,19 +1127,6 @@
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.Width = 68;
             // 
-
-            // btnHelp
-            // 
-            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Location = new System.Drawing.Point(493, 0);
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(68, 22);
-            this.btnHelp.TabIndex = 616;
-            this.btnHelp.Text = "F1=Help";
-            this.btnHelp.UseVisualStyleBackColor = true;
-            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
-            // 
-
             // frmGdRecNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1137,12 +1134,12 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1003, 492);
+            this.Controls.Add(this.btnEmail);
+            this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.lblGateInward);
             this.Controls.Add(this.sSMaster);
             this.Controls.Add(this.InsertNew);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.cboGodowns);
             this.Controls.Add(this.txtGRN);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label23);
@@ -1178,11 +1175,10 @@
             this.Controls.Add(this.mskVenderCode);
             this.Controls.Add(this.mskPurchaseCode);
             this.Controls.Add(this.label3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
-
             this.Name = "frmGdRecNote";
             this.Text = "Goods Recieve Note";
             this.Load += new System.EventHandler(this.Goods_Recieve_Note_Load);
@@ -1238,8 +1234,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox txtGRN;
-        private System.Windows.Forms.ComboBox cboGodowns;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TabControl InsertNew;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -1295,5 +1289,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.Button btnAddNew;
+        private System.Windows.Forms.Button btnEmail;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }

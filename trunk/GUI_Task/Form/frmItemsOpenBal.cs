@@ -19,15 +19,13 @@ namespace GUI_Task
         ItemName = 2,
         SizeName = 3,
         ColorName = 4,
-        //UnitName = 5,
-        GodownName = 6,
-        Qty = 7,
-        Rate = 8,
-        Amount = 9,
-        SizeID = 10,
-        ColorID = 11,
-       // UOMID = 12,
-        GodownID = 13
+       GodownName = 5,
+        Qty = 6,
+        Rate = 7,
+        Amount = 8,
+        SizeID = 9,
+        ColorID = 10,
+        GodownID = 11
 
     }
     public partial class frmItemsOpenBal : Form
@@ -40,7 +38,7 @@ namespace GUI_Task
         string fColFormat = string.Empty;                 // Column Format  
         string fColReadOnly = string.Empty;               // Column ReadOnly 1 = ReadOnly, 0 = Read-Write  
         string fFieldList = string.Empty;
-
+        string strDocId = string.Empty;
         string fColType = string.Empty;
         string fFieldName = string.Empty;
         //******* Grid Variable Setting -- End ******
@@ -226,7 +224,6 @@ namespace GUI_Task
         lSQL +=    "INNER JOIN CatDtl sz ON id.SizeId = sz.cgdCode AND sz.cgCode = 5 ";
         lSQL +=    "INNER JOIN CatDtl clr ON id.ColorID=clr.cgdCode AND clr.cgCode=3 ";
         lSQL +=   " INNER JOIN CatDtl gd ON id.GodownId = gd.cgdCode AND gd.cgCode = 2 ";
-        lSQL +=    " INNER JOIN Item_Sec it ON it.Code = i.ItemId ";
         lSQL += " where id.IOBId = '" + txtIOBNo.Text.ToString() + "'; ";   
 
             clsDbManager.FillDataGrid(
@@ -303,7 +300,7 @@ namespace GUI_Task
                     {
                         PopulateRecords();
                         //LoadSampleData();
-                        //SumVoc();
+                        SumVoc();
                     }
                 }
             }
@@ -327,9 +324,9 @@ namespace GUI_Task
             string tSQL = string.Empty;
 
             // Fields 0,1,2,3 are Begin  
-            tSQL = "select ir.IOBId, ir.Date, ir.ItemGroupID AS ItemGroupName, ir.Note";
+            tSQL = "select ir.IOBId, ir.Date, cd.cgdDesc AS ItemGroupName, ir.Note";
             tSQL += " from IOB ir ";
-            tSQL += " inner join IOBDetail ird on ir.IOBId=ird.IOBId ";
+            tSQL += " inner join IOBDetail ird on ir.IOBId=ird.IOBId INNER JOIN CatDtl cd on ir.ItemGroupID = cd.cgdCode AND cd.cgCode = 6 ";
             tSQL += " where ir.IOBId='" + txtIOBNo.Text.ToString() + "';";
 
             try
@@ -337,6 +334,17 @@ namespace GUI_Task
                 ds = clsDbManager.GetData_Set(tSQL, "IOB");
                 if (ds.Tables[0].Rows.Count > 0)
                 {
+                    //fAlreadyExists = true;
+                    dRow = ds.Tables[0].Rows[0];
+                    // Starting title as 0
+                    txtIOBNo.Text = (ds.Tables[0].Rows[0]["IOBId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["IOBId"].ToString());
+                    dtpDate.Text = (ds.Tables[0].Rows[0]["Date"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Date"].ToString());
+                    cboItemGroup.Text = (ds.Tables[0].Rows[0]["ItemGroupName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ItemGroupName"].ToString());
+                    //cboCategory.Text = (ds.Tables[0].Rows[0]["ItemGroupName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ItemGroupName"].ToString());
+                    txtNote.Text = (ds.Tables[0].Rows[0]["Note"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Note"].ToString());
+
+
+
                     //fAlreadyExists = true;
                     dRow = ds.Tables[0].Rows[0];
                     // Starting title as 0
@@ -641,7 +649,9 @@ namespace GUI_Task
                 cbo_I_Size.SelectedValue.ToString(),                         // 10    sizeId";   
                 cbo_I_Color.SelectedValue.ToString(),               // 11    ColorId";      
                 //cbo_I_UOM.SelectedValue.ToString(),                      // 12    UOMID";        
-                cboGodown.SelectedValue.ToString());                      // 13    GodownId";       
+                cboGodown.SelectedValue.ToString());                      // 13    GodownId";   
+
+             SumVoc();
         }
         
 
@@ -768,6 +778,7 @@ namespace GUI_Task
             fLastRow = 0;
         }
 
+
         private void SumVoc()
         {
             bool bcheck;
@@ -776,7 +787,33 @@ namespace GUI_Task
             decimal rtnVal = 0;
             decimal outValue = 0;
 
+            for (int i = 0; i < grd.RowCount; i++)
+            {
+                if (grd.Rows[i].Cells[(int)GcolIOB.Amount].Value != null)
+                {
+                    bcheck = decimal.TryParse(grd.Rows[i].Cells[(int)GcolIOB.Amount].Value.ToString(), out outValue);
+                    if (bcheck)
+                    {
+                        rtnVal += outValue;
+                        fAmount = fAmount + outValue;
+                    }
+                }
+                if (grd.Rows[i].Cells[(int)GcolIOB.Qty].Value != null)
+                {
+                    bcheck = decimal.TryParse(grd.Rows[i].Cells[(int)GcolIOB.Qty].Value.ToString(), out outValue);
+                    if (bcheck)
+                    {
+                        rtnVal += outValue;
+                        fQty = fQty + outValue;
+                    }
+                } // if != null
+                //grdVoucher[2, i].Value = (i + 1).ToString();
+                lblTotalAmount.Text = String.Format("{0:0,0.00}", fAmount);
+                lblTotalQty.Text = String.Format("{0:0,0.00}", fQty);
+            }
         }
+
+
         private bool FormValidation()
         {
             bool lRtnValue = true;
@@ -893,30 +930,37 @@ namespace GUI_Task
                 if (txtIOBNo.Text.ToString().Trim(' ', '-') == "")
                 {
                     fDocAlreadyExists = false;
-                    fDocID = clsDbManager.GetNextValDocID("IOB", "IOBid", fDocWhere, "");
+                    fDocID = clsDbManager.GetNextValDocID("IOB", "DocId", fDocWhere, "");
+                    strDocId = "1-" + DateTime.Now.Year.ToString() + "-" + fDocID.ToString();
+                    txtIOBNo.Text = strDocId;
+                    fDocID += fDocID;
 
-                    lSQL = "insert into IOB (";                         // 0-    ItemID";    
-                    lSQL += "  IOBid ";                                   // 1-    ItemCode";
-                    lSQL += ", ItemCode ";                          // 2-    ItemName";  
-                    lSQL += ", Date ";                                  // 3-    Size";      
+                    lSQL = "insert into IOB (";
+                    lSQL += " DocId ";
+                    lSQL += " ,IOBid ";                                   // 1-    ItemCode";
+                    lSQL += ", Date ";
                     lSQL += ", ItemGroupId ";
-                    lSQL += ", Note ";                                   // 5-    UOM";      
+                    lSQL += ", Note ";
+                    //lSQL += ", ItemCode ";                          // 2-    ItemName";  
+                                                      // 3-    Size";      
+                    
+                                                       // 5-    UOM";      
                     lSQL += ", InOut ";                         // 7    Qty";      
                     lSQL += ", UserId ";                         // 8    Rate";         
                     lSQL += ", OrgId ";                                  // 9    Amount";  
                     //lSQL += ", Status ";                                 // 10    sizeId";   
                     lSQL += ", BranchId ";                       // 11    ColorId";      
                     lSQL += " ) values (";                       // 12    UOMID";        
-                    //                                           // 13    GodownId";                      
-                    lSQL += "'" + fDocID.ToString() + "'";                  //  0-    ItemID";   
-                    lSQL += ",'" + txtIOBNo.Text.ToString() + "";        //  1-    ItemCod  
-                    lSQL += ", '" + StrF01.D2Str(dtpDate) + "'";          //  2-    ItemNam 
+                    //
+                    lSQL += fDocID.ToString();
+                    lSQL += ", '" + strDocId.ToString() + "'";// 13    GodownId";                      
+                    lSQL += ", " + StrF01.D2Str(dtpDate) + "";          //  2-    ItemNam 
                     lSQL += ", " + cboItemGroup.SelectedValue.ToString() + "";
-                    lSQL += ",'" + txtNote + "'";                             //  4-    SizeNam  
-                    lSQL += ", 1";                                            //  6-    UOMName
-                    lSQL += ", 0";                                            // 7- GodownName
-                    lSQL += ", 1";                                              // 8- Qty
-                    lSQL += ", 0";                                             // 9    SizeID";   
+                    lSQL += ",'" + txtNote.Text.ToString() + "'";                             //  4-    SizeNam  
+                    lSQL += ", 0";                                            //  6-    UOMName
+                    lSQL += ", " + clsGVar.UserID.ToString() + "";                                            // 7- GodownName
+                    lSQL += ", 0";                                              // 8- Qty
+                    lSQL += ", 1";                                             // 9    SizeID";   
                     lSQL += ")";                                              // 11    UOMID"; 
                 }                                                               // 12- GodownID
                 else
@@ -985,16 +1029,17 @@ namespace GUI_Task
                         }
                     }
 
-                    lSQL = "INSERT INTO IOBDetail (IOBId";
-                    lSQL += ",ItemId,SizeId,ColorID,GodownId,Qty,Rate)";
+                    lSQL = "INSERT INTO IOBDetail (DocId,IOBId";
+                    lSQL += ",ItemId,SizeId,ColorID,GodownID,Qty,Rate)";
                     lSQL += " VALUES (";
-                    lSQL += "'" + txtIOBNo.Text.ToString() + "'";
+                    lSQL += fDocID;
+                    lSQL += ", '" + txtIOBNo.Text.ToString() + "'";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GcolIOB.ItemID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GcolIOB.SizeID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GcolIOB.ColorID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GcolIOB.GodownID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GcolIOB.Qty].Value.ToString() + "";
-                    lSQL += ", '" + grd.Rows[dGVRow].Cells[(int)GcolIOB.Rate].Value.ToString() + "'";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GcolIOB.Rate].Value.ToString() + "";
                     lSQL += ")";
                     fManySQL.Add(lSQL);
                 } // End For loopo
@@ -1016,6 +1061,34 @@ namespace GUI_Task
             }
         }
 
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            LookUp_Voc();
+        }
+
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            grd.Rows.Clear();
+            ClearTextBoxes();
+        }
+
+        private void ClearTextBoxes()
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                        (control as TextBox).Clear();
+                    else
+                        func(control.Controls);
+            };
+
+            func(Controls);
+        }
+
+        
 
         }
     }

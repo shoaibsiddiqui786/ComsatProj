@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using GUI_Task.Class;
 using JThomas.Controls;
 using GUI_Task.StringFun01;
+using System.Net.Mail;
 
 namespace GUI_Task
 {
@@ -46,6 +47,8 @@ namespace GUI_Task
 
         string[] a_Color = new string[0];
         int[] a_ColorInt = new int[0];
+
+        string strDocId = string.Empty;
 
         string[] a_Size = new string[0];
         int[] a_SizeInt = new int[0];
@@ -778,10 +781,14 @@ namespace GUI_Task
                 if (txtStockLevelNo.Text.ToString().Trim(' ', '-') == "")
                 {
                     fDocAlreadyExists = false;
-                    fDocID = clsDbManager.GetNextValDocID("StockLevel", "StockLevelId", fDocWhere, "");
-
+                    fDocID = clsDbManager.GetNextValDocID("StockLevel", "DocId", fDocWhere, "");
+                    strDocId = "1-" + DateTime.Now.Year.ToString() + fDocID.ToString();
+                    txtStockLevelNo.Text = strDocId;
+                    fDocID += fDocID;
                     lSQL = "insert into StockLevel (";
-                    lSQL += "  StockLevelId ";                              //  0-    ItemID";   
+                    lSQL += "  DocId ";
+                    lSQL += ", StockLevelId "; 
+                    //  0-    ItemID";   
                    // lSQL += ", GateInwordNo ";                                //  1-    ItemCod  
                     lSQL += ", Date ";                                        //  2-    ItemNam 
                     //lSQL += ", VendorId ";                                      // 3- Descripti
@@ -797,17 +804,18 @@ namespace GUI_Task
                     //lSQL += ", Adda ";                                        // 12- GodownID
                     lSQL += " ) values (";
                     //                                                       
-                    lSQL += "'" + fDocID.ToString() + "'";                  //  0-    ItemID";   
-                    lSQL += ",'" + txtStockLevelNo.Text.ToString() + "";        //  1-    ItemCod  
+                    lSQL += fDocID.ToString();
+                    lSQL += ",'" + strDocId.ToString() + "'";       //  1-    ItemCod  
                     lSQL += ", " + StrF01.D2Str(dtpStockLevel) + "";          //  2-    ItemNam 
-                    lSQL += ",";                                              // 3- Descripti
-                    lSQL += ",'" + txtNote + "'";                             //  4-    SizeNam  
-                    lSQL += ", " + cboItemGroup.SelectedValue.ToString() + "";  //  5-    ColorNa  
+                    ///lSQL += ",";                                              // 3- Descripti
+                    lSQL += ", " + cboItemGroup.SelectedValue.ToString() + "";  //  5-    ColorNa 
+                    lSQL += ",'" + txtNote.Text.ToString() + "'";                             //  4-    SizeNam  
+                     
                     lSQL += ", 1";                                            //  6-    UOMName
                     lSQL += ", 0";                                            // 7- GodownName
                     lSQL += ", 1";                                              // 8- Qty
-                    lSQL += ", 0";                                             // 9    SizeID";   
-                    lSQL += ", 1";                                            // 10    ColorID"  
+                    //lSQL += ", 0";                                             // 9    SizeID";   
+                    //lSQL += ", 1";                                            // 10    ColorID"  
                     lSQL += ")";                                              // 11    UOMID"; 
                 }                                                               // 12- GodownID
                 else
@@ -881,16 +889,17 @@ namespace GUI_Task
                         }
                     }
 
-                    lSQL = "INSERT INTO StockLevelDetail (StockLevelId";
-                    lSQL += ",ItemId,SizeId,ColorId,MinLevel,MaxLevel)";
+                    lSQL = "INSERT INTO StockLevelDetail (DocId";
+                    lSQL += ",StockLevelId,ItemId,SizeId,ColorId,MinLevel,MaxLevel)";
                     lSQL += " VALUES (";
-                    lSQL += "'" + txtStockLevelNo.Text.ToString() + "'";
+                    lSQL += fDocID; 
+                    lSQL += ", '" + txtStockLevelNo.Text.ToString() + "'";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColIstm.ItemId].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColIstm.SizeId].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColIstm.ColorId].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColIstm.MinLevel].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColIstm.MaxLevel].Value.ToString() + "";
-                    //lSQL += ", '" + grd.Rows[dGVRow].Cells[(int)GColIstm.Description].Value.ToString() + "'";
+                    //lSQL += ", '" + grd.Rows[dGVRow].Cells[(int)GColIstm.CurrStock].Value.ToString() + "'";
                     lSQL += ")";
                     fManySQL.Add(lSQL);
                 } // End For loopo
@@ -937,7 +946,12 @@ namespace GUI_Task
         private void btnSave_Click(object sender, EventArgs e)
         {
             SaveData();
-            MessageBox.Show("Data Saved Successfullly");
+            textAlert.Text = "Data Saved Successfully";
+            this.notifyIcon1.BalloonTipText = "GRNRet Number '" + txtStockLevelNo.Text.ToString() + "'";
+            this.notifyIcon1.BalloonTipTitle = "Data Saved";
+            //this.notifyIcon1.Icon = new Icon("icon.ico");
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.ShowBalloonTip(5);
         }
 
         private void btnHelp_Click(object sender, EventArgs e)
@@ -1031,6 +1045,45 @@ namespace GUI_Task
         {
             grd.Rows.Clear();
             ClearTextBoxes();
+        }
+
+        private void grd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                // MessageBox.Show("Delete key is pressed");
+                //if (grdVoucher.Rows[lLastRow].Cells[(int)GCol.acid].Value == null && grdVoucher.Rows[lLastRow].Cells[(int)GCol.refid].Value == null)
+
+                //if (!fGridControl)
+                //{
+                //    return;
+                //}
+
+                if (grd.Rows.Count > 0)
+                {
+                    if (MessageBox.Show("Are you sure, really want to Delete row ?", "Delete Row", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        grd.Rows.RemoveAt(grd.CurrentRow.Index);
+                        SumVoc();
+                        return;
+                    }
+                }
+            }
+        }
+
+        private void btnEmail_Click(object sender, EventArgs e)
+        {
+            //smtp.Text = "smtp.gmail.com";
+            MailMessage mail = new MailMessage("usama.naveed.hussain@gmail.com", "usama.naveed.hussain@gmail.com", "Data Saved0", "Data Saved against StockLevelNo. Number: " + txtStockLevelNo.Text.ToString());
+            SmtpClient client = new SmtpClient("smtp.gmail.com");
+            // client.Host = "stmp.gmail.com";
+            client.Port = 587;
+            // client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential("usama.naveed.hussain@gmail.com", "waleedtablet");
+            client.EnableSsl = true;
+            client.Send(mail);
+            //MessageBox.Show("Mail Sent", "Success", MessageBoxButtons.OK);
+            textAlert.Text = "Mail Sent Successfully";
         }
 
 
