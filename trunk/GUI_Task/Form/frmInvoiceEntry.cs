@@ -1267,5 +1267,11 @@ namespace GUI_Task
             grd.Rows.Clear();
             ClearTextBoxes();
         }
+
+        private void btnEmail_Click(object sender, EventArgs e)
+        {
+            frmEmail frm = new frmEmail();
+            frm.ShowDialog();
+        }
     }
 }
