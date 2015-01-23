@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using GUI_Task.Class;
 using GUI_Task.StringFun01;
+using System.Net.Mail;
 
 namespace GUI_Task
 {
@@ -18,20 +19,20 @@ namespace GUI_Task
         ItemId = 0,
         ItemCode = 1,
         ItemName = 2,
-        //VenderName = 3,
+
         SizeName = 3,
         ColorName = 4,
-       // UnitName = 6,
+
         GodownName = 5,
         Stock = 6,
         Qty = 7,
         ReturnQty = 8,
-        //NewStock = 9,
+
         Rate = 9,
         Amount = 10,
         SizeId = 11,
         ColorId = 12,
-        //UOMId = 16,
+
         GodownId = 13
     }
     
@@ -46,7 +47,7 @@ namespace GUI_Task
         string fColFormat = string.Empty;                 // Column Format  
         string fColReadOnly = string.Empty;               // Column ReadOnly 1 = ReadOnly, 0 = Read-Write  
         string fFieldList = string.Empty;
-
+        string strDocId = string.Empty;
         string fColType = string.Empty;
         string fFieldName = string.Empty;
         //******* Grid Variable Setting -- End ******
@@ -88,6 +89,8 @@ namespace GUI_Task
         private void frmGdRecNoteReturn_Load(object sender, EventArgs e)
         {
             AtFormLoad();
+            this.MaximizeBox = false;
+            blnFormLoad = false;
         }
 
         private void LoadInitialControls()
@@ -339,7 +342,7 @@ namespace GUI_Task
             lFieldList += ",GodownName";            //  6- GodownName
             lFieldList += ",Stock";                 //  7- Stock
             lFieldList += ",Qty";                   //  8- Qty
-            lFieldList += ",RetrunQty";                   //  8- Qty
+            lFieldList += ",ReturnQty";                   //  8- Qty
           //  lFieldList += ",New Stock";                   //  8- Qty
             lFieldList += ",Rate";                   //  8- Qty
             lFieldList += ",Amount";                   //  8- Qty
@@ -359,7 +362,7 @@ namespace GUI_Task
             lHDR += ",Godown";          //  6- GodownName
             lHDR += ",Stock";            //  7- Stock
             lHDR += ",Qty";               //  8- Qty
-            lHDR += ",RetrunQty";               //  8- Qty
+            lHDR += ",ReturnQty";               //  8- Qty
             //lHDR += ",New Stock";               //  8- Qty
             lHDR += ",Rate";               //  8- Qty
             lHDR += ",Amount";               //  8- Qty
@@ -500,7 +503,7 @@ namespace GUI_Task
             tFieldName += ",Stock";        //  7- Stock
         
             tFieldName += ",Qty";               //  8- Qty
-            tFieldName += ",RetrunQty";               //  8- Qty
+            tFieldName += ",ReturnQty";               //  8- Qty
             //tFieldName += ",NewStock";          //  2-    New Stock";
             tFieldName += ",Rate";          //  2-    Rate";
             tFieldName += ",Amount";          //  2-    Amount";
@@ -672,9 +675,13 @@ namespace GUI_Task
                 if (txtGR.Text.ToString().Trim(' ', '-') == "")
                 {
                     fDocAlreadyExists = false;
-                    fDocID = clsDbManager.GetNextValDocID("GRNRet", "GRNRetId", fDocWhere, "");
+                    fDocID = clsDbManager.GetNextValDocID("GRNRet", "DocIdId", fDocWhere, "");
+                    strDocId = "1-" + DateTime.Now.Year.ToString() + fDocID.ToString();
+                    txtGR.Text = strDocId;
+                    fDocID += fDocID;
 
                     lSQL = "insert into GRNRet (";
+                    lSQL += "  DocId "; 
                     lSQL += "  GRNRetId ";                              //  0-    ItemID";   
                     lSQL += ", Date ";
                     lSQL += " , GRNId ";   //  1-    ItemCod  
@@ -795,9 +802,10 @@ namespace GUI_Task
                         }
                     }
 
-                    lSQL = "INSERT INTO GRNRetDetail (GRNRetId";
-                    lSQL += ",ItemId,SizeId,ColorId,GodownId,Qty,RetrunQty,Rate,Amount)";
+                    lSQL = "INSERT INTO GRNRetDetail (DocId";
+                    lSQL += ",GRNRetId,ItemId,SizeId,ColorId,GodownId,Qty,ReturnQty,Rate,Amount)";
                     lSQL += " VALUES (";
+                    lSQL += fDocID;
                     lSQL += "'" + txtGR.Text.ToString() + "'";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.ItemId].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.SizeId].Value.ToString() + "";
@@ -805,7 +813,7 @@ namespace GUI_Task
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.GodownId].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.Qty].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.ReturnQty].Value.ToString() + "";
-                    //lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.NewStock].Value.ToString() + "";
+                  
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.Rate].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRNRet.Amount].Value.ToString() + "";
                     lSQL += ")";
@@ -1114,7 +1122,12 @@ namespace GUI_Task
         private void btnSave_Click(object sender, EventArgs e)
         {
             SaveData();
-            MessageBox.Show("Data Saved Successfullly");
+            textAlert.Text = "Data Saved Successfully";
+            this.notifyIcon1.BalloonTipText = "GRNRet Number '" + txtGR.Text.ToString() + "'";
+            this.notifyIcon1.BalloonTipTitle = "Data Saved";
+            //this.notifyIcon1.Icon = new Icon("icon.ico");
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.ShowBalloonTip(5);
         }
 
         private void SumVoc()
@@ -1146,7 +1159,66 @@ namespace GUI_Task
             LookUp_Voc();
         }
 
+        private void btnEmail_Click(object sender, EventArgs e)
+        {
+            //smtp.Text = "smtp.gmail.com";
+            MailMessage mail = new MailMessage("usama.naveed.hussain@gmail.com", "usama.naveed.hussain@gmail.com", "Data Saved0", "Data Saved against GRNRet Number: " + txtGR.Text.ToString());
+            SmtpClient client = new SmtpClient("smtp.gmail.com");
+            // client.Host = "stmp.gmail.com";
+            client.Port = 587;
+            // client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential("usama.naveed.hussain@gmail.com", "waleedtablet");
+            client.EnableSsl = true;
+            client.Send(mail);
+            //MessageBox.Show("Mail Sent", "Success", MessageBoxButtons.OK);
+            textAlert.Text = "Mail Sent Successfully";
+        }
 
+        private void grd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                // MessageBox.Show("Delete key is pressed");
+                //if (grdVoucher.Rows[lLastRow].Cells[(int)GCol.acid].Value == null && grdVoucher.Rows[lLastRow].Cells[(int)GCol.refid].Value == null)
+
+                //if (!fGridControl)
+                //{
+                //    return;
+                //}
+
+                if (grd.Rows.Count > 0)
+                {
+                    if (MessageBox.Show("Are you sure, really want to Delete row ?", "Delete Row", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        grd.Rows.RemoveAt(grd.CurrentRow.Index);
+                        SumVoc();
+                        return;
+                    }
+                }
+            }
+        }
+
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            grd.Rows.Clear();
+            ClearTextBoxes();
+        }
+
+        private void ClearTextBoxes()
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                        (control as TextBox).Clear();
+                    else
+                        func(control.Controls);
+            };
+
+            func(Controls);
+        }
 
             
 

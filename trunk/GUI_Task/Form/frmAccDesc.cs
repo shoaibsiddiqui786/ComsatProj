@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using GUI_Task.StringFun01;
+using System.Net.Mail;
 
 namespace GUI_Task
 {
@@ -51,7 +52,7 @@ namespace GUI_Task
         int fLastRow = 0;                           // Last row number of the grid.
         Int64 fDocID = 1;
         bool fGridControl = false;                  // To overcome Grid's tabing
-
+        string strDocId = string.Empty;
         bool fSingleEntryAllowed = true;            // for the time being later set to false.
         bool fDocAlreadyExists = false;             // Check if Doc/voucher already exists (Edit Mode = True, New Mode = false)
         bool fIDConfirmed = false;                  // Account ID is valid and existance in Table is confirmed.
@@ -218,7 +219,12 @@ namespace GUI_Task
         private void btnSave_Click(object sender, EventArgs e)
         {
             SaveData();
-            MessageBox.Show("Data Saved Successfullly");
+            textAlert.Text = "Data Saved Successfully";
+            this.notifyIcon1.BalloonTipText = "Account Number '" + mskAccCode.Text.ToString() + "'";
+            this.notifyIcon1.BalloonTipTitle = "Data Saved";
+            //this.notifyIcon1.Icon = new Icon("icon.ico");
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.ShowBalloonTip(5);
         }
 
 
@@ -239,24 +245,29 @@ namespace GUI_Task
                 if (mskAccCode.Text.ToString().Trim(' ', '-') == "")
                 {
                     fDocAlreadyExists = false;
-                    fDocID = clsDbManager.GetNextValDocID("Vendor", "Code", fDocWhere, "");
+                    fDocID = clsDbManager.GetNextValDocID("Heads", "DocId", fDocWhere, "");
+                    strDocId = "1-" + DateTime.Now.Year.ToString() + fDocID.ToString();
+                    mskAccCode.Text = strDocId;
+                    fDocID += fDocID;
 
                     lSQL = "insert into Heads (";
-                    lSQL += "  Code ";                              //  0-    ItemID";   
+                    lSQL += "  DocId ";
+                    lSQL += ", Code "; //  0-    ItemID";   
                     lSQL += ", Name ";
                                                      // 10    ColorID"  
                     lSQL += " ) values (";
                     //fDocID.ToString()
                     //                                                       
-                    lSQL += "'" + fDocID.ToString() + "'";                  //  0-    ItemID";   
-                    lSQL += "," + txtName + "'";        //  1-    ItemCod  
+                    lSQL += fDocID.ToString();
+                    lSQL += ",'" + strDocId.ToString() + "'";                 //  0-    ItemID";   
+                    lSQL += ", '" + txtName.Text.ToString() + "'";        //  1-    ItemCod  
                                                          // 10    ColorID"  
                     lSQL += ")";                                              // 11    UOMID"; 
                 }                                                               // 12- GodownID
                 else
                 {
                     fDocWhere = " Code = '" + mskAccCode.Text.ToString() + "'";
-                    if (clsDbManager.IDAlreadyExistWw("Vendor", "Code", fDocWhere))
+                    if (clsDbManager.IDAlreadyExistWw("Heads", "Code", fDocWhere))
                     {
 
                         fDocAlreadyExists = true;
@@ -388,6 +399,21 @@ namespace GUI_Task
                     return false;
                 } // End Execute Query
             }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //smtp.Text = "smtp.gmail.com";
+            MailMessage mail = new MailMessage("usama.naveed.hussain@gmail.com", "usama.naveed.hussain@gmail.com", "Data Saved0", "Data Saved against Account Number: " + mskAccCode.Text.ToString());
+            SmtpClient client = new SmtpClient("smtp.gmail.com");
+            // client.Host = "stmp.gmail.com";
+            client.Port = 587;
+            // client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential("usama.naveed.hussain@gmail.com", "waleedtablet");
+            client.EnableSsl = true;
+            client.Send(mail);
+            //MessageBox.Show("Mail Sent", "Success", MessageBoxButtons.OK);
+            textAlert.Text = "Mail Sent Successfully";
+        }
 
 
             //catch (Exception ex)

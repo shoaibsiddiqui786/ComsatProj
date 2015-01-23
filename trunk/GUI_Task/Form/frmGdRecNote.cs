@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using GUI_Task.Class;
 using GUI_Task.StringFun01;
+using System.Net.Mail;
 
 namespace GUI_Task
 {
@@ -38,7 +39,7 @@ namespace GUI_Task
         string fColFormat = string.Empty;                 // Column Format  
         string fColReadOnly = string.Empty;               // Column ReadOnly 1 = ReadOnly, 0 = Read-Write  
         string fFieldList = string.Empty;
-
+        string strDocId = string.Empty;
         string fColType = string.Empty;
         string fFieldName = string.Empty;
         //******* Grid Variable Setting -- End ******
@@ -72,8 +73,6 @@ namespace GUI_Task
 
         bool blnFormLoad = true;
         int fcboDefaultValue = 0;
-        string strDocId = string.Empty;
-
         public frmGdRecNote()
         {
             InitializeComponent();
@@ -199,14 +198,14 @@ namespace GUI_Task
             clsFillCombo.FillCombo(cboItemGroup, clsGVar.ConString1, "CatDtl" + "," + "cgdCode" + "," + "False", lSQL);
             fcboDefaultValue = Convert.ToInt16(cboItemGroup.SelectedValue);
 
-            //Color Combo Fill
-            lSQL = "select cgdCode, cgdDesc from catdtl where cgcode=" + Convert.ToString((int)Category.enmGodown);
-            lSQL += " order by cgdDesc";
+            ////Color Combo Fill
+            //lSQL = "select cgdCode, cgdDesc from catdtl where cgcode=" + Convert.ToString((int)Category.enmGodown);
+            //lSQL += " order by cgdDesc";
 
-            clsFillCombo.FillCombo(cboGodowns, clsGVar.ConString1, "CatDtl" + "," + "cgdCode" + "," + "False", lSQL);
-            fcboDefaultValue = Convert.ToInt16(cboGodowns.SelectedValue);
-            clsFillCombo.FillCombo(cboGodownn, clsGVar.ConString1, "CatDtl" + "," + "cgdCode" + "," + "False", lSQL);
-            fcboDefaultValue = Convert.ToInt16(cboGodownn.SelectedValue);
+            //clsFillCombo.FillCombo(cboGodowns, clsGVar.ConString1, "CatDtl" + "," + "cgdCode" + "," + "False", lSQL);
+            //fcboDefaultValue = Convert.ToInt16(cboGodowns.SelectedValue);
+            //clsFillCombo.FillCombo(cboGodownn, clsGVar.ConString1, "CatDtl" + "," + "cgdCode" + "," + "False", lSQL);
+            //fcboDefaultValue = Convert.ToInt16(cboGodownn.SelectedValue);
 
             ds = clsDbManager.GetData_Set(lSQL, "CatDtl");
             GodownColumn.DataSource = ds.Tables[0];
@@ -273,14 +272,14 @@ namespace GUI_Task
             string tSQL = string.Empty;
 
             // Fields 0,1,2,3 are Begin  
-            
-            
-tSQL = " select g.GRNId,g.Date, g.GateInwordId,t.cgdDesc AS TypeName,l.cgdDesc AS LCName,gt.cgdDesc AS GateName,g.Note, ";
-tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
+
+
+            tSQL = " select g.GRNId,g.Date, g.GateInwordId,g.GateInwordDate,g.VendorId,v.Name as VendorName,g.PurchaserId,c.Name as PurchaserName,t.cgdDesc AS TypeName,l.cgdDesc AS LCName,gt.cgdDesc AS GateName,g.Note, ";
+            tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
            tSQL +=  " from GRN g INNER JOIN CatDtl cd on g.ItemGroupID = cd.cgdCode AND cd.cgCode = 6 ";
             tSQL += " INNER JOIN GRNDetail gd on gd.GRNId = g.GRNId INNER JOIN CatDtl t ON g.TypeId=t.cgdCode AND t.cgCode = 8 ";
             tSQL += " INNER JOIN CatDtl l ON g.LCId=l.cgdCode AND l.cgCode = 9 INNER JOIN CatDtl gt ON g.GateID=gt.cgdCode AND gt.cgCode = 20 ";
-            
+            tSQL += "   inner join Vendor v on v.Code=RIGHT(g.VendorId, 7) inner join Customer c on c.Code=RIGHT(g.PurchaserId,10)";
             try
             {
                 ds = clsDbManager.GetData_Set(tSQL, "GRN");
@@ -289,13 +288,18 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
                     dRow = ds.Tables[0].Rows[0];
                     dtpGRN.Text = (ds.Tables[0].Rows[0]["Date"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Date"].ToString());
                     lblGateInward.Text = (ds.Tables[0].Rows[0]["GateInwordId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateInwordId"].ToString());
-                     //dtpGI.Text = (ds.Tables[0].Rows[0]["GateInwordDate"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateInwordDate"].ToString());
+                    dtpGI.Text = (ds.Tables[0].Rows[0]["GateInwordDate"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateInwordDate"].ToString());
+                    mskVenderCode.Text = (ds.Tables[0].Rows[0]["VendorId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["VendorId"].ToString());
+                    lblName.Text = (ds.Tables[0].Rows[0]["VendorName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["VendorName"].ToString());
+                    mskPurchaseCode.Text = (ds.Tables[0].Rows[0]["PurchaserId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["PurchaserId"].ToString());
+                    lblNameBottom.Text = (ds.Tables[0].Rows[0]["PurchaserName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["PurchaserName"].ToString());
                     cboType.Text = (ds.Tables[0].Rows[0]["TypeName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["TypeName"].ToString());
                     cboLC.Text = (ds.Tables[0].Rows[0]["LCName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["LCName"].ToString());
-                    cboGodowns.Text = (ds.Tables[0].Rows[0]["GateInwordId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateInwordId"].ToString());
+                    //cboGodowns.Text = (ds.Tables[0].Rows[0]["GateInwordId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateInwordId"].ToString());
                     cboItemGroup.Text = (ds.Tables[0].Rows[0]["ItemGroupName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ItemGroupName"].ToString());
                     cboGate.Text = (ds.Tables[0].Rows[0]["GateName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["GateName"].ToString());
                     txtNote.Text = (ds.Tables[0].Rows[0]["Note"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Note"].ToString());
+                    
                    
 
                     if (ds.Tables[0].Rows.Count > 0)
@@ -546,13 +550,13 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
                 {
                     fDocAlreadyExists = false;
                     fDocID = clsDbManager.GetNextValDocID("GRN", "DocId", fDocWhere, "");
-                    fDocID = fDocID + 1;
-                    strDocId = "1-" + DateTime.Now.Year.ToString() + "-" + fDocID.ToString();
+                    strDocId = "1-" + DateTime.Now.Year.ToString() + fDocID.ToString();
                     txtGRN.Text = strDocId;
+                    fDocID += fDocID;
 
                     lSQL = "insert into GRN (";
-                    lSQL += "  DocId ";
-                    lSQL += ", GRNId ";                              //  0-    ItemID";   
+                    lSQL += "  DocId ";    
+                    lSQL += " ,GRNId ";                              //  0-    ItemID";   
                     lSQL += ", Date ";
                     lSQL += "  ,GateInwordId ";   //  1-    ItemCod  
                     lSQL += ", GateInwordDate ";
@@ -570,7 +574,8 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
                     lSQL += ", BranchId ";
                     //lSQL += ",EmployeeID ";
                     //lSQL += ",DeptID ";
-                    lSQL += ", RecPerName ";
+                    lSQL += ",RecPerName ";
+                    lSQL += ",Discount ";
                     lSQL += " ) values (";
                     //                                                       
                     lSQL += fDocID.ToString();
@@ -578,17 +583,20 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
                     lSQL += ", " + StrF01.D2Str(dtpGRN) + "";
                     lSQL += ", 1";
                     lSQL += ", " + StrF01.D2Str(dtpGI) + "";
-                    lSQL += ", '" + mskVenderCode.Text.ToString() + "'";
-                    lSQL += ", '" + mskPurchaseCode.Text.ToString() + "'";
+                    lSQL += ", ";
+                    lSQL += ", ";
                     lSQL += ", 1";
                     lSQL += ", 1";
+                    //lSQL += ", 1";
+                    //lSQL += ", 1";
                     lSQL += ", " + cboItemGroup.SelectedValue.ToString() + "";
                     lSQL += ", " + cboGate.SelectedValue.ToString() + "";
                     lSQL += ", 1";
-                    lSQL += ",'" + txtNote.Text.ToString() + "'";
-                    lSQL += ", " + cboGodowns.SelectedValue.ToString() + "";
+                    lSQL += ",'" + txtNote + "'";
+                    //lSQL += ", " + cboGodowns.SelectedValue.ToString() + "";
                     lSQL += ", 1";
                     lSQL += ", '" + txtRecPerName.Text.ToString() + "'";
+                    //lSQL += ", " + txtDiscount.Text.ToString() + "";
                     lSQL += ")";
                 }
                 else
@@ -668,17 +676,19 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
                         }
                     }
 
-                    lSQL = "INSERT INTO GRNDetail (DocId";
-                    lSQL += ",GRNId,ItemId,SizeId,ColorId,GodownId,Qty,Rate)";
+                    lSQL = "INSERT INTO GRNDetail (DocId,GRNId";
+                    lSQL += ",ItemId,SizeId,ColorId,GodownId,Qty,Rate)";
                     lSQL += " VALUES (";
-                    lSQL += "" + fDocID + "";
-                    lSQL += ", '" + strDocId.ToString() + "'";
+                    lSQL += fDocID;
+                    lSQL += "'" + txtGRN.Text.ToString() + "'";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.ItemId].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.SizeId].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.ColorId].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.GodownId].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.Qty].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.Rate].Value.ToString() + "";
+                    //lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.Amount].Value.ToString() + "";
+                    //lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGRN.NewStock].Value.ToString() + "";
                     lSQL += ")";
                     fManySQL.Add(lSQL);
                 } // End For loopo
@@ -1141,7 +1151,12 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
         private void btnSave_Click(object sender, EventArgs e)
         {
             SaveData();
-            MessageBox.Show("Data Saved Successfullly");
+            textAlert.Text = "Data Saved Successfully";
+            this.notifyIcon1.BalloonTipText = "GRN Number '" + txtGRN.Text.ToString() + "'";
+            this.notifyIcon1.BalloonTipTitle = "Data Saved";
+            //this.notifyIcon1.Icon = new Icon("icon.ico");
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.ShowBalloonTip(5);
         }
 
         private void txtGRN_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -1166,6 +1181,67 @@ tSQL+= " cd.cgdDesc AS ItemGroupName, gd.Qty ";
         {
             LookUp_Voc();
         }
+
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            grd.Rows.Clear();
+            ClearTextBoxes();
+        }
+        private void ClearTextBoxes()
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                        (control as TextBox).Clear();
+                    else
+                        func(control.Controls);
+            };
+
+            func(Controls);
+        }
+
+        private void btnEmail_Click(object sender, EventArgs e)
+        {
+            //smtp.Text = "smtp.gmail.com";
+            MailMessage mail = new MailMessage("usama.naveed.hussain@gmail.com", "usama.naveed.hussain@gmail.com", "Data Saved0", "Data Saved against GRN Number: " + txtGRN.Text.ToString());
+            SmtpClient client = new SmtpClient("smtp.gmail.com");
+            // client.Host = "stmp.gmail.com";
+            client.Port = 587;
+            // client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential("usama.naveed.hussain@gmail.com", "waleedtablet");
+            client.EnableSsl = true;
+            client.Send(mail);
+            //MessageBox.Show("Mail Sent", "Success", MessageBoxButtons.OK);
+            textAlert.Text = "Mail Sent Successfully";
+        }
+
+        private void grd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                // MessageBox.Show("Delete key is pressed");
+                //if (grdVoucher.Rows[lLastRow].Cells[(int)GCol.acid].Value == null && grdVoucher.Rows[lLastRow].Cells[(int)GCol.refid].Value == null)
+
+                //if (!fGridControl)
+                //{
+                //    return;
+                //}
+
+                if (grd.Rows.Count > 0)
+                {
+                    if (MessageBox.Show("Are you sure, really want to Delete row ?", "Delete Row", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        grd.Rows.RemoveAt(grd.CurrentRow.Index);
+                        SumVoc();
+                        return;
+                    }
+                }
+            }
+        }
+
 
        
 
