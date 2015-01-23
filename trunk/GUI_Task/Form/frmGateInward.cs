@@ -841,7 +841,7 @@ namespace GUI_Task
             SaveData();
             //MessageBox.Show("Data Saved Successfullly");
             textAlert.Text = "Data Saved Successfully";
-            this.notifyIcon1.BalloonTipText = "Entry Number '" + txtGateInward.Text.ToString() + "'";
+            this.notifyIcon1.BalloonTipText = "GateInward Number '" + txtGateInward.Text.ToString() + "'";
             this.notifyIcon1.BalloonTipTitle = "Data Saved";
             //this.notifyIcon1.Icon = new Icon("icon.ico");
             this.notifyIcon1.Visible = true;
@@ -925,7 +925,7 @@ namespace GUI_Task
         private void button1_Click(object sender, EventArgs e)
         {
             //smtp.Text = "smtp.gmail.com";
-            MailMessage mail = new MailMessage("usama.naveed.hussain@gmail.com", "usama.naveed.hussain@gmail.com", "Data Saved", "Data Saved against Entry Number: " + txtGateInward.Text.ToString());
+            MailMessage mail = new MailMessage("usama.naveed.hussain@gmail.com", "usama.naveed.hussain@gmail.com", "Data Saved", "Data Saved against GateInward Number: " + txtGateInward.Text.ToString());
             SmtpClient client = new SmtpClient("smtp.gmail.com");
             // client.Host = "stmp.gmail.com";
             client.Port = 587;
