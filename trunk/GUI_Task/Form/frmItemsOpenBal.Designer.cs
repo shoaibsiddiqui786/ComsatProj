@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmItemsOpenBal));
             this.btnGetItems = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
@@ -44,6 +45,9 @@
             this.optQtyIn = new System.Windows.Forms.RadioButton();
             this.optQtyOut = new System.Windows.Forms.RadioButton();
             this.grd = new System.Windows.Forms.DataGridView();
+            this.SizeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ColorColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Godown = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -52,7 +56,6 @@
             this.lblTotalQty = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtIOBNo = new System.Windows.Forms.TextBox();
-            this.btnDgrd = new System.Windows.Forms.Button();
             this.tb = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -81,9 +84,6 @@
             this.tSlblAlert = new System.Windows.Forms.ToolStripStatusLabel();
             this.textAlert = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnAddNew = new System.Windows.Forms.Button();
-            this.SizeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ColorColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Godown = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -127,6 +127,7 @@
             this.btnHelp.TabIndex = 296;
             this.btnHelp.Text = "F1=Help";
             this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // dtpDate
             // 
@@ -210,12 +211,11 @@
             // 
             this.groupBox4.Controls.Add(this.optSingleItem);
             this.groupBox4.Controls.Add(this.optmultiItem);
-            this.groupBox4.Location = new System.Drawing.Point(431, 36);
+            this.groupBox4.Location = new System.Drawing.Point(494, 32);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(235, 65);
             this.groupBox4.TabIndex = 302;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Visible = false;
             // 
             // optSingleItem
             // 
@@ -227,6 +227,7 @@
             this.optSingleItem.TabIndex = 61;
             this.optSingleItem.Text = "Single Item Group {Size/Colour}";
             this.optSingleItem.UseVisualStyleBackColor = true;
+            this.optSingleItem.Visible = false;
             // 
             // optmultiItem
             // 
@@ -240,6 +241,7 @@
             this.optmultiItem.TabStop = true;
             this.optmultiItem.Text = "Multi Item Group {Size/Colour}";
             this.optmultiItem.UseVisualStyleBackColor = true;
+            this.optmultiItem.Visible = false;
             // 
             // txtNote
             // 
@@ -304,11 +306,41 @@
             this.Column10,
             this.Column12,
             this.Amount});
-            this.grd.Location = new System.Drawing.Point(-10, -57);
+            this.grd.Location = new System.Drawing.Point(0, 3);
             this.grd.Name = "grd";
             this.grd.ReadOnly = true;
-            this.grd.Size = new System.Drawing.Size(763, 228);
+            this.grd.Size = new System.Drawing.Size(741, 168);
             this.grd.TabIndex = 305;
+            // 
+            // SizeColumn
+            // 
+            this.SizeColumn.Frozen = true;
+            this.SizeColumn.HeaderText = "Size";
+            this.SizeColumn.Name = "SizeColumn";
+            this.SizeColumn.ReadOnly = true;
+            this.SizeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SizeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.SizeColumn.Width = 52;
+            // 
+            // ColorColumn
+            // 
+            this.ColorColumn.Frozen = true;
+            this.ColorColumn.HeaderText = "Colour ";
+            this.ColorColumn.Name = "ColorColumn";
+            this.ColorColumn.ReadOnly = true;
+            this.ColorColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColorColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColorColumn.Width = 65;
+            // 
+            // Godown
+            // 
+            this.Godown.Frozen = true;
+            this.Godown.HeaderText = "Godown ";
+            this.Godown.Name = "Godown";
+            this.Godown.ReadOnly = true;
+            this.Godown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Godown.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Godown.Width = 75;
             // 
             // btnExit
             // 
@@ -404,17 +436,6 @@
             this.txtIOBNo.TabIndex = 313;
             this.txtIOBNo.DoubleClick += new System.EventHandler(this.txtIOBNo_DoubleClick);
             this.txtIOBNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIOBNo_KeyDown);
-            // 
-            // btnDgrd
-            // 
-            this.btnDgrd.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDgrd.Location = new System.Drawing.Point(253, 84);
-            this.btnDgrd.Name = "btnDgrd";
-            this.btnDgrd.Size = new System.Drawing.Size(75, 23);
-            this.btnDgrd.TabIndex = 314;
-            this.btnDgrd.Text = "New Grd";
-            this.btnDgrd.UseVisualStyleBackColor = true;
-            this.btnDgrd.Visible = false;
             // 
             // tb
             // 
@@ -730,36 +751,7 @@
             this.btnAddNew.TabIndex = 611;
             this.btnAddNew.Text = "Add New";
             this.btnAddNew.UseVisualStyleBackColor = true;
-            // 
-            // SizeColumn
-            // 
-            this.SizeColumn.Frozen = true;
-            this.SizeColumn.HeaderText = "Size";
-            this.SizeColumn.Name = "SizeColumn";
-            this.SizeColumn.ReadOnly = true;
-            this.SizeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SizeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.SizeColumn.Width = 52;
-            // 
-            // ColorColumn
-            // 
-            this.ColorColumn.Frozen = true;
-            this.ColorColumn.HeaderText = "Colour ";
-            this.ColorColumn.Name = "ColorColumn";
-            this.ColorColumn.ReadOnly = true;
-            this.ColorColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColorColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColorColumn.Width = 65;
-            // 
-            // Godown
-            // 
-            this.Godown.Frozen = true;
-            this.Godown.HeaderText = "Godown ";
-            this.Godown.Name = "Godown";
-            this.Godown.ReadOnly = true;
-            this.Godown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Godown.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Godown.Width = 75;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -888,7 +880,6 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.tb);
             this.Controls.Add(this.lblTotalAmount);
-            this.Controls.Add(this.btnDgrd);
             this.Controls.Add(this.lblTotalQty);
             this.Controls.Add(this.txtIOBNo);
             this.Controls.Add(this.label4);
@@ -906,6 +897,7 @@
             this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmItemsOpenBal";
             this.Text = "Items Opening Balance";
             this.Load += new System.EventHandler(this.frmItemsOpenBal_Load);
@@ -956,7 +948,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.Button btnDgrd;
         private System.Windows.Forms.TabControl tb;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;

@@ -64,7 +64,7 @@ namespace GUI_Task.PrintVw6
         private CrAgingDueRep rpt1_2;
         private string p_3;
         private DataSet pDs;
-        private CachedCrSalesRetSmryItemGroupCT rpt1_3;
+        //private CachedCrSalesRetSmryItemGroupCT rpt1_3;
         private string p_4;
         //
         // 1- Report Title
@@ -123,7 +123,7 @@ namespace GUI_Task.PrintVw6
             }
         }
 
-        public frmPrintVw6(string fRptTitle, string p, string p_2, string p_3, string plstField, string plstType, string plstValue, DataSet pDs, CachedCrSalesRetSmryItemGroupCT rpt1_3, string p_4)
+        public frmPrintVw6(string fRptTitle, string p, string p_2, string p_3, string plstField, string plstType, string plstValue, DataSet pDs )
         {
             // TODO: Complete member initialization
             this.fRptTitle = fRptTitle;
@@ -134,7 +134,7 @@ namespace GUI_Task.PrintVw6
             this.plstType = plstType;
             this.plstValue = plstValue;
             this.pDs = pDs;
-            this.rpt1_3 = rpt1_3;
+            //this.rpt1_3 = rpt1_3;
             this.p_4 = p_4;
         }
 

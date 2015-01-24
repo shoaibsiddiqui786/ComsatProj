@@ -31,6 +31,7 @@ namespace GUI_Task
     public partial class frmPurchaseOrder : Form
     {
         //******* Grid Variable Setting -- Begin ******
+        string strDocId = string.Empty;
         string fHDR = string.Empty;                       // Column Header
         string fColWidth = string.Empty;                  // Column Width (Input)
         string fColMinWidth = string.Empty;               // Column Minimum Width
@@ -400,35 +401,48 @@ namespace GUI_Task
                 if (txtPONo.Text.ToString().Trim(' ', '-') == "")
                 {
                     fDocAlreadyExists = false;
-                    fDocID = clsDbManager.GetNextValDocID("PO", "POId", fDocWhere, "");
+                    fDocID = clsDbManager.GetNextValDocID("PO", "DocId", fDocWhere, "");
+                    fDocID = fDocID + 1;
+                    strDocId = "1-" + DateTime.Now.Year.ToString() + "-" + fDocID.ToString();
+                    txtPONo.Text = strDocId;
 
                     lSQL = "insert into PO (";
-                    lSQL += "  POId ";                              //  0-    ItemID";   
-                    // lSQL += ", GateInwordNo ";                                //  1-    ItemCod  
+                    lSQL += "  DocId ";
+                    lSQL += "  ,POId ";                              //  0-    ItemID";   
                     lSQL += ", Date ";                                        //  2-    ItemNam 
-                    //lSQL += ", VendorId ";                                      // 3- Descripti
-                    //  4-    SizeNam  
+                    lSQL += ", DNId ";
+                    lSQL += ", DNDate ";
+                    lSQL += ", EmployeeId "; 
                     lSQL += ", ItemGroupId ";                                 //  5-    ColorNa  
+                    lSQL += ", VendorId ";                                    // 10    ColorID"
+                    lSQL += ", PurchaserId ";     
                     lSQL += ", Note ";
-                    //lSQL += ", GateId ";                                      //  6-    UOMName
-                    lSQL += ", DNId ";                                      // 7- GodownName
-                    lSQL += ", EmpId ";                                         // 8- Qty
-                    //lSQL += ", Status ";                                      // 9    SizeID";   
-                    lSQL += ", VenderId ";                                    // 10    ColorID"
-                    lSQL += ", PurchaseId ";                                    // 10    ColorID"
-                    //lSQL += ", Disc2 ";                                     // 11    UOMID"; 
-                    //lSQL += ", Adda ";                                        // 12- GodownID
+                    lSQL += ", Note2 ";
+                    lSQL += ", SuggCash ";
+                    lSQL += ", OrgId ";
+                    lSQL += ", UserId ";
+                    lSQL += ", Status ";
+                    lSQL += ", BranchId ";// 8- Qty
+                                                   // 10    ColorID"
+                    
                     lSQL += " ) values (";
                     //                                                       
-                    lSQL += "'" + fDocID.ToString() + "'";                  //  0-    ItemID";   
-                    lSQL += ",'" + txtPONo.Text.ToString() + "";        //  1-    ItemCod  
+                    lSQL += fDocID.ToString();
+                    lSQL += ",'" + strDocId.ToString() + "'";  
                     lSQL += ", " + StrF01.D2Str(dtpPO) + "";          //  2-    ItemNam 
-                    lSQL += ",";                                              // 3- Descripti
-                    lSQL += ",'" + txtNote + "'";                             //  4-    SizeNam  
-                    lSQL += ", " + cboItemGroup.SelectedValue.ToString() + "";  //  5-    ColorNa  
-                    lSQL += ", 1";                                            //  6-    UOMName
-                    lSQL += ", 0";                                            // 7- GodownName
-                    lSQL += ", 1";                                              // 8- Qty
+                    lSQL += ",'" + txtDNNo.Text.ToString() + "'";
+                    lSQL += ", " + StrF01.D2Str(dtpDN) + "";
+                    lSQL += ", " + cboEmpCode.SelectedValue.ToString() + "";  //  5-    ColorNa 
+                    lSQL += ", " + cboItemGroup.SelectedValue.ToString() + "";  //  5-    ColorNa 
+                    lSQL += ",'" + mskVenderCode.Text.ToString() + "'";  //  5-    ColorNa 
+                    lSQL += ",'" + mskPurchaseCode.Text.ToString() + "'";  //  5-    ColorNa 
+                    lSQL += ",'" + txtNote.Text.ToString() + "'";      
+                    lSQL += ", ''";                                              // 3- Descripti
+                                 //  4-    SizeNam  
+                     
+                    lSQL += ", 0";                                            //  6-    UOMName
+                    lSQL += ", 1";                                            // 7- GodownName
+                    lSQL += ", 0";                                              // 8- Qty
                     lSQL += ", 0";                                             // 9    SizeID";   
                     lSQL += ", 1";                                            // 10    ColorID"  
                     lSQL += ")";                                              // 11    UOMID"; 
@@ -449,17 +463,12 @@ namespace GUI_Task
 
                     lSQL = "update PO set";
                     lSQL += "  Date = '" + StrF01.D2Str(dtpPO.Value) + "'";
+                    lSQL += " , DNDate = " + StrF01.D2Str(dtpDN) + "";
                     lSQL += ", ItemGroupID = " + cboItemGroup.SelectedValue.ToString() + "";
                     lSQL += ", Note = '" + txtNote.Text.ToString() + "'";
-                    lSQL += ", EmpId = 0";
-                    lSQL += ", VenderId = 1";
-                    //              lSQL += ",VendorId = '' ";
-
-
-                    //                lSQL += ", GateID = 1";
-
-                    //                  lSQL += ", Status = 0";
-                    lSQL += ", PurchaseId = 1";
+                    lSQL += ", EmployeeId = " + cboEmpCode.SelectedValue.ToString() + "";
+                    lSQL += ", VendorId = " + mskVenderCode.Text.ToString() + "";
+                    lSQL += ", PurchaserId = " + mskPurchaseCode.Text.ToString() + "";
                     lSQL += " where ";
                     lSQL += fDocWhere;
 
@@ -504,20 +513,18 @@ namespace GUI_Task
                         }
                     }
 
-                    lSQL = "INSERT INTO PODetail (POId";
-                    lSQL += ",ItemId,SizeId,ColorID,DNQty,POQty,RemQty,LastRate,Amount)";
+                    lSQL = "INSERT INTO PODetail (DocId,POId";
+                    lSQL += ",ItemId,SizeId,ColorID,DNQty,POQty,RemainingQty,LastRate)";
                     lSQL += " VALUES (";
-                    lSQL += "'" + txtPONo.Text.ToString() + "'";
+                    lSQL += "" + fDocID + "";
+                    lSQL += ", '" + strDocId.ToString() + "'";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.ItemID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.SizeID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.ColorID].Value.ToString() + "";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.Stock].Value.ToString() + "";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.DNQty].Value.ToString() + "'";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.POQty].Value.ToString() + "'";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.RemQty].Value.ToString() + "'";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.LastRate].Value.ToString() + "'";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.Amount].Value.ToString() + "'";
-                    //lSQL += ", '" + grd.Rows[dGVRow].Cells[(int)GColIstm.Description].Value.ToString() + "'";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.DNQty].Value.ToString() + "";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.POQty].Value.ToString() + "";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.RemQty].Value.ToString() + "";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.LastRate].Value.ToString() + "";
                     lSQL += ")";
                     fManySQL.Add(lSQL);
                 } // End For loopo
@@ -537,14 +544,13 @@ namespace GUI_Task
 
         private void button3_Click(object sender, EventArgs e)
         {
-            frmSearch frm = new frmSearch();
-            frm.Show();
+            LookUp_Voc();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            frmSearch frm = new frmSearch();
-            frm.Show();
+
+            LookUp_Voc1();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -558,7 +564,7 @@ namespace GUI_Task
             frmHelp frm = new frmHelp();
             frm.Show();
         }
-        
+
         #region LookUp_Voc
 
         private void LookUp_Voc()
@@ -604,33 +610,33 @@ namespace GUI_Task
             //                    true,
             //                    "",
 
-             //"sl.StockLevelId",
-             //   " sl.Date, cd.cgdDesc AS ItemGroupName, sl.Note ",
-             //   "  StockLevel sl inner join StockLevelDetail sld on sl.StockLevelId=sld.StockLevelId "
-             //   + " inner join CatDtl cd on sl.ItemGroupID=cd.cgdCode AND cd.cgCode=6",
-             //       this.Text.ToString(),
-             //       1,
-             //       "Stock #,Date,Item Group Name,Note",
-             //       "12,8,15,20",
-             //       " T, T, T, T",
-             //       true,
-             //       "",
-             //   //"d.Category = " + cboMainGroup.SelectedValue.ToString(), 
-             //       "",
-             //       "TextBox"
-             //       );
-//            select po.POId, po.Date, po.DNId, po.DNDate, e.first_name + ' ' + e.last_name AS EmployeeName,
-// po.Note
-//from PO po
-//inner join PoDetail pod on po.POId=pod.POId
-//inner join PR_Employee e on po.EmployeeId=e.employeeid
+            //"sl.StockLevelId",
+            //   " sl.Date, cd.cgdDesc AS ItemGroupName, sl.Note ",
+            //   "  StockLevel sl inner join StockLevelDetail sld on sl.StockLevelId=sld.StockLevelId "
+            //   + " inner join CatDtl cd on sl.ItemGroupID=cd.cgdCode AND cd.cgCode=6",
+            //       this.Text.ToString(),
+            //       1,
+            //       "Stock #,Date,Item Group Name,Note",
+            //       "12,8,15,20",
+            //       " T, T, T, T",
+            //       true,
+            //       "",
+            //   //"d.Category = " + cboMainGroup.SelectedValue.ToString(), 
+            //       "",
+            //       "TextBox"
+            //       );
+            //            select po.POId, po.Date, po.DNId, po.DNDate, e.first_name + ' ' + e.last_name AS EmployeeName,
+            // po.Note
+            //from PO po
+            //inner join PoDetail pod on po.POId=pod.POId
+            //inner join PR_Employee e on po.EmployeeId=e.employeeid
 
 
             frmLookUp sForm = new frmLookUp(
                     "po.POId",
                 " po.Date, po.DNId, po.DNDate, po.Note ",
-                " PO po  " ,
-          //      "inner join PR_Employee e on po.EmployeeId=e.employeeid",
+                " PO po  ",
+                //      "inner join PR_Employee e on po.EmployeeId=e.employeeid",
                     this.Text.ToString(),
                     1,
                     "PO #, PO Date, DN #, DN Date, Note",
@@ -683,17 +689,21 @@ namespace GUI_Task
 
             // Fields 0,1,2,3 are Begin  
 
-//            select po.POId, po.Date, po.DNId, po.DNDate, e.first_name + ' ' + e.last_name AS EmployeeName,
-// po.Note
-//from PO po
-//inner join PoDetail pod on po.POId=pod.POId
-//inner join PR_Employee e on po.EmployeeId=e.employeeid
+            //            select po.POId, po.Date, po.DNId, po.DNDate, e.first_name + ' ' + e.last_name AS EmployeeName,
+            // po.Note
+            //from PO po
+            //inner join PoDetail pod on po.POId=pod.POId
+            //inner join PR_Employee e on po.EmployeeId=e.employeeid
 
 
-            tSQL = "    select po.POId, po.Date, po.DNId, po.DNDate, e.first_name + ' ' + e.last_name AS EmployeeName, po.Note ";
-            tSQL += " from PO po";
-            tSQL += " inner join PoDetail pod on po.POId=pod.POId  "+
-                "inner join PR_Employee e on po.EmployeeId=e.employeeid";
+            //tSQL = "    select po.POId,
+            tSQL = " select po.POId, po.Date, po.DNId, po.DNDate, e.first_name + ' ' + e.last_name AS EmployeeName, po.Note, ";
+		    tSQL += " po.VendorId, v.Name AS VendorName, po.PurchaserId, c.Name AS PurchaserName, cd.cgdDesc AS ItemGroupName ";
+            tSQL += " from PO po inner join PoDetail pod on po.POId=pod.POId ";
+            tSQL += " inner join PR_Employee e on po.EmployeeId=e.employeeid ";
+            tSQL += " INNER JOIN Vendor v ON v.Code = RIGHT(po.VendorId, 7) ";
+            tSQL += " INNER JOIN Customer c ON c.Code = RIGHT(po.PurchaserId, 10) ";
+            tSQL += " LEFT OUTER JOIN CatDtl cd ON po.ItemGroupID = cd.cgdCode AND cd.cgCode = 6 ";
             tSQL += " where po.POId='" + txtPONo.Text.ToString() + "';";
 
             try
@@ -707,14 +717,14 @@ namespace GUI_Task
                     txtPONo.Text = (ds.Tables[0].Rows[0]["POId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["POId"].ToString());
                     dtpPO.Text = (ds.Tables[0].Rows[0]["Date"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Date"].ToString());
                     txtDNNo.Text = (ds.Tables[0].Rows[0]["DNId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["DNId"].ToString());
-                    //dtpPO.Value = (ds.Tables[0].Rows[0]["Date"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Date"].ToString());
-                    //dtpPO.Value =  Convert.ToDateTime(ds.Tables[0].Rows[0]["Date"]);
-                    //txtDebitCode.Text = (ds.Tables[0].Rows[0]["Customer"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Customer"].ToString());
-                    //lblDescription.Text = (ds.Tables[0].Rows[0]["CustomerName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["CustomerName"].ToString());
-                    // txtStockLevelNo.Text = (ds.Tables[0].Rows[0]["StockLevel"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["StockLevel"].ToString());
-                    //txtBillNo.Text = (ds.Tables[0].Rows[0]["BillNo"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["BillNo"].ToString());
-                    //txtOrderStatus.Text = (ds.Tables[0].Rows[0]["Status"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Status"].ToString());
-                    //txtSaleType.Text = (ds.Tables[0].Rows[0]["Type"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Type"].ToString());
+                    dtpDN.Text = (ds.Tables[0].Rows[0]["DNDate"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["DNDate"].ToString());
+                    cboEmpCode.Text = (ds.Tables[0].Rows[0]["EmployeeName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["EmployeeName"].ToString());
+                    mskVenderCode.Text = (ds.Tables[0].Rows[0]["VendorId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["VendorId"].ToString());
+                    lblNameVendor.Text = (ds.Tables[0].Rows[0]["VendorName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["VendorName"].ToString());
+                    mskPurchaseCode.Text = (ds.Tables[0].Rows[0]["PurchaserId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["PurchaserId"].ToString());
+                    lblName.Text = (ds.Tables[0].Rows[0]["PurchaserName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["PurchaserName"].ToString());
+                    cboItemGroup.Text = (ds.Tables[0].Rows[0]["ItemGroupName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ItemGroupName"].ToString());
+                    txtNote.Text = (ds.Tables[0].Rows[0]["Note"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Note"].ToString());
                     //txtDetail.Text = (ds.Tables[0].Rows[0]["Detail"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Detail"].ToString());
 
                     //cboTransport.Text = (ds.Tables[0].Rows[0]["AddaId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["AddaId"].ToString());
@@ -894,7 +904,7 @@ namespace GUI_Task
         {
             string lSQL = "";
             lSQL += " SELECT h.ItemId, i.ItemCode, i.Name AS ItemName, ";
-			lSQL += " sz.cgdDesc AS SizeName, ";
+            lSQL += " sz.cgdDesc AS SizeName, ";
             lSQL += " clr.cgdDesc AS ColorName,  0 AS Stock, ";
             lSQL += " h.DNQty, h.POQty, h.RemainingQty AS RemQty, h.LastRate, 0 AS Amount, ";
             lSQL += " h.SizeID, h.ColorID";
@@ -985,20 +995,20 @@ namespace GUI_Task
             //SizeID = 12,
             //ColorID = 13, 
             //UOMID = 14,
-        //ItemCode = 1,
-        //ItemName = 2,
-        //SizeName = 3,
-        //ColorName = 4,
-        //UnitName = 5,
-        //Stock = 6,
-        //DNQty = 7,
-        //POQty = 8,
-        //RemQty = 9,
-        //LastRate = 10,
-        //Amount = 11,
-        //SizeID = 12,
-        //ColorID = 13,
-        //UOMID = 14,
+            //ItemCode = 1,
+            //ItemName = 2,
+            //SizeName = 3,
+            //ColorName = 4,
+            //UnitName = 5,
+            //Stock = 6,
+            //DNQty = 7,
+            //POQty = 8,
+            //RemQty = 9,
+            //LastRate = 10,
+            //Amount = 11,
+            //SizeID = 12,
+            //ColorID = 13,
+            //UOMID = 14,
             //lHDR += "Code";
             lHDR += " ItemID";      //ItemID = 0,   
             lHDR += ",Item Code";   //ItemCode = 1,    
@@ -1166,26 +1176,26 @@ namespace GUI_Task
         {
             if (e.KeyCode == Keys.F1)
             {
-                LookUp_Voc();
+                LookUp_GL2();
             }
         }
 
         private void mskVenderCode_DoubleClick(object sender, EventArgs e)
         {
-            LookUp_Voc();
+            LookUp_GL2();
         }
 
         private void mskPurchaseCode_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
             {
-                LookUp_Voc();
+                LookUp_GL1();
             }
         }
 
         private void mskPurchaseCode_DoubleClick(object sender, EventArgs e)
         {
-            LookUp_Voc();
+            LookUp_GL1();
         }
 
         private void txt_I_ItemID_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -1216,19 +1226,14 @@ namespace GUI_Task
                 lbl_I_ItemName.Text.ToString(),            //ItemName = 2, 
                 cbo_I_Size.Text.ToString(),                //SizeName = 3, 
                 cbo_I_Color.Text.ToString(),               //ColorName = 4,
-                cbo_I_UOM.Text.ToString(),                 //UnitName = 5, 
                 txtStock.Text.ToString(),                  //Stock = 6,  
                 txtDNQty.Text.ToString(),                  //DNQty = 7,
                 txtPOQty.Text.ToString(),                  //POQty = 8,
                 txtRemQty.Text.ToString(),                 //RemQty = 9,
                 txtLastRate.Text.ToString(),               //LastRate = 10,
                 txtAmount.Text.ToString(),                 //Amount = 11,
-                //cboGodown.Text.ToString(),               //SizeID = 12,
-                //txtQty.Text.ToString(),                  //ColorID = 13, 
                 cbo_I_Size.SelectedValue.ToString(),       //UOMID = 14,
-                cbo_I_Color.SelectedValue.ToString(),
-                cbo_I_UOM.SelectedValue.ToString());
-            //cboGodown.SelectedValue.ToString()
+                cbo_I_Color.SelectedValue.ToString());
 
             SumVoc();
 
@@ -1320,6 +1325,94 @@ namespace GUI_Task
             //msk_VocCode.Text = ((MaskedTextBox)sender).Text;
         }
 
+        private void LookUp_GL1()
+        {
+            //SELECT Code, Name FROM Heads WHERE TYPE = 'A'
+            frmLookUp sForm = new frmLookUp(
+                    "Code",
+                    "Name",
+                    "Heads",
+                    this.Text.ToString(),
+                    1,
+                    "Code, Purchaser Name",
+                    "16,40",
+                    " T, T",
+                    true,
+                    "",
+                    " Type='A'",
+                    "TextBox"
+                    );
+
+            mskPurchaseCode.Mask = "";
+            mskPurchaseCode.Text = string.Empty;
+            mskPurchaseCode.Mask = clsGVar.maskGLCode;
+
+            sForm.lupassControl = new frmLookUp.LUPassControl(PassData1);
+            sForm.ShowDialog();
+            if (mskPurchaseCode.Text != null)
+            {
+                if (mskPurchaseCode.Text != null)
+                {
+                    if (mskPurchaseCode.Text.ToString() == "" || mskPurchaseCode.Text.ToString() == string.Empty)
+                    {
+                        return;
+                    }
+                    if (mskPurchaseCode.Text.ToString().Trim().Length > 0)
+                    {
+                        PopulateRecordsGL1();
+                        //LoadSampleData();
+                    }
+
+
+                }
+
+
+            }
+        }
+
+        private void PassData1(object sender)
+        {
+            mskPurchaseCode.Mask = "";
+            mskPurchaseCode.Text = ((TextBox)sender).Text;
+            mskPurchaseCode.Mask = clsGVar.maskGLCode;
+
+        }
+        //Populate Recordset 
+        private void PopulateRecordsGL1()
+        {
+            DataSet ds = new DataSet();
+            DataRow dRow;
+            string tSQL = string.Empty;
+
+            // Fields 0,1,2,3 are Begin  
+
+            tSQL = "SELECT Code, Name ";
+            tSQL += " from Heads ";
+            tSQL += " where Code ='" + mskPurchaseCode.Text.ToString() + "';";
+
+            try
+            {
+                ds = clsDbManager.GetData_Set(tSQL, "Heads");
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    //fAlreadyExists = true;
+                    dRow = ds.Tables[0].Rows[0];
+                    // Starting title as 0
+                    lblName.Text = (ds.Tables[0].Rows[0]["Name"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Name"].ToString());
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        ds.Clear();
+                        //btn_EnableDisable(true);
+                    }
+                    //LoadGridData();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Unable to Get Account Code...", this.Text.ToString());
+            }
+        }
+
         #region PopulateRecords1
         //Populate Recordset 
         private void PopulateRecords1()
@@ -1380,5 +1473,129 @@ namespace GUI_Task
         {
             this.Close();
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            grd.Rows.Clear();
+            ClearTextBoxes();
+        }
+
+        private void ClearTextBoxes()
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                        (control as TextBox).Clear();
+                    else
+                        func(control.Controls);
+            };
+
+            func(Controls);
+        }
+
+
+        private void PassDataVocID2(object sender)
+        {
+            //txtPassDataVocID.Text = ((TextBox)sender).Text;
+            txtDNNo.Text = ((TextBox)sender).Text;
+            //msk_VocCode.Text = ((MaskedTextBox)sender).Text;
+        }
+
+        private void LookUp_GL2()
+        {
+
+                    //select VendorId, v.Name AS VendorName 
+                    //from PO po
+                    //INNER JOIN Vendor v ON v.Code = RIGHT(po.VendorId, 7)
+            frmLookUp sForm = new frmLookUp(
+                    "po.VendorId",
+                    "v.Name",
+                    "PO po INNER JOIN Vendor v ON v.Code = RIGHT(po.VendorId, 7)",
+                    this.Text.ToString(),
+                    1,
+                    "Code, Vendor Name",
+                    "16,40",
+                    " T, T",
+                    true,
+                    "",
+                    "",
+                    "TextBox"
+                    );
+
+            mskVenderCode.Mask = "";
+            mskVenderCode.Text = string.Empty;
+            mskVenderCode.Mask = clsGVar.maskGLCode;
+
+            sForm.lupassControl = new frmLookUp.LUPassControl(PassData2);
+            sForm.ShowDialog();
+            if (mskVenderCode.Text != null)
+            {
+                if (mskVenderCode.Text != null)
+                {
+                    if (mskVenderCode.Text.ToString() == "" || mskVenderCode.Text.ToString() == string.Empty)
+                    {
+                        return;
+                    }
+                    if (mskVenderCode.Text.ToString().Trim().Length > 0)
+                    {
+                        PopulateRecordsGL2();
+                        //LoadSampleData();
+                    }
+
+
+                }
+
+
+            }
+        }
+
+        private void PassData2(object sender)
+        {
+            mskVenderCode.Mask = "";
+            mskVenderCode.Text = ((TextBox)sender).Text;
+            mskVenderCode.Mask = clsGVar.maskGLCode;
+
+        }
+        //Populate Recordset 
+        private void PopulateRecordsGL2()
+        {
+            DataSet ds = new DataSet();
+            DataRow dRow;
+            string tSQL = string.Empty;
+
+            // Fields 0,1,2,3 are Begin  
+
+               tSQL =  " SELECT po.VendorId, v.Name ";
+               tSQL += " from PO po  INNER JOIN Vendor v ON v.Code = RIGHT(po.VendorId, 7) ";
+               tSQL += " where po.VendorId ='" + mskVenderCode.Text.ToString() + "';";
+
+            try
+            {
+                ds = clsDbManager.GetData_Set(tSQL, "Vendor");
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    //fAlreadyExists = true;
+                    dRow = ds.Tables[0].Rows[0];
+                    // Starting title as 0
+                    lblNameVendor.Text = (ds.Tables[0].Rows[0]["Name"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Name"].ToString());
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        ds.Clear();
+                        //btn_EnableDisable(true);
+                    }
+                    //LoadGridData();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Unable to Get Account Code...", this.Text.ToString());
+            }
+        }
+
+        
+
     }
 }
