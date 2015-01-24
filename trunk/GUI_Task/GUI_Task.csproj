@@ -183,6 +183,12 @@
     <Compile Include="Form\frmDemandNote.Designer.cs">
       <DependentUpon>frmDemandNote.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\frmEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmEmail.designer.cs">
+      <DependentUpon>frmEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\frmGdRecNote.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1857,6 +1863,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\frmDemandNote.resx">
       <DependentUpon>frmDemandNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmEmail.resx">
+      <DependentUpon>frmEmail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\frmGdRecNote.resx">
       <DependentUpon>frmGdRecNote.cs</DependentUpon>

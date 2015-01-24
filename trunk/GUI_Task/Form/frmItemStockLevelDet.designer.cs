@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmItemsStockLevelDetail));
             this.btnHelp = new System.Windows.Forms.Button();
             this.dtpStockLevel = new System.Windows.Forms.DateTimePicker();
@@ -71,7 +72,6 @@
             this.txt_I_ItemID = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnEscExit = new System.Windows.Forms.Button();
-            this.btnPrinting = new System.Windows.Forms.Button();
             this.sSMaster = new System.Windows.Forms.StatusStrip();
             this.tSlblUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.tStextUser = new System.Windows.Forms.ToolStripStatusLabel();
@@ -81,14 +81,16 @@
             this.tStextTotal = new System.Windows.Forms.ToolStripStatusLabel();
             this.tSlblAlert = new System.Windows.Forms.ToolStripStatusLabel();
             this.textAlert = new System.Windows.Forms.ToolStripStatusLabel();
+            this.chkEdit = new System.Windows.Forms.CheckBox();
+            this.btnAddNew = new System.Windows.Forms.Button();
+            this.btnEmail = new System.Windows.Forms.Button();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chkEdit = new System.Windows.Forms.CheckBox();
-            this.btnAddNew = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.GridView.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -99,7 +101,7 @@
             // 
             // btnHelp
             // 
-            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHelp.Location = new System.Drawing.Point(507, 4);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(74, 22);
@@ -193,7 +195,7 @@
             // 
             // grd
             // 
-            this.grd.AllowUserToDeleteRows = false;
+            this.grd.AllowUserToOrderColumns = true;
             this.grd.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.grd.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.grd.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -208,16 +210,15 @@
             this.Column10});
             this.grd.Location = new System.Drawing.Point(3, 2);
             this.grd.Name = "grd";
-            this.grd.ReadOnly = true;
             this.grd.Size = new System.Drawing.Size(603, 198);
             this.grd.TabIndex = 322;
+            this.grd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grd_KeyDown);
             // 
             // Column1
             // 
             this.Column1.Frozen = true;
             this.Column1.HeaderText = "Code";
             this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
             this.Column1.Width = 57;
             // 
             // Column2
@@ -225,7 +226,6 @@
             this.Column2.Frozen = true;
             this.Column2.HeaderText = "Item Code";
             this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
             this.Column2.Width = 80;
             // 
             // Column3
@@ -233,7 +233,6 @@
             this.Column3.Frozen = true;
             this.Column3.HeaderText = "Name";
             this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
             this.Column3.Width = 60;
             // 
             // SizeColumn
@@ -241,7 +240,6 @@
             this.SizeColumn.Frozen = true;
             this.SizeColumn.HeaderText = "Size";
             this.SizeColumn.Name = "SizeColumn";
-            this.SizeColumn.ReadOnly = true;
             this.SizeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.SizeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.SizeColumn.Width = 52;
@@ -251,7 +249,6 @@
             this.ColorColumn.Frozen = true;
             this.ColorColumn.HeaderText = "Colour ";
             this.ColorColumn.Name = "ColorColumn";
-            this.ColorColumn.ReadOnly = true;
             this.ColorColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ColorColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.ColorColumn.Width = 65;
@@ -261,7 +258,6 @@
             this.dataGridViewTextBoxColumn3.Frozen = true;
             this.dataGridViewTextBoxColumn3.HeaderText = "Min. Level";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Width = 81;
             // 
             // Column12
@@ -269,7 +265,6 @@
             this.Column12.Frozen = true;
             this.Column12.HeaderText = "Max. Level";
             this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
             this.Column12.Width = 84;
             // 
             // Column10
@@ -277,7 +272,6 @@
             this.Column10.Frozen = true;
             this.Column10.HeaderText = "Curr. Stock";
             this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
             this.Column10.Width = 85;
             // 
             // lblCurrentStock
@@ -564,7 +558,7 @@
             // btnSave
             // 
             this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(50, 318);
+            this.btnSave.Location = new System.Drawing.Point(12, 318);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(66, 26);
             this.btnSave.TabIndex = 337;
@@ -575,24 +569,13 @@
             // btnEscExit
             // 
             this.btnEscExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnEscExit.Location = new System.Drawing.Point(225, 318);
+            this.btnEscExit.Location = new System.Drawing.Point(84, 320);
             this.btnEscExit.Name = "btnEscExit";
             this.btnEscExit.Size = new System.Drawing.Size(57, 26);
             this.btnEscExit.TabIndex = 339;
             this.btnEscExit.Text = "Esc=Exit";
             this.btnEscExit.UseVisualStyleBackColor = true;
             this.btnEscExit.Click += new System.EventHandler(this.btnEscExit_Click);
-            // 
-            // btnPrinting
-            // 
-            this.btnPrinting.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnPrinting.Location = new System.Drawing.Point(138, 318);
-            this.btnPrinting.Name = "btnPrinting";
-            this.btnPrinting.Size = new System.Drawing.Size(63, 26);
-            this.btnPrinting.TabIndex = 338;
-            this.btnPrinting.Text = "Printing";
-            this.btnPrinting.UseVisualStyleBackColor = true;
-            this.btnPrinting.Visible = false;
             // 
             // sSMaster
             // 
@@ -677,6 +660,46 @@
             this.textAlert.Text = "Ready";
             this.textAlert.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // chkEdit
+            // 
+            this.chkEdit.AutoSize = true;
+            this.chkEdit.Cursor = System.Windows.Forms.Cursors.No;
+            this.chkEdit.Location = new System.Drawing.Point(313, 324);
+            this.chkEdit.Name = "chkEdit";
+            this.chkEdit.Size = new System.Drawing.Size(44, 17);
+            this.chkEdit.TabIndex = 333;
+            this.chkEdit.Text = "Edit";
+            this.chkEdit.UseVisualStyleBackColor = true;
+            this.chkEdit.Visible = false;
+            // 
+            // btnAddNew
+            // 
+            this.btnAddNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddNew.Location = new System.Drawing.Point(467, 37);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(75, 23);
+            this.btnAddNew.TabIndex = 612;
+            this.btnAddNew.Text = "Add New";
+            this.btnAddNew.UseVisualStyleBackColor = true;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
+            // 
+            // btnEmail
+            // 
+            this.btnEmail.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEmail.Location = new System.Drawing.Point(147, 322);
+            this.btnEmail.Name = "btnEmail";
+            this.btnEmail.Size = new System.Drawing.Size(68, 24);
+            this.btnEmail.TabIndex = 621;
+            this.btnEmail.Text = "Send Email";
+            this.btnEmail.UseVisualStyleBackColor = true;
+            this.btnEmail.Click += new System.EventHandler(this.btnEmail_Click);
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.Frozen = true;
@@ -719,38 +742,15 @@
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.Width = 85;
             // 
-            // chkEdit
-            // 
-            this.chkEdit.AutoSize = true;
-            this.chkEdit.Cursor = System.Windows.Forms.Cursors.No;
-            this.chkEdit.Location = new System.Drawing.Point(313, 324);
-            this.chkEdit.Name = "chkEdit";
-            this.chkEdit.Size = new System.Drawing.Size(44, 17);
-            this.chkEdit.TabIndex = 333;
-            this.chkEdit.Text = "Edit";
-            this.chkEdit.UseVisualStyleBackColor = true;
-            this.chkEdit.Visible = false;
-            // 
-            // btnAddNew
-            // 
-            this.btnAddNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNew.Location = new System.Drawing.Point(467, 37);
-            this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(75, 23);
-            this.btnAddNew.TabIndex = 612;
-            this.btnAddNew.Text = "Add New";
-            this.btnAddNew.UseVisualStyleBackColor = true;
-            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
-            // 
             // frmItemsStockLevelDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(633, 370);
+            this.Controls.Add(this.btnEmail);
             this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.sSMaster);
             this.Controls.Add(this.btnEscExit);
-            this.Controls.Add(this.btnPrinting);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.GridView);
             this.Controls.Add(this.txtStockLevelNo);
@@ -767,6 +767,7 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmItemsStockLevelDetail";
             this.Text = "Items Stock Level Detail";
             this.Load += new System.EventHandler(this.frmItemsStockLevelDetail_Load);
@@ -824,7 +825,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnEscExit;
-        private System.Windows.Forms.Button btnPrinting;
         private System.Windows.Forms.StatusStrip sSMaster;
         private System.Windows.Forms.ToolStripStatusLabel tSlblUser;
         private System.Windows.Forms.ToolStripStatusLabel tStextUser;
@@ -846,5 +846,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.CheckBox chkEdit;
         private System.Windows.Forms.Button btnAddNew;
+        private System.Windows.Forms.Button btnEmail;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }

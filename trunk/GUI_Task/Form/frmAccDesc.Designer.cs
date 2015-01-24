@@ -28,15 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccDesc));
             this.mskAccCode = new System.Windows.Forms.MaskedTextBox();
             this.lblAccCode = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.txtName2 = new System.Windows.Forms.TextBox();
-            this.frmAccType = new System.Windows.Forms.Label();
-            this.optDetail = new System.Windows.Forms.RadioButton();
-            this.optGroup = new System.Windows.Forms.RadioButton();
             this.btnDel = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
@@ -50,6 +47,8 @@
             this.tStextTotal = new System.Windows.Forms.ToolStripStatusLabel();
             this.tSlblAlert = new System.Windows.Forms.ToolStripStatusLabel();
             this.textAlert = new System.Windows.Forms.ToolStripStatusLabel();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.sSMaster.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,60 +100,13 @@
             this.txtName.Size = new System.Drawing.Size(302, 20);
             this.txtName.TabIndex = 51;
             // 
-            // txtName2
-            // 
-            this.txtName2.Location = new System.Drawing.Point(107, 83);
-            this.txtName2.Name = "txtName2";
-            this.txtName2.Size = new System.Drawing.Size(302, 20);
-            this.txtName2.TabIndex = 52;
-            // 
-            // frmAccType
-            // 
-            this.frmAccType.AllowDrop = true;
-            this.frmAccType.AutoSize = true;
-            this.frmAccType.BackColor = System.Drawing.Color.NavajoWhite;
-            this.frmAccType.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.frmAccType.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.frmAccType.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.frmAccType.Location = new System.Drawing.Point(12, 116);
-            this.frmAccType.Name = "frmAccType";
-            this.frmAccType.Size = new System.Drawing.Size(88, 17);
-            this.frmAccType.TabIndex = 53;
-            this.frmAccType.Text = "Account Type   ";
-            this.frmAccType.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // optDetail
-            // 
-            this.optDetail.AutoSize = true;
-            this.optDetail.Checked = true;
-            this.optDetail.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optDetail.Location = new System.Drawing.Point(136, 116);
-            this.optDetail.Name = "optDetail";
-            this.optDetail.Size = new System.Drawing.Size(57, 19);
-            this.optDetail.TabIndex = 54;
-            this.optDetail.TabStop = true;
-            this.optDetail.Text = "Detail";
-            this.optDetail.UseVisualStyleBackColor = true;
-            // 
-            // optGroup
-            // 
-            this.optGroup.AutoSize = true;
-            this.optGroup.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optGroup.Location = new System.Drawing.Point(256, 116);
-            this.optGroup.Name = "optGroup";
-            this.optGroup.Size = new System.Drawing.Size(59, 19);
-            this.optGroup.TabIndex = 55;
-            this.optGroup.Text = "Group";
-            this.optGroup.UseVisualStyleBackColor = true;
-            this.optGroup.CheckedChanged += new System.EventHandler(this.optGroup_CheckedChanged);
-            // 
             // btnDel
             // 
             this.btnDel.BackColor = System.Drawing.SystemColors.ControlDark;
             this.btnDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDel.Location = new System.Drawing.Point(107, 154);
+            this.btnDel.Location = new System.Drawing.Point(107, 90);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(72, 73);
+            this.btnDel.Size = new System.Drawing.Size(72, 42);
             this.btnDel.TabIndex = 957;
             this.btnDel.Text = "Delete";
             this.btnDel.UseVisualStyleBackColor = false;
@@ -163,9 +115,9 @@
             // 
             this.btnExit.BackColor = System.Drawing.SystemColors.ControlDark;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(185, 154);
+            this.btnExit.Location = new System.Drawing.Point(185, 90);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(72, 73);
+            this.btnExit.Size = new System.Drawing.Size(72, 42);
             this.btnExit.TabIndex = 956;
             this.btnExit.Text = "Esc/Exit";
             this.btnExit.UseVisualStyleBackColor = false;
@@ -175,9 +127,9 @@
             // 
             this.btnHelp.BackColor = System.Drawing.SystemColors.ControlDark;
             this.btnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Location = new System.Drawing.Point(337, 154);
+            this.btnHelp.Location = new System.Drawing.Point(337, 90);
             this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(72, 73);
+            this.btnHelp.Size = new System.Drawing.Size(72, 42);
             this.btnHelp.TabIndex = 955;
             this.btnHelp.Text = "F1=Help";
             this.btnHelp.UseVisualStyleBackColor = false;
@@ -186,9 +138,9 @@
             // 
             this.btnSave.BackColor = System.Drawing.SystemColors.ControlDark;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(29, 154);
+            this.btnSave.Location = new System.Drawing.Point(27, 90);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(72, 73);
+            this.btnSave.Size = new System.Drawing.Size(72, 42);
             this.btnSave.TabIndex = 954;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -205,9 +157,9 @@
             this.tStextTotal,
             this.tSlblAlert,
             this.textAlert});
-            this.sSMaster.Location = new System.Drawing.Point(0, 237);
+            this.sSMaster.Location = new System.Drawing.Point(0, 144);
             this.sSMaster.Name = "sSMaster";
-            this.sSMaster.Size = new System.Drawing.Size(449, 22);
+            this.sSMaster.Size = new System.Drawing.Size(426, 22);
             this.sSMaster.TabIndex = 958;
             this.sSMaster.Text = "statusStrip1";
             // 
@@ -277,20 +229,35 @@
             this.textAlert.Text = "Ready";
             this.textAlert.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(263, 90);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(72, 42);
+            this.button1.TabIndex = 959;
+            this.button1.Text = "Email";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmAccDesc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 259);
+            this.ClientSize = new System.Drawing.Size(426, 166);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.sSMaster);
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.optGroup);
-            this.Controls.Add(this.optDetail);
-            this.Controls.Add(this.frmAccType);
-            this.Controls.Add(this.txtName2);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.mskAccCode);
@@ -312,10 +279,6 @@
         private System.Windows.Forms.Label lblAccCode;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.TextBox txtName2;
-        private System.Windows.Forms.Label frmAccType;
-        private System.Windows.Forms.RadioButton optDetail;
-        private System.Windows.Forms.RadioButton optGroup;
         private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnHelp;
@@ -329,5 +292,7 @@
         private System.Windows.Forms.ToolStripStatusLabel tStextTotal;
         private System.Windows.Forms.ToolStripStatusLabel tSlblAlert;
         private System.Windows.Forms.ToolStripStatusLabel textAlert;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.Button button1;
     }
 }

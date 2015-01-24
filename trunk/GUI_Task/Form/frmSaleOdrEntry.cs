@@ -94,6 +94,8 @@ namespace GUI_Task
 
         bool blnFormLoad=true;
 
+        string strDocId = string.Empty;
+
         //bool blnFormLoad = true;
 
 
@@ -437,11 +439,13 @@ namespace GUI_Task
             string tSQL = string.Empty;
 
             // Fields 0,1,2,3 are Begin  
- 
-            tSQL = "SELECT d.Ord_No, d.Ord_Date, d.Cont_No, d.Customer, h.Name AS CustName, ";
+
+            tSQL = "SELECT DISTINCT RIGHT(Itemcode,1) AS Category, d.Ord_No, d.Ord_Date, d.Cont_No, d.Cont_Date, d.Customer, h.Name AS CustName, ";
             tSQL += " d.BillNo, d.Status, d.Type, d.Adda, d.AddaId, d.ItemCategory,d.Cash_Pay, ";
-            tSQL += " d.Qty, d.Amount, d.Category, d.Detail, d.ItemGroupID ";
+            tSQL += " d.Qty, d.Amount, d.Category, d.Detail, d.ItemGroupID, c.cgdDesc AS ItemGroupName ";
             tSQL += " from Ord_Det d INNER JOIN Heads h ON d.Customer=h.Code ";
+            tSQL += " INNER JOIN CatDtl c ON d.ItemGroupID = c.cgdCode AND c.cgCode = 6 ";
+            tSQL += " INNER JOIN Item it ON d.Category = it.ItemId ";
             tSQL += " where d.Ord_No='" + txtOrderNo.Text.ToString() + "';";
 
             try
@@ -453,16 +457,19 @@ namespace GUI_Task
                     dRow = ds.Tables[0].Rows[0];
                     // Starting title as 0
                     txtOrderNo.Text = (ds.Tables[0].Rows[0]["Ord_No"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Ord_No"].ToString());
+                    dtpOrder.Text = (ds.Tables[0].Rows[0]["Ord_Date"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Ord_Date"].ToString());
                     //dtpOrder.Value = (ds.Tables[0].Rows[0]["doc_date"] == DBNull.Value ? DateTime.Now.ToString("T") : ds.Tables[0].Rows[0]["doc_date"]);
                     txtContractNo.Text = (ds.Tables[0].Rows[0]["Cont_No"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Cont_No"].ToString());
+                    dtpContract.Text = (ds.Tables[0].Rows[0]["Cont_Date"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Cont_Date"].ToString());
                     mskCustomerCode.Text = (ds.Tables[0].Rows[0]["Customer"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Customer"].ToString());
                     lblName.Text = (ds.Tables[0].Rows[0]["CustName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["CustName"].ToString());
                     txtBillNo.Text = (ds.Tables[0].Rows[0]["BillNo"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["BillNo"].ToString());
                     txtOrderStatus.Text = (ds.Tables[0].Rows[0]["Status"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Status"].ToString());
                     txtSaleType.Text = (ds.Tables[0].Rows[0]["Type"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Type"].ToString());
                     txtDetail.Text = (ds.Tables[0].Rows[0]["Detail"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Detail"].ToString());
-                    
-                    //cboTransport.Text = (ds.Tables[0].Rows[0]["AddaId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["AddaId"].ToString());
+                    cboTransport.Text = (ds.Tables[0].Rows[0]["Adda"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Adda"].ToString());
+                    cboItemGroup.Text = (ds.Tables[0].Rows[0]["ItemGroupName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ItemGroupName"].ToString());
+                    cboCategory.Text = (ds.Tables[0].Rows[0]["Category"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Category"].ToString());
                     clsSetCombo.Set_ComboBox(cboTransport, Convert.ToInt32(ds.Tables[0].Rows[0]["AddaId"]));
                     clsSetCombo.Set_ComboBox(cboItemGroup, Convert.ToInt32(ds.Tables[0].Rows[0]["ItemGroupID"]));
                     
@@ -553,6 +560,7 @@ namespace GUI_Task
                     }
                     //PopulateGridData();
                     LoadGridData();
+                    SumVoc();
                     //txtManualDoc.Enabled = false;
                 }
             }
@@ -1213,6 +1221,8 @@ namespace GUI_Task
             decimal fAmount = 0;
             decimal rtnVal = 0;
             decimal outValue = 0;
+            decimal fDiscount = 0;
+            decimal fNetValue = 0;
 
             for (int i = 0; i < grd.RowCount; i++)
             {
@@ -1235,10 +1245,34 @@ namespace GUI_Task
                     }
                 } // if != null
                 //grdVoucher[2, i].Value = (i + 1).ToString();
+
+                if (grd.Rows[i].Cells[(int)GCol.Discount].Value != null)
+                {
+                    bcheck = decimal.TryParse(grd.Rows[i].Cells[(int)GCol.Discount].Value.ToString(), out outValue);
+                    if (bcheck)
+                    {
+                        rtnVal += outValue;
+                        fDiscount = fDiscount + outValue;
+                    }
+                }
+
+                if (grd.Rows[i].Cells[(int)GCol.Amount].Value != null)
+                {
+                    bcheck = decimal.TryParse(grd.Rows[i].Cells[(int)GCol.Amount].Value.ToString(), out outValue);
+                    if (bcheck)
+                    {
+                        rtnVal += outValue;
+                        fNetValue = fNetValue + outValue;
+                    }
+                }
             }
+
+            fNetValue = fNetValue - fDiscount;
 
             lblOrderValue.Text = String.Format("{0:0,0.00}", fAmount);
             lblOrderQty2.Text = String.Format("{0:0,0.00}", fQty);
+            txtDiscountRs.Text = String.Format("{0:0,0.00}", fDiscount);
+            lblNetvalue.Text = String.Format("{0:0,0.00}", fNetValue);
         }
 
         private void cmdSave_Click(object sender, EventArgs e)
@@ -1422,7 +1456,11 @@ namespace GUI_Task
                     fDocAlreadyExists = false;
                     //fDocAmt = decimal.Parse(lblTotalDr.Text.ToString());
                     //fDocID = clsDbManager.GetNextValDocID("gl_tran", "doc_id", NewDocWhere(), "");
-                    fDocID = clsDbManager.GetNextValDocID("Ord_Det", "Ord_No", fDocWhere, "");
+                    fDocID = clsDbManager.GetNextValDocID("Ord_Det", "DocId", fDocWhere, "");
+                    fDocID = fDocID + 1;
+                    strDocId = "1-" + DateTime.Now.Year.ToString() + "-" + fDocID.ToString();
+                    txtOrderNo.Text = strDocId;
+                    
                     //txtOrderNo.Text = fDocID.ToString();
                     //
 //                    INSERT INTO Ord_Det
@@ -1433,7 +1471,8 @@ namespace GUI_Task
 //     VALUES
 
                     lSQL = "insert into Ord_Det (";
-                    lSQL += "  Ord_No ";                                         // 1-
+                    lSQL += " DocId ";
+                    lSQL += ", Ord_No ";                                         // 1-
                     lSQL += ", Ord_Date ";                                     // 2-
                     lSQL += ", Customer ";                                            // 3-
                     lSQL += ", Type ";                                         // 4-
@@ -1456,7 +1495,8 @@ namespace GUI_Task
                     lSQL += ", BillNo  ";                                  // 11-
                     lSQL += " ) values (";
                     //
-                    lSQL += "'" + fDocID.ToString() + "'";                          
+                    lSQL += fDocID.ToString();
+                    lSQL += ",'" + strDocId.ToString() + "'";      
                     lSQL += ", " + StrF01.D2Str(dtpOrder) + "";                 // 6-
                     lSQL += ",'" + mskCustomerCode.Text.ToString() + "'";                    
                     lSQL += ",'" + txtSaleType.Text.ToString() + "'";                        
@@ -1608,10 +1648,11 @@ namespace GUI_Task
                         }
                     }
 
-                    lSQL= "INSERT INTO Ord_Hist (Ord_No";
-                    lSQL += ",Code,sizeid,ColorID,Discount,Rate,Qty,Customer,SaleGLCode,FromDelivery)";
+                    lSQL = "INSERT INTO Ord_Hist (DocId";
+                    lSQL += ",Ord_No,Code,sizeid,ColorID,Discount,Rate,Qty,Customer,SaleGLCode,FromDelivery)";
                     lSQL += " VALUES (";
-                    lSQL += "'" + txtOrderNo.Text.ToString() + "'";
+                    lSQL += "" + fDocID + "";
+                    lSQL += ", '" + strDocId.ToString() + "'";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GCol.ItemID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GCol.SizeID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GCol.ColorID].Value.ToString() + "";
@@ -1688,6 +1729,45 @@ namespace GUI_Task
 
         }
 
+        private void btnOrdHelp_Click(object sender, EventArgs e)
+        {
+            LookUp_Voc();
+        }
 
+        private void mskCustomerCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                LookUp_GL();
+            }
+        }
+
+        private void btnACHelp_Click(object sender, EventArgs e)
+        {
+            LookUp_GL();
+        }
+
+        private void ClearTextBoxes()
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                        (control as TextBox).Clear();
+                    else
+                        func(control.Controls);
+            };
+
+            func(Controls);
+        }
+
+
+        private void btnNewOrd_Click(object sender, EventArgs e)
+        {
+            grd.Rows.Clear();
+            ClearTextBoxes();
+        }
     }
 }

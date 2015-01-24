@@ -60,6 +60,14 @@
             this.issueItemBatchWiseDeptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.goodsRecieveNoteReturnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.issueReturnItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.financeTransactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cashRecieptVoucherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cashPaymentVoucherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
+            this.bankRecieptVoucherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bankPaymentVoucherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
+            this.journalVoucherChangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.runningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saleOrderEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
@@ -69,14 +77,6 @@
             this.invoiceEntryCFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.salesReturnEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.financeTransactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cashRecieptVoucherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cashPaymentVoucherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
-            this.bankRecieptVoucherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bankPaymentVoucherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
-            this.journalVoucherChangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.codeDescriptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customerDescriptionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.venderDescriptionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -161,8 +161,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolsToolStripMenuItem,
             this.securityToolStripMenuItem,
-            this.runningToolStripMenuItem,
             this.financeTransactionsToolStripMenuItem,
+            this.runningToolStripMenuItem,
             this.codeDescriptionsToolStripMenuItem,
             this.reportMenuToolStripMenuItem1,
             this.securityToolStripMenuItem1,
@@ -395,6 +395,65 @@
             this.issueReturnItemsToolStripMenuItem.Text = "Issue Return Items";
             this.issueReturnItemsToolStripMenuItem.Click += new System.EventHandler(this.issueReturnItemsToolStripMenuItem_Click);
             // 
+            // financeTransactionsToolStripMenuItem
+            // 
+            this.financeTransactionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cashRecieptVoucherToolStripMenuItem,
+            this.cashPaymentVoucherToolStripMenuItem,
+            this.toolStripSeparator12,
+            this.bankRecieptVoucherToolStripMenuItem,
+            this.bankPaymentVoucherToolStripMenuItem,
+            this.toolStripSeparator13,
+            this.journalVoucherChangeToolStripMenuItem});
+            this.financeTransactionsToolStripMenuItem.Name = "financeTransactionsToolStripMenuItem";
+            this.financeTransactionsToolStripMenuItem.Size = new System.Drawing.Size(130, 20);
+            this.financeTransactionsToolStripMenuItem.Text = "Finance Transactions";
+            // 
+            // cashRecieptVoucherToolStripMenuItem
+            // 
+            this.cashRecieptVoucherToolStripMenuItem.Name = "cashRecieptVoucherToolStripMenuItem";
+            this.cashRecieptVoucherToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.cashRecieptVoucherToolStripMenuItem.Text = "Cash Reciept Voucher";
+            this.cashRecieptVoucherToolStripMenuItem.Click += new System.EventHandler(this.cashRecieptVoucherToolStripMenuItem_Click);
+            // 
+            // cashPaymentVoucherToolStripMenuItem
+            // 
+            this.cashPaymentVoucherToolStripMenuItem.Name = "cashPaymentVoucherToolStripMenuItem";
+            this.cashPaymentVoucherToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.cashPaymentVoucherToolStripMenuItem.Text = "Cash Payment Voucher";
+            this.cashPaymentVoucherToolStripMenuItem.Click += new System.EventHandler(this.cashPaymentVoucherToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator12
+            // 
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(194, 6);
+            // 
+            // bankRecieptVoucherToolStripMenuItem
+            // 
+            this.bankRecieptVoucherToolStripMenuItem.Name = "bankRecieptVoucherToolStripMenuItem";
+            this.bankRecieptVoucherToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.bankRecieptVoucherToolStripMenuItem.Text = "Bank Reciept Voucher";
+            this.bankRecieptVoucherToolStripMenuItem.Click += new System.EventHandler(this.bankRecieptVoucherToolStripMenuItem_Click);
+            // 
+            // bankPaymentVoucherToolStripMenuItem
+            // 
+            this.bankPaymentVoucherToolStripMenuItem.Name = "bankPaymentVoucherToolStripMenuItem";
+            this.bankPaymentVoucherToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.bankPaymentVoucherToolStripMenuItem.Text = "Bank Payment Voucher";
+            this.bankPaymentVoucherToolStripMenuItem.Click += new System.EventHandler(this.bankPaymentVoucherToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator13
+            // 
+            this.toolStripSeparator13.Name = "toolStripSeparator13";
+            this.toolStripSeparator13.Size = new System.Drawing.Size(194, 6);
+            // 
+            // journalVoucherChangeToolStripMenuItem
+            // 
+            this.journalVoucherChangeToolStripMenuItem.Name = "journalVoucherChangeToolStripMenuItem";
+            this.journalVoucherChangeToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.journalVoucherChangeToolStripMenuItem.Text = "Journal Voucher";
+            this.journalVoucherChangeToolStripMenuItem.Click += new System.EventHandler(this.journalVoucherChangeToolStripMenuItem_Click);
+            // 
             // runningToolStripMenuItem
             // 
             this.runningToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -462,65 +521,6 @@
             this.salesReturnEntryToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.salesReturnEntryToolStripMenuItem.Text = "Sales Return Entry";
             this.salesReturnEntryToolStripMenuItem.Click += new System.EventHandler(this.salesReturnEntryToolStripMenuItem_Click);
-            // 
-            // financeTransactionsToolStripMenuItem
-            // 
-            this.financeTransactionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cashRecieptVoucherToolStripMenuItem,
-            this.cashPaymentVoucherToolStripMenuItem,
-            this.toolStripSeparator12,
-            this.bankRecieptVoucherToolStripMenuItem,
-            this.bankPaymentVoucherToolStripMenuItem,
-            this.toolStripSeparator13,
-            this.journalVoucherChangeToolStripMenuItem});
-            this.financeTransactionsToolStripMenuItem.Name = "financeTransactionsToolStripMenuItem";
-            this.financeTransactionsToolStripMenuItem.Size = new System.Drawing.Size(130, 20);
-            this.financeTransactionsToolStripMenuItem.Text = "Finance Transactions";
-            // 
-            // cashRecieptVoucherToolStripMenuItem
-            // 
-            this.cashRecieptVoucherToolStripMenuItem.Name = "cashRecieptVoucherToolStripMenuItem";
-            this.cashRecieptVoucherToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.cashRecieptVoucherToolStripMenuItem.Text = "Cash Reciept Voucher";
-            this.cashRecieptVoucherToolStripMenuItem.Click += new System.EventHandler(this.cashRecieptVoucherToolStripMenuItem_Click);
-            // 
-            // cashPaymentVoucherToolStripMenuItem
-            // 
-            this.cashPaymentVoucherToolStripMenuItem.Name = "cashPaymentVoucherToolStripMenuItem";
-            this.cashPaymentVoucherToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.cashPaymentVoucherToolStripMenuItem.Text = "Cash Payment Voucher";
-            this.cashPaymentVoucherToolStripMenuItem.Click += new System.EventHandler(this.cashPaymentVoucherToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator12
-            // 
-            this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(194, 6);
-            // 
-            // bankRecieptVoucherToolStripMenuItem
-            // 
-            this.bankRecieptVoucherToolStripMenuItem.Name = "bankRecieptVoucherToolStripMenuItem";
-            this.bankRecieptVoucherToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.bankRecieptVoucherToolStripMenuItem.Text = "Bank Reciept Voucher";
-            this.bankRecieptVoucherToolStripMenuItem.Click += new System.EventHandler(this.bankRecieptVoucherToolStripMenuItem_Click);
-            // 
-            // bankPaymentVoucherToolStripMenuItem
-            // 
-            this.bankPaymentVoucherToolStripMenuItem.Name = "bankPaymentVoucherToolStripMenuItem";
-            this.bankPaymentVoucherToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.bankPaymentVoucherToolStripMenuItem.Text = "Bank Payment Voucher";
-            this.bankPaymentVoucherToolStripMenuItem.Click += new System.EventHandler(this.bankPaymentVoucherToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator13
-            // 
-            this.toolStripSeparator13.Name = "toolStripSeparator13";
-            this.toolStripSeparator13.Size = new System.Drawing.Size(194, 6);
-            // 
-            // journalVoucherChangeToolStripMenuItem
-            // 
-            this.journalVoucherChangeToolStripMenuItem.Name = "journalVoucherChangeToolStripMenuItem";
-            this.journalVoucherChangeToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.journalVoucherChangeToolStripMenuItem.Text = "Journal Voucher";
-            this.journalVoucherChangeToolStripMenuItem.Click += new System.EventHandler(this.journalVoucherChangeToolStripMenuItem_Click);
             // 
             // codeDescriptionsToolStripMenuItem
             // 
@@ -604,6 +604,7 @@
             // 
             this.toolStripSeparator19.Name = "toolStripSeparator19";
             this.toolStripSeparator19.Size = new System.Drawing.Size(198, 6);
+            this.toolStripSeparator19.Visible = false;
             // 
             // formulaDefinitionToolStripMenuItem
             // 
@@ -626,6 +627,7 @@
             this.groupSizeColourToolStripMenuItem.Name = "groupSizeColourToolStripMenuItem";
             this.groupSizeColourToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.groupSizeColourToolStripMenuItem.Text = "Group Size Colour";
+            this.groupSizeColourToolStripMenuItem.Visible = false;
             this.groupSizeColourToolStripMenuItem.Click += new System.EventHandler(this.groupSizeColourToolStripMenuItem_Click);
             // 
             // mainGroupToolStripMenuItem
@@ -633,6 +635,7 @@
             this.mainGroupToolStripMenuItem.Name = "mainGroupToolStripMenuItem";
             this.mainGroupToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.mainGroupToolStripMenuItem.Text = "Main Group";
+            this.mainGroupToolStripMenuItem.Visible = false;
             this.mainGroupToolStripMenuItem.Click += new System.EventHandler(this.mainGroupToolStripMenuItem_Click);
             // 
             // reportMenuToolStripMenuItem1

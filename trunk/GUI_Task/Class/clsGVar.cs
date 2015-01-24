@@ -7,6 +7,7 @@ using System.Text;
 // for the time being
 using GUI_Task.StringFun01;
 using System.Windows.Forms;
+using System.Net.Mail;
 
 
 namespace GUI_Task
