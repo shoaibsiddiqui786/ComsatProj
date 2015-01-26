@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmItemsOpenBal));
             this.btnGetItems = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
@@ -99,6 +100,8 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEmail = new System.Windows.Forms.Button();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.tb.SuspendLayout();
@@ -292,7 +295,7 @@
             // 
             // grd
             // 
-            this.grd.AllowUserToDeleteRows = false;
+            this.grd.AllowUserToOrderColumns = true;
             this.grd.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.grd.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.grd.BackgroundColor = System.Drawing.Color.DimGray;
@@ -308,9 +311,9 @@
             this.Amount});
             this.grd.Location = new System.Drawing.Point(0, 3);
             this.grd.Name = "grd";
-            this.grd.ReadOnly = true;
             this.grd.Size = new System.Drawing.Size(741, 168);
             this.grd.TabIndex = 305;
+            this.grd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grd_KeyDown);
             // 
             // SizeColumn
             // 
@@ -345,7 +348,7 @@
             // btnExit
             // 
             this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(135, 300);
+            this.btnExit.Location = new System.Drawing.Point(100, 299);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(57, 26);
             this.btnExit.TabIndex = 308;
@@ -868,11 +871,29 @@
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.Width = 68;
             // 
+            // btnEmail
+            // 
+            this.btnEmail.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEmail.Location = new System.Drawing.Point(163, 299);
+            this.btnEmail.Name = "btnEmail";
+            this.btnEmail.Size = new System.Drawing.Size(81, 20);
+            this.btnEmail.TabIndex = 616;
+            this.btnEmail.Text = "Send Email";
+            this.btnEmail.UseVisualStyleBackColor = true;
+            this.btnEmail.Click += new System.EventHandler(this.btnEmail_Click);
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
             // frmItemsOpenBal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(788, 353);
+            this.Controls.Add(this.btnEmail);
             this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnExit);
@@ -988,5 +1009,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.Button btnEmail;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }

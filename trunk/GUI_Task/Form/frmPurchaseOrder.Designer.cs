@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPurchaseOrder));
             this.txtDNNo = new System.Windows.Forms.TextBox();
             this.cboEmpCode = new System.Windows.Forms.ComboBox();
@@ -129,6 +130,8 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEmail = new System.Windows.Forms.Button();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -140,7 +143,7 @@
             // 
             // txtDNNo
             // 
-            this.txtDNNo.Location = new System.Drawing.Point(121, 29);
+            this.txtDNNo.Location = new System.Drawing.Point(121, 30);
             this.txtDNNo.Name = "txtDNNo";
             this.txtDNNo.Size = new System.Drawing.Size(158, 20);
             this.txtDNNo.TabIndex = 128;
@@ -343,7 +346,7 @@
             // 
             // grd
             // 
-            this.grd.AllowUserToDeleteRows = false;
+            this.grd.AllowUserToOrderColumns = true;
             this.grd.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.grd.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.grd.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -363,16 +366,15 @@
             this.Column13});
             this.grd.Location = new System.Drawing.Point(-1, 3);
             this.grd.Name = "grd";
-            this.grd.ReadOnly = true;
             this.grd.Size = new System.Drawing.Size(931, 184);
             this.grd.TabIndex = 147;
+            this.grd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grd_KeyDown);
             // 
             // Column1
             // 
             this.Column1.Frozen = true;
             this.Column1.HeaderText = "Code";
             this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
             this.Column1.Width = 57;
             // 
             // Column2
@@ -380,7 +382,6 @@
             this.Column2.Frozen = true;
             this.Column2.HeaderText = "Item Code";
             this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
             this.Column2.Width = 80;
             // 
             // Column3
@@ -388,7 +389,6 @@
             this.Column3.Frozen = true;
             this.Column3.HeaderText = "Name";
             this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
             this.Column3.Width = 60;
             // 
             // Column4
@@ -396,7 +396,6 @@
             this.Column4.Frozen = true;
             this.Column4.HeaderText = "Description ";
             this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
             this.Column4.Width = 88;
             // 
             // SizeColumn
@@ -404,7 +403,6 @@
             this.SizeColumn.Frozen = true;
             this.SizeColumn.HeaderText = "Size";
             this.SizeColumn.Name = "SizeColumn";
-            this.SizeColumn.ReadOnly = true;
             this.SizeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.SizeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.SizeColumn.Width = 52;
@@ -414,7 +412,6 @@
             this.ColorColumn.Frozen = true;
             this.ColorColumn.HeaderText = "Colour ";
             this.ColorColumn.Name = "ColorColumn";
-            this.ColorColumn.ReadOnly = true;
             this.ColorColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ColorColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.ColorColumn.Width = 65;
@@ -424,7 +421,6 @@
             this.Column8.Frozen = true;
             this.Column8.HeaderText = "Stock";
             this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
             this.Column8.Width = 60;
             // 
             // Column9
@@ -432,7 +428,6 @@
             this.Column9.Frozen = true;
             this.Column9.HeaderText = "DN Qty";
             this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
             this.Column9.Width = 67;
             // 
             // Column10
@@ -440,7 +435,6 @@
             this.Column10.Frozen = true;
             this.Column10.HeaderText = "PO Qty";
             this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
             this.Column10.Width = 66;
             // 
             // Column11
@@ -448,21 +442,18 @@
             this.Column11.Frozen = true;
             this.Column11.HeaderText = "Remaining Qty";
             this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
             this.Column11.Width = 101;
             // 
             // Column12
             // 
             this.Column12.HeaderText = "Last Rate";
             this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
             this.Column12.Width = 78;
             // 
             // Column13
             // 
             this.Column13.HeaderText = "Amount";
             this.Column13.Name = "Column13";
-            this.Column13.ReadOnly = true;
             this.Column13.Width = 68;
             // 
             // btnPrint
@@ -1224,11 +1215,29 @@
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
             this.dataGridViewTextBoxColumn10.Width = 68;
             // 
+            // btnEmail
+            // 
+            this.btnEmail.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEmail.Location = new System.Drawing.Point(107, 431);
+            this.btnEmail.Name = "btnEmail";
+            this.btnEmail.Size = new System.Drawing.Size(81, 20);
+            this.btnEmail.TabIndex = 615;
+            this.btnEmail.Text = "Send Email";
+            this.btnEmail.UseVisualStyleBackColor = true;
+            this.btnEmail.Click += new System.EventHandler(this.btnEmail_Click);
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
             // frmPurchaseOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(946, 486);
+            this.Controls.Add(this.btnEmail);
             this.Controls.Add(this.lblVal);
             this.Controls.Add(this.lblQty);
             this.Controls.Add(this.button2);
@@ -1395,5 +1404,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.Label lblQty;
         private System.Windows.Forms.Label lblVal;
+        private System.Windows.Forms.Button btnEmail;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }

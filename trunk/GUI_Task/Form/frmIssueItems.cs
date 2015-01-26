@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using GUI_Task.Class;
 using GUI_Task.StringFun01;
+using System.Net.Mail;
 
 namespace GUI_Task
 {
@@ -32,6 +33,7 @@ namespace GUI_Task
     public partial class frmIssueItems : Form
     {
         //******* Grid Variable Setting -- Begin ******
+        string strDocId = string.Empty;
         string fHDR = string.Empty;                       // Column Header
         string fColWidth = string.Empty;                  // Column Width (Input)
         string fColMinWidth = string.Empty;               // Column Minimum Width
@@ -631,6 +633,7 @@ namespace GUI_Task
                 cbo_I_Color.SelectedValue.ToString(),
                 //cbo_I_UOM.SelectedValue.ToString(),
                 cboGodown.SelectedValue.ToString());
+            SumVoc();
         }
 
          private bool FormValidation()
@@ -730,6 +733,7 @@ namespace GUI_Task
                 {
                     fTErr++;
                     MessageBox.Show("No transaction in grid to Save", "Save: " + this.Text.ToString());
+                    
                     return false;
                 }
                 fLastRow = grd.Rows.Count - 1;
@@ -804,10 +808,14 @@ namespace GUI_Task
                 if (txtIssueNo.Text.ToString().Trim(' ', '-') == "")
                 {
                     fDocAlreadyExists = false;
-                    fDocID = clsDbManager.GetNextValDocID("Issue", "IssueId", fDocWhere, "");
+                    fDocID = clsDbManager.GetNextValDocID("Issue", "DocID", fDocWhere, "");
+                    fDocID = fDocID + 1;
+                    strDocId = "1-" + DateTime.Now.Year.ToString() + "-" + fDocID.ToString();
+                    txtIssueNo.Text = strDocId;
 
                     lSQL = "insert into Issue (";
-                    lSQL += "  IssueId ";                              //  0-    ItemID";   
+                    lSQL += "  DocId ";
+                    lSQL += ", IssueId ";                              //  0-    ItemID";   
                     lSQL += ", Date ";                                        //  2-    ItemNam 
                     lSQL += ", EmployeeId ";
                     lSQL += ", DepartmentId ";
@@ -822,8 +830,8 @@ namespace GUI_Task
                     lSQL += ", BranchId ";
                     lSQL += " ) values (";
                     //                                                       
-                    lSQL += "'" + fDocID.ToString() + "'";                  //  0-    ItemID";   
-                    lSQL += ",'" + txtIssueNo.Text.ToString() + "";        //  1-    ItemCod  
+                    lSQL += fDocID.ToString();
+                    lSQL += ",'" + strDocId.ToString() + "'";          //  0-    ItemID";   
                     lSQL += ", " + StrF01.D2Str(dtpIssue) + "";          //  2-    ItemNam
                     lSQL += ", " + cboEmployee.SelectedValue.ToString() + "";
                     lSQL += ", " + cboDepartment.SelectedValue.ToString() + "";
@@ -908,10 +916,11 @@ namespace GUI_Task
                         }
                     }
 
-                    lSQL = "INSERT INTO IssueDetail (IssueId";
+                    lSQL = "INSERT INTO IssueDetail (DocID,IssueId";
                     lSQL += ",ItemId,SizeId,ColorID,GodownId,Qty)";
                     lSQL += " VALUES (";
-                    lSQL += "'" + txtIssueNo.Text.ToString() + "'";
+                    lSQL += "" + fDocID + "";
+                    lSQL += ", '" + strDocId.ToString() + "'";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColIssueItems.ItemID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColIssueItems.SizeID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColIssueItems.ColorID].Value.ToString() + "";
@@ -932,13 +941,126 @@ namespace GUI_Task
         private void btnSave_Click(object sender, EventArgs e)
         {
             SaveData();
-            MessageBox.Show("Data Saved Successfullly");
+            //MessageBox.Show("Data Saved Successfullly");
+            textAlert.Text = "Data Saved Successfully";
+            this.notifyIcon1.BalloonTipText = "Entry Number '" + txtIssueNo.Text.ToString() + "'";
+            this.notifyIcon1.BalloonTipTitle = "Data Saved";
+            //this.notifyIcon1.Icon = new Icon("icon.ico");
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.ShowBalloonTip(5);
         }
 
         private void cboItemGroup_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+
+        private void grd_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void grd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                // MessageBox.Show("Delete key is pressed");
+                //if (grdVoucher.Rows[lLastRow].Cells[(int)GCol.acid].Value == null && grdVoucher.Rows[lLastRow].Cells[(int)GCol.refid].Value == null)
+
+                //if (!fGridControl)
+                //{
+                //    return;
+                //}
+
+                if (grd.Rows.Count > 0)
+                {
+                    if (MessageBox.Show("Are you sure, really want to Delete row ?", "Delete Row", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        grd.Rows.RemoveAt(grd.CurrentRow.Index);
+                        SumVoc();
+                        return;
+                    }
+                }
+            }
+        }
+            
+           private void SumVoc()
+        {
+            bool bcheck;
+            decimal fQty = 0;
+            decimal fAmount = 0;
+            decimal rtnVal = 0;
+            decimal outValue = 0;
+
+            for (int i = 0; i < grd.RowCount; i++)
+            {
+                if (grd.Rows[i].Cells[(int)GColPO.Amount].Value != null)
+                {
+                    bcheck = decimal.TryParse(grd.Rows[i].Cells[(int)GColPO.Amount].Value.ToString(), out outValue);
+                    if (bcheck)
+                    {
+                        rtnVal += outValue;
+                        fAmount = fAmount + outValue;
+                    }
+                }
+                if (grd.Rows[i].Cells[(int)GColPO.POQty].Value != null)
+                {
+                    bcheck = decimal.TryParse(grd.Rows[i].Cells[(int)GColPO.POQty].Value.ToString(), out outValue);
+                    if (bcheck)
+                    {
+                        rtnVal += outValue;
+                        fQty = fQty + outValue;
+                    }
+                } // if != null
+                //grdVoucher[2, i].Value = (i + 1).ToString();
+            }
+
+            //lblTotalQty.Text = String.Format("{0:0,0.00}", fAmount);
+            lblTotalQty.Text = String.Format("{0:0,0.00}", fQty);
+
+        }
+
+           private void btnEmail_Click(object sender, EventArgs e)
+           {
+               //smtp.Text = "smtp.gmail.com";
+               MailMessage mail = new MailMessage("usama.naveed.hussain@gmail.com", "usama.naveed.hussain@gmail.com", "Data Saved", "Data Saved against Entry Number: " + txtIssueNo.Text.ToString());
+               SmtpClient client = new SmtpClient("smtp.gmail.com");
+               // client.Host = "stmp.gmail.com";
+               client.Port = 587;
+               // client.UseDefaultCredentials = false;
+               client.Credentials = new System.Net.NetworkCredential("usama.naveed.hussain@gmail.com", "waleedtablet");
+               client.EnableSsl = true;
+               client.Send(mail);
+               //MessageBox.Show("Mail Sent", "Success", MessageBoxButtons.OK);
+               textAlert.Text = "Mail Sent Successfully";
+           }
+
+           private void btnHelp_Click(object sender, EventArgs e)
+           {
+               LookUp_Voc1();
+           }
+
+           private void btnAdd_Click(object sender, EventArgs e)
+           {
+               grd.Rows.Clear();
+               ClearTextBoxes();
+           }
+
+           private void ClearTextBoxes()
+           {
+               Action<Control.ControlCollection> func = null;
+
+               func = (controls) =>
+               {
+                   foreach (Control control in controls)
+                       if (control is TextBox)
+                           (control as TextBox).Clear();
+                       else
+                           func(control.Controls);
+               };
+
+               func(Controls);
+           }
+        }
     }
-}
-  
+
