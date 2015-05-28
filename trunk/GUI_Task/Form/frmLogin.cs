@@ -49,7 +49,8 @@ namespace GUI_Task
             }
  
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Data Source= (Local); Initial Catalog=GUI_Task; User ID=sa; Password=smc786";
+            //conn.ConnectionString = "Data Source= (Local); Initial Catalog=GUI_Task; User ID=sa; Password=smc786";
+            conn.ConnectionString = clsGVar.ConString1;
             conn.Open();
  
             string UserName = txtUsername.Text;
@@ -67,7 +68,8 @@ namespace GUI_Task
             if (dr.Read())
             {
                 SqlConnection con = new SqlConnection(ConfigurationSettings.AppSettings["ConnectionString"]);
-                con.ConnectionString = "Data Source= (Local); Initial Catalog=GUI_Task; User ID=sa; Password=smc786";
+                //con.ConnectionString = "Data Source= (Local); Initial Catalog=GUI_Task; User ID=sa; Password=smc786";
+                con.ConnectionString = clsGVar.ConString1;
                 con.Open();
              
 
@@ -123,7 +125,8 @@ namespace GUI_Task
                 }
 
                 SqlConnection conn = new SqlConnection();
-                conn.ConnectionString = "Data Source= (Local); Initial Catalog=GUI_Task; User ID=sa; Password=smc786";
+                //conn.ConnectionString = "Data Source= (Local); Initial Catalog=GUI_Task; User ID=sa; Password=smc786";
+                conn.ConnectionString = clsGVar.ConString1;
                 conn.Open();
 
                 string UserName = txtUsername.Text;
@@ -141,7 +144,8 @@ namespace GUI_Task
                 if (dr.Read())
                 {
                     SqlConnection con = new SqlConnection(ConfigurationSettings.AppSettings["ConnectionString"]);
-                    con.ConnectionString = "Data Source= (Local); Initial Catalog=GUI_Task; User ID=sa; Password=smc786";
+                    //con.ConnectionString = "Data Source= (Local); Initial Catalog=GUI_Task; User ID=sa; Password=smc786";
+                    con.ConnectionString = clsGVar.ConString1;
                     con.Open();
 
 

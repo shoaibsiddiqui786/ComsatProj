@@ -517,6 +517,7 @@ namespace GUI_Task
 
             SumVoc();
         }
+
         private int GridTNOT(DataGridView pdGv)
         {
             int rtnValue = 0;
@@ -935,6 +936,11 @@ namespace GUI_Task
             client.Send(mail);
             //MessageBox.Show("Mail Sent", "Success", MessageBoxButtons.OK);
             textAlert.Text = "Mail Sent Successfully";
+        }
+
+        private void txtGateInward_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

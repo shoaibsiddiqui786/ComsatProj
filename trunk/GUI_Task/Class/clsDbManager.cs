@@ -2905,7 +2905,7 @@ namespace GUI_Task
                                     }
                                     else
                                     {
-                                        R.Cells[lCol].Value = Convert.ToBoolean(lDS.Tables[pTableId].Rows[lRow][fFieldList[lCol].Trim()].ToString());
+                                        R.Cells[lCol].Value = Convert.ToBoolean((int)lDS.Tables[pTableId].Rows[lRow][fFieldList[lCol].Trim()]);
                                     }
                                     break;
                                 }

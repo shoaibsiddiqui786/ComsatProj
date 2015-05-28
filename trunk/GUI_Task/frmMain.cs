@@ -18,6 +18,11 @@ namespace GUI_Task
             InitializeComponent();
         }
 
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            copyMyMenus();
+        }
+
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
             frmAccLedger frm = new frmAccLedger();
@@ -388,7 +393,7 @@ namespace GUI_Task
             frm.Show();
         }
 
-       
+
 
         private void duplicateUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -399,7 +404,7 @@ namespace GUI_Task
 
         private void groupToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmGrpUser frm = new frmGrpUser();
+            frmGroup frm = new frmGroup();
             frm.MdiParent = this;
             frm.Show();
         }
@@ -596,7 +601,7 @@ namespace GUI_Task
         {
             frmSaleOdrEntryQout frm = new frmSaleOdrEntryQout();
             frm.MdiParent = this;
-            frm.Show(); 
+            frm.Show();
         }
 
         private void saleOrderEntryServiceToolStripMenuItem_Click(object sender, EventArgs e)
@@ -754,11 +759,6 @@ namespace GUI_Task
             frm.Show();
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void customerDescriptionToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -904,18 +904,125 @@ namespace GUI_Task
             frm.Show();
         }
 
-        private void runningTransactionsToolStripMenuItem_Click(object sender, EventArgs e)
+        
+        //****************** Sir Shoaib Code For Menu Reading (Not Working) ********************************
+
+        //string[] menuItems = { };
+
+        //private void frmMain_Load_1(object sender, EventArgs e)
+        //{
+        //    List<ToolStripMenuItem> myitems = getAllMenuStripItems.GetItems(this.menuStrip1);
+        //    foreach (var item in myitems)
+        //    {
+        //        //Show MenuItemText
+        //        // MessageBox.Show(item.Text);
+        //    }
+        //}
+
+        //public static class getAllMenuStripItems
+        //{
+        //    public static List<ToolStripMenuItem> GetItems(MenuStrip menuStrip)
+        //    {
+        //        List<ToolStripMenuItem> myItems = new List<ToolStripMenuItem>();
+        //        foreach (ToolStripMenuItem i in menuStrip.Items)
+        //        {
+        //            GetMenuItems(i, myItems);
+        //        }
+        //        return myItems;
+        //    }
+        //}
+
+
+
+        //public static void GetMenuItems(ToolStripMenuItem item, List<ToolStripMenuItem> items)
+        //{
+        //    string[] menuItem = new string[item.ToString().Length];
+        //    //string[] menuItem = new string[item.DropDown.Items.Count];
+
+        //    string name;
+
+        //    int m = 1;
+
+        //    items.Add(item);
+
+        //    foreach (ToolStripItem i in item.DropDownItems)
+        //    {
+        //        if (i is ToolStripMenuItem)
+        //        {
+        //            //Show MenuItemNames
+        //            //MessageBox.Show((i.Name).ToString());
+        //            //string name = i.Name.ToString();
+
+        //            for (int j = 0; j < item.DropDown.Items.Count; j++)
+        //            {
+        //                //menuItem[] = i.Name.ToString();
+        //                //name = Convert.ToString(item.DropDown.Items[j]);
+
+
+        //                //    menuItem[j] = Convert.ToString(item.DropDown.Items[j]);
+
+        //                //    //for (int k = 0; k <= name.Length; k++)
+        //                //    //{
+        //                //    //    menuItem[k] = name;
+        //                //    //}
+        //            }
+                    
+        //                //GetMenuItems((ToolStripMenuItem)i, items);
+        //            }
+        //            m++;
+        //        }
+        //    }
+        
+        ////public ToolStripMenuItem items
+        ////{
+        ////    get { return items; }
+        ////    set { items = value; }
+        ////}
+
+        //public string[] menuItem
+        //{
+        //    get { return menuItem; }
+        //    set { menuItem = value; }
+        //}
+
+        // *************************** My Code For Reading Menu (Working) ******************************
+
+
+        static string[] array = new string[51];
+        ToolStripMenuItem[] array1 = new ToolStripMenuItem[100];
+
+        private void copyMyMenus()
+        {    
+            //ToolStripSeparator separator = new ToolStripSeparator();
+
+            //foreach (ToolStripItem item in FileToolStripMenuItem.DropDownItems)
+            //{
+            //    if (item is ToolStripSeparator)
+            //    {
+            //        // Do Nothing
+            //    }
+            //}
+
+
+            FileToolStripMenuItem.DropDownItems.CopyTo(array1, 0);
+            FactoryToolStripMenuItem.DropDownItems.CopyTo(array1, 5);
+            FinanceTransactionsToolStripMenuItem.DropDownItems.CopyTo(array1, 21);
+            SaleToolStripMenuItem.DropDownItems.CopyTo(array1, 26);
+            CodeDescriptionsToolStripMenuItem.DropDownItems.CopyTo(array1, 31);
+            ReportMenuToolStripMenuItem.DropDownItems.CopyTo(array1, 42);
+            SecurityToolStripMenuItem.DropDownItems.CopyTo(array1, 46);
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = Convert.ToString(array1[i]);
+            }
+        }
+
+
+        public string[] menuItem
         {
-            //Form childForm = new Form();
-            //childForm.MdiParent = this;
-            //childForm.Text = frmMain.ActiveForm.Name + childFormNumber++;
-            //childForm.Show();
-           // Form newMDIChild = new Form();
-            // Set the parent form of the child window.
-            //newMDIChild.MdiParent = this;
-            // Display the new form.
-            //newMDIChild.Show();
-            //this.runningTransactionsToolStripMenuItem.Click += new System.EventHandler(this.runningTransactionsToolStripMenuItem);
+            get { return array; }
+            set { array = value; }
         }
     }
 }

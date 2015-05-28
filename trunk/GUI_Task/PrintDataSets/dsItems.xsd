@@ -10,7 +10,7 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="dsItemsTableAdapter" GeneratorDataComponentClassName="dsItemsTableAdapter" Name="dsItems" UserDataComponentName="dsItemsTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="GUI_TaskConnectionString (Settings)" DbObjectName="GUI_Task.dbo.v_Items" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="lenovo-pc.GUI_Task.dbo" DbObjectName="GUI_Task.dbo.v_Items" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        ItemId, ItemCode, ItemName, ItemGroupName
@@ -70,5 +70,9 @@ WHERE        (ItemName LIKE '%' + @ItemName + '%') AND (ItemGroupName LIKE '%' +
         </xs:element>
       </xs:choice>
     </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:dsItems" />
+      <xs:field xpath="mstns:ItemId" />
+    </xs:unique>
   </xs:element>
 </xs:schema>
