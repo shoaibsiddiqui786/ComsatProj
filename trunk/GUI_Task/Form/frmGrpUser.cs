@@ -123,7 +123,7 @@ namespace GUI_Task
 
             //
             lFieldList = "groupid";
-            lFieldList += ", Disable";
+            lFieldList += ", Checked";
             lFieldList += ", GroupName";
 
 
@@ -167,7 +167,7 @@ namespace GUI_Task
 
 
             tFieldName += "groupid";                //  0-    ItemID";       
-            tFieldName += ", Disable";             //  1-    ItemCode";     
+            tFieldName += ", Checked";             //  1-    ItemCode";     
             tFieldName += ", GroupName";             //  2-    ItemName"; 
 
             fHDR = lHDR;
@@ -224,16 +224,33 @@ namespace GUI_Task
         private void LoadGridData()
         {
             string lSQL = "";
-            lSQL =  " select groupid, Disable, GroupName ";
-            lSQL += " from Groups ";
-            lSQL += " ORDER BY GroupName ";
+
+            //// ************** OLD Query *************
+            ////lSQL =  " select groupid, Disable, GroupName ";
+            //lSQL = " SELECT * ";
+            //lSQL += " from Groups ";
+
+            //lSQL += " ORDER BY GroupName ";
 
 
-            clsDbManager.FillDataGrid(
-                grd,
-                lSQL,
-                fFieldList,
-                fColFormat);
+            //// **************  New Query ***************
+            //lSQL = " select g.groupid, g.Disable, g.GroupName ";
+            //lSQL += " from Groups g INNER JOIN GroupUsers gu ON g.groupid = gu.GroupID ";
+            //lSQL += " WHERE gu.UserID = " + cboUsers.SelectedIndex.ToString() + "";
+            //lSQL += " ORDER BY GroupName ";
+
+            //clsDbManager.SP_DataSet("sp_GroupUsers", "1");
+
+
+            SPDataGet();
+
+
+
+            //clsDbManager.FillDataGrid(
+            //    grd,
+            //    lSQL,
+            //    fFieldList,
+            //    fColFormat);
         }
 
         private void btnModify_Click(object sender, EventArgs e)
@@ -280,6 +297,62 @@ namespace GUI_Task
         private void btnLast_Click(object sender, EventArgs e)
         {
             cboUsers.SelectedIndex = cboUsers.Items.Count - 1;
+        }
+
+        private void cboUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadGridData();
+
+            //SPDataGet();
+        }
+
+        private void SPDataGet()
+        {
+            string plstField = "@UserID";
+            string plstType = "8"; // {"8, 8, 8, 8, 8, 8"};
+            string plstValue = string.Empty;
+            
+            string cboUsersValue = string.Empty;
+
+            if (cboUsers.SelectedIndex.ToString() == "0")
+            {
+                plstValue = "1";
+            }
+            else
+            {
+                plstValue = cboUsers.SelectedIndex.ToString();
+            }
+
+            //string plstValue = "1";
+
+            //DataSet dsUsers = new DataSet();
+            //dsUsers = clsDbManager.SP_Exe("sp_GroupUsers", plstField, plstType, plstValue);
+
+            clsDbManager.FillData_SP(
+                grd,
+                "sp_GroupUsers",
+                plstField,
+                plstType,
+                plstValue,
+                fFieldList,
+                fColFormat);
+
+            //DataGridView pDGV,
+            //string pSP,
+            //string plstField,
+            //string plstType, 
+            //string plstValue,
+            //string pFieldList,
+            //string pFieldFormat,
+            //DataSet pDS = null,
+            //int pTableId = 0,
+            //bool pReadOnly = false,
+            //string pCon = clsGVar.ConString1
+        }
+
+        private void cboUsers_SelectedValueChanged(object sender, EventArgs e)
+        {
+            SPDataGet();
         }
     }
 }

@@ -10,6 +10,15 @@ using GUI_Task.StringFun01;
 
 namespace GUI_Task
 {
+    enum GColUser
+    {
+       UserID = 0,
+       Day = 1,       
+       StartingT = 2, 
+       EndingT = 3,
+       Enabled = 4   
+    }
+
     public partial class frmUser : Form
     {
         string fHDR = string.Empty;                       // Column Header
@@ -111,6 +120,13 @@ namespace GUI_Task
         {
             SettingGridVariable();
             LoadInitialControls();
+
+            //string lSQL = string.Empty;
+
+            //lSQL = " SELECT UserID, Day FROM RestrictedAccess";
+
+            //clsFillCombo.FillCombo(cboDay, clsGVar.ConString1, "RestrictedAccess" + "," + "UserID" + "," + "False", lSQL);
+            //fcboDefaultValue = Convert.ToInt16(cboDay.SelectedValue);
         }
 
         private void SettingGridVariable()
@@ -397,7 +413,14 @@ namespace GUI_Task
         private void frmUser_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
+            {
                 this.Close();
+            }
+
+            else if (e.KeyCode == Keys.Insert)
+            {
+                //pnlVocTran.Visible = true;
+            }
         }
 
         private void PopulateRecords()
@@ -519,7 +542,7 @@ namespace GUI_Task
                         {
                             ds.Clear();
                         }
-                        //LoadGridData();
+                        LoadGridData();
                         //SumVoc();
                     }
                 }
@@ -595,7 +618,7 @@ namespace GUI_Task
                         {
                             ds.Clear();
                         }
-                        //LoadGridData();
+                         LoadGridData();
                         //SumVoc();
                     }
                 }
@@ -714,8 +737,111 @@ namespace GUI_Task
             }
         }
 
+        private int GridTNOT(DataGridView pdGv)
+        {
+            int rtnValue = 0;
+            try
+            {
+                //
+                for (int dGVRow = 0; dGVRow < pdGv.Rows.Count; dGVRow++)
+                {
+                    if (pdGv.Rows[dGVRow].Cells[(int)GColUser.UserID].Value == null)
+                    {
+                        if (dGVRow == fLastRow)
+                        {
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if ((pdGv.Rows[dGVRow].Cells[(int)GColUser.UserID].Value.ToString()).Trim(' ', '-') == "")
+                        {
+                            if (dGVRow == fLastRow)
+                            {
+                                break;
+                            }
+                        }
+                    }
+
+                    rtnValue++;
+                } // End For loopo
+                return rtnValue;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Save Grid TNOT: " + ex.Message, this.Text.ToString());
+                return rtnValue;
+            }
+        }
+
         private bool SaveData()
         {
+            // Code Before Grid Saving 
+            //    bool rtnValue = true;
+            //    fTErr = 0;
+            //    if (fManySQL != null)
+            //    {
+            //        if (fManySQL.Count() > 0)
+            //        {
+            //            fManySQL.Clear();
+            //        }
+            //    }
+            //    string lSQL = string.Empty;
+            //    DateTime lNow = DateTime.Now;
+            //    try
+            //    {
+            //        ErrrMsg = "";
+            //        if (!FormValidation())
+            //        {
+            //            textAlert.Text = "Form Validation Error: Not Saved." + "  " + lNow.ToString();
+            //            MessageBox.Show(ErrrMsg, "Save: " + this.Text.ToString());
+            //            return false;
+            //        }
+
+            //        fManySQL = new List<string>();
+
+            //        // Prepare Master Doc Query List
+
+            //        if (!PrepareDocMaster())
+            //        {
+            //            textAlert.Text = "DocMaster: Modifying Doc/Voucher not available for updation.'  ...." + "  " + lNow.ToString();
+            //            //tabMDtl.SelectedTab = tabError;
+            //            return false;
+            //        }
+            //        //
+            //        DateTime now = DateTime.Now;
+            //        textAlert.Text = "selected Box Empty... " + now.ToString("T");
+            //        // pending return false;
+
+            //        // Execute Query
+            //        if (fManySQL.Count > 0)
+            //        {
+            //            if (!clsDbManager.ExeMany(fManySQL))
+            //            {
+            //                MessageBox.Show("Not Saved see log...", this.Text.ToString());
+            //                return false;
+            //            }
+            //            else
+            //            {
+            //                fLastID = txtUserID.Text.ToString();
+            //                ClearThisForm();
+            //                return true;
+            //            }
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("Data Preparation list empty, Not Saved...", this.Text.ToString());
+            //            return false;
+            //        } // End Execute Query
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show("Exception Processing Save: " + ex.Message, "Save Data: " + this.Text.ToString());
+            //        return false;
+            //    }
+
+            //} // End Save
+
             bool rtnValue = true;
             fTErr = 0;
             if (fManySQL != null)
@@ -730,6 +856,13 @@ namespace GUI_Task
             try
             {
                 ErrrMsg = "";
+                if (grd.Rows.Count < 1)
+                {
+                    fTErr++;
+                    MessageBox.Show("No transaction in grid to Save", "Save: " + this.Text.ToString());
+                    return false;
+                }
+                fLastRow = grd.Rows.Count - 1;
                 if (!FormValidation())
                 {
                     textAlert.Text = "Form Validation Error: Not Saved." + "  " + lNow.ToString();
@@ -740,7 +873,7 @@ namespace GUI_Task
                 fManySQL = new List<string>();
 
                 // Prepare Master Doc Query List
-
+                fTNOT = GridTNOT(grd);
                 if (!PrepareDocMaster())
                 {
                     textAlert.Text = "DocMaster: Modifying Doc/Voucher not available for updation.'  ...." + "  " + lNow.ToString();
@@ -748,10 +881,20 @@ namespace GUI_Task
                     return false;
                 }
                 //
-                DateTime now = DateTime.Now;
-                textAlert.Text = "selected Box Empty... " + now.ToString("T");
-                // pending return false;
-
+                if (grd.Rows.Count > 0)
+                {
+                    // Prepare Detail Doc Query List
+                    if (!PrepareDocDetail())
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    DateTime now = DateTime.Now;
+                    textAlert.Text = "selected Box Empty... " + now.ToString("T");
+                    // pending return false;
+                }
                 // Execute Query
                 if (fManySQL.Count > 0)
                 {
@@ -839,7 +982,12 @@ namespace GUI_Task
                     if (clsDbManager.IDAlreadyExistWw("Users", "UserID", fDocWhere))
                     {
                         fDocAlreadyExists = true;
-                        //fManySQL.Add(lSQL);
+
+
+                        lSQL = "delete from RestrictedAccess ";
+                        lSQL += " where " + fDocWhere;
+
+                        fManySQL.Add(lSQL);
                     }
 
                     lSQL = "update Users set";
@@ -862,6 +1010,105 @@ namespace GUI_Task
             {
                 rtnValue = false;
                 MessageBox.Show("Save Master Doc: " + ex.Message, this.Text.ToString());
+                return false;
+            }
+        }
+
+        //private bool PrepareDocDetail()
+        //{
+        //    bool rtnValue = true;
+        //    string lSQL = "";
+        //    try
+        //    {
+        //        for (int dGVRow = 0; dGVRow < grd.Rows.Count; dGVRow++)
+        //        {
+        //            if (grd.Rows[dGVRow].Cells[(int)GColUser.UserID].Value == null)
+        //            {
+        //                if (dGVRow == fLastRow)
+        //                {
+        //                    continue;
+        //                }
+        //            }
+        //            else
+        //            {
+        //                if ((grd.Rows[dGVRow].Cells[(int)GColUser.UserID].Value.ToString()).Trim(' ', '-') == "")
+        //                {
+        //                    //lBlank = true;
+        //                    if (dGVRow == fLastRow)
+        //                    {
+        //                        continue;
+        //                    }
+        //                }
+        //            }
+
+        //            lSQL = "INSERT INTO RestrictedAccess( UserID ";
+        //            lSQL += ",Day,StartingT,EndingT,Enabled)";
+        //            lSQL += " VALUES (";
+        //            lSQL += "" + fDocID + "";
+        //            //lSQL += ", '" + txtUserID.Text.ToString() + "'";
+        //            //lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColUser.UserID].Value.ToString() + "";
+        //            lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColUser.Day].Value.ToString() + "";
+        //            lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColUser.StartingT].Value.ToString() + "";
+        //            lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColUser.EndingT].Value.ToString() + "";
+        //            lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColUser.Enabled].Value.ToString() + "";
+        //            lSQL += ")";
+        //            fManySQL.Add(lSQL);
+        //        } // End For loopo
+        //        return rtnValue;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Save Detail Doc: " + ex.Message, this.Text.ToString());
+        //        return false;
+        //    }
+
+        //}
+
+
+        private bool PrepareDocDetail()
+        {
+            bool rtnValue = true;
+            try
+            {
+
+                // Grid Voucher
+                if (grd.Rows.Count > 0)
+                {
+                    // Prepare Detail Doc Query List
+                    string tTableName = "RestrictedAccess";
+                    string tFieldName = "";
+                    string tColType = "";
+                    //
+                    tColType += "  N0";  // UserID = 0,
+                    tColType += ", T";  // Day = 1,      
+                    tColType += ", T";  // StartingT = 2,
+                    tColType += ", T"; // EndingT = 3,
+                    tColType += ", CH";  // Enabled = 4   
+                    
+                    //
+
+                    tFieldName += "  UserID";        // UserID = 0,
+                    tFieldName += ", Day";          // Day = 1,      
+                    tFieldName += ", StartingT";     // StartingT = 2,
+                    tFieldName += ", EndingT";      // EndingT = 3,
+                    tFieldName += ", Enabled";       // Enabled = 4   
+                    // 
+                    //string tAddFieldName = "Doc_vt_id, Doc_fiscal_ID, Doc_ID";
+                    //string tAddValue = fDocTypeID.ToString() + ", " + fDocFiscal.ToString() + ", " + fDocID.ToString();
+
+                    string tAddFieldName = string.Empty;
+                    string tAddValue = string.Empty;
+
+                    if (clsDbManager.PrepareGridSQL(grd, tTableName, tFieldName, tColType, fManySQL, tAddFieldName, tAddValue) != "OK")
+                    {
+                        return false;
+                    }
+                }
+                return rtnValue;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Save Detail Doc: " + ex.Message, this.Text.ToString());
                 return false;
             }
         }
@@ -940,10 +1187,11 @@ namespace GUI_Task
 
         }
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        private void tabControl1_Click(object sender, EventArgs e)
         {
-
+            LoadGridData2();
+            //grd2.Refresh();
+            //MessageBox.Show("View Tab Clicked");
         }
-     
     }
 }

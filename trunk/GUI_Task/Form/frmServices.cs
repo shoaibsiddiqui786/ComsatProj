@@ -254,5 +254,56 @@ namespace GUI_Task
         {
 
         }
+
+        private void btnModify_Click(object sender, EventArgs e)
+        {
+            btnFirst.Enabled = false;
+            btnLast.Enabled = false;
+            btnNext.Enabled = false;
+            btnPrevious.Enabled = false;
+            btnModify.Enabled = false;
+            btnSave.Enabled = true;
+            btnCancel.Enabled = true;
+        }
+
+        private void btnSave_Click_1(object sender, EventArgs e)
+        {
+            //SaveData();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            btnCancel.Enabled = false;
+            btnSave.Enabled = false;
+            btnFirst.Enabled = true;
+            btnLast.Enabled = true;
+            btnNext.Enabled = true;
+            btnPrevious.Enabled = true;
+            btnModify.Enabled = true;
+        }
+
+        private void btnFirst_Click(object sender, EventArgs e)
+        {
+            cboGroup.SelectedIndex = 0;
+        }
+
+        private void btnLast_Click(object sender, EventArgs e)
+        {
+            cboGroup.SelectedIndex = cboGroup.Items.Count - 1;
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (cboGroup.SelectedIndex > 0)
+            {
+                cboGroup.SelectedIndex -= 1;
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (cboGroup.SelectedIndex < cboGroup.Items.Count - 1)
+                cboGroup.SelectedIndex += 1;
+        }
     }
 }

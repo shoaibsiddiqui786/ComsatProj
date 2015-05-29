@@ -103,116 +103,116 @@ namespace GUI_Task
 
             //
            
-            lFieldList += ", UserID";                //  0-    ItemID";       
+            lFieldList += " UserID";                //  0-    ItemID";       
             lFieldList += ", UserName";            //  1-    ItemCode"; 
-            lFieldList += ", FullName"; 
-            lFieldList += ", AddNew";
-            lFieldList += ", ModifyExisting";
-            lFieldList += ", Print";
-            lFieldList += ", Delete";
-            lFieldList += ", Post/Cancel";
-            lFieldList += ", Unpost";
-            lFieldList += ", View";
+            lFieldList += ", FullName";
+            lFieldList += ", AllowAddNew";
+            lFieldList += ", AllowModify";
+            lFieldList += ", AllowPrint";
+            lFieldList += ", AllowDelete";
+            lFieldList += ", AllowPost";
+            lFieldList += ", AllowUnPost";
+            lFieldList += ", AllowView";
 
 
 
-            lHDR += " User ID";             //  0-    ItemID";      
-            lHDR += ", User Name";            //  1-    ItemCod     
-            lHDR += ", Full Name";
-            lHDR += ", Add New";            //  2-    ItemNam 
-            lHDR += ", Modify Existing";
-            lHDR += ", Print";
-            lHDR += ", Delete";
-            lHDR += ", Post/Cancel";
-            lHDR += ", Unpost";
-            lHDR += ", View";
+            lHDR += " User ID";           // UserID";          
+            lHDR += ", User Name";        // UserName";        
+            lHDR += ", Full Name";        // FullName"; 
+            lHDR += ", Add New";          // AddNew";
+            lHDR += ", Modify Existing";  // ModifyExisting";
+            lHDR += ", Print";            // Print";
+            lHDR += ", Delete";           // Delete";
+            lHDR += ", Post/Cancel";      // PostCancel";
+            lHDR += ", Unpost";           // Unpost";
+            lHDR += ", View";             // View";
 
             // Col Visible Width
-            lColWidth = "   5";                 //  0-    ItemID";        
-            lColWidth += ", 10";                   //  1-    ItemCod";     
-            lColWidth += ", 15";
-            lColWidth += ", 5";                 //  2-    ItemNam; 
-            lColWidth += ", 5";
-            lColWidth += ", 5";
-            lColWidth += ", 5";
-            lColWidth += ", 7";
-            lColWidth += ", 5";
-            lColWidth += ", 5";
+            lColWidth = "   5";                 // UserID";           
+            lColWidth += ", 10";                // UserName";          
+            lColWidth += ", 15";                // FullName"; 
+            lColWidth += ", 5";                 // AddNew";
+            lColWidth += ", 5";                 // ModifyExisting";
+            lColWidth += ", 5";                 // Print";
+            lColWidth += ", 5";                 // Delete";
+            lColWidth += ", 7";                 // PostCancel";
+            lColWidth += ", 5";                 // Unpost";
+            lColWidth += ", 5";                 // View";
 
 
             // Column Input Length/Width
-            lColMaxInputLen = "  0";                 //  0-    ItemID";    
-            lColMaxInputLen += ", 0";                  //  1-    ItemCod 
-            lColMaxInputLen += ", 0";
-            lColMaxInputLen += ", 0";                  //  2-    ItemNam
-            lColMaxInputLen += ", 0";
-            lColMaxInputLen += ", 0";
-            lColMaxInputLen += ", 0";
-            lColMaxInputLen += ", 0";
-            lColMaxInputLen += ", 0";
-            lColMaxInputLen += ", 0";  
+            lColMaxInputLen = "  0";                // UserID";           
+            lColMaxInputLen += ", 0";               // UserName";        
+            lColMaxInputLen += ", 0";               // FullName"; 
+            lColMaxInputLen += ", 0";               // AddNew";
+            lColMaxInputLen += ", 0";               // ModifyExisting";
+            lColMaxInputLen += ", 0";               // Print";
+            lColMaxInputLen += ", 0";               // Delete";
+            lColMaxInputLen += ", 0";               // PostCancel";
+            lColMaxInputLen += ", 0";               // Unpost";
+            lColMaxInputLen += ", 0";               // View";
 
             // Column Min Width
-            lColMinWidth = "   0";                      //  0-    ItemID";       
-            lColMinWidth += ", 0";                        //  1-    ItemCod;   
-            lColMinWidth += ", 0";
-            lColMinWidth += ", 0";                        //  2-    ItemNam; 
-            lColMinWidth += ", 0";
-            lColMinWidth += ", 0";
-            lColMinWidth += ", 0";
-            lColMinWidth += ", 0";
-            lColMinWidth += ", 0";
-            lColMinWidth += ", 0";
+            lColMinWidth = "   0";                     // UserID";             
+            lColMinWidth += ", 0";                     // UserName";         
+            lColMinWidth += ", 0";                     // FullName"; 
+            lColMinWidth += ", 0";                     // AddNew";
+            lColMinWidth += ", 0";                     // ModifyExisting";
+            lColMinWidth += ", 0";                     // Print";
+            lColMinWidth += ", 0";                     // Delete";
+            lColMinWidth += ", 0";                     // PostCancel";
+            lColMinWidth += ", 0";                     // Unpost";
+            lColMinWidth += ", 0";                     // View";
 
 
             // Column Format
-            lColFormat = "   T";                       //  0-    ItemID";       
-            lColFormat += ", T";                         //  1-    ItemCod    
-            lColFormat += ", T";
-            lColFormat += ", T";                         //  2-    ItemNam 
-            lColFormat += ", T";
-            lColFormat += ", T";
-            lColFormat += ", T";
-            lColFormat += ", T";
-            lColFormat += ", T";
-            lColFormat += ", T";
+            lColFormat = "   H";                      // UserID";            
+            lColFormat += ", T";                      // UserName";        
+            lColFormat += ", T";                      // FullName"; 
+            lColFormat += ", CH";                      // AddNew";
+            lColFormat += ", CH";                      // ModifyExisting";
+            lColFormat += ", CH";                      // Print";
+            lColFormat += ", CH";                      // Delete";
+            lColFormat += ", CH";                      // PostCancel";
+            lColFormat += ", CH";                      // Unpost";
+            lColFormat += ", CH";                      // View";
 
 
             // Column ReadOnly 1= readonly, 0 = read-write
-            lColReadOnly = "  0";                       //  0-    ItemID";      
-            lColReadOnly += ",0";                         //  1-    ItemCod   
-            lColReadOnly += ",0";
-            lColReadOnly += ",0";                         //  2-    ItemNam
-            lColReadOnly += ",0";
-            lColReadOnly += ",0";
-            lColReadOnly += ",0";
-            lColReadOnly += ",0";
-            lColReadOnly += ",0";
-            lColReadOnly += ",0";
+            lColReadOnly = "  0";                      // UserID";           
+            lColReadOnly += ",0";                      // UserName";        
+            lColReadOnly += ",0";                      // FullName"; 
+            lColReadOnly += ",0";                      // AddNew";
+            lColReadOnly += ",0";                      // ModifyExisting";
+            lColReadOnly += ",0";                      // Print";
+            lColReadOnly += ",0";                      // Delete";
+            lColReadOnly += ",0";                      // PostCancel";
+            lColReadOnly += ",0";                      // Unpost";
+            lColReadOnly += ",0";                      // View";
 
             // For Saving Time
-            tColType += "  H";             //  0-    ItemID"; 
-            tColType += ", T";               //  1-    ItemCod
-            tColType += ", T";
-            tColType += ", CH";               //  2-    ItemNam
-            tColType += ", CH";
-            tColType += ", CH";
-            tColType += ", CH";
-            tColType += ", CH";
-            tColType += ", CH";
-            tColType += ", CH";
+            tColType += "  H";            // UserID";          
+            tColType += ", T";            // UserName";        
+            tColType += ", T";            // FullName"; 
+            tColType += ", T";           // AddNew";
+            tColType += ", T";           // ModifyExisting";
+            tColType += ", T";           // Print";
+            tColType += ", T";           // Delete";
+            tColType += ", T";           // PostCancel";
+            tColType += ", T";           // Unpost";
+            tColType += ", T";           // View";
 
 
-            tFieldName += "UserID";                //  0-    ItemID";       
-            tFieldName += ",UserName";             //  1-    ItemCode";
-            tFieldName += ",FullName";
-            tFieldName += ",AddNew";             //  2-    ItemName"; 
-            tFieldName += ",ModifyExisting";
-            tFieldName += ",Print";
-            tFieldName += ",Delete";
-            tFieldName += ",Post/Cancel";
-            tFieldName += ",Unpost";
-            tFieldName += ",View";
+            tFieldName += "UserID";             // UserID";             
+            tFieldName += ",UserName";          // UserName";        
+            tFieldName += ",FullName";          // FullName"; 
+            tFieldName += ",AllowAddNew";            // AddNew";
+            tFieldName += ",AllowModify";    // ModifyExisting";
+            tFieldName += ",AllowPrint";             // Print";
+            tFieldName += ",AllowDelete";            // Delete";
+            tFieldName += ",AllowPost";       // PostCancel";
+            tFieldName += ",AllowUnpost";            // Unpost";
+            tFieldName += ",AllowView";              // View";
 
             fHDR = lHDR;
             fColWidth = lColWidth;
@@ -267,8 +267,10 @@ namespace GUI_Task
 
         private void LoadGridData()
         {
-            string lSQL = "";
-            lSQL += " select UserID, UserName, FullName from Users Order By UserName ";
+            string lSQL = string.Empty;
+            lSQL = " SELECT f.UserID, u.UserName, u.FullName, f.AllowAddNew, f.AllowModify, ";
+            lSQL += " f.AllowPrint, f.AllowDelete, f.AllowPost, f.AllowUnPost, f.AllowView ";
+            lSQL += " FROM FormPrivileges f INNER JOIN Users u ON u.UserID = f.UserID ";
 
             clsDbManager.FillDataGrid(
                 grd,

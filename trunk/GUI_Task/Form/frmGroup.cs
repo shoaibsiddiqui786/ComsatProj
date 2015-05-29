@@ -510,158 +510,150 @@ namespace GUI_Task
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-           //SaveData();
+           SaveData();
            textAlert.Text = "Data Saved Successfully";
         }
 
-        //private bool SaveData()
-        //{
-        //    bool rtnValue = true;
-        //    fTErr = 0;
-        //    if (fManySQL != null)
-        //    {
-        //        if (fManySQL.Count() > 0)
-        //        {
-        //            fManySQL.Clear();
-        //        }
-        //    }
-        //    string lSQL = string.Empty;
-        //    DateTime lNow = DateTime.Now;
-        //    try
-        //    {
-        //        ErrrMsg = "";
-        //        if (!FormValidation())
-        //        {
-        //            textAlert.Text = "Form Validation Error: Not Saved." + "  " + lNow.ToString();
-        //            MessageBox.Show(ErrrMsg, "Save: " + this.Text.ToString());
-        //            return false;
-        //        }
+        private bool SaveData()
+        {
+            bool rtnValue = true;
+            fTErr = 0;
+            if (fManySQL != null)
+            {
+                if (fManySQL.Count() > 0)
+                {
+                    fManySQL.Clear();
+                }
+            }
+            string lSQL = string.Empty;
+            DateTime lNow = DateTime.Now;
+            try
+            {
+                ErrrMsg = "";
+                if (!FormValidation())
+                {
+                    textAlert.Text = "Form Validation Error: Not Saved." + "  " + lNow.ToString();
+                    MessageBox.Show(ErrrMsg, "Save: " + this.Text.ToString());
+                    return false;
+                }
 
-        //        fManySQL = new List<string>();
+                fManySQL = new List<string>();
 
-        //        // Prepare Master Doc Query List
+                // Prepare Master Doc Query List
 
-        //        if (!PrepareDocMaster())
-        //        {
-        //            textAlert.Text = "DocMaster: Modifying Doc/Voucher not available for updation.'  ...." + "  " + lNow.ToString();
-        //            //tabMDtl.SelectedTab = tabError;
-        //            return false;
-        //        }
-        //        //
-        //        DateTime now = DateTime.Now;
-        //        textAlert.Text = "selected Box Empty... " + now.ToString("T");
-        //        // pending return false;
+                if (!PrepareDocMaster())
+                {
+                    textAlert.Text = "DocMaster: Modifying Doc/Voucher not available for updation.'  ...." + "  " + lNow.ToString();
+                    //tabMDtl.SelectedTab = tabError;
+                    return false;
+                }
+                //
+                DateTime now = DateTime.Now;
+                textAlert.Text = "selected Box Empty... " + now.ToString("T");
+                // pending return false;
 
-        //        // Execute Query
-        //        if (fManySQL.Count > 0)
-        //        {
-        //            if (!clsDbManager.ExeMany(fManySQL))
-        //            {
-        //                MessageBox.Show("Not Saved see log...", this.Text.ToString());
-        //                return false;
-        //            }
-        //            else
-        //            {
-        //                fLastID = txtGroupCode.Text.ToString();
-        //                ClearThisForm();
-        //                return true;
-        //            }
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Data Preparation list empty, Not Saved...", this.Text.ToString());
-        //            return false;
-        //        } // End Execute Query
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Exception Processing Save: " + ex.Message, "Save Data: " + this.Text.ToString());
-        //        return false;
-        //    }
+                // Execute Query
+                if (fManySQL.Count > 0)
+                {
+                    if (!clsDbManager.ExeMany(fManySQL))
+                    {
+                        MessageBox.Show("Not Saved see log...", this.Text.ToString());
+                        return false;
+                    }
+                    else
+                    {
+                        fLastID = txtGroupId.Text.ToString();
+                        ClearThisForm();
+                        return true;
+                    }
+                }
+                else
+                {
+                   // MessageBox.Show("Data Preparation list empty, Not Saved...", this.Text.ToString());
+                    return false;
+                } // End Execute Query
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception Processing Save: " + ex.Message, "Save Data: " + this.Text.ToString());
+                return false;
+            }
 
-        //} // End Save
+        } // End Save
 
-        //private bool PrepareDocMaster()
-        //{
-        //    bool rtnValue = true;
-        //    string lSQL = string.Empty;
-        //    int intIdentity = 0;
-        //    DataSet dsIdentity = new DataSet();
+        private bool PrepareDocMaster()
+        {
+            bool rtnValue = true;
+            string lSQL = string.Empty;
+            int intIdentity = 0;
+            DataSet dsIdentity = new DataSet();
 
-        //    try
-        //    {
-        //        if (txtGroupCode.Text.ToString().Trim(' ', '-') == "")
-        //        {
-        //            strDocId = 0;
-        //            fDocAlreadyExists = false;
-        //            //fDocID = fDocID + 1;
-        //            txtGroupCode.Text = fDocID.ToString();
-        //            fDocID = clsDbManager.GetNextValDocID("Users", "UserID", fDocWhere, "");
-        //            //fDocID = fDocID + 1;
+            try
+            {
+                if (txtGroupId.Text.ToString().Trim(' ', '-') == "")
+                {
+                    strDocId = 0;
+                    fDocAlreadyExists = false;
+                    //fDocID = fDocID + 1;
+                    txtGroupId.Text = fDocID.ToString();
+                    fDocID = clsDbManager.GetNextValDocID("Groups", "groupid", fDocWhere, "");
+                    //fDocID = fDocID + 1;
 
-        //            lSQL = "insert into Users (";
-        //            //lSQL += " UserID ";
-        //            lSQL += " UserName ";
-        //            lSQL += ", Password ";
-        //            lSQL += ", FullName ";
-        //            lSQL += ", Description ";
-        //            lSQL += ", Lock ";
-        //            lSQL += ", Hold";
-        //            lSQL += ", FailedAttempts";
-        //            lSQL += ", PwdChngNext";
-        //            lSQL += " ) values (";
-        //            //                                                       
-        //            //lSQL += "" + fDocID.ToString() + "";
-        //            lSQL += " '" + txtUsername.Text.ToString() + "'";
-        //            lSQL += ",'" + txtPassword.Text.ToString() + "'";
-        //            lSQL += ",'" + txtFullName.Text.ToString() + "'";
-        //            lSQL += ",'" + txtDescription.Text.ToString() + "'";
-        //            lSQL += ", " + (chkLock.Checked == true ? 1 : 0);
-        //            lSQL += ", 0";
-        //            lSQL += ", 0";
-        //            lSQL += ", 0";
-        //            lSQL += ") SELECT @@IDENTITY AS NewIdentity ";
+                    lSQL = "insert into Groups (";
+                    //lSQL += " groupid ";
+                    lSQL += " groupcode ";
+                    lSQL += ", GroupName ";
+                    lSQL += ", Description ";
+                    lSQL += ", OrgID ";
+                    lSQL += " ) values (";
+                    //                                                       
+                    //lSQL += "" + fDocID.ToString() + "";
+                    lSQL += " '" + txtGroupCode.Text.ToString() + "'";
+                    lSQL += ",'" + txtGroupName.Text.ToString() + "'";
+                    lSQL += ",'" + txtDescription.Text.ToString() + "'";
+                    lSQL += ", 1";
+                    lSQL += ") SELECT @@IDENTITY AS NewIdentity ";
 
 
-        //            dsIdentity = clsDbManager.GetData_Set(lSQL, "Users");
-        //            // intIdentity = Convert.ToInt16(dsIdentity.Tables[0].Rows[0].ToString());
-        //            intIdentity = Convert.ToInt16(dsIdentity.Tables[0].Rows[0]["NewIdentity"] == DBNull.Value ? "1" : dsIdentity.Tables[0].Rows[0]["NewIdentity"].ToString());
+                    dsIdentity = clsDbManager.GetData_Set(lSQL, "Groups");
+                    // intIdentity = Convert.ToInt16(dsIdentity.Tables[0].Rows[0].ToString());
+                    intIdentity = Convert.ToInt16(dsIdentity.Tables[0].Rows[0]["NewIdentity"] == DBNull.Value ? "1" : dsIdentity.Tables[0].Rows[0]["NewIdentity"].ToString());
 
-        //            //MessageBox.Show("Identity: " + intIdentity.ToString());
+                    //MessageBox.Show("Identity: " + intIdentity.ToString());
 
-        //            //fManySQL.Add(lSQL);
-        //        }
-        //        else
-        //        {
-        //            fDocWhere = " ID = " + txtGroupCode.Text.ToString() + "";
-        //            if (clsDbManager.IDAlreadyExistWw("Users", "UserID", fDocWhere))
-        //            {
-        //                fDocAlreadyExists = true;
-        //                //fManySQL.Add(lSQL);
-        //            }
+                    fDocID = intIdentity;
 
-        //            lSQL = "update RecruitCourse set";
+                    //fManySQL.Add(lSQL);
+                }
+                else
+                {
+                    fDocWhere = " groupid = " + txtGroupId.Text.ToString() + "";
+                    if (clsDbManager.IDAlreadyExistWw("Groups", "groupid", fDocWhere))
+                    {
+                        fDocAlreadyExists = true;
+                        //fManySQL.Add(lSQL);
+                    }
 
-        //            lSQL += "  UserName = '" + txtUsername.Text.ToString() + "'";
-        //            lSQL += ", Password = '" + txtPassword.Text.ToString() + "'";
-        //            lSQL += ", FullName = '" + txtFullName.Text.ToString() + "'";
-        //            lSQL += ", Description = '" + txtDescription.Text.ToString() + "'";
-        //            lSQL += ", Lock = " + (chkLock.Checked == true ? 1 : 0);
-        //            lSQL += " where ";
-        //            lSQL += fDocWhere;
+                    lSQL = "update Groups set";
 
-        //            fManySQL.Add(lSQL);
-        //        }
+                    lSQL += "  groupcode = '" + txtGroupCode.Text.ToString() + "'";
+                    lSQL += ", GroupName = '" + txtGroupName.Text.ToString() + "'";
+                    lSQL += ", Description = '" + txtDescription.Text.ToString() + "'";
+                    lSQL += " where ";
+                    lSQL += fDocWhere;
 
-        //        return rtnValue;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        rtnValue = false;
-        //        MessageBox.Show("Save Master Doc: " + ex.Message, this.Text.ToString());
-        //        return false;
-        //    }
-        //}
+                    fManySQL.Add(lSQL);
+                }
+
+                return rtnValue;
+            }
+            catch (Exception ex)
+            {
+                rtnValue = false;
+                MessageBox.Show("Save Master Doc: " + ex.Message, this.Text.ToString());
+                return false;
+            }
+        }
 
             private void btnCancel_Click_1(object sender, EventArgs e)
             {
