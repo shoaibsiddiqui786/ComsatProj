@@ -6,13 +6,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using GUI_Task.StringFun01;
 
 namespace GUI_Task
 {
-    enum GColGrp
+    enum GColGrpUser
     {
-        CheckBox = 0,
-        Users = 1
+        GroupID = 0,
+        Checked = 1,
+        UserID = 2
     }
 
     public partial class frmGrpUser : Form
@@ -354,5 +356,161 @@ namespace GUI_Task
         {
             SPDataGet();
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            SaveData();
+            textAlert.Text = "Data Saved Successfully";
+        }
+
+        private void ClearThisForm()
+        {
+            ResetFields();
+        }
+
+        private void ResetFields()
+        {
+            // Reset Form Level Variables/Fields
+            fEditMod = false;
+            fTNOT = 0;
+            fDocAmt = 0;
+            fDocWhere = string.Empty;
+            fLastRow = 0;
+        }
+
+        private bool FormValidation()
+        {
+            bool lRtnValue = true;
+            DateTime lNow = DateTime.Now;
+            decimal lDebit = 0;
+            decimal lCredit = 0;
+            fDocAmt = 0;
+            try
+            {
+                return lRtnValue;
+            }
+            catch (Exception ex)
+            {
+                fTErr++;
+                ErrrMsg = StrF01.BuildErrMsg(ErrrMsg, "Exception: FormValidation -> " + ex.Message.ToString());
+                return false;
+            }
+        }
+
+        string lSQL = string.Empty;
+
+        private bool SaveData()
+        {
+            bool rtnValue = true;
+            fTErr = 0;
+            fManySQL = new List<string>();
+
+            if (fManySQL != null)
+            {
+                if (fManySQL.Count() > 0)
+                {
+                    fManySQL.Clear();
+                }
+            }
+
+            //string lSQL = string.Empty;
+
+            fDocWhere = " UserID = " + cboUsers.SelectedValue.ToString();
+
+            lSQL = "delete from GroupUsers ";
+            lSQL += " where " + fDocWhere;
+
+            fManySQL.Add(lSQL);
+
+            clsDbManager.ExeMany(fManySQL);
+
+            rtnValue = true;
+            try
+            {
+
+                // Grid Voucher
+                if (grd.Rows.Count > 0)
+                {
+                    // Prepare Detail Doc Query List
+                    string tTableName = "RestrictedAccess";
+                    string tFieldName = "";
+                    string tColType = "";
+                    //
+                    tColType += "  N0"; // groupid";  
+                    tColType += ", CH";  // Checked";
+                    tColType += ", T";  // GroupName
+
+                    //
+
+                    tFieldName += "  groupid";       // groupid";  
+                    tFieldName += ", Checked";          // Checked";
+                    tFieldName += ", GroupName";    // GroupName
+                    // 
+                    //string tAddFieldName = "Doc_vt_id, Doc_fiscal_ID, Doc_ID";
+                    //string tAddValue = fDocTypeID.ToString() + ", " + fDocFiscal.ToString() + ", " + fDocID.ToString();
+
+                    string tAddFieldName = string.Empty;
+                    string tAddValue = string.Empty;
+
+                    if (clsDbManager.PrepareGridSQL(grd, tTableName, tFieldName, tColType, fManySQL, tAddFieldName, tAddValue) != "OK")
+                    {
+                        return false;
+                    }
+                }
+                return rtnValue;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Save Detail Doc: " + ex.Message, this.Text.ToString());
+                return false;
+            }
+
+            //try
+            //{
+            //    for (int dGVRow = 0; dGVRow < grd.Rows.Count; dGVRow++)
+            //    {
+            //        if (grd.Rows[dGVRow].Cells[(int)GColGrpUser.GroupID].Value == null)
+            //        {
+            //            if (dGVRow == fLastRow)
+            //            {
+            //                continue;
+            //            }
+            //        }
+            //        else
+            //        {
+            //            if ((grd.Rows[dGVRow].Cells[(int)GColGrpUser.GroupID].Value.ToString()).Trim(' ', '-') == "")
+            //            {
+            //                //lBlank = true;
+            //                if (dGVRow == fLastRow)
+            //                {
+            //                    continue;
+            //                }
+            //            }
+            //        }
+
+            //        //if (grd.Rows[dGVRow].Cells[(int)GColGrpUser.Checked].Value.ToString() == "true")
+            //        //{
+            //            lSQL = " INSERT INTO GroupUsers( GroupID ";
+            //            lSQL += ", UserID )";
+            //            lSQL += " VALUES (";
+            //            lSQL += "" + grd.Rows[dGVRow].Cells[(int)GColGrpUser.GroupID].Value.ToString() + "";
+            //            lSQL += ", " + grd.Rows[dGVRow].Cells[(int)cboUsers.SelectedIndex].Value.ToString() + "";
+            //            lSQL += ")";
+
+            //            fManySQL.Add(lSQL);
+            //        //}
+                    
+            //    } // End For loopo
+
+            //    clsDbManager.ExeMany(fManySQL);
+            //    //return rtnValue;
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Save Detail Doc: " + ex.Message, this.Text.ToString());
+            //    //return false;
+            //}
+            
+        } // End Save
     }
 }
