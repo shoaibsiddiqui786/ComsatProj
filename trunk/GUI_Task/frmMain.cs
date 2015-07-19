@@ -11,9 +11,16 @@ namespace GUI_Task
 {
     public partial class frmMain : Form
     {
+        private int childFormNumber = 0;
+
         public frmMain()
         {
             InitializeComponent();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            copyMyMenus();
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
@@ -111,7 +118,7 @@ namespace GUI_Task
 
         private void toolStripMenuItem18_Click(object sender, EventArgs e)
         {
-            frmTrailBal frm = new frmTrailBal();
+            frmTrialBal frm = new frmTrialBal();
             frm.MdiParent = this;
             frm.Show();
         }
@@ -161,7 +168,10 @@ namespace GUI_Task
 
         private void toolStripMenuItem26_Click(object sender, EventArgs e)
         {
-            frmRptPendingOrd1 frm = new frmRptPendingOrd1();
+            //frmRptPendingOrd1 frm = new frmRptPendingOrd1();
+            //frm.MdiParent = this;
+            //frm.Show();
+            frmPendingOrd frm = new frmPendingOrd();
             frm.MdiParent = this;
             frm.Show();
         }
@@ -383,7 +393,7 @@ namespace GUI_Task
             frm.Show();
         }
 
-       
+
 
         private void duplicateUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -394,7 +404,7 @@ namespace GUI_Task
 
         private void groupToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmGrpUser frm = new frmGrpUser();
+            frmGroup frm = new frmGroup();
             frm.MdiParent = this;
             frm.Show();
         }
@@ -463,9 +473,9 @@ namespace GUI_Task
 
         private void goodRecieveNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //frmGdRecNote frm = new frmGdRecNote();
-            //frm.MdiParent = this;
-            //frm.Show();
+            frmGdRecNote frm = new frmGdRecNote();
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void gateOutwardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -561,7 +571,7 @@ namespace GUI_Task
 
         private void issueItemsFormulaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmIssueItemsFormula frm = new frmIssueItemsFormula();
+            frmIssueItems frm = new frmIssueItems();
             frm.MdiParent = this;
             frm.Show();
         }
@@ -575,17 +585,13 @@ namespace GUI_Task
 
         private void goodsRecieveNoteReturnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //frmGdRecNoteReturn frm = new frmGdRecNoteReturn();
-            //frm.MdiParent = this;
-            //frm.Show();
+            frmGdRecNoteReturn frm = new frmGdRecNoteReturn();
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void issueReturnItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //frmIssueRetnItems frm = new frmIssueRetnItems();
-            //frm.MdiParent = this;
-            //frm.Show(); 
-
             frmIssueRetItems frm = new frmIssueRetItems();
             frm.MdiParent = this;
             frm.Show();
@@ -595,7 +601,7 @@ namespace GUI_Task
         {
             frmSaleOdrEntryQout frm = new frmSaleOdrEntryQout();
             frm.MdiParent = this;
-            frm.Show(); 
+            frm.Show();
         }
 
         private void saleOrderEntryServiceToolStripMenuItem_Click(object sender, EventArgs e)
@@ -753,11 +759,6 @@ namespace GUI_Task
             frm.Show();
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void customerDescriptionToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -773,35 +774,28 @@ namespace GUI_Task
 
         private void cashRecieptVoucherToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCashReceVoc frm = new frmCashReceVoc();
+            frmCRVoc frm = new frmCRVoc();
             frm.MdiParent = this;
             frm.Show();
         }
 
         private void cashPaymentVoucherToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCashPayVoc frm = new frmCashPayVoc();
-            frm.MdiParent = this;
-            frm.Show();
-        }
-
-        private void journalVoucherToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmJournalVoc frm = new frmJournalVoc();
+            frmCPVoc frm = new frmCPVoc();
             frm.MdiParent = this;
             frm.Show();
         }
 
         private void bankRecieptVoucherToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmBankReceVoc frm = new frmBankReceVoc();
+            frmBRVoc frm = new frmBRVoc();
             frm.MdiParent = this;
             frm.Show();
         }
 
         private void bankPaymentVoucherToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmBankPayVoc frm = new frmBankPayVoc();
+            frmBPVoc frm = new frmBPVoc();
             frm.MdiParent = this;
             frm.Show();
         }
@@ -881,6 +875,154 @@ namespace GUI_Task
             frmRptPendingOrd2 frm = new frmRptPendingOrd2();
             frm.MdiParent = this;
             frm.Show();
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActiveMdiChild.Close();
+        }
+
+        private void closeAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<Form> openForms = new List<Form>();
+
+            foreach (Form f in Application.OpenForms)
+                openForms.Add(f);
+
+            foreach (Form f in openForms)
+            {
+                if (f.IsMdiChild)
+                    f.Close();
+            }
+
+        }
+
+        private void journalVoucherChangeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmJournalVoc frm = new frmJournalVoc();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        
+        //****************** Sir Shoaib Code For Menu Reading (Not Working) ********************************
+
+        //string[] menuItems = { };
+
+        //private void frmMain_Load_1(object sender, EventArgs e)
+        //{
+        //    List<ToolStripMenuItem> myitems = getAllMenuStripItems.GetItems(this.menuStrip1);
+        //    foreach (var item in myitems)
+        //    {
+        //        //Show MenuItemText
+        //        // MessageBox.Show(item.Text);
+        //    }
+        //}
+
+        //public static class getAllMenuStripItems
+        //{
+        //    public static List<ToolStripMenuItem> GetItems(MenuStrip menuStrip)
+        //    {
+        //        List<ToolStripMenuItem> myItems = new List<ToolStripMenuItem>();
+        //        foreach (ToolStripMenuItem i in menuStrip.Items)
+        //        {
+        //            GetMenuItems(i, myItems);
+        //        }
+        //        return myItems;
+        //    }
+        //}
+
+
+
+        //public static void GetMenuItems(ToolStripMenuItem item, List<ToolStripMenuItem> items)
+        //{
+        //    string[] menuItem = new string[item.ToString().Length];
+        //    //string[] menuItem = new string[item.DropDown.Items.Count];
+
+        //    string name;
+
+        //    int m = 1;
+
+        //    items.Add(item);
+
+        //    foreach (ToolStripItem i in item.DropDownItems)
+        //    {
+        //        if (i is ToolStripMenuItem)
+        //        {
+        //            //Show MenuItemNames
+        //            //MessageBox.Show((i.Name).ToString());
+        //            //string name = i.Name.ToString();
+
+        //            for (int j = 0; j < item.DropDown.Items.Count; j++)
+        //            {
+        //                //menuItem[] = i.Name.ToString();
+        //                //name = Convert.ToString(item.DropDown.Items[j]);
+
+
+        //                //    menuItem[j] = Convert.ToString(item.DropDown.Items[j]);
+
+        //                //    //for (int k = 0; k <= name.Length; k++)
+        //                //    //{
+        //                //    //    menuItem[k] = name;
+        //                //    //}
+        //            }
+                    
+        //                //GetMenuItems((ToolStripMenuItem)i, items);
+        //            }
+        //            m++;
+        //        }
+        //    }
+        
+        ////public ToolStripMenuItem items
+        ////{
+        ////    get { return items; }
+        ////    set { items = value; }
+        ////}
+
+        //public string[] menuItem
+        //{
+        //    get { return menuItem; }
+        //    set { menuItem = value; }
+        //}
+
+        // *************************** My Code For Reading Menu (Working) ******************************
+
+
+        static string[] array = new string[51];
+        ToolStripMenuItem[] array1 = new ToolStripMenuItem[100];
+
+        private void copyMyMenus()
+        {    
+            //ToolStripSeparator separator = new ToolStripSeparator();
+
+            //foreach (ToolStripItem item in FileToolStripMenuItem.DropDownItems)
+            //{
+            //    if (item is ToolStripSeparator)
+            //    {
+            //        // Do Nothing
+            //    }
+            //}
+
+
+            FileToolStripMenuItem.DropDownItems.CopyTo(array1, 0);
+            FactoryToolStripMenuItem.DropDownItems.CopyTo(array1, 5);
+            FinanceTransactionsToolStripMenuItem.DropDownItems.CopyTo(array1, 21);
+            SaleToolStripMenuItem.DropDownItems.CopyTo(array1, 26);
+            CodeDescriptionsToolStripMenuItem.DropDownItems.CopyTo(array1, 31);
+            ReportMenuToolStripMenuItem.DropDownItems.CopyTo(array1, 42);
+            SecurityToolStripMenuItem.DropDownItems.CopyTo(array1, 46);
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = Convert.ToString(array1[i]);
+            }
+        }
+
+
+        public string[] menuItem
+        {
+            get { return array; }
+            set { array = value; }
         }
     }
 }

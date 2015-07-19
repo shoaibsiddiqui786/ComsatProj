@@ -29,6 +29,7 @@
     private void InitializeComponent()
     {
         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLookUp));
         this.textSearch = new System.Windows.Forms.TextBox();
         this.lblSearch = new System.Windows.Forms.Label();
         this.panelSearch = new System.Windows.Forms.Panel();
@@ -305,12 +306,12 @@
         this.Controls.Add(this.panelSearch);
         this.Controls.Add(this.mtextReturn);
         this.Controls.Add(this.textReturn);
+        this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
         this.KeyPreview = true;
         this.Name = "frmLookUp";
         this.Text = "frmLookUp01";
         this.Load += new System.EventHandler(this.frmLookUp01_Load);
         this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLookUp_KeyDown);
-        //this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmLookUp_KeyPress);
         this.panelSearch.ResumeLayout(false);
         this.panelSearch.PerformLayout();
         this.panelStatus.ResumeLayout(false);

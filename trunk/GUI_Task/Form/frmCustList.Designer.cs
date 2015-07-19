@@ -31,9 +31,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
-            this.optItemCharRate = new System.Windows.Forms.RadioButton();
-            this.optRatePair = new System.Windows.Forms.RadioButton();
-            this.optRateDozen = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +39,7 @@
             this.groupBox1.Controls.Add(this.btnExit);
             this.groupBox1.Controls.Add(this.btnStart);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(13, 126);
+            this.groupBox1.Location = new System.Drawing.Point(13, 21);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(279, 127);
             this.groupBox1.TabIndex = 3;
@@ -67,50 +64,14 @@
             this.btnStart.Tag = "";
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
-            // 
-            // optItemCharRate
-            // 
-            this.optItemCharRate.AutoSize = true;
-            this.optItemCharRate.Location = new System.Drawing.Point(54, 94);
-            this.optItemCharRate.Name = "optItemCharRate";
-            this.optItemCharRate.Size = new System.Drawing.Size(113, 17);
-            this.optItemCharRate.TabIndex = 9;
-            this.optItemCharRate.TabStop = true;
-            this.optItemCharRate.Text = "Item Charges Rate";
-            this.optItemCharRate.UseVisualStyleBackColor = true;
-            // 
-            // optRatePair
-            // 
-            this.optRatePair.AutoSize = true;
-            this.optRatePair.Location = new System.Drawing.Point(54, 60);
-            this.optRatePair.Name = "optRatePair";
-            this.optRatePair.Size = new System.Drawing.Size(69, 17);
-            this.optRatePair.TabIndex = 8;
-            this.optRatePair.TabStop = true;
-            this.optRatePair.Text = "Rate Pair";
-            this.optRatePair.UseVisualStyleBackColor = true;
-            // 
-            // optRateDozen
-            // 
-            this.optRateDozen.AutoSize = true;
-            this.optRateDozen.Checked = true;
-            this.optRateDozen.Location = new System.Drawing.Point(54, 28);
-            this.optRateDozen.Name = "optRateDozen";
-            this.optRateDozen.Size = new System.Drawing.Size(82, 17);
-            this.optRateDozen.TabIndex = 7;
-            this.optRateDozen.TabStop = true;
-            this.optRateDozen.Text = "Rate Dozen";
-            this.optRateDozen.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // frmCustList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 265);
-            this.Controls.Add(this.optItemCharRate);
+            this.ClientSize = new System.Drawing.Size(304, 177);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.optRatePair);
-            this.Controls.Add(this.optRateDozen);
             this.KeyPreview = true;
             this.Name = "frmCustList";
             this.Text = "Customer List";
@@ -118,7 +79,6 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCustList_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -127,8 +87,5 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.RadioButton optItemCharRate;
-        private System.Windows.Forms.RadioButton optRatePair;
-        private System.Windows.Forms.RadioButton optRateDozen;
     }
 }

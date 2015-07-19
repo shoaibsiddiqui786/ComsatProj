@@ -28,19 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCashStatAll));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.optCashStat = new System.Windows.Forms.RadioButton();
-            this.optCashRok = new System.Windows.Forms.RadioButton();
             this.optBankStat = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblName = new System.Windows.Forms.Label();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
-            this.optCashRokGL = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.mskGLCode = new System.Windows.Forms.MaskedTextBox();
@@ -128,24 +127,14 @@
             this.optCashStat.AutoSize = true;
             this.optCashStat.Checked = true;
             this.optCashStat.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optCashStat.Location = new System.Drawing.Point(593, 10);
+            this.optCashStat.Location = new System.Drawing.Point(593, 19);
             this.optCashStat.Name = "optCashStat";
             this.optCashStat.Size = new System.Drawing.Size(100, 17);
             this.optCashStat.TabIndex = 27;
             this.optCashStat.TabStop = true;
             this.optCashStat.Text = "Cash Statement";
             this.optCashStat.UseVisualStyleBackColor = true;
-            // 
-            // optCashRok
-            // 
-            this.optCashRok.AutoSize = true;
-            this.optCashRok.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optCashRok.Location = new System.Drawing.Point(593, 29);
-            this.optCashRok.Name = "optCashRok";
-            this.optCashRok.Size = new System.Drawing.Size(79, 17);
-            this.optCashRok.TabIndex = 28;
-            this.optCashRok.Text = "Cash Roker";
-            this.optCashRok.UseVisualStyleBackColor = true;
+            this.optCashStat.Visible = false;
             // 
             // optBankStat
             // 
@@ -157,13 +146,13 @@
             this.optBankStat.TabIndex = 29;
             this.optBankStat.Text = "Cash/Bank Statement";
             this.optBankStat.UseVisualStyleBackColor = true;
+            this.optBankStat.Visible = false;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lblName);
             this.groupBox1.Controls.Add(this.dtpFromDate);
             this.groupBox1.Controls.Add(this.dtpToDate);
-            this.groupBox1.Controls.Add(this.optCashRokGL);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.mskGLCode);
@@ -174,7 +163,6 @@
             this.groupBox1.Controls.Add(this.btnExit);
             this.groupBox1.Controls.Add(this.btnPrint);
             this.groupBox1.Controls.Add(this.optBankStat);
-            this.groupBox1.Controls.Add(this.optCashRok);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(2, 2);
             this.groupBox1.Name = "groupBox1";
@@ -207,17 +195,6 @@
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(90, 20);
             this.dtpToDate.TabIndex = 67;
-            // 
-            // optCashRokGL
-            // 
-            this.optCashRokGL.AutoSize = true;
-            this.optCashRokGL.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optCashRokGL.Location = new System.Drawing.Point(593, 70);
-            this.optCashRokGL.Name = "optCashRokGL";
-            this.optCashRokGL.Size = new System.Drawing.Size(102, 17);
-            this.optCashRokGL.TabIndex = 37;
-            this.optCashRokGL.Text = "Cash Roker [GL]";
-            this.optCashRokGL.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -265,7 +242,7 @@
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(77, 407);
+            this.label3.Location = new System.Drawing.Point(36, 103);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(118, 17);
             this.label3.TabIndex = 2;
@@ -279,7 +256,7 @@
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(223, 407);
+            this.label4.Location = new System.Drawing.Point(182, 103);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(116, 17);
             this.label4.TabIndex = 59;
@@ -293,7 +270,7 @@
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(361, 407);
+            this.label5.Location = new System.Drawing.Point(320, 103);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(123, 17);
             this.label5.TabIndex = 61;
@@ -307,7 +284,7 @@
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(497, 407);
+            this.label6.Location = new System.Drawing.Point(456, 103);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(115, 17);
             this.label6.TabIndex = 62;
@@ -325,10 +302,11 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            this.grdCashStatAll.Location = new System.Drawing.Point(2, 95);
+            this.grdCashStatAll.Location = new System.Drawing.Point(12, 213);
             this.grdCashStatAll.Name = "grdCashStatAll";
             this.grdCashStatAll.Size = new System.Drawing.Size(725, 311);
             this.grdCashStatAll.TabIndex = 66;
+            this.grdCashStatAll.Visible = false;
             // 
             // ddd
             // 
@@ -366,7 +344,7 @@
             this.lblNetBalance.AutoSize = true;
             this.lblNetBalance.BackColor = System.Drawing.Color.NavajoWhite;
             this.lblNetBalance.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNetBalance.Location = new System.Drawing.Point(494, 433);
+            this.lblNetBalance.Location = new System.Drawing.Point(453, 129);
             this.lblNetBalance.Name = "lblNetBalance";
             this.lblNetBalance.Size = new System.Drawing.Size(121, 15);
             this.lblNetBalance.TabIndex = 144;
@@ -378,7 +356,7 @@
             this.lblPayments.AutoSize = true;
             this.lblPayments.BackColor = System.Drawing.Color.NavajoWhite;
             this.lblPayments.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayments.Location = new System.Drawing.Point(363, 433);
+            this.lblPayments.Location = new System.Drawing.Point(322, 129);
             this.lblPayments.Name = "lblPayments";
             this.lblPayments.Size = new System.Drawing.Size(121, 15);
             this.lblPayments.TabIndex = 143;
@@ -390,7 +368,7 @@
             this.lblReceipts.AutoSize = true;
             this.lblReceipts.BackColor = System.Drawing.Color.NavajoWhite;
             this.lblReceipts.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReceipts.Location = new System.Drawing.Point(220, 433);
+            this.lblReceipts.Location = new System.Drawing.Point(179, 129);
             this.lblReceipts.Name = "lblReceipts";
             this.lblReceipts.Size = new System.Drawing.Size(121, 15);
             this.lblReceipts.TabIndex = 142;
@@ -402,7 +380,7 @@
             this.lblOpeningBalance.AutoSize = true;
             this.lblOpeningBalance.BackColor = System.Drawing.Color.NavajoWhite;
             this.lblOpeningBalance.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOpeningBalance.Location = new System.Drawing.Point(74, 433);
+            this.lblOpeningBalance.Location = new System.Drawing.Point(33, 129);
             this.lblOpeningBalance.Name = "lblOpeningBalance";
             this.lblOpeningBalance.Size = new System.Drawing.Size(121, 15);
             this.lblOpeningBalance.TabIndex = 141;
@@ -413,7 +391,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(731, 457);
+            this.ClientSize = new System.Drawing.Size(595, 168);
             this.Controls.Add(this.lblNetBalance);
             this.Controls.Add(this.lblPayments);
             this.Controls.Add(this.lblReceipts);
@@ -425,6 +403,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "frmCashStatAll";
             this.Text = "Cash Statement";
@@ -446,7 +425,6 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.RadioButton optCashStat;
-        private System.Windows.Forms.RadioButton optCashRok;
         private System.Windows.Forms.RadioButton optBankStat;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
@@ -457,7 +435,6 @@
         private System.Windows.Forms.MaskedTextBox mskGLCode;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView grdCashStatAll;
-        private System.Windows.Forms.RadioButton optCashRokGL;
         private System.Windows.Forms.DateTimePicker dtpFromDate;
         private System.Windows.Forms.DateTimePicker dtpToDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ddd;

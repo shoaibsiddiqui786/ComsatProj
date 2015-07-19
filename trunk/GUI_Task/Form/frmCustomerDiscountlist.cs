@@ -25,5 +25,10 @@ namespace GUI_Task
         {
             this.MaximizeBox = false;
         }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

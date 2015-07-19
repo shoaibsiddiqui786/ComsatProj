@@ -73,7 +73,6 @@
             this.mskAccCode.Name = "mskAccCode";
             this.mskAccCode.Size = new System.Drawing.Size(150, 22);
             this.mskAccCode.TabIndex = 48;
-            //this.mskAccCode.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskAccCode_MaskInputRejected);
             this.mskAccCode.DoubleClick += new System.EventHandler(this.mskAccCode_DoubleClick);
             this.mskAccCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mskAccCode_KeyDown);
             // 
@@ -97,6 +96,7 @@
             this.btnExit.TabIndex = 50;
             this.btnExit.Text = "[Esc] = Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnOK
             // 
@@ -107,6 +107,7 @@
             this.btnOK.TabIndex = 49;
             this.btnOK.Text = "O.K";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // lblAccountName
             // 

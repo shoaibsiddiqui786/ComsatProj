@@ -10,6 +10,7 @@ using GUI_Task.Class;
 using GUI_Task.PrintReport;
 using GUI_Task.PrintVw6;
 using GUI_Task.StringFun01;
+using GUI_Task.PrintDataSets;
 
 namespace GUI_Task
 {
@@ -104,28 +105,28 @@ namespace GUI_Task
                     this.cboMachineNo.SelectedValue.ToString() + "," +
                     this.cboCont.SelectedValue.ToString() + "," +
                     this.cboGodown.SelectedValue.ToString();
-                    
+
 
                 //dsLedgerNew pDs = new dsLedgerNew();
 
-                //DataSet pDs = new DataSet();
-                //CrIssueDate rpt1 = new CrIssueDate();
+                DataSet pDs = new DataSet();
+                CrIssueDate rpt1 = new CrIssueDate();
 
-                //frmPrintVw6 rptIssueDate = new frmPrintVw6(
-                //   fRptTitle,
-                //   StrF01.D2Str(this.dtpFromDate.Value),
-                //   StrF01.D2Str(this.dtpToDate.Value),
-                //   "sp_IssueTotal",
-                //   plstField,
-                //   plstType,
-                //   plstValue,
-                //   pDs,
-                //   rpt1,
-                //   "SP"
-                //   );
+                frmPrintVw6 rptIssueDate = new frmPrintVw6(
+                   fRptTitle,
+                   StrF01.D2Str(this.dtpFromDate.Value),
+                   StrF01.D2Str(this.dtpToDate.Value),
+                   "sp_IssueTotal",
+                   plstField,
+                   plstType,
+                   plstValue,
+                   pDs,
+                   rpt1,
+                   "SP"
+                   );
 
-                ////rptLedger2.ShowDialog();
-                //rptIssueDate.Show();
+                //rptLedger2.ShowDialog();
+                rptIssueDate.Show();
             }
             else if (optIssueWithDept.Checked == true)
             {
@@ -145,23 +146,23 @@ namespace GUI_Task
                 //dsLedgerNew pDs = new dsLedgerNew();
 
                 DataSet pDs = new DataSet();
-                //CrIssueDateDept rpt1 = new CrIssueDateDept();
+                CrIssueDateDept rpt1 = new CrIssueDateDept();
 
-                //frmPrintVw6 rptIssueDate = new frmPrintVw6(
-                //   fRptTitle,
-                //   StrF01.D2Str(this.dtpFromDate.Value),
-                //   StrF01.D2Str(this.dtpToDate.Value),
-                //   "sp_IssueTotalDept",
-                //   plstField,
-                //   plstType,
-                //   plstValue,
-                //   pDs,
-                //   //rpt1,
-                //   "SP"
-                //   );
+                frmPrintVw6 rptIssueDateRate = new frmPrintVw6(
+                   fRptTitle,
+                   StrF01.D2Str(this.dtpFromDate.Value),
+                   StrF01.D2Str(this.dtpToDate.Value),
+                   "sp_IssueTotalDept",
+                   plstField,
+                   plstType,
+                   plstValue,
+                   pDs,
+                   rpt1,
+                   "SP"
+                   );
 
-                ////rptLedger2.ShowDialog();
-                //rptIssueDate.Show();
+                //rptLedger2.ShowDialog();
+                rptIssueDateRate.Show();
             }
         }
     }

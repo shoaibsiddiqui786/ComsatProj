@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using GUI_Task.Class;
 using GUI_Task.StringFun01;
+using System.Net.Mail;
 
 namespace GUI_Task
 {
@@ -78,6 +79,9 @@ namespace GUI_Task
 
         bool blnFormLoad = true;
         int fcboDefaultValue = 0;
+
+        string strDocId = string.Empty;
+
 
         public frmGateInward()
         {
@@ -513,6 +517,7 @@ namespace GUI_Task
 
             SumVoc();
         }
+
         private int GridTNOT(DataGridView pdGv)
         {
             int rtnValue = 0;
@@ -686,11 +691,15 @@ namespace GUI_Task
                 if (txtGateInward.Text.ToString().Trim(' ', '-') == "")
                 {
                     fDocAlreadyExists = false;
-                    fDocID = clsDbManager.GetNextValDocID("GateInword", "GateInwordId", fDocWhere, "");
+                    fDocID = clsDbManager.GetNextValDocID("GateInword", "DocId", fDocWhere, "");
+                    strDocId = "1-" + DateTime.Now.Year.ToString() + fDocID.ToString();
+                    txtGateInward.Text = strDocId;
+                    fDocID += fDocID;
 
                     lSQL = "insert into GateInword (";
-                    lSQL += "  GateInwordId ";                              //  0-    ItemID";   
-                    lSQL += ", GateInwordNo ";                                //  1-    ItemCod  
+                    lSQL += " DocId ";
+                    lSQL += ", GateInwordId ";                              //  0-    ItemID";   
+                    //lSQL += ", GateInwordNo ";                                //  1-    ItemCod  
                     lSQL += ", Date ";                                        //  2-    ItemNam 
                     lSQL += ", VendorId ";                                      // 3- Descripti
                     lSQL += ", Note ";                                        //  4-    SizeNam  
@@ -702,11 +711,12 @@ namespace GUI_Task
                     lSQL += ", BranchId ";                                    // 10    ColorID"  
                     lSQL += " ) values (";
                     //                                                       
-                    lSQL += "'" + fDocID.ToString() + "'";                  //  0-    ItemID";   
-                    lSQL += ",'" + txtGateInward.Text.ToString() + "";        //  1-    ItemCod  
+                    lSQL += fDocID.ToString();
+                    lSQL += ",'" + strDocId.ToString() + "'";   
+                   // lSQL += ",'" + txtGateInward.Text.ToString() + "'";        //  1-    ItemCod  
                     lSQL += ", " + StrF01.D2Str(dtpGateInword) + "";          //  2-    ItemNam 
-                    lSQL += ",";                                              // 3- Descripti
-                    lSQL += ",'" + txtNote + "'";                             //  4-    SizeNam  
+                    lSQL += ", 1";                                              // 3- Descripti
+                    lSQL += ",'" + txtNote.Text.ToString() + "'";                             //  4-    SizeNam  
                     lSQL += ", " + cboItemGroup.SelectedValue.ToString() + "";  //  5-    ColorNa  
                     lSQL += ", 1";                                            //  6-    UOMName
                     lSQL += ", 0";                                            // 7- GodownName
@@ -783,10 +793,11 @@ namespace GUI_Task
                         }
                     }
 
-                    lSQL = "INSERT INTO GateInwordDetail (GateInwordId";
-                    lSQL += ",ItemId,SizeId,ColorID,GodownId,Qty,Description)";
+                    lSQL = "INSERT INTO GateInwordDetail( DocId ";
+                    lSQL += ",GateInwordId,ItemId,SizeId,ColorID,GodownId,Qty,Description)";
                     lSQL += " VALUES (";
-                    lSQL += "'" + txtGateInward.Text.ToString() + "'";
+                    lSQL += "" + fDocID + "";
+                    lSQL += ", '" + txtGateInward.Text.ToString() + "'";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGIn.ItemID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGIn.SizeID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColGIn.ColorID].Value.ToString() + "";
@@ -829,7 +840,13 @@ namespace GUI_Task
         private void btnSave_Click(object sender, EventArgs e)
         {
             SaveData();
-            MessageBox.Show("Data Saved Successfullly");
+            //MessageBox.Show("Data Saved Successfullly");
+            textAlert.Text = "Data Saved Successfully";
+            this.notifyIcon1.BalloonTipText = "GateInward Number '" + txtGateInward.Text.ToString() + "'";
+            this.notifyIcon1.BalloonTipTitle = "Data Saved";
+            //this.notifyIcon1.Icon = new Icon("icon.ico");
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.ShowBalloonTip(5);
         }
 
         private void SumVoc()
@@ -854,6 +871,76 @@ namespace GUI_Task
             }
 
             lblTotal.Text = String.Format("{0:0,0.00}", fAmount);
+        }
+        
+        private void ClearTextBoxes()
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                    {
+                        (control as TextBox).Clear();
+                        lblTime.Text= "";
+                        lblTotal.Text = "";
+                    }
+                    else
+                        func(control.Controls);
+            };
+
+            func(Controls);
+        }
+
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            grd.Rows.Clear();
+            ClearTextBoxes();
+        }
+
+        private void grd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                // MessageBox.Show("Delete key is pressed");
+                //if (grdVoucher.Rows[lLastRow].Cells[(int)GCol.acid].Value == null && grdVoucher.Rows[lLastRow].Cells[(int)GCol.refid].Value == null)
+                
+                //if (!fGridControl)
+                //{
+                //    return;
+                //}
+
+                if (grd.Rows.Count > 0)
+                {
+                    if (MessageBox.Show("Are you sure, really want to Delete row ?", "Delete Row", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        grd.Rows.RemoveAt(grd.CurrentRow.Index);
+                        SumVoc();
+                        return;
+                    }
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //smtp.Text = "smtp.gmail.com";
+            MailMessage mail = new MailMessage("usama.naveed.hussain@gmail.com", "usama.naveed.hussain@gmail.com", "Data Saved", "Data Saved against GateInward Number: " + txtGateInward.Text.ToString());
+            SmtpClient client = new SmtpClient("smtp.gmail.com");
+            // client.Host = "stmp.gmail.com";
+            client.Port = 587;
+            // client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential("usama.naveed.hussain@gmail.com", "waleedtablet");
+            client.EnableSsl = true;
+            client.Send(mail);
+            //MessageBox.Show("Mail Sent", "Success", MessageBoxButtons.OK);
+            textAlert.Text = "Mail Sent Successfully";
+        }
+
+        private void txtGateInward_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

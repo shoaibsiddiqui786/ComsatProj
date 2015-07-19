@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblItemName = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -66,7 +67,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.optSingleItemGroup = new System.Windows.Forms.RadioButton();
             this.optMultiItemGroup = new System.Windows.Forms.RadioButton();
-            this.lblItemName = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -104,6 +104,17 @@
             this.groupBox1.Size = new System.Drawing.Size(532, 587);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // lblItemName
+            // 
+            this.lblItemName.AutoSize = true;
+            this.lblItemName.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblItemName.Location = new System.Drawing.Point(117, 213);
+            this.lblItemName.Name = "lblItemName";
+            this.lblItemName.Size = new System.Drawing.Size(271, 13);
+            this.lblItemName.TabIndex = 77;
+            this.lblItemName.Text = "                                                                                 " +
+                "       ";
             // 
             // btnOK
             // 
@@ -421,6 +432,8 @@
             this.txtItemCode.Name = "txtItemCode";
             this.txtItemCode.Size = new System.Drawing.Size(84, 20);
             this.txtItemCode.TabIndex = 58;
+            this.txtItemCode.DoubleClick += new System.EventHandler(this.txtItemCode_DoubleClick);
+            this.txtItemCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtItemCode_KeyDown);
             // 
             // label3
             // 
@@ -545,17 +558,6 @@
             this.optMultiItemGroup.TabStop = true;
             this.optMultiItemGroup.Text = "Multi Item Group [Size/Color]";
             this.optMultiItemGroup.UseVisualStyleBackColor = true;
-            // 
-            // lblItemName
-            // 
-            this.lblItemName.AutoSize = true;
-            this.lblItemName.BackColor = System.Drawing.Color.NavajoWhite;
-            this.lblItemName.Location = new System.Drawing.Point(117, 213);
-            this.lblItemName.Name = "lblItemName";
-            this.lblItemName.Size = new System.Drawing.Size(271, 13);
-            this.lblItemName.TabIndex = 77;
-            this.lblItemName.Text = "                                                                                 " +
-                "       ";
             // 
             // frmRptStock
             // 

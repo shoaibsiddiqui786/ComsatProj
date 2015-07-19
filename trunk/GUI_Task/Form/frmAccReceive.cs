@@ -185,6 +185,16 @@ namespace GUI_Task
             LookUp_GL();
         }
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
         
     }

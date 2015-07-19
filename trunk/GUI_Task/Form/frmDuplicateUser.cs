@@ -26,10 +26,12 @@ namespace GUI_Task
             this.MaximizeBox = false;
         }
 
-        private void frmDuplicateUser_KeyDown(object sender, KeyEventArgs e)
+        private void frmDuplicateUser_KeyDown_1(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
+            {
                 this.Close();
+            }
         }
     }
 }

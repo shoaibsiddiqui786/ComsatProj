@@ -120,9 +120,7 @@
             this.Name = "frmDuplicateUser";
             this.Text = "Duplicate User";
             this.Load += new System.EventHandler(this.duplicate_User_Load);
-
-           // this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmDuplicateUser_KeyDown);
-           // this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmDuplicateUser_KeyDown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmDuplicateUser_KeyDown_1);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

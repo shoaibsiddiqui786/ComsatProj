@@ -70,27 +70,23 @@ namespace GUI_Task
                 this.cboItemGrp.SelectedValue.ToString() + "," +
                 this.cboCategory.SelectedValue.ToString();
 
-
-            //dsLedgerNew pDs = new dsLedgerNew();
-
             DataSet pDs = new DataSet();
-            //CrGOWDel rpt1 = new CrGOWDel();
+            CrGOWDel rpt1 = new CrGOWDel();
 
-            //frmPrintVw6 rptGOWDel = new frmPrintVw6(
-            //   fRptTitle,
-            //   this.dtpFromDate.Value.ToString(),
-            //   this.dtpToDate.Value.ToString(),
-            //   "sp_GOW_Del",
-            //   plstField,
-            //   plstType,
-            //   plstValue,
-            //   pDs,
-            //   //rpt1,
-            //   "SP"
-            //   );
+            frmPrintVw6 rptGOWDel = new frmPrintVw6(
+               fRptTitle,
+               this.dtpFromDate.Value.ToString(),
+               this.dtpToDate.Value.ToString(),
+               "sp_GOW_Del",
+               plstField,
+               plstType,
+               plstValue,
+               pDs,
+               rpt1,
+               "SP"
+               );
 
-            ////rptLedger2.ShowDialog();
-            //rptGOWDel.Show();
+            rptGOWDel.Show();
         }
     }
 }

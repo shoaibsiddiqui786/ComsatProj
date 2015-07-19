@@ -32,17 +32,17 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.dtpToDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
+            this.optSaleOrdDelStatus = new System.Windows.Forms.RadioButton();
+            this.optForProd = new System.Windows.Forms.RadioButton();
+            this.optReqShow = new System.Windows.Forms.RadioButton();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.optAllRecordShow = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.OptWOOrd = new System.Windows.Forms.RadioButton();
+            this.optWDO = new System.Windows.Forms.RadioButton();
             this.cboItemGrp = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -73,6 +73,7 @@
             this.btnOK.TabIndex = 85;
             this.btnOK.Text = "O.K";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnExit
             // 
@@ -87,66 +88,66 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.dateTimePicker2);
-            this.groupBox3.Controls.Add(this.dateTimePicker1);
-            this.groupBox3.Controls.Add(this.radioButton5);
-            this.groupBox3.Controls.Add(this.radioButton4);
-            this.groupBox3.Controls.Add(this.radioButton3);
+            this.groupBox3.Controls.Add(this.dtpToDate);
+            this.groupBox3.Controls.Add(this.dtpFromDate);
+            this.groupBox3.Controls.Add(this.optSaleOrdDelStatus);
+            this.groupBox3.Controls.Add(this.optForProd);
+            this.groupBox3.Controls.Add(this.optReqShow);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.radioButton2);
+            this.groupBox3.Controls.Add(this.optAllRecordShow);
             this.groupBox3.Location = new System.Drawing.Point(28, 133);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(474, 134);
             this.groupBox3.TabIndex = 58;
             this.groupBox3.TabStop = false;
             // 
-            // dateTimePicker2
+            // dtpToDate
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(141, 70);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(90, 20);
-            this.dateTimePicker2.TabIndex = 93;
+            this.dtpToDate.Location = new System.Drawing.Point(141, 70);
+            this.dtpToDate.Name = "dtpToDate";
+            this.dtpToDate.Size = new System.Drawing.Size(90, 20);
+            this.dtpToDate.TabIndex = 93;
             // 
-            // dateTimePicker1
+            // dtpFromDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(141, 31);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(90, 20);
-            this.dateTimePicker1.TabIndex = 92;
+            this.dtpFromDate.Location = new System.Drawing.Point(141, 31);
+            this.dtpFromDate.Name = "dtpFromDate";
+            this.dtpFromDate.Size = new System.Drawing.Size(90, 20);
+            this.dtpFromDate.TabIndex = 92;
             // 
-            // radioButton5
+            // optSaleOrdDelStatus
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton5.Location = new System.Drawing.Point(285, 97);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(122, 19);
-            this.radioButton5.TabIndex = 91;
-            this.radioButton5.Text = "Sale Order Status";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.optSaleOrdDelStatus.AutoSize = true;
+            this.optSaleOrdDelStatus.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.optSaleOrdDelStatus.Location = new System.Drawing.Point(285, 97);
+            this.optSaleOrdDelStatus.Name = "optSaleOrdDelStatus";
+            this.optSaleOrdDelStatus.Size = new System.Drawing.Size(122, 19);
+            this.optSaleOrdDelStatus.TabIndex = 91;
+            this.optSaleOrdDelStatus.Text = "Sale Order Status";
+            this.optSaleOrdDelStatus.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // optForProd
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton4.Location = new System.Drawing.Point(285, 74);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(105, 19);
-            this.radioButton4.TabIndex = 90;
-            this.radioButton4.Text = "For Production";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.optForProd.AutoSize = true;
+            this.optForProd.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.optForProd.Location = new System.Drawing.Point(285, 74);
+            this.optForProd.Name = "optForProd";
+            this.optForProd.Size = new System.Drawing.Size(105, 19);
+            this.optForProd.TabIndex = 90;
+            this.optForProd.Text = "For Production";
+            this.optForProd.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // optReqShow
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton3.Location = new System.Drawing.Point(285, 49);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(110, 19);
-            this.radioButton3.TabIndex = 89;
-            this.radioButton3.Text = "Required Show";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.optReqShow.AutoSize = true;
+            this.optReqShow.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.optReqShow.Location = new System.Drawing.Point(285, 49);
+            this.optReqShow.Name = "optReqShow";
+            this.optReqShow.Size = new System.Drawing.Size(110, 19);
+            this.optReqShow.TabIndex = 89;
+            this.optReqShow.Text = "Required Show";
+            this.optReqShow.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
@@ -178,52 +179,52 @@
             this.label10.Text = "  From Date  ";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // radioButton2
+            // optAllRecordShow
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Checked = true;
-            this.radioButton2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(285, 24);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(115, 19);
-            this.radioButton2.TabIndex = 84;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "All Record Show";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.optAllRecordShow.AutoSize = true;
+            this.optAllRecordShow.Checked = true;
+            this.optAllRecordShow.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.optAllRecordShow.Location = new System.Drawing.Point(285, 24);
+            this.optAllRecordShow.Name = "optAllRecordShow";
+            this.optAllRecordShow.Size = new System.Drawing.Size(115, 19);
+            this.optAllRecordShow.TabIndex = 84;
+            this.optAllRecordShow.TabStop = true;
+            this.optAllRecordShow.Text = "All Record Show";
+            this.optAllRecordShow.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.radioButton1);
-            this.groupBox2.Controls.Add(this.radioButton7);
+            this.groupBox2.Controls.Add(this.OptWOOrd);
+            this.groupBox2.Controls.Add(this.optWDO);
             this.groupBox2.Location = new System.Drawing.Point(28, 68);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(474, 49);
             this.groupBox2.TabIndex = 57;
             this.groupBox2.TabStop = false;
             // 
-            // radioButton1
+            // OptWOOrd
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(298, 19);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(153, 19);
-            this.radioButton1.TabIndex = 69;
-            this.radioButton1.Text = "Without Delivery Order";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.OptWOOrd.AutoSize = true;
+            this.OptWOOrd.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OptWOOrd.Location = new System.Drawing.Point(298, 19);
+            this.OptWOOrd.Name = "OptWOOrd";
+            this.OptWOOrd.Size = new System.Drawing.Size(153, 19);
+            this.OptWOOrd.TabIndex = 69;
+            this.OptWOOrd.Text = "Without Delivery Order";
+            this.OptWOOrd.UseVisualStyleBackColor = true;
             // 
-            // radioButton7
+            // optWDO
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Checked = true;
-            this.radioButton7.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton7.Location = new System.Drawing.Point(37, 19);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(135, 19);
-            this.radioButton7.TabIndex = 68;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "With Delivery Order";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.optWDO.AutoSize = true;
+            this.optWDO.Checked = true;
+            this.optWDO.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.optWDO.Location = new System.Drawing.Point(37, 19);
+            this.optWDO.Name = "optWDO";
+            this.optWDO.Size = new System.Drawing.Size(135, 19);
+            this.optWDO.TabIndex = 68;
+            this.optWDO.TabStop = true;
+            this.optWDO.Text = "With Delivery Order";
+            this.optWDO.UseVisualStyleBackColor = true;
             // 
             // cboItemGrp
             // 
@@ -276,18 +277,18 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cboItemGrp;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton7;
+        private System.Windows.Forms.RadioButton OptWOOrd;
+        private System.Windows.Forms.RadioButton optWDO;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton optSaleOrdDelStatus;
+        private System.Windows.Forms.RadioButton optForProd;
+        private System.Windows.Forms.RadioButton optReqShow;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton optAllRecordShow;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpToDate;
+        private System.Windows.Forms.DateTimePicker dtpFromDate;
     }
 }

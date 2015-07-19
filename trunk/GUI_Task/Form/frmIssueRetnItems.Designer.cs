@@ -38,7 +38,6 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
-            this.grd = new System.Windows.Forms.DataGridView();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -65,42 +64,25 @@
             this.txtRetNo = new System.Windows.Forms.TextBox();
             this.tb = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.grd = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtRetQty = new System.Windows.Forms.TextBox();
+            this.cboGodown = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.lblStock = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.lblIssueQty = new System.Windows.Forms.Label();
-            this.cbo_I_UOM = new System.Windows.Forms.ComboBox();
             this.label35 = new System.Windows.Forms.Label();
             this.cbo_I_Color = new System.Windows.Forms.ComboBox();
             this.cbo_I_Size = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.lbl_I_ItemName = new System.Windows.Forms.Label();
             this.lbl_I_ItemCode = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.txt_I_ItemID = new System.Windows.Forms.TextBox();
-            this.cboGodown = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtRetQty = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.SizeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ColorColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.UnitColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Godown = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sSMaster = new System.Windows.Forms.StatusStrip();
             this.tSlblUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.tStextUser = new System.Windows.Forms.ToolStripStatusLabel();
@@ -110,10 +92,26 @@
             this.tStextTotal = new System.Windows.Forms.ToolStripStatusLabel();
             this.tSlblAlert = new System.Windows.Forms.ToolStripStatusLabel();
             this.textAlert = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Godown = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.UnitColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ColorColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.SizeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.tb.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.sSMaster.SuspendLayout();
             this.SuspendLayout();
@@ -127,6 +125,7 @@
             this.groupBox4.Size = new System.Drawing.Size(235, 65);
             this.groupBox4.TabIndex = 383;
             this.groupBox4.TabStop = false;
+            this.groupBox4.Visible = false;
             // 
             // optsingleItem
             // 
@@ -138,6 +137,7 @@
             this.optsingleItem.TabIndex = 61;
             this.optsingleItem.Text = "Single Item Group {Size/Colour}";
             this.optsingleItem.UseVisualStyleBackColor = true;
+            this.optsingleItem.Visible = false;
             // 
             // optMultiItem
             // 
@@ -151,6 +151,7 @@
             this.optMultiItem.TabStop = true;
             this.optMultiItem.Text = "Multi Item Group {Size/Colour}";
             this.optMultiItem.UseVisualStyleBackColor = true;
+            this.optMultiItem.Visible = false;
             // 
             // lblTotalQty
             // 
@@ -159,7 +160,7 @@
             this.lblTotalQty.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblTotalQty.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalQty.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblTotalQty.Location = new System.Drawing.Point(615, 471);
+            this.lblTotalQty.Location = new System.Drawing.Point(671, 472);
             this.lblTotalQty.Name = "lblTotalQty";
             this.lblTotalQty.Size = new System.Drawing.Size(96, 17);
             this.lblTotalQty.TabIndex = 382;
@@ -171,7 +172,7 @@
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label11.Location = new System.Drawing.Point(523, 471);
+            this.label11.Location = new System.Drawing.Point(579, 472);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(86, 17);
             this.label11.TabIndex = 381;
@@ -190,6 +191,7 @@
             this.optInProcess.TabStop = true;
             this.optInProcess.Text = "In Process";
             this.optInProcess.UseVisualStyleBackColor = true;
+            this.optInProcess.Visible = false;
             // 
             // optapprovedVerified
             // 
@@ -201,6 +203,7 @@
             this.optapprovedVerified.TabIndex = 380;
             this.optapprovedVerified.Text = "Approved/Verified";
             this.optapprovedVerified.UseVisualStyleBackColor = true;
+            this.optapprovedVerified.Visible = false;
             // 
             // btnExit
             // 
@@ -233,30 +236,7 @@
             this.btnPrint.TabIndex = 377;
             this.btnPrint.Text = "Printing";
             this.btnPrint.UseVisualStyleBackColor = true;
-            // 
-            // grd
-            // 
-            this.grd.AllowUserToDeleteRows = false;
-            this.grd.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.grd.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.grd.BackgroundColor = System.Drawing.SystemColors.ControlDark;
-            this.grd.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column2,
-            this.Column3,
-            this.SizeColumn,
-            this.ColorColumn,
-            this.UnitColumn,
-            this.Godown,
-            this.Column12,
-            this.Column4,
-            this.Column10,
-            this.Column1});
-            this.grd.Location = new System.Drawing.Point(6, 0);
-            this.grd.Name = "grd";
-            this.grd.ReadOnly = true;
-            this.grd.Size = new System.Drawing.Size(852, 202);
-            this.grd.TabIndex = 375;
-            this.grd.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            this.btnPrint.Visible = false;
             // 
             // txtNote
             // 
@@ -422,6 +402,7 @@
             this.btnAdd.TabIndex = 360;
             this.btnAdd.Text = "Add new";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnHelp
             // 
@@ -432,6 +413,7 @@
             this.btnHelp.TabIndex = 359;
             this.btnHelp.Text = "F1=Help";
             this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // dtpIssueRet
             // 
@@ -514,6 +496,7 @@
             this.txtIssueNo.Size = new System.Drawing.Size(149, 20);
             this.txtIssueNo.TabIndex = 385;
             this.txtIssueNo.DoubleClick += new System.EventHandler(this.txtIssueNo_DoubleClick);
+            this.txtIssueNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIssueNo_KeyDown);
             // 
             // dtpIssue
             // 
@@ -552,7 +535,7 @@
             this.tb.Location = new System.Drawing.Point(6, 235);
             this.tb.Name = "tb";
             this.tb.SelectedIndex = 0;
-            this.tb.Size = new System.Drawing.Size(862, 202);
+            this.tb.Size = new System.Drawing.Size(874, 224);
             this.tb.TabIndex = 389;
             // 
             // tabPage1
@@ -561,10 +544,23 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(854, 176);
+            this.tabPage1.Size = new System.Drawing.Size(866, 198);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "GridView";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // grd
+            // 
+            this.grd.AllowUserToDeleteRows = false;
+            this.grd.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.grd.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.grd.BackgroundColor = System.Drawing.SystemColors.ControlDark;
+            this.grd.Location = new System.Drawing.Point(6, 0);
+            this.grd.Name = "grd";
+            this.grd.ReadOnly = true;
+            this.grd.Size = new System.Drawing.Size(864, 203);
+            this.grd.TabIndex = 375;
+            this.grd.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // tabPage2
             // 
@@ -577,13 +573,11 @@
             this.tabPage2.Controls.Add(this.lblStock);
             this.tabPage2.Controls.Add(this.label44);
             this.tabPage2.Controls.Add(this.lblIssueQty);
-            this.tabPage2.Controls.Add(this.cbo_I_UOM);
             this.tabPage2.Controls.Add(this.label35);
             this.tabPage2.Controls.Add(this.cbo_I_Color);
             this.tabPage2.Controls.Add(this.cbo_I_Size);
             this.tabPage2.Controls.Add(this.label29);
             this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.lbl_I_ItemName);
             this.tabPage2.Controls.Add(this.lbl_I_ItemCode);
             this.tabPage2.Controls.Add(this.label15);
@@ -591,9 +585,64 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(854, 176);
+            this.tabPage2.Size = new System.Drawing.Size(866, 198);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Insert New";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(363, 141);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(54, 21);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "&Add";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label17
+            // 
+            this.label17.AllowDrop = true;
+            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label17.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label17.Location = new System.Drawing.Point(469, 100);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(82, 21);
+            this.label17.TabIndex = 612;
+            this.label17.Text = "Return Qty";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txtRetQty
+            // 
+            this.txtRetQty.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRetQty.Location = new System.Drawing.Point(557, 100);
+            this.txtRetQty.Name = "txtRetQty";
+            this.txtRetQty.Size = new System.Drawing.Size(76, 21);
+            this.txtRetQty.TabIndex = 6;
+            // 
+            // cboGodown
+            // 
+            this.cboGodown.FormattingEnabled = true;
+            this.cboGodown.Items.AddRange(new object[] {
+            ""});
+            this.cboGodown.Location = new System.Drawing.Point(342, 62);
+            this.cboGodown.Name = "cboGodown";
+            this.cboGodown.Size = new System.Drawing.Size(124, 21);
+            this.cboGodown.TabIndex = 5;
+            // 
+            // label16
+            // 
+            this.label16.AllowDrop = true;
+            this.label16.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label16.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label16.Location = new System.Drawing.Point(254, 62);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(82, 21);
+            this.label16.TabIndex = 609;
+            this.label16.Text = "Godown";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblStock
             // 
@@ -633,16 +682,6 @@
             this.lblIssueQty.Size = new System.Drawing.Size(100, 21);
             this.lblIssueQty.TabIndex = 606;
             this.lblIssueQty.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // cbo_I_UOM
-            // 
-            this.cbo_I_UOM.FormattingEnabled = true;
-            this.cbo_I_UOM.Items.AddRange(new object[] {
-            ""});
-            this.cbo_I_UOM.Location = new System.Drawing.Point(342, 61);
-            this.cbo_I_UOM.Name = "cbo_I_UOM";
-            this.cbo_I_UOM.Size = new System.Drawing.Size(124, 21);
-            this.cbo_I_UOM.TabIndex = 4;
             // 
             // label35
             // 
@@ -703,19 +742,6 @@
             this.label10.Text = "Color";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label14
-            // 
-            this.label14.AllowDrop = true;
-            this.label14.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label14.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label14.Location = new System.Drawing.Point(254, 61);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(82, 21);
-            this.label14.TabIndex = 603;
-            this.label14.Text = "UOM";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // lbl_I_ItemName
             // 
             this.lbl_I_ItemName.AllowDrop = true;
@@ -768,199 +794,6 @@
             this.txt_I_ItemID.DoubleClick += new System.EventHandler(this.txt_I_ItemID_DoubleClick);
             this.txt_I_ItemID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_I_ItemID_KeyDown);
             // 
-            // cboGodown
-            // 
-            this.cboGodown.FormattingEnabled = true;
-            this.cboGodown.Items.AddRange(new object[] {
-            ""});
-            this.cboGodown.Location = new System.Drawing.Point(566, 61);
-            this.cboGodown.Name = "cboGodown";
-            this.cboGodown.Size = new System.Drawing.Size(124, 21);
-            this.cboGodown.TabIndex = 5;
-            // 
-            // label16
-            // 
-            this.label16.AllowDrop = true;
-            this.label16.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label16.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label16.Location = new System.Drawing.Point(478, 61);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(82, 21);
-            this.label16.TabIndex = 609;
-            this.label16.Text = "Godown";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label17
-            // 
-            this.label17.AllowDrop = true;
-            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label17.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label17.Location = new System.Drawing.Point(469, 100);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(82, 21);
-            this.label17.TabIndex = 612;
-            this.label17.Text = "Return Qty";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // txtRetQty
-            // 
-            this.txtRetQty.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRetQty.Location = new System.Drawing.Point(557, 100);
-            this.txtRetQty.Name = "txtRetQty";
-            this.txtRetQty.Size = new System.Drawing.Size(76, 21);
-            this.txtRetQty.TabIndex = 6;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(363, 141);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(54, 21);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "&Add";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // SizeColumn
-            // 
-            this.SizeColumn.Frozen = true;
-            this.SizeColumn.HeaderText = "Size";
-            this.SizeColumn.Name = "SizeColumn";
-            this.SizeColumn.ReadOnly = true;
-            this.SizeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SizeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.SizeColumn.Width = 52;
-            // 
-            // ColorColumn
-            // 
-            this.ColorColumn.Frozen = true;
-            this.ColorColumn.HeaderText = "Colour ";
-            this.ColorColumn.Name = "ColorColumn";
-            this.ColorColumn.ReadOnly = true;
-            this.ColorColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColorColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColorColumn.Width = 65;
-            // 
-            // UnitColumn
-            // 
-            this.UnitColumn.Frozen = true;
-            this.UnitColumn.HeaderText = "UOM";
-            this.UnitColumn.Name = "UnitColumn";
-            this.UnitColumn.ReadOnly = true;
-            this.UnitColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.UnitColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.UnitColumn.Width = 57;
-            // 
-            // Godown
-            // 
-            this.Godown.Frozen = true;
-            this.Godown.HeaderText = "Godown";
-            this.Godown.Name = "Godown";
-            this.Godown.ReadOnly = true;
-            this.Godown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Godown.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Godown.Width = 72;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.Frozen = true;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Item Code";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.Frozen = true;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.Frozen = true;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Stock";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.Frozen = true;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Issue Qty";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 76;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.Frozen = true;
-            this.dataGridViewTextBoxColumn5.HeaderText = "Return Qty";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 83;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.Frozen = true;
-            this.dataGridViewTextBoxColumn6.HeaderText = "New Stock";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn6.Width = 85;
-            // 
-            // Column2
-            // 
-            this.Column2.Frozen = true;
-            this.Column2.HeaderText = "Item Code";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 80;
-            // 
-            // Column3
-            // 
-            this.Column3.Frozen = true;
-            this.Column3.HeaderText = "Name";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 60;
-            // 
-            // Column12
-            // 
-            this.Column12.Frozen = true;
-            this.Column12.HeaderText = "Stock";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            this.Column12.Width = 60;
-            // 
-            // Column4
-            // 
-            this.Column4.Frozen = true;
-            this.Column4.HeaderText = "Issue Qty";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 76;
-            // 
-            // Column10
-            // 
-            this.Column10.Frozen = true;
-            this.Column10.HeaderText = "Return Qty";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            this.Column10.Width = 83;
-            // 
-            // Column1
-            // 
-            this.Column1.Frozen = true;
-            this.Column1.HeaderText = "New Stock";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.Width = 85;
-            // 
             // sSMaster
             // 
             this.sSMaster.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -972,9 +805,9 @@
             this.tStextTotal,
             this.tSlblAlert,
             this.textAlert});
-            this.sSMaster.Location = new System.Drawing.Point(0, 501);
+            this.sSMaster.Location = new System.Drawing.Point(0, 508);
             this.sSMaster.Name = "sSMaster";
-            this.sSMaster.Size = new System.Drawing.Size(880, 22);
+            this.sSMaster.Size = new System.Drawing.Size(892, 22);
             this.sSMaster.TabIndex = 611;
             this.sSMaster.Text = "statusStrip1";
             // 
@@ -1044,11 +877,149 @@
             this.textAlert.Text = "Ready";
             this.textAlert.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // Godown
+            // 
+            this.Godown.Frozen = true;
+            this.Godown.HeaderText = "Godown";
+            this.Godown.Name = "Godown";
+            this.Godown.ReadOnly = true;
+            this.Godown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Godown.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Godown.Width = 72;
+            // 
+            // UnitColumn
+            // 
+            this.UnitColumn.Frozen = true;
+            this.UnitColumn.HeaderText = "UOM";
+            this.UnitColumn.Name = "UnitColumn";
+            this.UnitColumn.ReadOnly = true;
+            this.UnitColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.UnitColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.UnitColumn.Width = 57;
+            // 
+            // ColorColumn
+            // 
+            this.ColorColumn.Frozen = true;
+            this.ColorColumn.HeaderText = "Colour ";
+            this.ColorColumn.Name = "ColorColumn";
+            this.ColorColumn.ReadOnly = true;
+            this.ColorColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColorColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColorColumn.Width = 65;
+            // 
+            // SizeColumn
+            // 
+            this.SizeColumn.Frozen = true;
+            this.SizeColumn.HeaderText = "Size";
+            this.SizeColumn.Name = "SizeColumn";
+            this.SizeColumn.ReadOnly = true;
+            this.SizeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SizeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.SizeColumn.Width = 52;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.Frozen = true;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Item Code";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.Frozen = true;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.Frozen = true;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Stock";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.Frozen = true;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Issue Qty";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 76;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.Frozen = true;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Return Qty";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 83;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.Frozen = true;
+            this.dataGridViewTextBoxColumn6.HeaderText = "New Stock";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn6.Width = 85;
+            // 
+            // Column1
+            // 
+            this.Column1.Frozen = true;
+            this.Column1.HeaderText = "New Stock";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.Width = 85;
+            // 
+            // Column10
+            // 
+            this.Column10.Frozen = true;
+            this.Column10.HeaderText = "Return Qty";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Width = 83;
+            // 
+            // Column4
+            // 
+            this.Column4.Frozen = true;
+            this.Column4.HeaderText = "Issue Qty";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 76;
+            // 
+            // Column12
+            // 
+            this.Column12.Frozen = true;
+            this.Column12.HeaderText = "Stock";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            this.Column12.Width = 60;
+            // 
+            // Column3
+            // 
+            this.Column3.Frozen = true;
+            this.Column3.HeaderText = "Name";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 60;
+            // 
+            // Column2
+            // 
+            this.Column2.Frozen = true;
+            this.Column2.HeaderText = "Item Code";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 80;
+            // 
             // frmIssueRetItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 523);
+            this.ClientSize = new System.Drawing.Size(892, 530);
             this.Controls.Add(this.sSMaster);
             this.Controls.Add(this.tb);
             this.Controls.Add(this.txtRetNo);
@@ -1090,9 +1061,9 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmIssueRetnItems_KeyDown);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
             this.tb.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.sSMaster.ResumeLayout(false);
@@ -1114,7 +1085,6 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnPrint;
-        private System.Windows.Forms.DataGridView grd;
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
@@ -1140,18 +1110,15 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtRetNo;
         private System.Windows.Forms.TabControl tb;
-        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label lblStock;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label lblIssueQty;
-        private System.Windows.Forms.ComboBox cbo_I_UOM;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.ComboBox cbo_I_Color;
         private System.Windows.Forms.ComboBox cbo_I_Size;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lbl_I_ItemName;
         private System.Windows.Forms.Label lbl_I_ItemCode;
         private System.Windows.Forms.Label label15;
@@ -1161,16 +1128,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtRetQty;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewComboBoxColumn SizeColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ColorColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn UnitColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Godown;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -1186,5 +1143,17 @@
         private System.Windows.Forms.ToolStripStatusLabel tStextTotal;
         private System.Windows.Forms.ToolStripStatusLabel tSlblAlert;
         private System.Windows.Forms.ToolStripStatusLabel textAlert;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.DataGridView grd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Godown;
+        private System.Windows.Forms.DataGridViewComboBoxColumn UnitColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ColorColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn SizeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }

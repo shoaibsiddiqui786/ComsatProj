@@ -328,6 +328,11 @@ namespace GUI_Task
             LookUp_Voc();
         }
 
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

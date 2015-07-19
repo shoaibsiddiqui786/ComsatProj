@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGateInward));
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -36,24 +38,17 @@
             this.dtpGateInword = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.grd = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SizeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ColorColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.UnitColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Godown = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.cboGate = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtRecievingPersonName = new System.Windows.Forms.TextBox();
-            this.btnPrint = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.chkPrinter = new System.Windows.Forms.CheckBox();
             this.optnProcess = new System.Windows.Forms.RadioButton();
             this.optApprovedVerified = new System.Windows.Forms.RadioButton();
             this.label9 = new System.Windows.Forms.Label();
@@ -92,11 +87,20 @@
             this.tStextTotal = new System.Windows.Forms.ToolStripStatusLabel();
             this.tSlblAlert = new System.Windows.Forms.ToolStripStatusLabel();
             this.textAlert = new System.Windows.Forms.ToolStripStatusLabel();
+            this.chkPrinter = new System.Windows.Forms.CheckBox();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.btnEmail = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -191,6 +195,7 @@
             // 
             // grd
             // 
+            this.grd.AllowUserToOrderColumns = true;
             this.grd.BackgroundColor = System.Drawing.Color.Silver;
             this.grd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grd.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -207,30 +212,7 @@
             this.grd.Name = "grd";
             this.grd.Size = new System.Drawing.Size(883, 290);
             this.grd.TabIndex = 168;
-            // 
-            // Column1
-            // 
-            this.Column1.Frozen = true;
-            this.Column1.HeaderText = "Code";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.Frozen = true;
-            this.Column2.HeaderText = "Item Code";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.Frozen = true;
-            this.Column3.HeaderText = "Name";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.Frozen = true;
-            this.Column4.HeaderText = "Description ";
-            this.Column4.Name = "Column4";
+            this.grd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grd_KeyDown);
             // 
             // SizeColumn
             // 
@@ -260,11 +242,6 @@
             this.Godown.Name = "Godown";
             this.Godown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Godown.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Qty";
-            this.Column8.Name = "Column8";
             // 
             // label3
             // 
@@ -338,22 +315,12 @@
             this.txtRecievingPersonName.Location = new System.Drawing.Point(189, 382);
             this.txtRecievingPersonName.Name = "txtRecievingPersonName";
             this.txtRecievingPersonName.Size = new System.Drawing.Size(327, 20);
-            this.txtRecievingPersonName.TabIndex = 177;
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnPrint.Location = new System.Drawing.Point(99, 409);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(84, 20);
-            this.btnPrint.TabIndex = 16;
-            this.btnPrint.Text = "Printing";
-            this.btnPrint.UseVisualStyleBackColor = true;
+            this.txtRecievingPersonName.TabIndex = 6;
             // 
             // btnExit
             // 
             this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(189, 409);
+            this.btnExit.Location = new System.Drawing.Point(111, 412);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(88, 20);
             this.btnExit.TabIndex = 17;
@@ -361,22 +328,11 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.button3_Click);
             // 
-            // chkPrinter
-            // 
-            this.chkPrinter.AutoSize = true;
-            this.chkPrinter.Checked = true;
-            this.chkPrinter.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkPrinter.Location = new System.Drawing.Point(283, 412);
-            this.chkPrinter.Name = "chkPrinter";
-            this.chkPrinter.Size = new System.Drawing.Size(56, 17);
-            this.chkPrinter.TabIndex = 181;
-            this.chkPrinter.Text = "Printer";
-            this.chkPrinter.UseVisualStyleBackColor = true;
-            // 
             // optnProcess
             // 
             this.optnProcess.AutoSize = true;
             this.optnProcess.Checked = true;
+            this.optnProcess.Enabled = false;
             this.optnProcess.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optnProcess.Location = new System.Drawing.Point(364, 412);
             this.optnProcess.Name = "optnProcess";
@@ -385,10 +341,12 @@
             this.optnProcess.TabStop = true;
             this.optnProcess.Text = "In Process";
             this.optnProcess.UseVisualStyleBackColor = true;
+            this.optnProcess.Visible = false;
             // 
             // optApprovedVerified
             // 
             this.optApprovedVerified.AutoSize = true;
+            this.optApprovedVerified.Enabled = false;
             this.optApprovedVerified.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.optApprovedVerified.Location = new System.Drawing.Point(454, 412);
             this.optApprovedVerified.Name = "optApprovedVerified";
@@ -396,6 +354,7 @@
             this.optApprovedVerified.TabIndex = 183;
             this.optApprovedVerified.Text = "Approved/Verified";
             this.optApprovedVerified.UseVisualStyleBackColor = true;
+            this.optApprovedVerified.Visible = false;
             // 
             // label9
             // 
@@ -438,8 +397,9 @@
             this.btnAddNew.Location = new System.Drawing.Point(614, 2);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(76, 23);
-            this.btnAddNew.TabIndex = 188;
+            this.btnAddNew.TabIndex = 9;
             this.btnAddNew.UseVisualStyleBackColor = true;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // btnHelp
             // 
@@ -447,7 +407,7 @@
             this.btnHelp.Location = new System.Drawing.Point(529, 2);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(79, 21);
-            this.btnHelp.TabIndex = 189;
+            this.btnHelp.TabIndex = 8;
             this.btnHelp.Text = "[F1] = Help";
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
@@ -457,7 +417,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(12, 87);
+            this.tabControl1.Location = new System.Drawing.Point(9, 80);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(890, 289);
@@ -519,7 +479,7 @@
             this.cboGodown.Location = new System.Drawing.Point(732, 60);
             this.cboGodown.Name = "cboGodown";
             this.cboGodown.Size = new System.Drawing.Size(137, 23);
-            this.cboGodown.TabIndex = 9;
+            this.cboGodown.TabIndex = 16;
             // 
             // label4
             // 
@@ -540,7 +500,7 @@
             this.txtQty.Location = new System.Drawing.Point(600, 58);
             this.txtQty.Name = "txtQty";
             this.txtQty.Size = new System.Drawing.Size(62, 21);
-            this.txtQty.TabIndex = 8;
+            this.txtQty.TabIndex = 15;
             // 
             // txtDescription
             // 
@@ -548,7 +508,7 @@
             this.txtDescription.Location = new System.Drawing.Point(110, 58);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(199, 21);
-            this.txtDescription.TabIndex = 6;
+            this.txtDescription.TabIndex = 13;
             // 
             // label10
             // 
@@ -582,7 +542,7 @@
             this.btnAdd.Location = new System.Drawing.Point(360, 87);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(54, 21);
-            this.btnAdd.TabIndex = 10;
+            this.btnAdd.TabIndex = 17;
             this.btnAdd.Text = "&Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -595,7 +555,7 @@
             this.cbo_I_UOM.Location = new System.Drawing.Point(416, 58);
             this.cbo_I_UOM.Name = "cbo_I_UOM";
             this.cbo_I_UOM.Size = new System.Drawing.Size(124, 23);
-            this.cbo_I_UOM.TabIndex = 7;
+            this.cbo_I_UOM.TabIndex = 14;
             // 
             // cbo_I_Color
             // 
@@ -605,7 +565,7 @@
             this.cbo_I_Color.Location = new System.Drawing.Point(759, 29);
             this.cbo_I_Color.Name = "cbo_I_Color";
             this.cbo_I_Color.Size = new System.Drawing.Size(108, 23);
-            this.cbo_I_Color.TabIndex = 5;
+            this.cbo_I_Color.TabIndex = 12;
             // 
             // cbo_I_Size
             // 
@@ -615,7 +575,7 @@
             this.cbo_I_Size.Location = new System.Drawing.Point(570, 29);
             this.cbo_I_Size.Name = "cbo_I_Size";
             this.cbo_I_Size.Size = new System.Drawing.Size(130, 23);
-            this.cbo_I_Size.TabIndex = 4;
+            this.cbo_I_Size.TabIndex = 11;
             // 
             // label29
             // 
@@ -703,7 +663,7 @@
             this.txt_I_ItemID.Location = new System.Drawing.Point(103, 29);
             this.txt_I_ItemID.Name = "txt_I_ItemID";
             this.txt_I_ItemID.Size = new System.Drawing.Size(76, 21);
-            this.txt_I_ItemID.TabIndex = 6;
+            this.txt_I_ItemID.TabIndex = 10;
             this.txt_I_ItemID.Text = "1";
             this.txt_I_ItemID.DoubleClick += new System.EventHandler(this.txt_I_ItemID_DoubleClick);
             this.txt_I_ItemID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_I_ItemID_KeyDown);
@@ -711,10 +671,10 @@
             // btnSave
             // 
             this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(12, 409);
+            this.btnSave.Location = new System.Drawing.Point(13, 412);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(81, 20);
-            this.btnSave.TabIndex = 6;
+            this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -730,7 +690,7 @@
             this.tStextTotal,
             this.tSlblAlert,
             this.textAlert});
-            this.sSMaster.Location = new System.Drawing.Point(0, 439);
+            this.sSMaster.Location = new System.Drawing.Point(0, 464);
             this.sSMaster.Name = "sSMaster";
             this.sSMaster.Size = new System.Drawing.Size(911, 22);
             this.sSMaster.TabIndex = 610;
@@ -802,6 +762,47 @@
             this.textAlert.Text = "Ready";
             this.textAlert.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // chkPrinter
+            // 
+            this.chkPrinter.AutoSize = true;
+            this.chkPrinter.Checked = true;
+            this.chkPrinter.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPrinter.Location = new System.Drawing.Point(283, 412);
+            this.chkPrinter.Name = "chkPrinter";
+            this.chkPrinter.Size = new System.Drawing.Size(56, 17);
+            this.chkPrinter.TabIndex = 181;
+            this.chkPrinter.Text = "Printer";
+            this.chkPrinter.UseVisualStyleBackColor = true;
+            this.chkPrinter.Visible = false;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnPrint.Location = new System.Drawing.Point(522, 386);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(84, 20);
+            this.btnPrint.TabIndex = 16;
+            this.btnPrint.Text = "Printing";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Visible = false;
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
+            // btnEmail
+            // 
+            this.btnEmail.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEmail.Location = new System.Drawing.Point(219, 412);
+            this.btnEmail.Name = "btnEmail";
+            this.btnEmail.Size = new System.Drawing.Size(81, 20);
+            this.btnEmail.TabIndex = 611;
+            this.btnEmail.Text = "Send Email";
+            this.btnEmail.UseVisualStyleBackColor = true;
+            this.btnEmail.Click += new System.EventHandler(this.button1_Click);
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.Frozen = true;
@@ -831,12 +832,42 @@
             this.dataGridViewTextBoxColumn5.HeaderText = "Qty";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
+            // Column1
+            // 
+            this.Column1.Frozen = true;
+            this.Column1.HeaderText = "Code";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.Frozen = true;
+            this.Column2.HeaderText = "Item Code";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.Frozen = true;
+            this.Column3.HeaderText = "Name";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.Frozen = true;
+            this.Column4.HeaderText = "Description ";
+            this.Column4.Name = "Column4";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Qty";
+            this.Column8.Name = "Column8";
+            // 
             // frmGateInward
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(911, 461);
+            this.ClientSize = new System.Drawing.Size(911, 486);
+            this.Controls.Add(this.btnEmail);
             this.Controls.Add(this.sSMaster);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tabControl1);
@@ -863,6 +894,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label7);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "frmGateInward";
             this.Text = "Gate Inward";
@@ -897,9 +929,7 @@
         private System.Windows.Forms.ComboBox cboGate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtRecievingPersonName;
-        private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.CheckBox chkPrinter;
         private System.Windows.Forms.RadioButton optnProcess;
         private System.Windows.Forms.RadioButton optApprovedVerified;
         private System.Windows.Forms.Label label9;
@@ -952,5 +982,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.CheckBox chkPrinter;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.Button btnEmail;
     }
 }

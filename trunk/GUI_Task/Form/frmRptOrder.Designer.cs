@@ -107,6 +107,7 @@
             this.btnOK.TabIndex = 76;
             this.btnOK.Text = "O.K";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnExit
             // 
@@ -401,7 +402,6 @@
             this.txtItemCode.Name = "txtItemCode";
             this.txtItemCode.Size = new System.Drawing.Size(84, 20);
             this.txtItemCode.TabIndex = 58;
-            //this.txtItemCode.TextChanged += new System.EventHandler(this.txtItemCode_TextChanged);
             this.txtItemCode.DoubleClick += new System.EventHandler(this.txtItemCode_DoubleClick);
             this.txtItemCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtItemCode_KeyDown);
             // 
@@ -524,7 +524,7 @@
             this.lblName.Size = new System.Drawing.Size(268, 15);
             this.lblName.TabIndex = 159;
             this.lblName.Text = "                                                                                 " +
-                "      ";
+    "      ";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // cboStatus

@@ -6,6 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using GUI_Task.StringFun01;
+using GUI_Task.PrintReport;
+using GUI_Task.PrintVw6;
 
 namespace GUI_Task
 {
@@ -177,6 +180,40 @@ namespace GUI_Task
             }
         }
         #endregion
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            string fRptTitle = this.Text;
+            string plstField = "@Para_Code, @F_Mon, @F_Year, @S_Mon, @S_Year, @T_Mon, @T_Year, @Para_No";
+            string plstType = "18,8,8,8,8,8,8,8"; // {"8, 8, 8, 8, 8, 8"};
+            string plstValue = this.mskAccCode.Text + "," + 08 + "," + 2007 + "," + 05 +
+                "," + 2000 + "," + 03 + "," + 2007 + "," + 09;
+                //StrF01.D2Str(this.dtpFromDate.Value) + "," +
+                //DateTime.Today.ToString("yyyy-MM-dd");
+
+            //dsLedgerNew pDs = new dsLedgerNew();
+
+            DataSet pDs = new DataSet();
+            CrExCmpRep rpt1 = new CrExCmpRep();
+
+            frmPrintVw6 rptLedger2 = new frmPrintVw6(
+               fRptTitle,
+               "08" + "2007" + "05" + "2000",
+               "03" + "2007" + "09",
+               //StrF01.D2Str(this.dtpFromDate.Value),
+               //DateTime.Today.ToString("yyyy-MM-dd"),
+               "ExCmpRep",
+               plstField,
+               plstType,
+               plstValue,
+               pDs,
+               rpt1,
+               "SP"
+               );
+
+            //rptLedger2.ShowDialog();
+            rptLedger2.Show();
+        }
 
     }
 }

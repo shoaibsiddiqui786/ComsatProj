@@ -126,6 +126,7 @@
             this.btnPrint.TabIndex = 76;
             this.btnPrint.Text = "Printing";
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnExit
             // 
@@ -149,6 +150,7 @@
             this.btnOK.TabIndex = 74;
             this.btnOK.Text = "O.K";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // textBox3
             // 

@@ -136,8 +136,8 @@ namespace GUI_Task
 
             frmLookUp sForm = new frmLookUp(
                     "d.Ord_No",
-                    "d.Cont_No, d.Ord_Date, h.Name, d.Qty, d.Amount",
-                    "Ord_Det d INNER JOIN Heads h ON d.Customer=h.Code",
+                    " d.Cont_No, d.Ord_Date, h.Name, d.Qty, d.Amount",
+                    " Ord_Det d INNER JOIN Heads h ON d.Customer=h.Code",
                     this.Text.ToString(),
                     1,
                     "Order ID, Contract ID,Date,Customer Name,Qty,Amount",

@@ -13,6 +13,7 @@ using MSMaskedEditBox;
 using System.ComponentModel;
 using GUI_Task.StringFun01;
 using System.Windows.Forms.VisualStyles;
+using GUI_Task.StringFun01;
 
 namespace GUI_Task
 {
@@ -504,8 +505,17 @@ namespace GUI_Task
             {
                 lSQL = "select max(" + pKeyFieldID + ") as maxvalue";
                 lSQL += " from " + pTable;
-                lSQL += " where ";
-                lSQL += pWhere;
+                if (pWhere != string.Empty)
+                {
+                    lSQL += " where ";
+                    lSQL += pWhere;
+                }
+                else
+                {
+                    lSQL = "select max(" + pKeyFieldID + ") as maxvalue";
+                    lSQL += " from " + pTable;
+                    //lSQL += " where ";
+                }
                 //lSQL += " and ";
                 //lSQL += clsGVar.LGCY;
             }
@@ -2896,7 +2906,7 @@ namespace GUI_Task
                                     }
                                     else
                                     {
-                                        R.Cells[lCol].Value = Convert.ToBoolean(lDS.Tables[pTableId].Rows[lRow][fFieldList[lCol].Trim()].ToString());
+                                        R.Cells[lCol].Value = Convert.ToBoolean((int)lDS.Tables[pTableId].Rows[lRow][fFieldList[lCol].Trim()]);
                                     }
                                     break;
                                 }
@@ -4124,5 +4134,327 @@ namespace GUI_Task
             }
             return strRtnValue;
         } // Get DateValue
+
+
+        public static DataSet SP_Exe(string fStoreProcName, string flstField, string flstType, string flstValue)
+        {
+            DataSet fDs = new DataSet();
+
+          //  SqlConnection con = new SqlConnection(clsGVar.ConString1);
+           // DataSet ds = new DataSet();
+            // SqlCommand com = new SqlCommand(pQry, con);
+            //try
+            //{
+            //    con.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            //   adapter.SelectCommand = com;
+            //   adapter.Fill(ds, strtable);
+            //    //           
+            //    adapter.Dispose();
+            //    com.Dispose();
+            //    con.Close();
+            //}
+            //catch
+            //{
+            //    com.Dispose();
+            //    if (con.State == ConnectionState.Open)
+            //    {
+            //        con.Close();
+            //    }
+            //}
+            //
+
+            SqlConnection Con = new SqlConnection(clsGVar.ConString1);
+            SqlCommand cmd = new SqlCommand();
+            //DataSet ds = null;
+            //SqlDataAdapter adapter;
+            //string fStoreProcName = string.Empty;
+            //string flstField = string.Empty;
+            // string flstType = string.Empty;
+            // string flstValue = string.Empty;
+            // DataSet fDs;
+
+
+            try
+            {
+                Con.Open();
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = fStoreProcName;
+
+                string[] aryField = flstField.Split(',');
+                string[] aryType = flstType.Split(',');
+                string[] aryValue = flstValue.Split(',');
+
+                for (int i = 0; i < aryField.Length; i++)
+                {
+
+                    switch (int.Parse(aryType[i]))
+                    {
+                        //sqlDBType.Int
+                        case 8:
+                            {
+                                cmd.Parameters.Add(aryField[i], SqlDbType.Int).Value = int.Parse(aryValue[i]);
+                                break;
+                            }
+
+                        //sqlDBType.DateTime
+                        case 4:
+                            {
+                                cmd.Parameters.Add(aryField[i], SqlDbType.DateTime).Value = DateTime.Parse(aryValue[i]);
+                                break;
+                            }
+                        //sqlDBType.Text
+                        case 18:
+                            {
+                                cmd.Parameters.Add(aryField[i], SqlDbType.Text).Value = aryValue[i];
+                                break;
+                            }
+
+                        default:
+                            break;
+                    }
+
+                }
+
+
+                //DateTime = 4,
+                //Decimal = 5,
+                //Float = 6,
+                //Image = 7,
+                //Int = 8,
+                //Money = 9,
+                //NChar = 10,
+                //NText = 11,
+                //NVarChar = 12,
+                //Real = 13,
+                //UniqueIdentifier = 14,
+                //SmallDateTime = 15,
+                //SmallInt = 16,
+                //SmallMoney = 17,
+                //Text = 18,
+
+                //cmd.Parameters.Add("@Co_ID", SqlDbType.Int).Value = 1;
+                //cmd.Parameters.Add("@ToDate", SqlDbType.Text).Value = fToDate; //"2013-01-01";
+                cmd.Connection = Con;
+
+                adapter = new SqlDataAdapter(cmd);
+                //adapter.TableMappings.Add("Table", "Table");
+
+                
+
+                adapter.Fill(fDs);
+                //
+                int cCount = fDs.Tables[0].Rows.Count;
+
+                
+            }
+
+
+            catch (Exception ex)
+            {
+                //throw new Exception(ex.Message);
+            }
+            return fDs;
+        }
+
+        #region FillData_SP
+
+        public static void FillData_SP(
+            DataGridView pDGV,
+            string pSP,
+            string plstField,
+            string plstType, 
+            string plstValue,
+            string pFieldList,
+            string pFieldFormat,
+            DataSet pDS = null,
+            int pTableId = 0,
+            bool pReadOnly = false,
+            string pCon = clsGVar.ConString1
+        )
+            {
+
+            SqlConnection CurrCon = new SqlConnection(pCon);
+            DataRow dRow;
+            DataSet lDS;
+
+            try
+            {
+                // 2012 09 18
+                //string[] fFieldList = pFieldList.Replace(" ","").Split(',');
+                //string[] fFieldFormat = pFieldFormat.Replace(" ", "").Split(',');
+                if (pDS == null)
+                {
+                    //lDS = clsDbManager.GetData_Set(pSQL, "table0");
+                    lDS = clsDbManager.SP_Exe(pSP, plstField, plstType, plstValue);
+                }
+                else
+                {
+                    lDS = pDS;
+                }
+
+
+                int lRecCount = lDS.Tables[pTableId].Rows.Count;
+                //
+                string[] fFieldList = pFieldList.Split(',');
+                string[] fFieldFormat = pFieldFormat.Split(',');
+
+                if (pDGV.Rows.Count > 0)
+                {
+                    pDGV.Rows.Clear();
+                }
+
+                //
+                for (int lRow = 0; lRow < lRecCount; lRow++)
+                {
+                    dRow = lDS.Tables[pTableId].Rows[lRow];
+                    pDGV.Rows.Add();
+                    int RowIndex = pDGV.RowCount - 1;
+                    DataGridViewRow R = pDGV.Rows[RowIndex];
+                    int abc = pFieldList.Length;
+                    int xyz = pFieldList.Count();
+                    for (int lCol = 0; lCol < fFieldList.Length; lCol++)
+                    {
+                        switch (fFieldFormat[lCol].Trim())
+                        {
+                            case "SKP":
+                            case "H":
+                            case "T":
+                            case "TB":
+                                {
+                                    string test = lDS.Tables[pTableId].Rows[lRow][fFieldList[lCol].Trim()].ToString();
+
+                                    if (lDS.Tables[pTableId].Rows[lRow][fFieldList[lCol].Trim()] == DBNull.Value)
+                                    {
+                                        R.Cells[lCol].Value = string.Empty;
+                                    }
+                                    else
+                                    {
+                                        R.Cells[lCol].Value = lDS.Tables[pTableId].Rows[lRow][fFieldList[lCol].Trim()].ToString();
+                                    }
+                                    break;
+                                }
+                            //case "DT":
+                            //    {
+
+                            //        string test = lDS.Tables[pTableId].Rows[lRow][fFieldList[lCol].Trim()].ToString();
+
+                            //        if (lDS.Tables[pTableId].Rows[lRow][fFieldList[lCol].Trim()] == DBNull.Value)
+                            //        {
+                            //            R.Cells[lCol].Value = string.Empty;
+                            //        }
+                            //        else
+                            //        {
+                            //            //R.Cells[lCol].Value = lDS.Tables[pTableId].Rows[lRow][fFieldList[lCol].Trim()].ToString();
+                            //            R.Cells[lCol].Value =  StrF01.Left(lDS.Tables[pTableId].Rows[lRow][fFieldList[lCol].Trim()].ToString(),10);
+                            //        }
+                            //        break;
+                            //    }
+                            case "N0":
+                            case "N2":
+                            case "N3":
+                                {
+                                    if (lDS.Tables[pTableId].Rows[lRow][fFieldList[lCol].Trim()] == DBNull.Value)
+                                    {
+                                        R.Cells[lCol].Value = string.Empty;
+                                    }
+                                    else
+                                    {
+                                        R.Cells[lCol].Value = lDS.Tables[pTableId].Rows[lRow][fFieldList[lCol].Trim()].ToString();
+                                    }
+                                    break;
+                                }
+
+                            case "CB":
+                                // Combo Box
+                                {
+                                    if (lDS.Tables[pTableId].Rows[lRow][fFieldList[lCol].Trim()] == DBNull.Value)
+                                    {
+                                        R.Cells[lCol].Value = string.Empty;
+                                    }
+                                    else
+                                    {
+                                        R.Cells[lCol].Value = Convert.ToInt32(lDS.Tables[pTableId].Rows[lRow][fFieldList[lCol].Trim()].ToString());
+                                    }
+                                    break;
+                                }
+                            case "CH":
+                                // Check Box
+                                {
+                                    if (lDS.Tables[pTableId].Rows[lRow][fFieldList[lCol].Trim()] == DBNull.Value)
+                                    {
+                                        R.Cells[lCol].Value = "False";
+                                    }
+                                    else
+                                    {
+                                        R.Cells[lCol].Value = Convert.ToBoolean((int)lDS.Tables[pTableId].Rows[lRow][fFieldList[lCol].Trim()]);
+                                    }
+                                    break;
+                                }
+
+                            case "SN":
+                                // Serial Number
+                                {
+                                    R.Cells[lCol].Value = (lRow + 1).ToString();
+                                    break;
+                                }
+
+                            default:
+                                break;
+                        } // End Switch
+                    } // End for lCol
+                }  // End for lRow
+
+            } // End Try
+            catch (Exception exp)
+            {
+                if (CurrCon.State != ConnectionState.Closed) { CurrCon.Close(); }
+                MessageBox.Show("Exception: " + exp.Message + " Grid: " + pDGV.Name, "Fill Data Grid ");
+            } // End Try
+        } // End FillDataGrid Method
+        // Fill Data Grid End
+
+        #endregion FillData_SP
+
+
+
+        // public static string parameter = string.Empty;
+
+        //public static DataSet SP_DataSet(string fStoreProcName, string parameter)
+        //{
+        //    try
+        //    {
+        //       SqlConnection con = new SqlConnection(clsGVar.ConString1);
+                
+        //            con.Open();
+
+        //            using (SqlCommand cmd = new SqlCommand())
+        //            {
+        //                cmd.Connection = con;
+
+        //                cmd.CommandType = CommandType.StoredProcedure;
+        //                cmd.CommandText = fStoreProcName;
+
+        //                cmd.Parameters.AddWithValue("@UserID", parameter);
+
+        //                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+        //                {
+        //                    // Fill the DataSet using default values for DataTable names, etc
+        //                    DataSet dataset = new DataSet();
+        //                    da.Fill(dataset);
+
+        //                    return dataset;
+        //                }
+        //            }
+        //        }
+            
+        //    catch (Exception ee)
+        //    {
+        //        //Obravnava napak
+
+        //    }
+        //    return null;
+        //}
+        }
     }
-}

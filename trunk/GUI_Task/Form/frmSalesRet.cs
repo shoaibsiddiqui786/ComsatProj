@@ -16,6 +16,11 @@ namespace GUI_Task
             InitializeComponent();
         }
 
+        private void InitializeComponent()
+        {
+            throw new NotImplementedException();
+        }
+
         private void sales_Sales_Return_Load(object sender, EventArgs e)
         {
             this.MaximizeBox = false;

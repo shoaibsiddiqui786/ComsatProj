@@ -26,8 +26,8 @@ namespace GUI_Task.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=@(local);Initial Catalog=GUI_Task;Persist Security Info=True;User ID=" +
-            "sa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(local);Initial Catalog=GUI_Task;Persist Security Info=True;User ID=s" +
+            "a;Password=smc786")]
         public string GUI_TaskConnectionString {
             get {
                 return ((string)(this["GUI_TaskConnectionString"]));

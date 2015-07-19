@@ -28,22 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInvoiceEntry));
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnGrpPrint = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.grd = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SizeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ColorColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label22 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
+            this.lblBal = new System.Windows.Forms.Label();
+            this.lblInvQty = new System.Windows.Forms.Label();
             this.btnNewDisc = new System.Windows.Forms.Button();
             this.btnIrnHelp = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.lblContractNo = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.cboAdda = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -52,12 +62,12 @@
             this.lblNameBottom = new System.Windows.Forms.Label();
             this.cboItemGroup = new System.Windows.Forms.ComboBox();
             this.label34 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpBuilty = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtDetail = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBuiltyNo = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.lblSaleType = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -91,9 +101,9 @@
             this.label39 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
+            this.lblOrdVal = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
+            this.lblInvTotal = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
@@ -107,18 +117,19 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.gBox = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtPairRate = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtDelQty = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.cbo_I_UOM = new System.Windows.Forms.ComboBox();
             this.cbo_I_Color = new System.Windows.Forms.ComboBox();
             this.cbo_I_Size = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.lbl_I_ItemName = new System.Windows.Forms.Label();
             this.lbl_I_ItemCode = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.txt_I_ItemID = new System.Windows.Forms.TextBox();
-            this.SizeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ColorColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.UnitColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.sSMaster = new System.Windows.Forms.StatusStrip();
             this.tSlblUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.tStextUser = new System.Windows.Forms.ToolStripStatusLabel();
@@ -139,17 +150,7 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.btnEmail = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.tb.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -161,12 +162,13 @@
             // btnPrint
             // 
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.Location = new System.Drawing.Point(5, 529);
+            this.btnPrint.Location = new System.Drawing.Point(252, 529);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(102, 25);
             this.btnPrint.TabIndex = 647;
             this.btnPrint.Text = "Simple Printing ";
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Visible = false;
             // 
             // btnGrpPrint
             // 
@@ -177,6 +179,7 @@
             this.btnGrpPrint.TabIndex = 646;
             this.btnGrpPrint.Text = "Group Printing ";
             this.btnGrpPrint.UseVisualStyleBackColor = true;
+            this.btnGrpPrint.Visible = false;
             // 
             // btnSave
             // 
@@ -192,7 +195,7 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(113, 560);
+            this.btnExit.Location = new System.Drawing.Point(283, 529);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(102, 25);
             this.btnExit.TabIndex = 644;
@@ -213,7 +216,6 @@
             this.Column3,
             this.SizeColumn,
             this.ColorColumn,
-            this.UnitColumn,
             this.Column8,
             this.Column9,
             this.Column11,
@@ -227,13 +229,105 @@
             this.grd.Size = new System.Drawing.Size(833, 244);
             this.grd.TabIndex = 638;
             // 
+            // Column1
+            // 
+            this.Column1.Frozen = true;
+            this.Column1.HeaderText = "Code";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 57;
+            // 
+            // Column2
+            // 
+            this.Column2.Frozen = true;
+            this.Column2.HeaderText = "Item Code";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 80;
+            // 
+            // Column3
+            // 
+            this.Column3.Frozen = true;
+            this.Column3.HeaderText = "Name";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 60;
+            // 
+            // SizeColumn
+            // 
+            this.SizeColumn.Frozen = true;
+            this.SizeColumn.HeaderText = "Size";
+            this.SizeColumn.Name = "SizeColumn";
+            this.SizeColumn.ReadOnly = true;
+            this.SizeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SizeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.SizeColumn.Width = 52;
+            // 
+            // ColorColumn
+            // 
+            this.ColorColumn.Frozen = true;
+            this.ColorColumn.HeaderText = "Colour ";
+            this.ColorColumn.Name = "ColorColumn";
+            this.ColorColumn.ReadOnly = true;
+            this.ColorColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColorColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColorColumn.Width = 65;
+            // 
+            // Column8
+            // 
+            this.Column8.Frozen = true;
+            this.Column8.HeaderText = "Discount";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 74;
+            // 
+            // Column9
+            // 
+            this.Column9.Frozen = true;
+            this.Column9.HeaderText = "Order Qty";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Width = 77;
+            // 
+            // Column11
+            // 
+            this.Column11.Frozen = true;
+            this.Column11.HeaderText = "Del. Qty";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Width = 70;
+            // 
+            // Column10
+            // 
+            this.Column10.Frozen = true;
+            this.Column10.HeaderText = "DZ. Rate";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Width = 76;
+            // 
+            // Column14
+            // 
+            this.Column14.Frozen = true;
+            this.Column14.HeaderText = "Pr. rate";
+            this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            this.Column14.Width = 66;
+            // 
+            // Column12
+            // 
+            this.Column12.Frozen = true;
+            this.Column12.HeaderText = "Amount";
+            this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            this.Column12.Width = 68;
+            // 
             // label22
             // 
             this.label22.AllowDrop = true;
             this.label22.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label22.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label22.Location = new System.Drawing.Point(768, 539);
+            this.label22.Location = new System.Drawing.Point(632, 529);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(74, 17);
             this.label22.TabIndex = 635;
@@ -246,38 +340,40 @@
             this.label24.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label24.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label24.Location = new System.Drawing.Point(768, 559);
+            this.label24.Location = new System.Drawing.Point(632, 551);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(74, 17);
             this.label24.TabIndex = 637;
             this.label24.Text = "Balance";
             this.label24.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label24.Visible = false;
             // 
-            // label28
+            // lblBal
             // 
-            this.label28.AllowDrop = true;
-            this.label28.BackColor = System.Drawing.Color.NavajoWhite;
-            this.label28.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label28.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label28.Location = new System.Drawing.Point(848, 554);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(138, 17);
-            this.label28.TabIndex = 636;
-            this.label28.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblBal.AllowDrop = true;
+            this.lblBal.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblBal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblBal.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBal.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblBal.Location = new System.Drawing.Point(712, 551);
+            this.lblBal.Name = "lblBal";
+            this.lblBal.Size = new System.Drawing.Size(138, 17);
+            this.lblBal.TabIndex = 636;
+            this.lblBal.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblBal.Visible = false;
             // 
-            // label23
+            // lblInvQty
             // 
-            this.label23.AllowDrop = true;
-            this.label23.BackColor = System.Drawing.Color.NavajoWhite;
-            this.label23.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label23.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label23.Location = new System.Drawing.Point(848, 537);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(138, 17);
-            this.label23.TabIndex = 634;
-            this.label23.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblInvQty.AllowDrop = true;
+            this.lblInvQty.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblInvQty.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblInvQty.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvQty.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblInvQty.Location = new System.Drawing.Point(712, 527);
+            this.lblInvQty.Name = "lblInvQty";
+            this.lblInvQty.Size = new System.Drawing.Size(138, 17);
+            this.lblInvQty.TabIndex = 634;
+            this.lblInvQty.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnNewDisc
             // 
@@ -288,16 +384,18 @@
             this.btnNewDisc.TabIndex = 632;
             this.btnNewDisc.Text = "Apply New Discount";
             this.btnNewDisc.UseVisualStyleBackColor = true;
+            this.btnNewDisc.Visible = false;
             // 
             // btnIrnHelp
             // 
             this.btnIrnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIrnHelp.Location = new System.Drawing.Point(592, 46);
+            this.btnIrnHelp.Location = new System.Drawing.Point(482, 3);
             this.btnIrnHelp.Name = "btnIrnHelp";
             this.btnIrnHelp.Size = new System.Drawing.Size(130, 25);
             this.btnIrnHelp.TabIndex = 631;
             this.btnIrnHelp.Text = "Inv Help";
             this.btnIrnHelp.UseVisualStyleBackColor = true;
+            this.btnIrnHelp.Click += new System.EventHandler(this.btnIrnHelp_Click);
             // 
             // label15
             // 
@@ -305,12 +403,13 @@
             this.label15.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label15.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label15.Location = new System.Drawing.Point(395, 189);
+            this.label15.Location = new System.Drawing.Point(395, 211);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(100, 17);
             this.label15.TabIndex = 620;
             this.label15.Text = "Godown";
             this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label15.Visible = false;
             // 
             // label13
             // 
@@ -318,12 +417,13 @@
             this.label13.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label13.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label13.Location = new System.Drawing.Point(395, 216);
+            this.label13.Location = new System.Drawing.Point(395, 186);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(100, 17);
             this.label13.TabIndex = 619;
             this.label13.Text = "Contract #";
             this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label13.Visible = false;
             // 
             // lblContractNo
             // 
@@ -332,32 +432,12 @@
             this.lblContractNo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblContractNo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContractNo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblContractNo.Location = new System.Drawing.Point(510, 216);
+            this.lblContractNo.Location = new System.Drawing.Point(510, 186);
             this.lblContractNo.Name = "lblContractNo";
             this.lblContractNo.Size = new System.Drawing.Size(233, 17);
             this.lblContractNo.TabIndex = 618;
             this.lblContractNo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(561, 49);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(25, 20);
-            this.textBox4.TabIndex = 617;
-            this.textBox4.Text = "C";
-            // 
-            // label8
-            // 
-            this.label8.AllowDrop = true;
-            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label8.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label8.Location = new System.Drawing.Point(455, 52);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(100, 17);
-            this.label8.TabIndex = 616;
-            this.label8.Text = "Sale Type";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblContractNo.Visible = false;
             // 
             // cboAdda
             // 
@@ -457,13 +537,13 @@
             this.label34.Text = "Category";
             this.label34.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // dateTimePicker2
+            // dtpBuilty
             // 
-            this.dateTimePicker2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(111, 155);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(158, 21);
-            this.dateTimePicker2.TabIndex = 607;
+            this.dtpBuilty.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpBuilty.Location = new System.Drawing.Point(111, 155);
+            this.dtpBuilty.Name = "dtpBuilty";
+            this.dtpBuilty.Size = new System.Drawing.Size(158, 21);
+            this.dtpBuilty.TabIndex = 607;
             // 
             // label3
             // 
@@ -491,12 +571,12 @@
             this.label1.Text = "Builty No.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // textBox3
+            // txtDetail
             // 
-            this.textBox3.Location = new System.Drawing.Point(395, 129);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(273, 20);
-            this.textBox3.TabIndex = 604;
+            this.txtDetail.Location = new System.Drawing.Point(395, 129);
+            this.txtDetail.Name = "txtDetail";
+            this.txtDetail.Size = new System.Drawing.Size(273, 20);
+            this.txtDetail.TabIndex = 604;
             // 
             // label2
             // 
@@ -511,12 +591,12 @@
             this.label2.Text = "Details";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // textBox2
+            // txtBuiltyNo
             // 
-            this.textBox2.Location = new System.Drawing.Point(395, 155);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(273, 20);
-            this.textBox2.TabIndex = 602;
+            this.txtBuiltyNo.Location = new System.Drawing.Point(395, 155);
+            this.txtBuiltyNo.Name = "txtBuiltyNo";
+            this.txtBuiltyNo.Size = new System.Drawing.Size(273, 20);
+            this.txtBuiltyNo.TabIndex = 602;
             // 
             // label9
             // 
@@ -670,7 +750,7 @@
             this.label20.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label20.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label20.Location = new System.Drawing.Point(752, 159);
+            this.label20.Location = new System.Drawing.Point(395, 178);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(100, 17);
             this.label20.TabIndex = 656;
@@ -684,7 +764,7 @@
             this.lblOrderQty.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblOrderQty.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOrderQty.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblOrderQty.Location = new System.Drawing.Point(867, 158);
+            this.lblOrderQty.Location = new System.Drawing.Point(501, 178);
             this.lblOrderQty.Name = "lblOrderQty";
             this.lblOrderQty.Size = new System.Drawing.Size(119, 17);
             this.lblOrderQty.TabIndex = 655;
@@ -696,7 +776,7 @@
             this.label18.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label18.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label18.Location = new System.Drawing.Point(752, 186);
+            this.label18.Location = new System.Drawing.Point(395, 203);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(100, 17);
             this.label18.TabIndex = 654;
@@ -710,7 +790,7 @@
             this.lblPrevDel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblPrevDel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrevDel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblPrevDel.Location = new System.Drawing.Point(867, 186);
+            this.lblPrevDel.Location = new System.Drawing.Point(501, 203);
             this.lblPrevDel.Name = "lblPrevDel";
             this.lblPrevDel.Size = new System.Drawing.Size(119, 17);
             this.lblPrevDel.TabIndex = 653;
@@ -722,7 +802,7 @@
             this.label16.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label16.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label16.Location = new System.Drawing.Point(752, 216);
+            this.label16.Location = new System.Drawing.Point(395, 227);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(100, 17);
             this.label16.TabIndex = 652;
@@ -736,7 +816,7 @@
             this.lblRemQty.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblRemQty.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRemQty.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblRemQty.Location = new System.Drawing.Point(867, 216);
+            this.lblRemQty.Location = new System.Drawing.Point(501, 227);
             this.lblRemQty.Name = "lblRemQty";
             this.lblRemQty.Size = new System.Drawing.Size(119, 17);
             this.lblRemQty.TabIndex = 651;
@@ -754,6 +834,7 @@
             this.label31.TabIndex = 658;
             this.label31.Text = "D.O Date";
             this.label31.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label31.Visible = false;
             // 
             // lblDoDate
             // 
@@ -767,6 +848,7 @@
             this.lblDoDate.Size = new System.Drawing.Size(234, 17);
             this.lblDoDate.TabIndex = 657;
             this.lblDoDate.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblDoDate.Visible = false;
             // 
             // label35
             // 
@@ -774,11 +856,11 @@
             this.label35.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label35.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label35.Location = new System.Drawing.Point(674, 105);
+            this.label35.Location = new System.Drawing.Point(598, 52);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(70, 17);
             this.label35.TabIndex = 660;
-            this.label35.Text = "Bill#";
+            this.label35.Text = "Bill #";
             this.label35.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblBillNo
@@ -788,7 +870,7 @@
             this.lblBillNo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblBillNo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBillNo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblBillNo.Location = new System.Drawing.Point(752, 102);
+            this.lblBillNo.Location = new System.Drawing.Point(675, 52);
             this.lblBillNo.Name = "lblBillNo";
             this.lblBillNo.Size = new System.Drawing.Size(68, 17);
             this.lblBillNo.TabIndex = 659;
@@ -797,12 +879,13 @@
             // btnNewInv
             // 
             this.btnNewInv.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewInv.Location = new System.Drawing.Point(728, 46);
+            this.btnNewInv.Location = new System.Drawing.Point(618, 3);
             this.btnNewInv.Name = "btnNewInv";
             this.btnNewInv.Size = new System.Drawing.Size(124, 25);
             this.btnNewInv.TabIndex = 663;
             this.btnNewInv.Text = "New Invoice ";
             this.btnNewInv.UseVisualStyleBackColor = true;
+            this.btnNewInv.Click += new System.EventHandler(this.btnNewInv_Click);
             // 
             // btnDOView
             // 
@@ -813,6 +896,7 @@
             this.btnDOView.TabIndex = 662;
             this.btnDOView.Text = "D.O View";
             this.btnDOView.UseVisualStyleBackColor = true;
+            this.btnDOView.Visible = false;
             this.btnDOView.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnNewRate
@@ -824,6 +908,7 @@
             this.btnNewRate.TabIndex = 661;
             this.btnNewRate.Text = "Apply New Rate";
             this.btnNewRate.UseVisualStyleBackColor = true;
+            this.btnNewRate.Visible = false;
             // 
             // label37
             // 
@@ -831,19 +916,21 @@
             this.label37.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label37.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label37.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label37.Location = new System.Drawing.Point(826, 108);
+            this.label37.Location = new System.Drawing.Point(826, 102);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(70, 17);
             this.label37.TabIndex = 664;
             this.label37.Text = "Claim";
             this.label37.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label37.Visible = false;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(902, 105);
+            this.textBox5.Location = new System.Drawing.Point(902, 102);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(84, 20);
             this.textBox5.TabIndex = 665;
+            this.textBox5.Visible = false;
             // 
             // btnResetCont
             // 
@@ -854,6 +941,7 @@
             this.btnResetCont.TabIndex = 666;
             this.btnResetCont.Text = "Reset Cont";
             this.btnResetCont.UseVisualStyleBackColor = true;
+            this.btnResetCont.Visible = false;
             // 
             // lblGodown
             // 
@@ -862,11 +950,12 @@
             this.lblGodown.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblGodown.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGodown.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblGodown.Location = new System.Drawing.Point(510, 186);
+            this.lblGodown.Location = new System.Drawing.Point(641, 210);
             this.lblGodown.Name = "lblGodown";
             this.lblGodown.Size = new System.Drawing.Size(233, 17);
             this.lblGodown.TabIndex = 667;
             this.lblGodown.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblGodown.Visible = false;
             // 
             // btnPictures
             // 
@@ -877,6 +966,7 @@
             this.btnPictures.TabIndex = 668;
             this.btnPictures.Text = "Pictures";
             this.btnPictures.UseVisualStyleBackColor = true;
+            this.btnPictures.Visible = false;
             // 
             // label39
             // 
@@ -890,6 +980,7 @@
             this.label39.TabIndex = 670;
             this.label39.Text = "Discount";
             this.label39.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label39.Visible = false;
             // 
             // label40
             // 
@@ -903,6 +994,7 @@
             this.label40.Size = new System.Drawing.Size(136, 17);
             this.label40.TabIndex = 669;
             this.label40.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label40.Visible = false;
             // 
             // label41
             // 
@@ -910,25 +1002,27 @@
             this.label41.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label41.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label41.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label41.Location = new System.Drawing.Point(550, 564);
+            this.label41.Location = new System.Drawing.Point(414, 551);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(76, 17);
             this.label41.TabIndex = 672;
             this.label41.Text = "Order value";
             this.label41.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label41.Visible = false;
             // 
-            // label42
+            // lblOrdVal
             // 
-            this.label42.AllowDrop = true;
-            this.label42.BackColor = System.Drawing.Color.NavajoWhite;
-            this.label42.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label42.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label42.Location = new System.Drawing.Point(632, 559);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(130, 17);
-            this.label42.TabIndex = 671;
-            this.label42.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblOrdVal.AllowDrop = true;
+            this.lblOrdVal.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblOrdVal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblOrdVal.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrdVal.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblOrdVal.Location = new System.Drawing.Point(496, 551);
+            this.lblOrdVal.Name = "lblOrdVal";
+            this.lblOrdVal.Size = new System.Drawing.Size(130, 17);
+            this.lblOrdVal.TabIndex = 671;
+            this.lblOrdVal.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblOrdVal.Visible = false;
             // 
             // label43
             // 
@@ -936,25 +1030,25 @@
             this.label43.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label43.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label43.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label43.Location = new System.Drawing.Point(550, 542);
+            this.label43.Location = new System.Drawing.Point(414, 529);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(76, 17);
             this.label43.TabIndex = 674;
             this.label43.Text = "Inv. Value";
             this.label43.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label44
+            // lblInvTotal
             // 
-            this.label44.AllowDrop = true;
-            this.label44.BackColor = System.Drawing.Color.NavajoWhite;
-            this.label44.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label44.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label44.Location = new System.Drawing.Point(632, 542);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(130, 17);
-            this.label44.TabIndex = 673;
-            this.label44.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblInvTotal.AllowDrop = true;
+            this.lblInvTotal.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblInvTotal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblInvTotal.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvTotal.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblInvTotal.Location = new System.Drawing.Point(496, 529);
+            this.lblInvTotal.Name = "lblInvTotal";
+            this.lblInvTotal.Size = new System.Drawing.Size(130, 17);
+            this.lblInvTotal.TabIndex = 673;
+            this.lblInvTotal.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label45
             // 
@@ -968,6 +1062,7 @@
             this.label45.TabIndex = 676;
             this.label45.Text = "Frieght";
             this.label45.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label45.Visible = false;
             // 
             // label46
             // 
@@ -981,6 +1076,7 @@
             this.label46.Size = new System.Drawing.Size(130, 17);
             this.label46.TabIndex = 675;
             this.label46.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label46.Visible = false;
             // 
             // radioButton5
             // 
@@ -992,17 +1088,19 @@
             this.radioButton5.TabIndex = 682;
             this.radioButton5.Text = "Group Printing";
             this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.Visible = false;
             // 
             // radioButton6
             // 
             this.radioButton6.AutoSize = true;
             this.radioButton6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton6.Location = new System.Drawing.Point(395, 560);
+            this.radioButton6.Location = new System.Drawing.Point(275, 561);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(108, 19);
             this.radioButton6.TabIndex = 681;
             this.radioButton6.Text = "Simple printing";
             this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.Visible = false;
             // 
             // checkBox1
             // 
@@ -1015,6 +1113,7 @@
             this.checkBox1.TabIndex = 680;
             this.checkBox1.Text = "Printer";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Visible = false;
             // 
             // radioButton1
             // 
@@ -1028,17 +1127,19 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "English Print";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.Visible = false;
             // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(381, 534);
+            this.radioButton2.Location = new System.Drawing.Point(261, 535);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(80, 19);
             this.radioButton2.TabIndex = 678;
             this.radioButton2.Text = "Urdu Print";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.Visible = false;
             // 
             // txtInvNo
             // 
@@ -1086,50 +1187,84 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(916, 250);
+            this.tabPage2.Size = new System.Drawing.Size(839, 250);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Insert New";
             // 
             // gBox
             // 
+            this.gBox.Controls.Add(this.label17);
+            this.gBox.Controls.Add(this.txtPairRate);
+            this.gBox.Controls.Add(this.label11);
+            this.gBox.Controls.Add(this.txtDelQty);
             this.gBox.Controls.Add(this.btnAdd);
-            this.gBox.Controls.Add(this.cbo_I_UOM);
             this.gBox.Controls.Add(this.cbo_I_Color);
             this.gBox.Controls.Add(this.cbo_I_Size);
             this.gBox.Controls.Add(this.label12);
             this.gBox.Controls.Add(this.label14);
-            this.gBox.Controls.Add(this.label11);
             this.gBox.Controls.Add(this.lbl_I_ItemName);
             this.gBox.Controls.Add(this.lbl_I_ItemCode);
             this.gBox.Controls.Add(this.label19);
             this.gBox.Controls.Add(this.txt_I_ItemID);
             this.gBox.Location = new System.Drawing.Point(78, 44);
             this.gBox.Name = "gBox";
-            this.gBox.Size = new System.Drawing.Size(611, 147);
+            this.gBox.Size = new System.Drawing.Size(611, 157);
             this.gBox.TabIndex = 26;
             this.gBox.TabStop = false;
             this.gBox.Text = "Input Entry";
             // 
+            // label17
+            // 
+            this.label17.AllowDrop = true;
+            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label17.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label17.Location = new System.Drawing.Point(196, 101);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(83, 21);
+            this.label17.TabIndex = 15;
+            this.label17.Text = "Pair Rate";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txtPairRate
+            // 
+            this.txtPairRate.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPairRate.Location = new System.Drawing.Point(291, 99);
+            this.txtPairRate.Name = "txtPairRate";
+            this.txtPairRate.Size = new System.Drawing.Size(76, 21);
+            this.txtPairRate.TabIndex = 6;
+            // 
+            // label11
+            // 
+            this.label11.AllowDrop = true;
+            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label11.Location = new System.Drawing.Point(382, 64);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(86, 21);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "Delivered Qty";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txtDelQty
+            // 
+            this.txtDelQty.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDelQty.Location = new System.Drawing.Point(474, 62);
+            this.txtDelQty.Name = "txtDelQty";
+            this.txtDelQty.Size = new System.Drawing.Size(76, 21);
+            this.txtDelQty.TabIndex = 5;
+            // 
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(342, 96);
+            this.btnAdd.Location = new System.Drawing.Point(279, 130);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(54, 21);
-            this.btnAdd.TabIndex = 10;
+            this.btnAdd.TabIndex = 7;
             this.btnAdd.Text = "&Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // cbo_I_UOM
-            // 
-            this.cbo_I_UOM.FormattingEnabled = true;
-            this.cbo_I_UOM.Items.AddRange(new object[] {
-            ""});
-            this.cbo_I_UOM.Location = new System.Drawing.Point(470, 62);
-            this.cbo_I_UOM.Name = "cbo_I_UOM";
-            this.cbo_I_UOM.Size = new System.Drawing.Size(124, 21);
-            this.cbo_I_UOM.TabIndex = 7;
             // 
             // cbo_I_Color
             // 
@@ -1139,7 +1274,7 @@
             this.cbo_I_Color.Location = new System.Drawing.Point(268, 63);
             this.cbo_I_Color.Name = "cbo_I_Color";
             this.cbo_I_Color.Size = new System.Drawing.Size(108, 21);
-            this.cbo_I_Color.TabIndex = 5;
+            this.cbo_I_Color.TabIndex = 3;
             // 
             // cbo_I_Size
             // 
@@ -1149,7 +1284,20 @@
             this.cbo_I_Size.Location = new System.Drawing.Point(70, 63);
             this.cbo_I_Size.Name = "cbo_I_Size";
             this.cbo_I_Size.Size = new System.Drawing.Size(130, 21);
-            this.cbo_I_Size.TabIndex = 4;
+            this.cbo_I_Size.TabIndex = 2;
+            // 
+            // label12
+            // 
+            this.label12.AllowDrop = true;
+            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label12.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label12.Location = new System.Drawing.Point(14, 62);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(49, 21);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "Size";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label14
             // 
@@ -1174,7 +1322,7 @@
             this.lbl_I_ItemName.Location = new System.Drawing.Point(291, 29);
             this.lbl_I_ItemName.Name = "lbl_I_ItemName";
             this.lbl_I_ItemName.Size = new System.Drawing.Size(218, 21);
-            this.lbl_I_ItemName.TabIndex = 3;
+            this.lbl_I_ItemName.TabIndex = 89;
             this.lbl_I_ItemName.Text = "Item Name";
             this.lbl_I_ItemName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -1188,7 +1336,7 @@
             this.lbl_I_ItemCode.Location = new System.Drawing.Point(185, 29);
             this.lbl_I_ItemCode.Name = "lbl_I_ItemCode";
             this.lbl_I_ItemCode.Size = new System.Drawing.Size(100, 21);
-            this.lbl_I_ItemCode.TabIndex = 2;
+            this.lbl_I_ItemCode.TabIndex = 88;
             this.lbl_I_ItemCode.Text = "Item Code";
             this.lbl_I_ItemCode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -1216,36 +1364,6 @@
             this.txt_I_ItemID.DoubleClick += new System.EventHandler(this.txt_I_ItemID_DoubleClick);
             this.txt_I_ItemID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_I_ItemID_KeyDown);
             // 
-            // SizeColumn
-            // 
-            this.SizeColumn.Frozen = true;
-            this.SizeColumn.HeaderText = "Size";
-            this.SizeColumn.Name = "SizeColumn";
-            this.SizeColumn.ReadOnly = true;
-            this.SizeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SizeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.SizeColumn.Width = 52;
-            // 
-            // ColorColumn
-            // 
-            this.ColorColumn.Frozen = true;
-            this.ColorColumn.HeaderText = "Colour ";
-            this.ColorColumn.Name = "ColorColumn";
-            this.ColorColumn.ReadOnly = true;
-            this.ColorColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColorColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColorColumn.Width = 65;
-            // 
-            // UnitColumn
-            // 
-            this.UnitColumn.Frozen = true;
-            this.UnitColumn.HeaderText = "Unit";
-            this.UnitColumn.Name = "UnitColumn";
-            this.UnitColumn.ReadOnly = true;
-            this.UnitColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.UnitColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.UnitColumn.Width = 51;
-            // 
             // sSMaster
             // 
             this.sSMaster.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1257,9 +1375,9 @@
             this.tStextTotal,
             this.tSlblAlert,
             this.textAlert});
-            this.sSMaster.Location = new System.Drawing.Point(0, 605);
+            this.sSMaster.Location = new System.Drawing.Point(0, 560);
             this.sSMaster.Name = "sSMaster";
-            this.sSMaster.Size = new System.Drawing.Size(991, 22);
+            this.sSMaster.Size = new System.Drawing.Size(886, 22);
             this.sSMaster.TabIndex = 686;
             this.sSMaster.Text = "statusStrip1";
             // 
@@ -1422,109 +1540,23 @@
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
             this.dataGridViewTextBoxColumn9.Width = 68;
             // 
-            // Column1
+            // btnEmail
             // 
-            this.Column1.Frozen = true;
-            this.Column1.HeaderText = "Code";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 57;
-            // 
-            // Column2
-            // 
-            this.Column2.Frozen = true;
-            this.Column2.HeaderText = "Item Code";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 80;
-            // 
-            // Column3
-            // 
-            this.Column3.Frozen = true;
-            this.Column3.HeaderText = "Name";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 60;
-            // 
-            // Column8
-            // 
-            this.Column8.Frozen = true;
-            this.Column8.HeaderText = "Discount";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Width = 74;
-            // 
-            // Column9
-            // 
-            this.Column9.Frozen = true;
-            this.Column9.HeaderText = "Order Qty";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Width = 77;
-            // 
-            // Column11
-            // 
-            this.Column11.Frozen = true;
-            this.Column11.HeaderText = "Del. Qty";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            this.Column11.Width = 70;
-            // 
-            // Column10
-            // 
-            this.Column10.Frozen = true;
-            this.Column10.HeaderText = "DZ. Rate";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            this.Column10.Width = 76;
-            // 
-            // Column14
-            // 
-            this.Column14.Frozen = true;
-            this.Column14.HeaderText = "Pr. rate";
-            this.Column14.Name = "Column14";
-            this.Column14.ReadOnly = true;
-            this.Column14.Width = 66;
-            // 
-            // Column12
-            // 
-            this.Column12.Frozen = true;
-            this.Column12.HeaderText = "Amount";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            this.Column12.Width = 68;
-            // 
-            // label11
-            // 
-            this.label11.AllowDrop = true;
-            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label11.Location = new System.Drawing.Point(382, 62);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(82, 21);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "UOM";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label12
-            // 
-            this.label12.AllowDrop = true;
-            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label12.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label12.Location = new System.Drawing.Point(14, 62);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(49, 21);
-            this.label12.TabIndex = 4;
-            this.label12.Text = "Size";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmail.Location = new System.Drawing.Point(5, 529);
+            this.btnEmail.Name = "btnEmail";
+            this.btnEmail.Size = new System.Drawing.Size(102, 25);
+            this.btnEmail.TabIndex = 689;
+            this.btnEmail.Text = "&Send Email";
+            this.btnEmail.UseVisualStyleBackColor = true;
+            this.btnEmail.Click += new System.EventHandler(this.btnEmail_Click);
             // 
             // frmInvoiceEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(991, 627);
+            this.ClientSize = new System.Drawing.Size(886, 582);
+            this.Controls.Add(this.btnEmail);
             this.Controls.Add(this.dtpDO);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.sSMaster);
@@ -1539,9 +1571,9 @@
             this.Controls.Add(this.label45);
             this.Controls.Add(this.label46);
             this.Controls.Add(this.label43);
-            this.Controls.Add(this.label44);
+            this.Controls.Add(this.lblInvTotal);
             this.Controls.Add(this.label41);
-            this.Controls.Add(this.label42);
+            this.Controls.Add(this.lblOrdVal);
             this.Controls.Add(this.label39);
             this.Controls.Add(this.label40);
             this.Controls.Add(this.btnPictures);
@@ -1568,15 +1600,13 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label24);
-            this.Controls.Add(this.label28);
-            this.Controls.Add(this.label23);
+            this.Controls.Add(this.lblBal);
+            this.Controls.Add(this.lblInvQty);
             this.Controls.Add(this.btnNewDisc);
             this.Controls.Add(this.btnIrnHelp);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.lblContractNo);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.cboAdda);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
@@ -1585,12 +1615,12 @@
             this.Controls.Add(this.lblNameBottom);
             this.Controls.Add(this.cboItemGroup);
             this.Controls.Add(this.label34);
-            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dtpBuilty);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtDetail);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtBuiltyNo);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.lblSaleType);
             this.Controls.Add(this.label10);
@@ -1603,6 +1633,7 @@
             this.Controls.Add(this.label26);
             this.Controls.Add(this.dtpInv);
             this.Controls.Add(this.label27);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "frmInvoiceEntry";
             this.Text = " Invoice Entry";
@@ -1630,15 +1661,13 @@
         private System.Windows.Forms.DataGridView grd;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label lblBal;
+        private System.Windows.Forms.Label lblInvQty;
         private System.Windows.Forms.Button btnNewDisc;
         private System.Windows.Forms.Button btnIrnHelp;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lblContractNo;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cboAdda;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
@@ -1647,12 +1676,12 @@
         private System.Windows.Forms.Label lblNameBottom;
         private System.Windows.Forms.ComboBox cboItemGroup;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpBuilty;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtDetail;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtBuiltyNo;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblSaleType;
         private System.Windows.Forms.Label label10;
@@ -1686,9 +1715,9 @@
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label lblOrdVal;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label lblInvTotal;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.RadioButton radioButton5;
@@ -1703,7 +1732,6 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox gBox;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.ComboBox cbo_I_UOM;
         private System.Windows.Forms.ComboBox cbo_I_Color;
         private System.Windows.Forms.ComboBox cbo_I_Size;
         private System.Windows.Forms.Label label14;
@@ -1711,18 +1739,6 @@
         private System.Windows.Forms.Label lbl_I_ItemCode;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox txt_I_ItemID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewComboBoxColumn SizeColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ColorColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn UnitColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -1744,6 +1760,21 @@
         private System.Windows.Forms.DateTimePicker dtpDO;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewComboBoxColumn SizeColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ColorColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtPairRate;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtDelQty;
+        private System.Windows.Forms.Button btnEmail;
     }
 }

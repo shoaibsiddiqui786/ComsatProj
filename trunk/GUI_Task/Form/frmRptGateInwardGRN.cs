@@ -72,26 +72,23 @@ namespace GUI_Task
                     this.cboGodown.SelectedValue.ToString();
 
 
-                //dsLedgerNew pDs = new dsLedgerNew();
-
                 DataSet pDs = new DataSet();
-                //CrGIWDate rpt1 = new CrGIWDate();
+                CrGIWDate rpt1 = new CrGIWDate();
 
-                //frmPrintVw6 rptGateInwardGRN = new frmPrintVw6(
-                //   fRptTitle,
-                //   StrF01.D2Str(this.dtpFromDate.Value),
-                //   StrF01.D2Str(this.dtpToDate.Value),
-                //   "sp_GIWTotal",
-                //   plstField,
-                //   plstType,
-                //   plstValue,
-                //   pDs,
-                //   rpt1,
-                //   "SP"
-                //   );
+                frmPrintVw6 rptGateInwardGRN = new frmPrintVw6(
+                   fRptTitle,
+                   StrF01.D2Str(this.dtpFromDate.Value),
+                   StrF01.D2Str(this.dtpToDate.Value),
+                   "sp_GIWTotal",
+                   plstField,
+                   plstType,
+                   plstValue,
+                   pDs,
+                   rpt1,
+                   "SP"
+                   );
 
-                ////rptLedger2.ShowDialog();
-                //rptGateInwardGRN.Show();
+                rptGateInwardGRN.Show();
             }
             else if (optGRN.Checked == true)
             {
@@ -107,23 +104,22 @@ namespace GUI_Task
                 //dsLedgerNew pDs = new dsLedgerNew();
 
                 DataSet pDs = new DataSet();
-                //CrGRNDate rpt1 = new CrGRNDate();
+                CrGRNDate rpt1 = new CrGRNDate();
 
-                //frmPrintVw6 rptGateInwardGRN = new frmPrintVw6(
-                //   fRptTitle,
-                //   this.dtpFromDate.Value.ToString(),
-                //   this.dtpToDate.Value.ToString(),
-                //   "sp_GRNTotal",
-                //   plstField,
-                //   plstType,
-                //   plstValue,
-                //   pDs,
-                //   //rpt1,
-                //   "SP"
-                //   );
+                frmPrintVw6 rptGateInwardGRN = new frmPrintVw6(
+                   fRptTitle,
+                   this.dtpFromDate.Value.ToString(),
+                   this.dtpToDate.Value.ToString(),
+                   "sp_GRNTotal",
+                   plstField,
+                   plstType,
+                   plstValue,
+                   pDs,
+                   rpt1,
+                   "SP"
+                   );
 
-                ////rptLedger2.ShowDialog();
-                //rptGateInwardGRN.Show();
+                rptGateInwardGRN.Show();
             }
             else if (optGRNSumry.Checked == true)
             {
@@ -139,23 +135,22 @@ namespace GUI_Task
                 //dsLedgerNew pDs = new dsLedgerNew();
 
                 DataSet pDs = new DataSet();
-                //CrGRNSmry rpt1 = new CrGRNSmry();
+                CrGRNSmry rpt1 = new CrGRNSmry();
 
-                //frmPrintVw6 rptGRNSmry = new frmPrintVw6(
-                //   fRptTitle,
-                //   this.dtpFromDate.Value.ToString(),
-                //   this.dtpToDate.Value.ToString(),
-                //   "sp_GRNSmry",
-                //   plstField,
-                //   plstType,
-                //   plstValue,
-                //   pDs,
-                //   rpt1,
-                //   "SP"
-                //   );
+                frmPrintVw6 rptGRNSmry = new frmPrintVw6(
+                   fRptTitle,
+                   this.dtpFromDate.Value.ToString(),
+                   this.dtpToDate.Value.ToString(),
+                   "sp_GRNSmry",
+                   plstField,
+                   plstType,
+                   plstValue,
+                   pDs,
+                   rpt1,
+                   "SP"
+                   );
 
-                ////rptLedger2.ShowDialog();
-                //rptGRNSmry.Show();
+                rptGRNSmry.Show();
             }
             else if (optGRNDiscSumry.Checked == true)
             {
@@ -171,23 +166,22 @@ namespace GUI_Task
                 //dsLedgerNew pDs = new dsLedgerNew();
 
                 DataSet pDs = new DataSet();
-                //CrGRNDiscSmry rpt1 = new CrGRNDiscSmry();
+                CrGRNDiscSmry rpt1 = new CrGRNDiscSmry();
 
-                //frmPrintVw6 rptGRNDiscSmry = new frmPrintVw6(
-                //   fRptTitle,
-                //   this.dtpFromDate.Value.ToString(),
-                //   this.dtpToDate.Value.ToString(),
-                //   "sp_GRNDiscSmry",
-                //   plstField,
-                //   plstType,
-                //   plstValue,
-                //   pDs,
-                //   rpt1,
-                //   "SP"
-                //   );
+                frmPrintVw6 rptGRNDiscSmry = new frmPrintVw6(
+                   fRptTitle,
+                   this.dtpFromDate.Value.ToString(),
+                   this.dtpToDate.Value.ToString(),
+                   "sp_GRNDiscSmry",
+                   plstField,
+                   plstType,
+                   plstValue,
+                   pDs,
+                   rpt1,
+                   "SP"
+                   );
 
-                ////rptLedger2.ShowDialog();
-                //rptGRNDiscSmry.Show();
+                rptGRNDiscSmry.Show();
             }
             else if (optGRNReturn.Checked == true)
             {
@@ -200,27 +194,23 @@ namespace GUI_Task
                     this.cboItemGrp.SelectedValue.ToString() + "," +
                     this.cboGodown.SelectedValue.ToString();
 
-
-                //dsLedgerNew pDs = new dsLedgerNew();
-
                 DataSet pDs = new DataSet();
-                //CrGRNRetDate rpt1 = new CrGRNRetDate();
+                CrGRNRetDate rpt1 = new CrGRNRetDate();
 
-                //frmPrintVw6 rptGRNReturn = new frmPrintVw6(
-                //   fRptTitle,
-                //   this.dtpFromDate.Value.ToString(),
-                //   this.dtpToDate.Value.ToString(),
-                //   "sp_GRNRet",
-                //   plstField,
-                //   plstType,
-                //   plstValue,
-                //   pDs,
-                //   rpt1,
-                //   "SP"
-                //   );
+                frmPrintVw6 rptGRNReturn = new frmPrintVw6(
+                   fRptTitle,
+                   this.dtpFromDate.Value.ToString(),
+                   this.dtpToDate.Value.ToString(),
+                   "sp_GRNRet",
+                   plstField,
+                   plstType,
+                   plstValue,
+                   pDs,
+                   rpt1,
+                   "SP"
+                   );
 
-                ////rptLedger2.ShowDialog();
-                //rptGRNReturn.Show();
+                rptGRNReturn.Show();
             }
         }
     }

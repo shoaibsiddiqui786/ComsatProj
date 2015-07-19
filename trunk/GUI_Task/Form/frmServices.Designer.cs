@@ -29,31 +29,28 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.grd = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboGroup = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnModify = new System.Windows.Forms.Button();
+            this.btnLast = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnPrevious = new System.Windows.Forms.Button();
+            this.btnFirst = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnModify = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.vScrollBar1);
-            this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.grd);
+            this.groupBox1.Controls.Add(this.cboGroup);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -61,52 +58,36 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // vScrollBar1
+            // grd
             // 
-            this.vScrollBar1.Location = new System.Drawing.Point(473, 64);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 286);
-            this.vScrollBar1.TabIndex = 3;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.grd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grd.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
-            this.Column2,
             this.Column3});
-            this.dataGridView1.Location = new System.Drawing.Point(66, 64);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(404, 286);
-            this.dataGridView1.TabIndex = 2;
+            this.grd.Location = new System.Drawing.Point(66, 64);
+            this.grd.Name = "grd";
+            this.grd.Size = new System.Drawing.Size(404, 286);
+            this.grd.TabIndex = 2;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Check";
             this.Column1.Name = "Column1";
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "Services";
-            this.Column2.Name = "Column2";
             // 
             // Column3
             // 
-            this.Column3.HeaderText = "No Change";
+            this.Column3.HeaderText = "Services";
             this.Column3.Name = "Column3";
+            this.Column3.Width = 200;
             // 
-            // comboBox1
+            // cboGroup
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(66, 25);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(404, 23);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.Text = "Administrator";
+            this.cboGroup.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboGroup.FormattingEnabled = true;
+            this.cboGroup.Location = new System.Drawing.Point(66, 25);
+            this.cboGroup.Name = "cboGroup";
+            this.cboGroup.Size = new System.Drawing.Size(404, 23);
+            this.cboGroup.TabIndex = 1;
             // 
             // label1
             // 
@@ -129,24 +110,6 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.button10_Click);
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Image = global::GUI_Task.Properties.Resources.image15;
-            this.btnCancel.Location = new System.Drawing.Point(407, 406);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(76, 23);
-            this.btnCancel.TabIndex = 27;
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Image = global::GUI_Task.Properties.Resources.image14;
-            this.btnSave.Location = new System.Drawing.Point(325, 406);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(76, 23);
-            this.btnSave.TabIndex = 26;
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
             // btnModify
             // 
             this.btnModify.Image = global::GUI_Task.Properties.Resources.image13;
@@ -155,75 +118,107 @@
             this.btnModify.Size = new System.Drawing.Size(76, 23);
             this.btnModify.TabIndex = 25;
             this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
-            // btnAdd
+            // btnLast
             // 
-            this.btnAdd.Image = global::GUI_Task.Properties.Resources.image12;
-            this.btnAdd.Location = new System.Drawing.Point(161, 406);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(76, 23);
-            this.btnAdd.TabIndex = 24;
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnLast.Image = global::GUI_Task.Properties.Resources.image11;
+            this.btnLast.Location = new System.Drawing.Point(98, 405);
+            this.btnLast.Name = "btnLast";
+            this.btnLast.Size = new System.Drawing.Size(26, 23);
+            this.btnLast.TabIndex = 23;
+            this.btnLast.UseVisualStyleBackColor = true;
+            this.btnLast.Click += new System.EventHandler(this.btnLast_Click);
             // 
-            // button5
+            // btnNext
             // 
-            this.button5.Image = global::GUI_Task.Properties.Resources.image11;
-            this.button5.Location = new System.Drawing.Point(98, 405);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(26, 23);
-            this.button5.TabIndex = 23;
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnNext.Image = global::GUI_Task.Properties.Resources.image10;
+            this.btnNext.Location = new System.Drawing.Point(72, 405);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(20, 23);
+            this.btnNext.TabIndex = 22;
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
-            // button4
+            // btnPrevious
             // 
-            this.button4.Image = global::GUI_Task.Properties.Resources.image10;
-            this.button4.Location = new System.Drawing.Point(72, 405);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(20, 23);
-            this.button4.TabIndex = 22;
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnPrevious.Image = global::GUI_Task.Properties.Resources.image9;
+            this.btnPrevious.Location = new System.Drawing.Point(44, 405);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.Size = new System.Drawing.Size(22, 23);
+            this.btnPrevious.TabIndex = 21;
+            this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
-            // button3
+            // btnFirst
             // 
-            this.button3.Image = global::GUI_Task.Properties.Resources.image9;
-            this.button3.Location = new System.Drawing.Point(44, 405);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(22, 23);
-            this.button3.TabIndex = 21;
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnFirst.Image = global::GUI_Task.Properties.Resources.image8;
+            this.btnFirst.Location = new System.Drawing.Point(10, 405);
+            this.btnFirst.Name = "btnFirst";
+            this.btnFirst.Size = new System.Drawing.Size(28, 23);
+            this.btnFirst.TabIndex = 20;
+            this.btnFirst.UseVisualStyleBackColor = true;
+            this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
             // 
-            // button2
+            // dataGridViewTextBoxColumn1
             // 
-            this.button2.Image = global::GUI_Task.Properties.Resources.image8;
-            this.button2.Location = new System.Drawing.Point(10, 405);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(28, 23);
-            this.button2.TabIndex = 20;
-            this.button2.UseVisualStyleBackColor = true;
+            this.dataGridViewTextBoxColumn1.Frozen = true;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Services";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 200;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCancel.Enabled = false;
+            this.btnCancel.Image = global::GUI_Task.Properties.Resources.clear;
+            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancel.Location = new System.Drawing.Point(405, 407);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(74, 22);
+            this.btnCancel.TabIndex = 30;
+            this.btnCancel.Text = "&Cancel";
+            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSave.Enabled = false;
+            this.btnSave.Image = global::GUI_Task.Properties.Resources.saveHS;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(325, 407);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(74, 22);
+            this.btnSave.TabIndex = 29;
+            this.btnSave.Text = "&Save";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
             // 
             // frmServices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(570, 441);
-            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnModify);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnLast);
+            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.btnPrevious);
+            this.Controls.Add(this.btnFirst);
             this.Controls.Add(this.groupBox1);
             this.KeyPreview = true;
             this.Name = "frmServices";
-            this.Text = "Security";
+            this.Text = "Security Services";
             this.Load += new System.EventHandler(this.Security_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmServices_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -231,22 +226,20 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboGroup;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnModify;
+        private System.Windows.Forms.Button btnLast;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnPrevious;
+        private System.Windows.Forms.Button btnFirst;
+        private System.Windows.Forms.DataGridView grd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnModify;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }
 }
             /*this.label1 = new System.Windows.Forms.Label();

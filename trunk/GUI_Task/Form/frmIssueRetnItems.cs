@@ -13,21 +13,19 @@ namespace GUI_Task
 {
     enum GColIssueRet
     {
-        ItemID = 0,
-        ItemCode = 1,
-        ItemName = 2,
-        SizeName = 3,
-        ColorName = 4,
-        UnitName = 5,
-        GodownName = 6,
-        Stock = 7,
-        IssueQty = 8,
-        ReturnQty = 9,
-        NewStock = 10,
-        SizeID = 11,
-        ColorID = 12,
-        UOMID = 13,
-        GodownID = 14
+        ItemID = 0,          // ItemID = 0,
+        ItemCode = 1,       //  ItemCode = 1,
+        ItemName = 2,       //  ItemName = 2,
+        SizeName = 3,        // SizeName = 3,
+        ColorName = 4,        //ColorName = 4,
+        GodownName = 5,      // GodownName = 5,
+        Stock = 6,           // Stock = 6,
+        IssueQty = 7,        // IssueQty = 8,
+        ReturnQty = 8,       // ReturnQty = 9,
+        NewStock = 9,       // NewStock = 10,
+        SizeID = 10,         // SizeID = 11,
+        ColorID = 11,        // ColorID = 12,
+        GodownID = 12        // GodownID = 14
 
     }
 
@@ -80,6 +78,8 @@ namespace GUI_Task
 
         bool blnFormLoad = true;
         int fcboDefaultValue = 0;
+
+        string strDocId = string.Empty;
 
         public frmIssueRetItems()
         {
@@ -184,17 +184,17 @@ namespace GUI_Task
             ColorColumn.DisplayMember = ds.Tables[0].Columns[1].ToString();
             ds.Clear();
 
-            //UOM Combo Fill
-            lSQL = "select UOMID, UnitName from IMS_UOM order by UnitName";
+            ////UOM Combo Fill
+            //lSQL = "select UOMID, UnitName from IMS_UOM order by UnitName";
 
-            clsFillCombo.FillCombo(cbo_I_UOM, clsGVar.ConString1, "IMS_UOM" + "," + "UnitName" + "," + "False", lSQL);
-            fcboDefaultValue = Convert.ToInt16(cbo_I_UOM.SelectedValue);
+            //clsFillCombo.FillCombo(cbo_I_UOM, clsGVar.ConString1, "IMS_UOM" + "," + "UnitName" + "," + "False", lSQL);
+            //fcboDefaultValue = Convert.ToInt16(cbo_I_UOM.SelectedValue);
 
-            ds = clsDbManager.GetData_Set(lSQL, "IMS_UOM");
-            UnitColumn.DataSource = ds.Tables[0];
-            UnitColumn.ValueMember = ds.Tables[0].Columns[0].ToString();
-            UnitColumn.DisplayMember = ds.Tables[0].Columns[1].ToString();
-            ds.Clear();
+            //ds = clsDbManager.GetData_Set(lSQL, "IMS_UOM");
+            //UnitColumn.DataSource = ds.Tables[0];
+            //UnitColumn.ValueMember = ds.Tables[0].Columns[0].ToString();
+            //UnitColumn.DisplayMember = ds.Tables[0].Columns[1].ToString();
+            //ds.Clear();
 
             //Godown cOMBO
             lSQL = "select cgdCode, cgdDesc from catdtl where cgcode=" + Convert.ToString((int)Category.enmGodown);
@@ -232,7 +232,7 @@ namespace GUI_Task
 
             clsDbManager.SetGridHeaderCmb(
                 grd,
-                15,
+                13,
                 fHDR,
                 fColWidth,
                 fColMaxInputLen,
@@ -253,24 +253,14 @@ namespace GUI_Task
         {
             string lSQL = "";
 
-            //select id.ItemId AS Code, i.Name AS ItemName, sz.cgdDesc AS SizeName, clr.cgdDesc AS ColorName,
-            //gd.cgdDesc AS GodownName, i.StockLevel, e.Qty AS IssueQty, i.Qty AS ReturnQty, (isnull(it.Qty_In+i.Qty,0)) AS NewStock
-            //from IssueRetDetail id
-            //INNER JOIN Item i ON i.ItemId=id.ItemId
-            //INNER JOIN CatDtl sz ON id.SizeId = sz.cgdCode AND sz.cgCode = 5
-            //INNER JOIN CatDtl clr ON id.ColorId = clr.cgdCode AND clr.cgCode = 3
-            //INNER JOIN CatDtl gd ON id.GodownId = gd.cgdCode AND gd.cgCode = 2
-            //INNER JOIN IssueDetail e ON id.ItemId = e.ItemId
-            //INNER JOIN Item_Sec it ON it.Code = i.ItemId
-
-            lSQL += " select id.ItemId AS Code, i.Name AS ItemName, sz.cgdDesc AS SizeName, clr.cgdDesc AS ColorName, ";
-            lSQL += " gd.cgdDesc AS GodownName, i.StockLevel, e.Qty AS IssueQty, i.Qty AS ReturnQty, (isnull(it.Qty_In+i.Qty,0)) AS NewStock ";
+            lSQL += " select id.ItemId AS Code, i.ItemCode, i.Name AS ItemName, sz.cgdDesc AS SizeName, clr.cgdDesc AS ColorName, ";
+            lSQL += " gd.cgdDesc AS GodownName, i.StockLevel, e.Qty AS IssueQty, i.Qty AS ReturnQty, (isnull(it.Qty_In+i.Qty,0)) AS NewStock, id.SizeId, id.ColorId, id.GodownId ";
             lSQL += " from IssueRetDetail id INNER JOIN Item i ON i.ItemId=id.ItemId";
-            lSQL += "  INNER JOIN CatDtl sz ON id.SizeId = sz.cgdCode AND sz.cgCode = 5 ";
-            lSQL += " JOIN CatDtl clr ON h.ColorID=clr.cgdCode AND clr.cgCode=3 ";
+            lSQL += " INNER JOIN CatDtl sz ON id.SizeId = sz.cgdCode AND sz.cgCode = 5 ";
+            lSQL += " INNER JOIN CatDtl clr ON id.ColorID=clr.cgdCode AND clr.cgCode=3 ";
             lSQL += " INNER JOIN CatDtl gd ON id.GodownId = gd.cgdCode AND gd.cgCode = 2 ";
             lSQL += " INNER JOIN IssueDetail e ON id.ItemId = e.ItemId INNER JOIN Item_Sec it ON it.Code = i.ItemId ";
-            lSQL += " where e.IssueId = '" + txtIssueNo.Text.ToString() + "'; ";
+            lSQL += " where IssueRetId = '" + txtRetNo.Text.ToString() + "'";
 
             clsDbManager.FillDataGrid(
                 grd,
@@ -370,10 +360,17 @@ namespace GUI_Task
             string tSQL = string.Empty;
 
             // Fields 0,1,2,3 are Begin  
-            tSQL = "select ir.IssueRetId, ir.IssueDate, ir.ItemGroupID AS ItemGroupName, ir.DepartmentId AS DepartmentName, ir.EmployeeId AS EmployeeName, ir.Note";
-            tSQL += " from IssueRet ir ";
-            tSQL += " inner join IssueRetDetail ird on ir.IssueRetId=ird.IssueRetId ";
-            tSQL += " where ir.IssueRetId='" + txtRetNo.Text.ToString() + "';";
+           tSQL = " SELECT ir.IssueRetId, ir.IssueId, p.first_name + ' ' + p.last_name AS EmpName, ";
+           tSQL += " d.department_name AS DeptName, pu.cgdDesc AS Purpose, m.cgdDesc AS MachineName, ";
+           tSQL += " c.cgdDesc AS ContractorName, i.cgdDesc AS ItemGroupName, ir.Note ";
+           tSQL += " FROM IssueRet ir ";
+           tSQL += " INNER JOIN PR_Employee p ON p.employeeid = ir.EmployeeId ";
+           tSQL += " INNER JOIN PR_Department d ON d.departmentid = ir.DepartmentId ";
+           tSQL += " INNER JOIN CatDtl pu ON ir.PurposeId = pu.cgdCode AND pu.cgCode = 10 ";
+           tSQL += " INNER JOIN CatDtl m ON ir.Machine = m.cgdCode AND m.cgCode = 11 ";
+           tSQL += " INNER JOIN CatDtl c ON ir.Contract = c.cgdCode AND c.cgCode = 12 ";
+           tSQL += " INNER JOIN CatDtl i ON ir.ItemGroupID = i.cgdCode AND i.cgCode = 6 ";
+           tSQL += " where ir.IssueRetId='" + txtRetNo.Text.ToString() + "';";
 
             try
             {
@@ -384,11 +381,21 @@ namespace GUI_Task
                     dRow = ds.Tables[0].Rows[0];
                     // Starting title as 0
                     txtRetNo.Text = (ds.Tables[0].Rows[0]["IssueRetId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["IssueRetId"].ToString());
+                    txtIssueNo.Text = (ds.Tables[0].Rows[0]["IssueId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["IssueId"].ToString());
+                    cboEmployee.Text = (ds.Tables[0].Rows[0]["EmpName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["EmpName"].ToString());
+                    cboDepartment.Text = (ds.Tables[0].Rows[0]["DeptName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["DeptName"].ToString());
+                    cboPurpose.Text = (ds.Tables[0].Rows[0]["Purpose"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Purpose"].ToString());
+                    cboMachine.Text = (ds.Tables[0].Rows[0]["MachineName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["MachineName"].ToString());
+                    cboContractor.Text = (ds.Tables[0].Rows[0]["ContractorName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ContractorName"].ToString());
+                    cboItemGroup.Text = (ds.Tables[0].Rows[0]["ItemGroupName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ItemGroupName"].ToString());
+                    txtNote.Text = (ds.Tables[0].Rows[0]["Note"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Note"].ToString());
+
                     if (ds.Tables[0].Rows.Count > 0)
                     {
                         ds.Clear();
                     }
-                    //LoadGridData();
+                    LoadGridData();
+                    SumVoc();
                 }
             }
             catch
@@ -416,13 +423,6 @@ namespace GUI_Task
             // 11 Return Control Type TextBox or MaskedTextBox Default mtextBox
 
             frmLookUp sForm = new frmLookUp(
-
-//select i.IssueId, i.Date, cd.cgdDesc AS ItemGroupName, d.department_name,e.first_name + ' ' + e.last_name AS EmployeeName,i.Note 
-//from Issue i
-//INNER JOIN CatDtl cd ON cd.cgdCode=i.ItemGroupID AND cgCode=6 
-//INNER JOIN PR_Department d ON i.DepartmentId=d.departmentid 
-//INNER JOIN PR_Employee e ON i.EmployeeId=e.employeeid
-
                     "i.IssueId",
                 " i.Date, cd.cgdDesc AS ItemGroupName, d.department_name, e.first_name + ' ' + e.last_name AS EmployeeName,i.Note",
                 " Issue i INNER JOIN CatDtl cd ON cd.cgdCode=i.ItemGroupID AND cgCode=6 INNER JOIN PR_Department d ON i.DepartmentId=d.departmentid INNER JOIN PR_Employee e ON i.EmployeeId=e.employeeid",
@@ -478,10 +478,17 @@ namespace GUI_Task
             //INNER JOIN CatDtl cd ON cd.cgdCode=i.ItemGroupID AND cgCode=6 
             //INNER JOIN PR_Department d ON i.DepartmentId=d.departmentid 
             //INNER JOIN PR_Employee e ON i.EmployeeId=e.employeeid
-            
-            tSQL = "select i.IssueId, i.Date, cd.cgdDesc AS ItemGroupName, d.department_name, e.first_name + ' ' + e.last_name AS EmployeeName,i.Note";
-            tSQL += " from Issue i ";
-            tSQL += " INNER JOIN CatDtl cd ON cd.cgdCode=i.ItemGroupID AND cgCode=6 INNER JOIN PR_Department d ON i.DepartmentId=d.departmentid INNER JOIN PR_Employee e ON i.EmployeeId=e.employeeid";
+
+            tSQL = " SELECT i.IssueId, p.first_name + ' ' + p.last_name AS EmpName, ";
+            tSQL += " d.department_name AS DeptName, pu.cgdDesc AS Purpose, m.cgdDesc AS MachineName, ";
+            tSQL += " c.cgdDesc AS ContractorName, it.cgdDesc AS ItemGroupName, i.Note ";
+            tSQL += " FROM Issue i ";
+            tSQL += " INNER JOIN PR_Employee p ON p.employeeid = i.EmployeeId ";
+            tSQL += " INNER JOIN PR_Department d ON d.departmentid = i.DepartmentId ";
+            tSQL += " INNER JOIN CatDtl pu ON i.PurposeId = pu.cgdCode AND pu.cgCode = 10 ";
+            tSQL += " INNER JOIN CatDtl m ON i.Machine = m.cgdCode AND m.cgCode = 11 ";
+            tSQL += " INNER JOIN CatDtl c ON i.Contract = c.cgdCode AND c.cgCode = 12 ";
+            tSQL += " INNER JOIN CatDtl it ON i.ItemGroupID = it.cgdCode AND it.cgCode = 6 ";
             tSQL += " where i.IssueId='" + txtIssueNo.Text.ToString() + "';";
 
             try
@@ -493,12 +500,21 @@ namespace GUI_Task
                     dRow = ds.Tables[0].Rows[0];
                     // Starting title as 0
                     txtIssueNo.Text = (ds.Tables[0].Rows[0]["IssueId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["IssueId"].ToString());
+                    cboEmployee.Text = (ds.Tables[0].Rows[0]["EmpName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["EmpName"].ToString());
+                    cboDepartment.Text = (ds.Tables[0].Rows[0]["DeptName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["DeptName"].ToString());
+                    cboPurpose.Text = (ds.Tables[0].Rows[0]["Purpose"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Purpose"].ToString());
+                    cboMachine.Text = (ds.Tables[0].Rows[0]["MachineName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["MachineName"].ToString());
+                    cboContractor.Text = (ds.Tables[0].Rows[0]["ContractorName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ContractorName"].ToString());
+                    cboItemGroup.Text = (ds.Tables[0].Rows[0]["ItemGroupName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ItemGroupName"].ToString());
+                    txtNote.Text = (ds.Tables[0].Rows[0]["Note"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Note"].ToString());
+                    
                     if (ds.Tables[0].Rows.Count > 0)
                     {
                         ds.Clear();
                         //btn_EnableDisable(true);
                     }
-                    //LoadGridData();
+                    LoadGridData();
+                    SumVoc();
                 }
             }
             catch
@@ -623,21 +639,21 @@ namespace GUI_Task
 
 
             //
-            lFieldList = "Code";                // ItemID = 0,
-            lFieldList += ",ItemCode";          // ItemCode = 1,  
-            lFieldList += ",Name";              // ItemName = 2,
-            lFieldList += ",SizeName";          // SizeName = 3,
-            lFieldList += ",ColorName";         // ColorName = 4,
-            lFieldList += ",UOM";             // UnitName = 5,
-            lFieldList += ",GodownName";       // GodownName = 6,
-            lFieldList += ",Stock";         // Stock = 7,
-            lFieldList += ",IssueQty";          // IssueQty = 8,
-            lFieldList += ",ReturnQty";        // ReturnQty = 9,
-            lFieldList += ",NewStock";           // NewStock = 10,
-            lFieldList += ",SizeID";     // SizeID = 11,
-            lFieldList += ",ColorID";            // ColorID = 12,
-            lFieldList += ",UOMID";          // UOMID = 13,
-            lFieldList += ",GodownID";        // GodownID = 14
+            lFieldList = "Code";            // ItemID = 0,
+            lFieldList += ",ItemCode";     //  ItemCode = 1,
+            lFieldList += ",ItemName";         //  ItemName = 2,
+            lFieldList += ",SizeName";      // SizeName = 3,
+            lFieldList += ",ColorName";      //ColorName = 4,
+            //lFieldList += ",UOM";           // UnitName = 5,
+            lFieldList += ",GodownName";    // GodownName = 6,
+            lFieldList += ",StockLevel";         // Stock = 7,
+            lFieldList += ",IssueQty";      // IssueQty = 8,
+            lFieldList += ",ReturnQty";     // ReturnQty = 9,
+            lFieldList += ",NewStock";      // NewStock = 10,
+            lFieldList += ",SizeID";       // SizeID = 11,
+            lFieldList += ",ColorID";       // ColorID = 12,
+            //lFieldList += ",UOMID";         // UOMID = 13,
+            lFieldList += ",GodownID";      // GodownID = 14
 
 
             lHDR += "Item ID";           // ItemID = 0,
@@ -645,7 +661,7 @@ namespace GUI_Task
             lHDR += ",Item Name";        // ItemName = 2,
             lHDR += ",Size";             // SizeName = 3,
             lHDR += ",Color";            // ColorName = 4,
-            lHDR += ",UOM ID";           // UnitName = 5,
+            //lHDR += ",UOM ID";           // UnitName = 5,
             lHDR += ",Godown";         // GodownName = 6,
             lHDR += ",Stock";       // Stock = 7,
             lHDR += ",IssueQty";        // IssueQty = 8,
@@ -653,25 +669,25 @@ namespace GUI_Task
             lHDR += ",NewStock";          // NewStock = 10,
             lHDR += ",SizeID";  // SizeID = 11,
             lHDR += ",ColorID";           // ColorID = 12,
-            lHDR += ",UOMID";         // UOMID = 13,
+            //lHDR += ",UOMID";         // UOMID = 13,
             lHDR += ",GodownID";       // GodownID = 14
 
             // Col Visible Width
             lColWidth = "   5";               // ItemID = 0,
-            lColWidth += ",12";               // ItemCode = 1,  
+            lColWidth += ", 12";               // ItemCode = 1,  
             lColWidth += ", 15";              // ItemName = 2,
             lColWidth += ", 7";               // SizeName = 3,
             lColWidth += ", 7";               // ColorName = 4,
-            lColWidth += ", 7";               // UnitName = 5,
+            //lColWidth += ", 7";               // UnitName = 5,
             lColWidth += ", 7";               // GodownName = 6,
-            lColWidth += ", 7";             // Stock = 7,
-            lColWidth += ", 7";             // IssueQty = 8,
-            lColWidth += ", 7";               // ReturnQty = 9,
-            lColWidth += ", 7";               // NewStock = 10,
-            lColWidth += ", 7";             // SizeID = 11,
-            lColWidth += ", 7";             // ColorID = 12,
-            lColWidth += ", 7";            // UOMID = 13,
-            lColWidth += ", 7";             // GodownID = 14
+            lColWidth += ", 5";             // Stock = 7,
+            lColWidth += ", 5";             // IssueQty = 8,
+            lColWidth += ", 5";               // ReturnQty = 9,
+            lColWidth += ", 1";               // NewStock = 10,
+            lColWidth += ", 1";             // SizeID = 11,
+            lColWidth += ", 1";             // ColorID = 12,
+            //lColWidth += ", 7";            // UOMID = 13,
+            lColWidth += ", 1";             // GodownID = 14
 
             // Column Input Length/Width
             lColMaxInputLen = "  0";               // ItemID = 0,
@@ -679,7 +695,7 @@ namespace GUI_Task
             lColMaxInputLen += ", 0";              // ItemName = 2,
             lColMaxInputLen += ", 0";              // SizeName = 3,
             lColMaxInputLen += ", 0";              // ColorName = 4,
-            lColMaxInputLen += ", 0";              // UnitName = 5,
+            //lColMaxInputLen += ", 0";              // UnitName = 5,
             lColMaxInputLen += ", 0";              // GodownName = 6,
             lColMaxInputLen += ", 0";            // Stock = 7,
             lColMaxInputLen += ", 0";            // IssueQty = 8,
@@ -687,7 +703,7 @@ namespace GUI_Task
             lColMaxInputLen += ", 0";              // NewStock = 10,
             lColMaxInputLen += ", 0";            // SizeID = 11,
             lColMaxInputLen += ", 0";            // ColorID = 12,
-            lColMaxInputLen += ", 0";            // UOMID = 13,
+            //lColMaxInputLen += ", 0";            // UOMID = 13,
             lColMaxInputLen += ", 0";            // GodownID = 14
 
             // Column Min Width
@@ -696,7 +712,7 @@ namespace GUI_Task
             lColMinWidth += ", 0";                     // ItemName = 2,
             lColMinWidth += ", 0";                     // SizeName = 3,
             lColMinWidth += ", 0";                     // ColorName = 4,
-            lColMinWidth += ", 0";                     // UnitName = 5,
+            //lColMinWidth += ", 0";                     // UnitName = 5,
             lColMinWidth += ", 0";                     // GodownName = 6,
             lColMinWidth += ", 0";                   // Stock = 7, 
             lColMinWidth += ", 0";                   // IssueQty = 8, 
@@ -704,7 +720,7 @@ namespace GUI_Task
             lColMinWidth += ", 0";                     // NewStock = 10,
             lColMinWidth += ", 0";                   // SizeID = 11, 
             lColMinWidth += ", 0";                   // ColorID = 12, 
-            lColMinWidth += ", 0";                   // UOMID = 13, 
+            //lColMinWidth += ", 0";                   // UOMID = 13, 
             lColMinWidth += ", 0";                   // GodownID = 14 
 
             // Column Format
@@ -713,7 +729,7 @@ namespace GUI_Task
             lColFormat += ", T";                      // ItemName = 2,
             lColFormat += ", T";                      // SizeName = 3,
             lColFormat += ", T";                      // ColorName = 4,
-            lColFormat += ", T";                      // UnitName = 5,
+            //lColFormat += ", T";                      // UnitName = 5,
             lColFormat += ", T";                      // GodownName = 6,
             lColFormat += ",N0";                    // Stock = 7, 
             lColFormat += ",N0";                    // IssueQty = 8, 
@@ -721,7 +737,7 @@ namespace GUI_Task
             lColFormat += ",N0";                      // NewStock = 10,
             lColFormat += ", H";                    // SizeID = 11, 
             lColFormat += ", H";                    // ColorID = 12, 
-            lColFormat += ", H";                    // UOMID = 13, 
+            //lColFormat += ", H";                    // UOMID = 13, 
             lColFormat += ", H";                    // GodownID = 14 
 
             // Column ReadOnly 1= readonly, 0 = read-write
@@ -730,7 +746,7 @@ namespace GUI_Task
             lColReadOnly += ",1";                       // ItemName = 2,
             lColReadOnly += ",1";                       // SizeName = 3,
             lColReadOnly += ",1";                       // ColorName = 4,
-            lColReadOnly += ",1";                       // UnitName = 5,
+            //lColReadOnly += ",1";                       // UnitName = 5,
             lColReadOnly += ",1";                       // GodownName = 6,
             lColReadOnly += ",1";                     // Stock = 7,
             lColReadOnly += ",0";                     // IssueQty = 8,
@@ -738,7 +754,7 @@ namespace GUI_Task
             lColReadOnly += ",1";                       // NewStock = 10,
             lColReadOnly += ",1";                     // SizeID = 11,
             lColReadOnly += ",1";                     // ColorID = 12,
-            lColReadOnly += ",1";                     // UOMID = 13,
+            //lColReadOnly += ",1";                     // UOMID = 13,
             lColReadOnly += ",1";                     // GodownID = 14
 
             // For Saving Time
@@ -747,7 +763,7 @@ namespace GUI_Task
             tColType += ",  T";             // ItemName = 2,
             tColType += ",  T";             // SizeName = 3,
             tColType += ",  T";             // ColorName = 4,
-            tColType += ",  T";             // UnitName = 5,
+            //tColType += ",  T";             // UnitName = 5,
             tColType += ",  T";             // GodownName = 6,
             tColType += ", N0";           // Stock = 7,
             tColType += ", N0";           // IssueQty = 8,
@@ -755,7 +771,7 @@ namespace GUI_Task
             tColType += ", N0";             // NewStock = 10,
             tColType += ", N0";           // SizeID = 11,
             tColType += ", N0";           // ColorID = 12,
-            tColType += ", N0";           // UOMID = 13,
+            //tColType += ", N0";           // UOMID = 13,
             tColType += ", N0";           // GodownID = 14
 
             tFieldName += "Code";               // ItemID = 0,
@@ -763,7 +779,7 @@ namespace GUI_Task
             tFieldName += ",ItemName";          // ItemName = 2,
             tFieldName += ",SizeName";          // SizeName = 3, 
             tFieldName += ",ColorName";         // ColorName = 4, 
-            tFieldName += ",UOMID";             // UnitName = 5,
+            //tFieldName += ",UOMID";             // UnitName = 5,
             tFieldName += ",GodownName";          // GodownName = 6,
             tFieldName += ",Stock";         // Stock = 7, 
             tFieldName += ",IssueQty";          // IssueQty = 8, 
@@ -771,7 +787,7 @@ namespace GUI_Task
             tFieldName += ",NewStock";           // NewStock = 10,
             tFieldName += ",SizeID";     // SizeID = 11, 
             tFieldName += ",ColorID";            // ColorID = 12, 
-            tFieldName += ",UOMID";          // UOMID = 13, 
+            //tFieldName += ",UOMID";          // UOMID = 13, 
             tFieldName += ",GodownID";        // GodownID = 14 
 
 
@@ -804,7 +820,7 @@ namespace GUI_Task
                 lbl_I_ItemName.Text.ToString(),
                 cbo_I_Size.Text.ToString(),
                 cbo_I_Color.Text.ToString(),
-                cbo_I_UOM.Text.ToString(),
+                //cbo_I_UOM.Text.ToString(),
                 cboGodown.Text.ToString(),
                 lblStock.Text.ToString(),
                 lblIssueQty.Text.ToString(),
@@ -812,8 +828,9 @@ namespace GUI_Task
                 "",
                 cbo_I_Size.SelectedValue.ToString(),
                 cbo_I_Color.SelectedValue.ToString(),
-                cbo_I_UOM.SelectedValue.ToString(),
+                //cbo_I_UOM.SelectedValue.ToString(),
                 cboGodown.SelectedValue.ToString());
+            SumVoc();
 
             MessageBox.Show("Data Successfully Added To GridView");
         }
@@ -1017,7 +1034,10 @@ namespace GUI_Task
                 if (txtRetNo.Text.ToString().Trim(' ', '-') == "")
                 {
                     fDocAlreadyExists = false;
-                    fDocID = clsDbManager.GetNextValDocID("IssueRet", "IssueRetId", fDocWhere, "");
+                    fDocID = clsDbManager.GetNextValDocID("IssueRet", "DocId", fDocWhere, "");
+                    fDocID = fDocID + 1;
+                    strDocId = "1-" + DateTime.Now.Year.ToString() + "-" + fDocID.ToString();
+                    txtRetNo.Text = strDocId;
 
                     lSQL = "insert into IssueRet (";
                     lSQL += "  IssueRetId ";                              //  0-    ItemID";   
@@ -1038,7 +1058,7 @@ namespace GUI_Task
                     lSQL += " ) values (";
                     //                                                       
                     lSQL += "'" + fDocID.ToString() + "'";                  //  0-    ItemID";   
-                    lSQL += ",'" + txtRetNo.Text.ToString() + "";        //  1-    ItemCod  
+                    lSQL += ",'" + strDocId.ToString() + "'";          //  1-    ItemCod  
                     lSQL += ", " + StrF01.D2Str(dtpIssueRet) + "";          //  2-    ItemNam
                     lSQL += ", '" + txtIssueNo.Text.ToString() + "'";
                     lSQL += ", " + StrF01.D2Str(dtpIssue) + "";
@@ -1127,10 +1147,11 @@ namespace GUI_Task
                         }
                     }
 
-                    lSQL = "INSERT INTO IssueRetDetail (IssueRetId";
-                    lSQL += ",ItemId,SizeId,ColorID,GodownId,Qty,ReturnQty)";
+                    lSQL = " INSERT INTO IssueRetDetail (DocId";
+                    lSQL += " ,IssueRetId,ItemId, SizeId,ColorID,GodownId,Qty,ReturnQty)";
                     lSQL += " VALUES (";
-                    lSQL += "'" + txtRetNo.Text.ToString() + "'";
+                    lSQL += "" + fDocID + "";
+                    lSQL += ", '" + strDocId.ToString() + "'";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColIssueRet.ItemID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColIssueRet.SizeID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColIssueRet.ColorID].Value.ToString() + "";
@@ -1155,6 +1176,66 @@ namespace GUI_Task
         {
             SaveData();
             MessageBox.Show("Data Saved Successfullly");
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            LookUp_Voc();
+        }
+
+        private void ClearTextBoxes()
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                        (control as TextBox).Clear();
+                    else
+                        func(control.Controls);
+            };
+
+            func(Controls);
+        }
+
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            grd.Rows.Clear();
+            ClearTextBoxes();
+        }
+
+        private void txtIssueNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                LookUp_Voc1();
+            }
+        }
+
+        private void SumVoc()
+        {
+            bool bcheck;
+            decimal fQty = 0;
+            decimal fAmount = 0;
+            decimal rtnVal = 0;
+            decimal outValue = 0;
+
+            for (int i = 0; i < grd.RowCount; i++)
+            {
+                if (grd.Rows[i].Cells[(int)GColIssueRet.IssueQty].Value != null)
+                {
+                    bcheck = decimal.TryParse(grd.Rows[i].Cells[(int)GColIssueRet.IssueQty].Value.ToString(), out outValue);
+                    if (bcheck)
+                    {
+                        rtnVal += outValue;
+                        fAmount = fAmount + outValue;
+                    }
+                }
+            }
+
+            lblTotalQty.Text = String.Format("{0:0,0.00}", fAmount);
         }
     }
 }

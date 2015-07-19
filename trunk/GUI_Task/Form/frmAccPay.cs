@@ -180,5 +180,10 @@ namespace GUI_Task
                 this.Close();
         }
 
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

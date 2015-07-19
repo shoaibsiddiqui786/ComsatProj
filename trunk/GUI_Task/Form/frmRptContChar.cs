@@ -79,9 +79,6 @@ namespace GUI_Task
 
                 //this.mskStatus.Text;
 
-
-                //dsLedgerNew pDs = new dsLedgerNew();
-
                 DataSet pDs = new DataSet();
                 CrContCharges rpt1 = new CrContCharges();
 
@@ -113,9 +110,6 @@ namespace GUI_Task
                     this.cboCharType.SelectedValue.ToString();
 
                 //this.mskStatus.Text;
-
-
-                //dsLedgerNew pDs = new dsLedgerNew();
 
                 DataSet pDs = new DataSet();
                 CrContChargesSize rpt1 = new CrContChargesSize();
@@ -253,9 +247,6 @@ namespace GUI_Task
                     this.cboCharType.SelectedValue.ToString();
                 //this.mskStatus.Text;
 
-
-                //dsLedgerNew pDs = new dsLedgerNew();
-
                 DataSet pDs = new DataSet();
                 CrContProd rpt1 = new CrContProd();
 
@@ -320,9 +311,6 @@ namespace GUI_Task
                     this.cboItemCat.SelectedValue.ToString() + "," +
                     this.cboCharType.SelectedValue.ToString();
                 //this.mskStatus.Text;
-
-
-                //dsLedgerNew pDs = new dsLedgerNew();
 
                 DataSet pDs = new DataSet();
                 CrContProdSmryCE rpt1 = new CrContProdSmryCE();

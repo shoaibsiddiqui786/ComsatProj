@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using GUI_Task.Class;
 using JThomas.Controls;
 using GUI_Task.StringFun01;
+using System.Net.Mail;
 
 namespace GUI_Task
 {
@@ -19,21 +20,19 @@ namespace GUI_Task
         ItemName = 2,
         SizeName = 3,
         ColorName = 4,
-        UnitName = 5,
-        Stock = 6,
-        DNQty = 7,
-        POQty = 8,
-        RemQty = 9,
-        LastRate = 10,
-        Amount = 11,
-        SizeID = 12,
-        ColorID = 13,
-        UOMID = 14,
-        //GodownID = 12
+        Stock = 5,
+        DNQty = 6,
+        POQty = 7,
+        RemQty = 8,
+        LastRate = 9,
+        Amount = 10,
+        SizeID = 11,
+        ColorID = 12,
     }
     public partial class frmPurchaseOrder : Form
     {
         //******* Grid Variable Setting -- Begin ******
+        string strDocId = string.Empty;
         string fHDR = string.Empty;                       // Column Header
         string fColWidth = string.Empty;                  // Column Width (Input)
         string fColMinWidth = string.Empty;               // Column Minimum Width
@@ -145,24 +144,17 @@ namespace GUI_Task
             ColorColumn.DisplayMember = ds.Tables[0].Columns[1].ToString();
             ds.Clear();
 
-            //UOM Combo Fill
-            lSQL = "select UOMID, UnitName from IMS_UOM order by UnitName";
-
-            clsFillCombo.FillCombo(cbo_I_UOM, clsGVar.ConString1, "IMS_UOM" + "," + "UnitName" + "," + "False", lSQL);
-            fcboDefaultValue = Convert.ToInt16(cbo_I_UOM.SelectedValue);
-
-            ds = clsDbManager.GetData_Set(lSQL, "IMS_UOM");
-            UnitColumn.DataSource = ds.Tables[0];
-            UnitColumn.ValueMember = ds.Tables[0].Columns[0].ToString();
-            UnitColumn.DisplayMember = ds.Tables[0].Columns[1].ToString();
-            ds.Clear();
-           
-
         }
         private void button6_Click(object sender, EventArgs e)
         {
             SaveData();
-            MessageBox.Show("Data Saved Successfullly");
+            //MessageBox.Show("Data Saved Successfullly");
+            textAlert.Text = "Data Saved Successfully";
+            this.notifyIcon1.BalloonTipText = "Entry Number '" + txtPONo.Text.ToString() + "'";
+            this.notifyIcon1.BalloonTipTitle = "Data Saved";
+            //this.notifyIcon1.Icon = new Icon("icon.ico");
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.ShowBalloonTip(5);
         }
 
         private void LoadInitialControls()
@@ -186,7 +178,7 @@ namespace GUI_Task
 
             clsDbManager.SetGridHeaderCmb(
                 grd,
-                15,
+                13,
                 fHDR,
                 fColWidth,
                 fColMaxInputLen,
@@ -265,7 +257,34 @@ namespace GUI_Task
             decimal rtnVal = 0;
             decimal outValue = 0;
 
+            for (int i = 0; i < grd.RowCount; i++)
+            {
+                if (grd.Rows[i].Cells[(int)GColPO.Amount].Value != null)
+                {
+                    bcheck = decimal.TryParse(grd.Rows[i].Cells[(int)GColPO.Amount].Value.ToString(), out outValue);
+                    if (bcheck)
+                    {
+                        rtnVal += outValue;
+                        fAmount = fAmount + outValue;
+                    }
+                }
+                if (grd.Rows[i].Cells[(int)GColPO.POQty].Value != null)
+                {
+                    bcheck = decimal.TryParse(grd.Rows[i].Cells[(int)GColPO.POQty].Value.ToString(), out outValue);
+                    if (bcheck)
+                    {
+                        rtnVal += outValue;
+                        fQty = fQty + outValue;
+                    }
+                } // if != null
+                //grdVoucher[2, i].Value = (i + 1).ToString();
+            }
+
+            lblVal.Text = String.Format("{0:0,0.00}", fAmount);
+            lblQty.Text = String.Format("{0:0,0.00}", fQty);
+
         }
+
         private void cmdSave_Click(object sender, EventArgs e)
         {
             SaveData();
@@ -389,35 +408,48 @@ namespace GUI_Task
                 if (txtPONo.Text.ToString().Trim(' ', '-') == "")
                 {
                     fDocAlreadyExists = false;
-                    fDocID = clsDbManager.GetNextValDocID("PO", "POId", fDocWhere, "");
+                    fDocID = clsDbManager.GetNextValDocID("PO", "DocId", fDocWhere, "");
+                    fDocID = fDocID + 1;
+                    strDocId = "1-" + DateTime.Now.Year.ToString() + "-" + fDocID.ToString();
+                    txtPONo.Text = strDocId;
 
                     lSQL = "insert into PO (";
-                    lSQL += "  POId ";                              //  0-    ItemID";   
-                    // lSQL += ", GateInwordNo ";                                //  1-    ItemCod  
+                    lSQL += "  DocId ";
+                    lSQL += "  ,POId ";                              //  0-    ItemID";   
                     lSQL += ", Date ";                                        //  2-    ItemNam 
-                    //lSQL += ", VendorId ";                                      // 3- Descripti
-                    //  4-    SizeNam  
+                    lSQL += ", DNId ";
+                    lSQL += ", DNDate ";
+                    lSQL += ", EmployeeId "; 
                     lSQL += ", ItemGroupId ";                                 //  5-    ColorNa  
+                    lSQL += ", VendorId ";                                    // 10    ColorID"
+                    lSQL += ", PurchaserId ";     
                     lSQL += ", Note ";
-                    //lSQL += ", GateId ";                                      //  6-    UOMName
-                    lSQL += ", DNId ";                                      // 7- GodownName
-                    lSQL += ", EmpId ";                                         // 8- Qty
-                    //lSQL += ", Status ";                                      // 9    SizeID";   
-                    lSQL += ", VenderId ";                                    // 10    ColorID"
-                    lSQL += ", PurchaseId ";                                    // 10    ColorID"
-                    //lSQL += ", Disc2 ";                                     // 11    UOMID"; 
-                    //lSQL += ", Adda ";                                        // 12- GodownID
+                    lSQL += ", Note2 ";
+                    lSQL += ", SuggCash ";
+                    lSQL += ", OrgId ";
+                    lSQL += ", UserId ";
+                    lSQL += ", Status ";
+                    lSQL += ", BranchId ";// 8- Qty
+                                                   // 10    ColorID"
+                    
                     lSQL += " ) values (";
                     //                                                       
-                    lSQL += "'" + fDocID.ToString() + "'";                  //  0-    ItemID";   
-                    lSQL += ",'" + txtPONo.Text.ToString() + "";        //  1-    ItemCod  
+                    lSQL += fDocID.ToString();
+                    lSQL += ",'" + strDocId.ToString() + "'";  
                     lSQL += ", " + StrF01.D2Str(dtpPO) + "";          //  2-    ItemNam 
-                    lSQL += ",";                                              // 3- Descripti
-                    lSQL += ",'" + txtNote + "'";                             //  4-    SizeNam  
-                    lSQL += ", " + cboItemGroup.SelectedValue.ToString() + "";  //  5-    ColorNa  
-                    lSQL += ", 1";                                            //  6-    UOMName
-                    lSQL += ", 0";                                            // 7- GodownName
-                    lSQL += ", 1";                                              // 8- Qty
+                    lSQL += ",'" + txtDNNo.Text.ToString() + "'";
+                    lSQL += ", " + StrF01.D2Str(dtpDN) + "";
+                    lSQL += ", " + cboEmpCode.SelectedValue.ToString() + "";  //  5-    ColorNa 
+                    lSQL += ", " + cboItemGroup.SelectedValue.ToString() + "";  //  5-    ColorNa 
+                    lSQL += ",'" + mskVenderCode.Text.ToString() + "'";  //  5-    ColorNa 
+                    lSQL += ",'" + mskPurchaseCode.Text.ToString() + "'";  //  5-    ColorNa 
+                    lSQL += ",'" + txtNote.Text.ToString() + "'";      
+                    lSQL += ", ''";                                              // 3- Descripti
+                                 //  4-    SizeNam  
+                     
+                    lSQL += ", 0";                                            //  6-    UOMName
+                    lSQL += ", 1";                                            // 7- GodownName
+                    lSQL += ", 0";                                              // 8- Qty
                     lSQL += ", 0";                                             // 9    SizeID";   
                     lSQL += ", 1";                                            // 10    ColorID"  
                     lSQL += ")";                                              // 11    UOMID"; 
@@ -438,17 +470,12 @@ namespace GUI_Task
 
                     lSQL = "update PO set";
                     lSQL += "  Date = '" + StrF01.D2Str(dtpPO.Value) + "'";
+                    lSQL += " , DNDate = " + StrF01.D2Str(dtpDN) + "";
                     lSQL += ", ItemGroupID = " + cboItemGroup.SelectedValue.ToString() + "";
                     lSQL += ", Note = '" + txtNote.Text.ToString() + "'";
-                    lSQL += ", EmpId = 0";
-                    lSQL += ", VenderId = 1";
-                    //              lSQL += ",VendorId = '' ";
-
-
-                    //                lSQL += ", GateID = 1";
-
-                    //                  lSQL += ", Status = 0";
-                    lSQL += ", PurchaseId = 1";
+                    lSQL += ", EmployeeId = " + cboEmpCode.SelectedValue.ToString() + "";
+                    lSQL += ", VendorId = " + mskVenderCode.Text.ToString() + "";
+                    lSQL += ", PurchaserId = " + mskPurchaseCode.Text.ToString() + "";
                     lSQL += " where ";
                     lSQL += fDocWhere;
 
@@ -493,20 +520,18 @@ namespace GUI_Task
                         }
                     }
 
-                    lSQL = "INSERT INTO PODetail (POId";
-                    lSQL += ",ItemId,SizeId,ColorID,DNQty,POQty,RemQty,LastRate,Amount)";
+                    lSQL = "INSERT INTO PODetail (DocId,POId";
+                    lSQL += ",ItemId,SizeId,ColorID,DNQty,POQty,RemainingQty,LastRate)";
                     lSQL += " VALUES (";
-                    lSQL += "'" + txtPONo.Text.ToString() + "'";
+                    lSQL += "" + fDocID + "";
+                    lSQL += ", '" + strDocId.ToString() + "'";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.ItemID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.SizeID].Value.ToString() + "";
                     lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.ColorID].Value.ToString() + "";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.Stock].Value.ToString() + "";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.DNQty].Value.ToString() + "'";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.POQty].Value.ToString() + "'";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.RemQty].Value.ToString() + "'";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.LastRate].Value.ToString() + "'";
-                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.Amount].Value.ToString() + "'";
-                    //lSQL += ", '" + grd.Rows[dGVRow].Cells[(int)GColIstm.Description].Value.ToString() + "'";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.DNQty].Value.ToString() + "";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.POQty].Value.ToString() + "";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.RemQty].Value.ToString() + "";
+                    lSQL += ", " + grd.Rows[dGVRow].Cells[(int)GColPO.LastRate].Value.ToString() + "";
                     lSQL += ")";
                     fManySQL.Add(lSQL);
                 } // End For loopo
@@ -526,14 +551,13 @@ namespace GUI_Task
 
         private void button3_Click(object sender, EventArgs e)
         {
-            frmSearch frm = new frmSearch();
-            frm.Show();
+            LookUp_Voc();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            frmSearch frm = new frmSearch();
-            frm.Show();
+
+            LookUp_Voc1();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -547,7 +571,7 @@ namespace GUI_Task
             frmHelp frm = new frmHelp();
             frm.Show();
         }
-        
+
         #region LookUp_Voc
 
         private void LookUp_Voc()
@@ -593,38 +617,38 @@ namespace GUI_Task
             //                    true,
             //                    "",
 
-             //"sl.StockLevelId",
-             //   " sl.Date, cd.cgdDesc AS ItemGroupName, sl.Note ",
-             //   "  StockLevel sl inner join StockLevelDetail sld on sl.StockLevelId=sld.StockLevelId "
-             //   + " inner join CatDtl cd on sl.ItemGroupID=cd.cgdCode AND cd.cgCode=6",
-             //       this.Text.ToString(),
-             //       1,
-             //       "Stock #,Date,Item Group Name,Note",
-             //       "12,8,15,20",
-             //       " T, T, T, T",
-             //       true,
-             //       "",
-             //   //"d.Category = " + cboMainGroup.SelectedValue.ToString(), 
-             //       "",
-             //       "TextBox"
-             //       );
-//            select po.POId, po.Date, po.DNId, po.DNDate, e.first_name + ' ' + e.last_name AS EmployeeName,
-// po.Note
-//from PO po
-//inner join PoDetail pod on po.POId=pod.POId
-//inner join PR_Employee e on po.EmployeeId=e.employeeid
+            //"sl.StockLevelId",
+            //   " sl.Date, cd.cgdDesc AS ItemGroupName, sl.Note ",
+            //   "  StockLevel sl inner join StockLevelDetail sld on sl.StockLevelId=sld.StockLevelId "
+            //   + " inner join CatDtl cd on sl.ItemGroupID=cd.cgdCode AND cd.cgCode=6",
+            //       this.Text.ToString(),
+            //       1,
+            //       "Stock #,Date,Item Group Name,Note",
+            //       "12,8,15,20",
+            //       " T, T, T, T",
+            //       true,
+            //       "",
+            //   //"d.Category = " + cboMainGroup.SelectedValue.ToString(), 
+            //       "",
+            //       "TextBox"
+            //       );
+            //            select po.POId, po.Date, po.DNId, po.DNDate, e.first_name + ' ' + e.last_name AS EmployeeName,
+            // po.Note
+            //from PO po
+            //inner join PoDetail pod on po.POId=pod.POId
+            //inner join PR_Employee e on po.EmployeeId=e.employeeid
 
 
             frmLookUp sForm = new frmLookUp(
                     "po.POId",
-                " po.Date, po.DNId, po.DNDate, e.first_name + ' ' + e.last_name AS EmployeeName, po.Note ",
-                " PO po inner join PoDetail pod on po.POId=pod.POId " +
-                "inner join PR_Employee e on po.EmployeeId=e.employeeid",
+                " po.Date, po.DNId, po.DNDate, po.Note ",
+                " PO po  ",
+                //      "inner join PR_Employee e on po.EmployeeId=e.employeeid",
                     this.Text.ToString(),
                     1,
-                    "PO #, PO Date, DN #, DN Date, Employee Name, Note",
-                    "8,8,8,8,15,20",
-                    " T, T, T, T, T, T",
+                    "PO #, PO Date, DN #, DN Date, Note",
+                    "8,8,8,8,20",
+                    " T, T, T, T, T",
                     true,
                     "",
                 //"d.Category = " + cboMainGroup.SelectedValue.ToString(), 
@@ -650,18 +674,7 @@ namespace GUI_Task
                         //SumVoc();
                     }
 
-                    //txtOrderNo.Text = txtPassDataVocID.Text.ToString();
-                    //grdVoucher[pCol, pRow].Value = tmtext.Text.ToString();
-                    //System.Windows.Forms.SendKeys.Send("{TAB}");
                 }
-
-                //if (msk_AccountID.Text.ToString() == "" || msk_AccountID.Text.ToString() == string.Empty)
-                //{
-                //    return;
-                //}
-                //msk_AccountID.Text = sForm.lupassControl.ToString();
-                ////grdVoucher[pCol, pRow].Value = msk_AccountID.Text.ToString();
-                //System.Windows.Forms.SendKeys.Send("{TAB}");
             }
         }
         #endregion
@@ -683,17 +696,21 @@ namespace GUI_Task
 
             // Fields 0,1,2,3 are Begin  
 
-//            select po.POId, po.Date, po.DNId, po.DNDate, e.first_name + ' ' + e.last_name AS EmployeeName,
-// po.Note
-//from PO po
-//inner join PoDetail pod on po.POId=pod.POId
-//inner join PR_Employee e on po.EmployeeId=e.employeeid
+            //            select po.POId, po.Date, po.DNId, po.DNDate, e.first_name + ' ' + e.last_name AS EmployeeName,
+            // po.Note
+            //from PO po
+            //inner join PoDetail pod on po.POId=pod.POId
+            //inner join PR_Employee e on po.EmployeeId=e.employeeid
 
 
-            tSQL = "    select po.POId, po.Date, po.DNId, po.DNDate, e.first_name + ' ' + e.last_name AS EmployeeName, po.Note ";
-            tSQL += " from PO po";
-            tSQL += " inner join PoDetail pod on po.POId=pod.POId  "+
-                "inner join PR_Employee e on po.EmployeeId=e.employeeid";
+            //tSQL = "    select po.POId,
+            tSQL = " select po.POId, po.Date, po.DNId, po.DNDate, e.first_name + ' ' + e.last_name AS EmployeeName, po.Note, ";
+		    tSQL += " po.VendorId, v.Name AS VendorName, po.PurchaserId, c.Name AS PurchaserName, cd.cgdDesc AS ItemGroupName ";
+            tSQL += " from PO po inner join PoDetail pod on po.POId=pod.POId ";
+            tSQL += " inner join PR_Employee e on po.EmployeeId=e.employeeid ";
+            tSQL += " INNER JOIN Vendor v ON v.Code = RIGHT(po.VendorId, 7) ";
+            tSQL += " INNER JOIN Customer c ON c.Code = RIGHT(po.PurchaserId, 10) ";
+            tSQL += " LEFT OUTER JOIN CatDtl cd ON po.ItemGroupID = cd.cgdCode AND cd.cgCode = 6 ";
             tSQL += " where po.POId='" + txtPONo.Text.ToString() + "';";
 
             try
@@ -705,14 +722,16 @@ namespace GUI_Task
                     dRow = ds.Tables[0].Rows[0];
                     // Starting title as 0
                     txtPONo.Text = (ds.Tables[0].Rows[0]["POId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["POId"].ToString());
-                    //dtpDate.Value = (ds.Tables[0].Rows[0]["Inv_Date"] == DBNull.Value ? DateTime.Now.ToString("T") : Convert.ToDateTime(ds.Tables[0].Rows[0]["Inv_Date"]));
-                    dtpPO.Value =  Convert.ToDateTime(ds.Tables[0].Rows[0]["Date"]);
-                    //txtDebitCode.Text = (ds.Tables[0].Rows[0]["Customer"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Customer"].ToString());
-                    //lblDescription.Text = (ds.Tables[0].Rows[0]["CustomerName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["CustomerName"].ToString());
-                    // txtStockLevelNo.Text = (ds.Tables[0].Rows[0]["StockLevel"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["StockLevel"].ToString());
-                    //txtBillNo.Text = (ds.Tables[0].Rows[0]["BillNo"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["BillNo"].ToString());
-                    //txtOrderStatus.Text = (ds.Tables[0].Rows[0]["Status"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Status"].ToString());
-                    //txtSaleType.Text = (ds.Tables[0].Rows[0]["Type"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Type"].ToString());
+                    dtpPO.Text = (ds.Tables[0].Rows[0]["Date"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Date"].ToString());
+                    txtDNNo.Text = (ds.Tables[0].Rows[0]["DNId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["DNId"].ToString());
+                    dtpDN.Text = (ds.Tables[0].Rows[0]["DNDate"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["DNDate"].ToString());
+                    cboEmpCode.Text = (ds.Tables[0].Rows[0]["EmployeeName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["EmployeeName"].ToString());
+                    mskVenderCode.Text = (ds.Tables[0].Rows[0]["VendorId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["VendorId"].ToString());
+                    lblNameVendor.Text = (ds.Tables[0].Rows[0]["VendorName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["VendorName"].ToString());
+                    mskPurchaseCode.Text = (ds.Tables[0].Rows[0]["PurchaserId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["PurchaserId"].ToString());
+                    lblName.Text = (ds.Tables[0].Rows[0]["PurchaserName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["PurchaserName"].ToString());
+                    cboItemGroup.Text = (ds.Tables[0].Rows[0]["ItemGroupName"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["ItemGroupName"].ToString());
+                    txtNote.Text = (ds.Tables[0].Rows[0]["Note"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Note"].ToString());
                     //txtDetail.Text = (ds.Tables[0].Rows[0]["Detail"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Detail"].ToString());
 
                     //cboTransport.Text = (ds.Tables[0].Rows[0]["AddaId"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["AddaId"].ToString());
@@ -891,15 +910,14 @@ namespace GUI_Task
         private void LoadGridData()
         {
             string lSQL = "";
-            lSQL += " SELECT h.ItemId AS Code, i.ItemCode, i.Name AS ItemName, ";
-			lSQL += " sz.cgdDesc AS SizeName, ";
-            lSQL += " clr.cgdDesc AS ColorName, "; 
-            lSQL += " u.UnitName, h.DNQty, h.POQty, h.RemainingQty, h.LastRate, 0 AS Amount, ";
-            lSQL += " h.SizeID, h.ColorID, i.UOMID ";
+            lSQL += " SELECT h.ItemId, i.ItemCode, i.Name AS ItemName, ";
+            lSQL += " sz.cgdDesc AS SizeName, ";
+            lSQL += " clr.cgdDesc AS ColorName,  0 AS Stock, ";
+            lSQL += " h.DNQty, h.POQty, h.RemainingQty AS RemQty, h.LastRate, 0 AS Amount, ";
+            lSQL += " h.SizeID, h.ColorID";
             lSQL += " from PoDetail h INNER JOIN Item i ON h.ItemId=i.ItemId ";
-            lSQL += " JOIN CatDtl clr ON h.ColorID=clr.cgdCode AND clr.cgCode=3 ";
+            lSQL += " INNER JOIN CatDtl clr ON h.ColorID=clr.cgdCode AND clr.cgCode=3 ";
             lSQL += " INNER JOIN CatDtl sz ON h.sizeid=sz.cgdCode AND sz.cgCode=5 ";
-            lSQL += " INNER JOIN IMS_UOM u ON i.UOMID=u.UOMID ";
             lSQL += " where h.POId ='" + txtPONo.Text.ToString() + "'; ";
 
             clsDbManager.FillDataGrid(
@@ -907,6 +925,8 @@ namespace GUI_Task
                 lSQL,
                 fFieldList,
                 fColFormat);
+
+            SumVoc();
         }
 
         private void chkReadOnly_CheckedChanged(object sender, EventArgs e)
@@ -958,7 +978,6 @@ namespace GUI_Task
             lFieldList += ",ItemName";      //ItemName = 2, 
             lFieldList += ",SizeName";      //SizeName = 3, 
             lFieldList += ",ColorName";     //ColorName = 4,
-            lFieldList += ",UnitName";      //UnitName = 5, 
             lFieldList += ",stock";         //Stock = 6,  
             lFieldList += ",DNQty";         //DNQty = 7,
             lFieldList += ",POQty";         //POQty = 8,
@@ -967,7 +986,6 @@ namespace GUI_Task
             lFieldList += ",Amount";        //Amount = 11,
             lFieldList += ",SizeId";        //SizeID = 12,
             lFieldList += ",ColorId";       //ColorID = 13, 
-            lFieldList += ",UOMID";         //UOMID = 14,
             //lFieldList += ",AvailBal";     
             //ItemID = 0,
             //ItemCode = 1, 
@@ -984,27 +1002,26 @@ namespace GUI_Task
             //SizeID = 12,
             //ColorID = 13, 
             //UOMID = 14,
-        //ItemCode = 1,
-        //ItemName = 2,
-        //SizeName = 3,
-        //ColorName = 4,
-        //UnitName = 5,
-        //Stock = 6,
-        //DNQty = 7,
-        //POQty = 8,
-        //RemQty = 9,
-        //LastRate = 10,
-        //Amount = 11,
-        //SizeID = 12,
-        //ColorID = 13,
-        //UOMID = 14,
+            //ItemCode = 1,
+            //ItemName = 2,
+            //SizeName = 3,
+            //ColorName = 4,
+            //UnitName = 5,
+            //Stock = 6,
+            //DNQty = 7,
+            //POQty = 8,
+            //RemQty = 9,
+            //LastRate = 10,
+            //Amount = 11,
+            //SizeID = 12,
+            //ColorID = 13,
+            //UOMID = 14,
             //lHDR += "Code";
             lHDR += " ItemID";      //ItemID = 0,   
             lHDR += ",Item Code";   //ItemCode = 1,    
             lHDR += ",Item Name";   //ItemName = 2,    
             lHDR += ",Size";        //SizeName = 3,    
             lHDR += ",Color";       //ColorName = 4,   
-            lHDR += ",UOM";      //UnitName = 5,    
             lHDR += ",Stock";       //Stock = 6,  
             lHDR += ",DNQty";       //DNQty = 7,
             lHDR += ",POQty";       //POQty = 8, 
@@ -1013,7 +1030,6 @@ namespace GUI_Task
             lHDR += ",Amount";      //Amount = 11,
             lHDR += ",SizeId";       //SizeID = 12,
             lHDR += ",ColorId";     //ColorID = 13, 
-            lHDR += ",UOMID";       //UOMID = 14,
 
             //lHDR += ",Ord.UnDel.Qty";     // 12    OrdUnDelQty";  
             //lHDR += ",Rate";              // 13    Rate";         
@@ -1026,14 +1042,12 @@ namespace GUI_Task
             lColWidth += ", 20";                // 2-    ItemName";     
             lColWidth += ", 7";                // 3-    SizeID";       
             lColWidth += ", 7";                // 5-    ColorID";      
-            lColWidth += ", 7";                // 6-    UOMID";        
             lColWidth += ", 7";                // 7-    stock";     
             lColWidth += ", 7";                // 8-    DNQty";      
             lColWidth += ", 7";                // 9-    POQty";       
             lColWidth += ", 7";                // 10    RemQty";   
             lColWidth += ", 7";                // 11    lastRate";      
             lColWidth += ", 7";                // 12    amount";  
-            lColWidth += ", 7";                // 13    SizeId";         
             lColWidth += ", 10";               // 14    SizeID";       
             lColWidth += ", 7";                // 15    AvailBal";     
 
@@ -1043,14 +1057,12 @@ namespace GUI_Task
             lColMaxInputLen += ", 0";                // 2-    ItemName";  
             lColMaxInputLen += ", 0";               // 3-    SizeID";     
             lColMaxInputLen += ", 0";               // 5-    ColorID";    
-            lColMaxInputLen += ", 0";               // 6-    UOMID";      
             lColMaxInputLen += ", 0";               // 7-    stock";      
             lColMaxInputLen += ", 0";               // 8-    DNQty";      
             lColMaxInputLen += ", 0";               // 9-    POQty";      
             lColMaxInputLen += ", 0";               // 10    RemQty";    
             lColMaxInputLen += ", 0";               // 11    lastRate";   
             lColMaxInputLen += ", 0";               // 12    amount";   
-            lColMaxInputLen += ", 0";               // 13    SizeId";     
             lColMaxInputLen += ", 0";               // 14    SizeID";     
             lColMaxInputLen += ", 0";               // 15    AvailBal";   
 
@@ -1060,14 +1072,12 @@ namespace GUI_Task
             lColMinWidth += ", 0";                       // 2-    ItemName"; 
             lColMinWidth += ", 0";                      // 3-    SizeID";    
             lColMinWidth += ", 0";                      // 5-    ColorID";   
-            lColMinWidth += ", 0";                      // 6-    UOMID";     
             lColMinWidth += ", 0";                      // 7-    stock";     
             lColMinWidth += ", 0";                    // 8-    DNQty";       
             lColMinWidth += ", 0";                    // 9-    POQty";       
             lColMinWidth += ", 0";                      // 10    RemQty";   
             lColMinWidth += ", 0";                      // 11    lastRate";  
             lColMinWidth += ", 0";                    // 12    amount";    
-            lColMinWidth += ", 0";                    // 13    SizeId";      
             lColMinWidth += ", 0";                    // 14    SizeID";      
             lColMinWidth += ", 0";                      // 15    AvailBal";  
 
@@ -1077,7 +1087,6 @@ namespace GUI_Task
             lColFormat += ", T";                     //ItemName = 2, 
             lColFormat += ", T";                     //SizeName = 3, 
             lColFormat += ", T";                     //ColorName = 4,
-            lColFormat += ", T";                     //UnitName = 5, 
             lColFormat += ",N0";                     //Stock = 6,  
             lColFormat += ",N0";                     //DNQty = 7,
             lColFormat += ",N0";                     //POQty = 8,
@@ -1086,7 +1095,6 @@ namespace GUI_Task
             lColFormat += ",N2";                     //Amount = 11,
             lColFormat += ", H";                      //SizeID = 12,
             lColFormat += ", H";                      //ColorID = 13, 
-            lColFormat += ", H";                   //UOMID = 14, 
 
             // Column ReadOnly 1= readonly, 0 = read-write
             lColReadOnly = "  1";                   //ItemID = 0,
@@ -1094,7 +1102,6 @@ namespace GUI_Task
             lColReadOnly += ",1";                   //ItemName = 2, 
             lColReadOnly += ",0";                   //SizeName = 3, 
             lColReadOnly += ",0";                   //ColorName = 4,
-            lColReadOnly += ",0";                   //UnitName = 5, 
             lColReadOnly += ",0";                   //Stock = 6,  
             lColReadOnly += ",0";                   //DNQty = 7,
             lColReadOnly += ",0";                   //POQty = 8,
@@ -1103,7 +1110,6 @@ namespace GUI_Task
             lColReadOnly += ",0";                   //Amount = 11,
             lColReadOnly += ",1";                   //SizeID = 12,
             lColReadOnly += ",1";                   //ColorID = 13, 
-            lColReadOnly += ",1";                   //UOMID = 14, 
 
             // For Saving Time
             tColType += "  N0";            //ItemID = 0,
@@ -1111,7 +1117,6 @@ namespace GUI_Task
             tColType += ",  SKP";          //ItemName = 2,  
             tColType += ",  SKP";          //SizeName = 3,  
             tColType += ",  SKP";          //ColorName = 4, 
-            tColType += ",  SKP";          //UnitName = 5,  
             tColType += ", N0";            //Stock = 6,  
             tColType += ", N0";            //DNQty = 7,
             tColType += ", N0";            //POQty = 8,
@@ -1120,14 +1125,12 @@ namespace GUI_Task
             tColType += ", N0";            //Amount = 11,
             tColType += ", N0";            //SizeID = 12,
             tColType += ", N0";            //ColorID = 13, 
-            tColType += ", N0";            //UOMID = 14,
 
             tFieldName += "Code";              //ItemID = 0,
             tFieldName += ",ItemCode";         //ItemCode = 1, 
             tFieldName += ",ItemName";         //ItemName = 2, 
             tFieldName += ",SizeName";         //SizeName = 3,  
             tFieldName += ",ColorName";        //ColorName = 4, 
-            tFieldName += ",UnitName";         //UnitName = 5, 
             tFieldName += ",Stock";         //Stock = 6,  
             tFieldName += ",DNQty";        //DNQty = 7, 
             tFieldName += ",POQty";         //POQty = 8, 
@@ -1136,7 +1139,6 @@ namespace GUI_Task
             tFieldName += ",Amount";    //Amount = 11, 
             tFieldName += ",SizeID";           //SizeID = 12, 
             tFieldName += ",ColorID";         //ColorID = 13,  
-            tFieldName += ",UOMID";       //UOMID = 14, 
 
 
             fHDR = lHDR;
@@ -1181,26 +1183,26 @@ namespace GUI_Task
         {
             if (e.KeyCode == Keys.F1)
             {
-                LookUp_Voc();
+                LookUp_GL2();
             }
         }
 
         private void mskVenderCode_DoubleClick(object sender, EventArgs e)
         {
-            LookUp_Voc();
+            LookUp_GL2();
         }
 
         private void mskPurchaseCode_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
             {
-                LookUp_Voc();
+                LookUp_GL1();
             }
         }
 
         private void mskPurchaseCode_DoubleClick(object sender, EventArgs e)
         {
-            LookUp_Voc();
+            LookUp_GL1();
         }
 
         private void txt_I_ItemID_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -1231,19 +1233,14 @@ namespace GUI_Task
                 lbl_I_ItemName.Text.ToString(),            //ItemName = 2, 
                 cbo_I_Size.Text.ToString(),                //SizeName = 3, 
                 cbo_I_Color.Text.ToString(),               //ColorName = 4,
-                cbo_I_UOM.Text.ToString(),                 //UnitName = 5, 
                 txtStock.Text.ToString(),                  //Stock = 6,  
                 txtDNQty.Text.ToString(),                  //DNQty = 7,
                 txtPOQty.Text.ToString(),                  //POQty = 8,
                 txtRemQty.Text.ToString(),                 //RemQty = 9,
                 txtLastRate.Text.ToString(),               //LastRate = 10,
                 txtAmount.Text.ToString(),                 //Amount = 11,
-                //cboGodown.Text.ToString(),               //SizeID = 12,
-                //txtQty.Text.ToString(),                  //ColorID = 13, 
                 cbo_I_Size.SelectedValue.ToString(),       //UOMID = 14,
-                cbo_I_Color.SelectedValue.ToString(),
-                cbo_I_UOM.SelectedValue.ToString());
-            //cboGodown.SelectedValue.ToString()
+                cbo_I_Color.SelectedValue.ToString());
 
             SumVoc();
 
@@ -1335,6 +1332,94 @@ namespace GUI_Task
             //msk_VocCode.Text = ((MaskedTextBox)sender).Text;
         }
 
+        private void LookUp_GL1()
+        {
+            //SELECT Code, Name FROM Heads WHERE TYPE = 'A'
+            frmLookUp sForm = new frmLookUp(
+                    "Code",
+                    "Name",
+                    "Heads",
+                    this.Text.ToString(),
+                    1,
+                    "Code, Purchaser Name",
+                    "16,40",
+                    " T, T",
+                    true,
+                    "",
+                    " Type='A'",
+                    "TextBox"
+                    );
+
+            mskPurchaseCode.Mask = "";
+            mskPurchaseCode.Text = string.Empty;
+            mskPurchaseCode.Mask = clsGVar.maskGLCode;
+
+            sForm.lupassControl = new frmLookUp.LUPassControl(PassData1);
+            sForm.ShowDialog();
+            if (mskPurchaseCode.Text != null)
+            {
+                if (mskPurchaseCode.Text != null)
+                {
+                    if (mskPurchaseCode.Text.ToString() == "" || mskPurchaseCode.Text.ToString() == string.Empty)
+                    {
+                        return;
+                    }
+                    if (mskPurchaseCode.Text.ToString().Trim().Length > 0)
+                    {
+                        PopulateRecordsGL1();
+                        //LoadSampleData();
+                    }
+
+
+                }
+
+
+            }
+        }
+
+        private void PassData1(object sender)
+        {
+            mskPurchaseCode.Mask = "";
+            mskPurchaseCode.Text = ((TextBox)sender).Text;
+            mskPurchaseCode.Mask = clsGVar.maskGLCode;
+
+        }
+        //Populate Recordset 
+        private void PopulateRecordsGL1()
+        {
+            DataSet ds = new DataSet();
+            DataRow dRow;
+            string tSQL = string.Empty;
+
+            // Fields 0,1,2,3 are Begin  
+
+            tSQL = "SELECT Code, Name ";
+            tSQL += " from Heads ";
+            tSQL += " where Code ='" + mskPurchaseCode.Text.ToString() + "';";
+
+            try
+            {
+                ds = clsDbManager.GetData_Set(tSQL, "Heads");
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    //fAlreadyExists = true;
+                    dRow = ds.Tables[0].Rows[0];
+                    // Starting title as 0
+                    lblName.Text = (ds.Tables[0].Rows[0]["Name"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Name"].ToString());
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        ds.Clear();
+                        //btn_EnableDisable(true);
+                    }
+                    //LoadGridData();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Unable to Get Account Code...", this.Text.ToString());
+            }
+        }
+
         #region PopulateRecords1
         //Populate Recordset 
         private void PopulateRecords1()
@@ -1390,5 +1475,173 @@ namespace GUI_Task
                 LookUp_Voc1();
             }
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            grd.Rows.Clear();
+            ClearTextBoxes();
+        }
+
+        private void ClearTextBoxes()
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                        (control as TextBox).Clear();
+                    else
+                        func(control.Controls);
+            };
+
+            func(Controls);
+        }
+
+
+        private void PassDataVocID2(object sender)
+        {
+            //txtPassDataVocID.Text = ((TextBox)sender).Text;
+            txtDNNo.Text = ((TextBox)sender).Text;
+            //msk_VocCode.Text = ((MaskedTextBox)sender).Text;
+        }
+
+        private void LookUp_GL2()
+        {
+
+                    //select VendorId, v.Name AS VendorName 
+                    //from PO po
+                    //INNER JOIN Vendor v ON v.Code = RIGHT(po.VendorId, 7)
+            frmLookUp sForm = new frmLookUp(
+                    "po.VendorId",
+                    "v.Name",
+                    "PO po INNER JOIN Vendor v ON v.Code = RIGHT(po.VendorId, 7)",
+                    this.Text.ToString(),
+                    1,
+                    "Code, Vendor Name",
+                    "16,40",
+                    " T, T",
+                    true,
+                    "",
+                    "",
+                    "TextBox"
+                    );
+
+            mskVenderCode.Mask = "";
+            mskVenderCode.Text = string.Empty;
+            mskVenderCode.Mask = clsGVar.maskGLCode;
+
+            sForm.lupassControl = new frmLookUp.LUPassControl(PassData2);
+            sForm.ShowDialog();
+            if (mskVenderCode.Text != null)
+            {
+                if (mskVenderCode.Text != null)
+                {
+                    if (mskVenderCode.Text.ToString() == "" || mskVenderCode.Text.ToString() == string.Empty)
+                    {
+                        return;
+                    }
+                    if (mskVenderCode.Text.ToString().Trim().Length > 0)
+                    {
+                        PopulateRecordsGL2();
+                        //LoadSampleData();
+                    }
+
+
+                }
+
+
+            }
+        }
+
+        private void PassData2(object sender)
+        {
+            mskVenderCode.Mask = "";
+            mskVenderCode.Text = ((TextBox)sender).Text;
+            mskVenderCode.Mask = clsGVar.maskGLCode;
+
+        }
+        //Populate Recordset 
+        private void PopulateRecordsGL2()
+        {
+            DataSet ds = new DataSet();
+            DataRow dRow;
+            string tSQL = string.Empty;
+
+            // Fields 0,1,2,3 are Begin  
+
+               tSQL =  " SELECT po.VendorId, v.Name ";
+               tSQL += " from PO po  INNER JOIN Vendor v ON v.Code = RIGHT(po.VendorId, 7) ";
+               tSQL += " where po.VendorId ='" + mskVenderCode.Text.ToString() + "';";
+
+            try
+            {
+                ds = clsDbManager.GetData_Set(tSQL, "Vendor");
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    //fAlreadyExists = true;
+                    dRow = ds.Tables[0].Rows[0];
+                    // Starting title as 0
+                    lblNameVendor.Text = (ds.Tables[0].Rows[0]["Name"] == DBNull.Value ? "" : ds.Tables[0].Rows[0]["Name"].ToString());
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        ds.Clear();
+                        //btn_EnableDisable(true);
+                    }
+                    //LoadGridData();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Unable to Get Account Code...", this.Text.ToString());
+            }
+        }
+
+        private void grd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                // MessageBox.Show("Delete key is pressed");
+                //if (grdVoucher.Rows[lLastRow].Cells[(int)GCol.acid].Value == null && grdVoucher.Rows[lLastRow].Cells[(int)GCol.refid].Value == null)
+
+                //if (!fGridControl)
+                //{
+                //    return;
+                //}
+
+                if (grd.Rows.Count > 0)
+                {
+                    if (MessageBox.Show("Are you sure, really want to Delete row ?", "Delete Row", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        grd.Rows.RemoveAt(grd.CurrentRow.Index);
+                        SumVoc();
+                        return;
+                    }
+                }
+            }
+        }
+
+        private void btnEmail_Click(object sender, EventArgs e)
+        {
+            //smtp.Text = "smtp.gmail.com";
+            MailMessage mail = new MailMessage("usama.naveed.hussain@gmail.com", "usama.naveed.hussain@gmail.com", "Data Saved", "Data Saved against Entry Number: " + txtPONo.Text.ToString());
+            SmtpClient client = new SmtpClient("smtp.gmail.com");
+            // client.Host = "stmp.gmail.com";
+            client.Port = 587;
+            // client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential("usama.naveed.hussain@gmail.com", "waleedtablet");
+            client.EnableSsl = true;
+            client.Send(mail);
+            //MessageBox.Show("Mail Sent", "Success", MessageBoxButtons.OK);
+            textAlert.Text = "Mail Sent Successfully";
+        }
+
+        
+
     }
 }

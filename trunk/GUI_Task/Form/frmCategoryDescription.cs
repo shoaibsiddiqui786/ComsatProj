@@ -29,6 +29,7 @@ namespace GUI_Task
             blnFormLoad = false;
             AtFormLoad();
             blnFormLoad = true;
+            this.MaximizeBox = false;
 
         }
 

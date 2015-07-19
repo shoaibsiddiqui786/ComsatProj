@@ -53,9 +53,9 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.txtReason = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
-            this.txtComAmount = new System.Windows.Forms.TextBox();
+            this.txtCompensationAmount = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
-            this.txtClaimOffice = new System.Windows.Forms.TextBox();
+            this.txtClaimAmountOffice = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.txtClaimAmount = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -81,11 +81,11 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClaimAmountOffice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CompensationAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClaimAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Reason = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -153,7 +153,7 @@
             this.optActive.AutoSize = true;
             this.optActive.Checked = true;
             this.optActive.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optActive.Location = new System.Drawing.Point(799, 231);
+            this.optActive.Location = new System.Drawing.Point(741, 351);
             this.optActive.Name = "optActive";
             this.optActive.Size = new System.Drawing.Size(56, 19);
             this.optActive.TabIndex = 305;
@@ -165,7 +165,7 @@
             // 
             this.optInActive.AutoSize = true;
             this.optInActive.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optInActive.Location = new System.Drawing.Point(861, 231);
+            this.optInActive.Location = new System.Drawing.Point(823, 351);
             this.optInActive.Name = "optInActive";
             this.optInActive.Size = new System.Drawing.Size(66, 19);
             this.optInActive.TabIndex = 306;
@@ -175,7 +175,7 @@
             // btnExit
             // 
             this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(147, 231);
+            this.btnExit.Location = new System.Drawing.Point(147, 344);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(57, 26);
             this.btnExit.TabIndex = 304;
@@ -186,7 +186,7 @@
             // btnPrint
             // 
             this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnPrint.Location = new System.Drawing.Point(78, 231);
+            this.btnPrint.Location = new System.Drawing.Point(78, 344);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(63, 26);
             this.btnPrint.TabIndex = 303;
@@ -196,7 +196,7 @@
             // btnSave
             // 
             this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(6, 231);
+            this.btnSave.Location = new System.Drawing.Point(6, 344);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(66, 26);
             this.btnSave.TabIndex = 302;
@@ -210,7 +210,7 @@
             this.txtClaim.Name = "txtClaim";
             this.txtClaim.Size = new System.Drawing.Size(154, 20);
             this.txtClaim.TabIndex = 307;
-            this.txtClaim.DoubleClick += new System.EventHandler(this.txtFinishReceNo_DoubleClick);
+            this.txtClaim.DoubleClick += new System.EventHandler(this.txtClaim_DoubleClick);
             this.txtClaim.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtClaim_KeyDown_1);
             // 
             // grd
@@ -222,14 +222,14 @@
             this.ContractorColumn,
             this.ShiftColumn,
             this.ChargesColumn,
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5});
+            this.ClaimAmountOffice,
+            this.CompensationAmount,
+            this.ClaimAmount,
+            this.Reason,
+            this.OrderedBy});
             this.grd.Location = new System.Drawing.Point(3, 3);
             this.grd.Name = "grd";
-            this.grd.Size = new System.Drawing.Size(916, 133);
+            this.grd.Size = new System.Drawing.Size(916, 245);
             this.grd.TabIndex = 293;
             // 
             // MachineColumn
@@ -259,7 +259,7 @@
             this.tabControl1.Location = new System.Drawing.Point(2, 58);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(927, 167);
+            this.tabControl1.Size = new System.Drawing.Size(927, 272);
             this.tabControl1.TabIndex = 308;
             // 
             // tabPage1
@@ -268,7 +268,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(919, 141);
+            this.tabPage1.Size = new System.Drawing.Size(919, 246);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "GridView";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -280,7 +280,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(919, 141);
+            this.tabPage2.Size = new System.Drawing.Size(919, 254);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "InsertNew";
             // 
@@ -291,9 +291,9 @@
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.txtReason);
             this.groupBox1.Controls.Add(this.label33);
-            this.groupBox1.Controls.Add(this.txtComAmount);
+            this.groupBox1.Controls.Add(this.txtCompensationAmount);
             this.groupBox1.Controls.Add(this.label31);
-            this.groupBox1.Controls.Add(this.txtClaimOffice);
+            this.groupBox1.Controls.Add(this.txtClaimAmountOffice);
             this.groupBox1.Controls.Add(this.label30);
             this.groupBox1.Controls.Add(this.txtClaimAmount);
             this.groupBox1.Controls.Add(this.label12);
@@ -305,9 +305,9 @@
             this.groupBox1.Controls.Add(this.label29);
             this.groupBox1.Controls.Add(this.label26);
             this.groupBox1.Controls.Add(this.label27);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Location = new System.Drawing.Point(3, 52);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(971, 129);
+            this.groupBox1.Size = new System.Drawing.Size(909, 129);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Input Entry";
@@ -365,13 +365,13 @@
             this.label33.Text = "Reason";
             this.label33.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // txtComAmount
+            // txtCompensationAmount
             // 
-            this.txtComAmount.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtComAmount.Location = new System.Drawing.Point(329, 56);
-            this.txtComAmount.Name = "txtComAmount";
-            this.txtComAmount.Size = new System.Drawing.Size(120, 21);
-            this.txtComAmount.TabIndex = 51;
+            this.txtCompensationAmount.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCompensationAmount.Location = new System.Drawing.Point(329, 56);
+            this.txtCompensationAmount.Name = "txtCompensationAmount";
+            this.txtCompensationAmount.Size = new System.Drawing.Size(120, 21);
+            this.txtCompensationAmount.TabIndex = 51;
             // 
             // label31
             // 
@@ -386,13 +386,13 @@
             this.label31.Text = "Compemsation Amount";
             this.label31.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // txtClaimOffice
+            // txtClaimAmountOffice
             // 
-            this.txtClaimOffice.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClaimOffice.Location = new System.Drawing.Point(109, 56);
-            this.txtClaimOffice.Name = "txtClaimOffice";
-            this.txtClaimOffice.Size = new System.Drawing.Size(115, 21);
-            this.txtClaimOffice.TabIndex = 49;
+            this.txtClaimAmountOffice.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClaimAmountOffice.Location = new System.Drawing.Point(109, 56);
+            this.txtClaimAmountOffice.Name = "txtClaimAmountOffice";
+            this.txtClaimAmountOffice.Size = new System.Drawing.Size(115, 21);
+            this.txtClaimAmountOffice.TabIndex = 49;
             // 
             // label30
             // 
@@ -531,7 +531,7 @@
             this.tStextTotal,
             this.tSlblAlert,
             this.textAlert});
-            this.sSMaster.Location = new System.Drawing.Point(0, 270);
+            this.sSMaster.Location = new System.Drawing.Point(0, 381);
             this.sSMaster.Name = "sSMaster";
             this.sSMaster.Size = new System.Drawing.Size(930, 22);
             this.sSMaster.TabIndex = 613;
@@ -628,36 +628,36 @@
             this.dataGridViewTextBoxColumn5.HeaderText = "Order By";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
-            // Column1
+            // ClaimAmountOffice
             // 
-            this.Column1.HeaderText = "Claim Amount Office";
-            this.Column1.Name = "Column1";
+            this.ClaimAmountOffice.HeaderText = "Claim Amount Office";
+            this.ClaimAmountOffice.Name = "ClaimAmountOffice";
             // 
-            // Column2
+            // CompensationAmount
             // 
-            this.Column2.HeaderText = "Compensation Amount";
-            this.Column2.Name = "Column2";
+            this.CompensationAmount.HeaderText = "Compensation Amount";
+            this.CompensationAmount.Name = "CompensationAmount";
             // 
-            // Column3
+            // ClaimAmount
             // 
-            this.Column3.HeaderText = "Claim Amount";
-            this.Column3.Name = "Column3";
+            this.ClaimAmount.HeaderText = "Claim Amount";
+            this.ClaimAmount.Name = "ClaimAmount";
             // 
-            // Column4
+            // Reason
             // 
-            this.Column4.HeaderText = "Reason";
-            this.Column4.Name = "Column4";
+            this.Reason.HeaderText = "Reason";
+            this.Reason.Name = "Reason";
             // 
-            // Column5
+            // OrderedBy
             // 
-            this.Column5.HeaderText = "Ordered By";
-            this.Column5.Name = "Column5";
+            this.OrderedBy.HeaderText = "Ordered By";
+            this.OrderedBy.Name = "OrderedBy";
             // 
             // frmClaimContractor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(930, 292);
+            this.ClientSize = new System.Drawing.Size(930, 403);
             this.Controls.Add(this.sSMaster);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.txtClaim);
@@ -712,15 +712,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridViewComboBoxColumn MachineColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ContractorColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ShiftColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ChargesColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.StatusStrip sSMaster;
         private System.Windows.Forms.ToolStripStatusLabel tSlblUser;
         private System.Windows.Forms.ToolStripStatusLabel tStextUser;
@@ -736,9 +727,9 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox txtReason;
         private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.TextBox txtComAmount;
+        private System.Windows.Forms.TextBox txtCompensationAmount;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.TextBox txtClaimOffice;
+        private System.Windows.Forms.TextBox txtClaimAmountOffice;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.TextBox txtClaimAmount;
         private System.Windows.Forms.Label label12;
@@ -750,5 +741,14 @@
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.DataGridViewComboBoxColumn MachineColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ContractorColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ShiftColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ChargesColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClaimAmountOffice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CompensationAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClaimAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Reason;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderedBy;
     }
 }
